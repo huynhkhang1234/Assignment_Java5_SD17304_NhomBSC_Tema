@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>Trang chủ</h1>
 </body>
 </html>
