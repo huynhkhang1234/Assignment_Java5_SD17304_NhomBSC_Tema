@@ -1,12 +1,11 @@
-.middle {
+.product {
     position: absolute; 
     clear: both;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column-reverse;
     max-height: 100%;
-    margin-left: 18rem;
-  }
+}
 .column1 {
     width: 60%;
     height: 200px;
@@ -17,12 +16,12 @@
     float: right;
 }
 .column2 > .image{
-    height: 200px;
+    height: 180px;
 }
 
 .prod {
-    width: 40%;
-    height: 300px;
+    width: 35%;
+    height: 250px;
     border-radius: 10px;
     box-shadow: 0 0 5px gray;
     margin: 5px;
@@ -41,6 +40,4 @@
     margin-top: 7px;
 }
 
-.bt-group{
-    margin-top: 3rem;
-}
+
