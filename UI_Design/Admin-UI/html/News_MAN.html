@@ -308,7 +308,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${ data.content }" var="odetail">
+                                <c:forEach items="${ data.content }" var="odertail">
                                     <tr>
                                         <td>0</td>
                                         <td>
@@ -352,8 +352,13 @@
                                                 data-bs-target="#modalDelte">
                                                 <i class="bi bi-trash-fill"></i>
                                             </button> <!-- Modal delete -->
-                                            
                                         </td>
+                                        <td class="text-center">
+                                          <button class="btn btn-warning" data-bs-toggle="modal"
+                                              data-bs-target="#modalStatus">
+                                              <i class="bi bi-lock-fill"></i>
+                                          </button> <!-- Modal delete -->
+                                      </td>
 
                                     </tr>
                                 </c:forEach>
@@ -441,32 +446,28 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <!-- Modal -->
+  <div class="modal fade" id="modalStatus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Bạn có muốn khóa bài viết không ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+          <button type="button" class="btn btn-primary">YES</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/main_MAN.js"></script>
     <script src="../js/tinymce.min.js"></script>
-    <script
-  src="https://cdn.tiny.cloud/1/your-api-key/tinymce/6/tinymce.min.js"
-  referrerpolicy="origin"
-></script>;
-
-
 <script>
     tinymce.init({
     selector: '#editor',
