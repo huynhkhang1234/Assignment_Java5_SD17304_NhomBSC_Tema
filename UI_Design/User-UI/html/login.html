@@ -91,7 +91,7 @@
                         <a href="#" title="Mua sắm <.">Mua sắm <i class="bi bi-chevron-down"></i></a>
                         <div class="my-dropdown-menu">
                             <div class="container d-flex" style="grid-gap: 40px;">
-                                <div class="right-section d-grid gap-2" style="grid-template-columns: repeat(6, 1fr);">
+                                <div class="right-section d-grid gap-2" style="grid-template-columns: repeat(5, 1fr);">
                                     <div class="menu-content d-flex flex-column">
                                         <h5>Phụ tùng động cơ</h5>
                                     <ul class="dropdown-links d-grid">
@@ -228,13 +228,13 @@
                                     </ul>
                                     </div>
                                     <div class="menu-content d-flex flex-column">
-                                        <h5>Phụ tùng thân - vỏ</h5>
+                                        <h5>Phụ tùng điều hòa</h5>
                                     <ul class="dropdown-links d-grid">
                                         <li>
                                             <a href="#">
                                                 <i class="bi bi-grid-1x2-fill"></i>
                                                 <div>
-                                                    <p>Ca pô - Tai xe</p>
+                                                    <p>Hệ thống điều hòa</p>
                                                 </div>
                                             </a>
                                         </li>
@@ -242,7 +242,7 @@
                                             <a href="#">
                                                 <i class="bi bi-grid-1x2-fill"></i>
                                                 <div>
-                                                    <p>Cánh cửa</p>
+                                                    <p>Đèn xe hơi</p>
                                                 </div>
                                             </a>
                                         </li>
@@ -250,7 +250,7 @@
                                             <a href="#">
                                                 <i class="bi bi-grid-1x2-fill"></i>
                                                 <div>
-                                                    <p>Kính xe</p>
+                                                    <p>Cơ cấu rửa kính</p>
                                                 </div>
                                             </a>
                                         </li>
@@ -258,7 +258,7 @@
                                             <a href="#">
                                                 <i class="bi bi-grid-1x2-fill"></i>
                                                 <div>
-                                                    <p>Cản trước - Cản sau</p>
+                                                    <p>Quạt gió điều hòa</p>
                                                 </div>
                                             </a>
                                         </li>
@@ -266,15 +266,21 @@
                                             <a href="#">
                                                 <i class="bi bi-grid-1x2-fill"></i>
                                                 <div>
-                                                    <p>Gương xe</p>
+                                                    <p>Công tắc, cầu chì</p>
                                                 </div>
                                             </a>
                                         </li>
                                     </ul>
                                     </div>
-                                    <div class="menu-content d-flex">
-                                        <div class="">
+                                    <div class="menu-content d-flex flex-column align-items-center">
+                                        <h5>Sản phẩm hot</h5>
+                                        <div class="d-flex align-items-center" style="height: 200px;">
                                             <img src="../../images/product-01.png" alt="">
+                                        </div>
+                                        <p>Tên sản phẩm</p>
+                                        <div class="deals__price d-flex align-items-center gap-2">
+                                            <span class="new__price">$139.00</span>
+                                            <span class="old__price">$160.99</span>
                                         </div>
                                     </div>
                                 </div>
@@ -363,10 +369,11 @@
                         <a href="#" title="Tin tức">Tin tức</a>
                     </li>
                     <li>
-                        <a href="#" title="Liên hệ">Liên hệ</a>
+                        <a href="contactus.html" title="Liên hệ">Liên hệ</a>
                     </li>
                 </ul>
                 <div class="header__user-actions d-flex">
+                    <!-- ======================= Cái này là để cho chưa đăng nhập nhé ======================= -->
                     <div class="header__user-left d-flex">
                         <a href="../../html/register.html" class="btn btn-outline-dark">
                             Đăng ký
@@ -374,13 +381,72 @@
                         <a href="../../html/login.html" class="btn btn-warning">
                             Đăng nhập
                         </a>
-                    </div>
-                    <span><i class="bi bi-dash-lg"></i></span>
-                    <div class="header__user-right" >
+                        <span><i class="bi bi-dash-lg"></i></span>
+                        <div class="header__user-right" >
                         <a href="#" class="btn btn-dark" id="search-icon">
                             <i class="bi bi-search" ></i>
                         </a>
                     </div>
+                    </div>
+                    <!-- ======================= Cái này là để cho đăng nhập rồi nhé ======================= -->
+                    <!-- <div class="header__user-left d-flex gap-4">
+                        <a href="../cart.html" class="d-flex header__action-btn">
+                            <i class="bi bi-bag"></i>
+                            <span class="count">2</span>
+                        </a>
+                        <a href="#" class="btn btn-dark" id="search-icon">
+                            <i class="bi bi-search" style="color: white;"></i>
+                        </a>
+                    </div>
+
+                    <span><i class="bi bi-dash-lg"></i></span>
+                    <div class="header__user-right d-flex gap-5" >
+                        
+                        <div class="btn-group" >
+                            <button class="profile d-flex flex-row-reverse align-items-center gap-2 btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="profile-photo overflow-hidden">
+                                    <img src="../../images/profile-1.jpg">
+                                </div>
+                                <div class="profile__content d-flex flex-column ">
+                                    <p style="margin: 0;">Tên: Chu Hua</p>
+                                </div>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end d-right">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                    <i class="bi bi-person-fill"></i>
+                                        Tài khoản
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-person-lines-fill"></i>
+                                        Hồ sơ của tôi
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-bag-heart"></i>
+                                        Yêu thích
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-receipt"></i>
+                                        Lịch sử mua hàng
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-arrow-left-circle"></i>
+                                        Đăng xuất
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
                 </div>
 
                 <i class="bi bi-list toggle-navbar"></i>

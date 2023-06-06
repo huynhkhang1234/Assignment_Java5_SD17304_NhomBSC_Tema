@@ -241,6 +241,13 @@ nav .profile-area {
 
 nav .profile-area .theme-btn {
     display: flex;
+    /* background: var(--color-light);
+    width: 5rem;
+    height: 2rem;
+    border-radius: var(--border-radius-2);
+    cursor: pointer;
+    background-color: #bd261b; */
+
     align-items: center;
     justify-content: center;
     height: 26px;
