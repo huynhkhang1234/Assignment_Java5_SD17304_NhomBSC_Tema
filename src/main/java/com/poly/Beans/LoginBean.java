@@ -21,4 +21,6 @@ public class LoginBean {
 	private String email;
 	@NotBlank(message = "Vui lòng nhập thông tin mật khẩu")
 	private String pass_words;
+	
+	private boolean rememberme;
 }

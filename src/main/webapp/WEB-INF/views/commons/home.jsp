@@ -6,6 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>${sessionScope.userLogin.user_names}</h1>
 	<h1>Trang chủ</h1>
 </body>
-</html>
+</html> 

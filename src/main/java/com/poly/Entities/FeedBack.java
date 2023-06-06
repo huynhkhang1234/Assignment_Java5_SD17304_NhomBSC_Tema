@@ -36,9 +36,10 @@ public class FeedBack implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "users_id")
 	Users users;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	Products products;
+	
 
 }
