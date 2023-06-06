@@ -575,13 +575,13 @@ nav.my-navbar .nav-menu {
 /*==================== Slide show ====================*/
 .my-caption {
     bottom: 50% !important;
-    top: 25%;
-    left: 35px;
+    top: 25% !important;
+    left: 35px !important;
     max-width: 40%;
     padding-top: 0;
     padding-bottom: 0;
     color: #fff;
-    text-align: left;
+    text-align: left !important;
 }
 
 .my-caption h3 {
