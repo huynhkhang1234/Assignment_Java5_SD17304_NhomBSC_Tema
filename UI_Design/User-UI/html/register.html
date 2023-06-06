@@ -19,7 +19,57 @@
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <style>
         
-
+        .login-form-container {
+    background: #f3f3f3 none repeat scroll 0 0;
+    padding: 37px 40px;
+    text-align: left;
+    overflow: hidden;
+}
+.login-form-container input {
+    background: #ffffff none repeat scroll 0 0;
+    border: medium none rgba(0,0,0,0);
+    border-radius: 0;
+    box-shadow: none;
+    color: #333;
+    font-size: 14px;
+    height: 40px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    width: 100%;
+}
+.form-action-button {
+    overflow: hidden;
+    margin-top: 10px;
+}
+.customer-page .theme-default-button {
+    border-radius: 30px;
+    color: #fff;
+}
+.theme-default-button {
+    background-color: #000;
+    border: medium none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    height: 40px;
+    line-height: 24px;
+    margin-bottom: 0;
+    padding: 8px 25px;
+    border-radius: 0;
+    text-align: center;
+}
+.form-action-button a {
+    float: right;
+    margin-top: 7px;
+}
+.customer-page a {
+    color: #303030;
+}
+.account-optional-action {
+    margin-top: 20px;
+}
         main {
             width: 100%;
             height: 1000px;
@@ -351,10 +401,84 @@
             <ul class="breadcrumb__list d-flex container">
                 <li><a href="../html/index.html" class="breadcrumb__link">Trang chủ</a></li>
                 <li><span class="breadcrumb__link">></span></li>
-                <li><span class="breadcrumb__link active">Đăng nhập</span></li>
+                <li><span class="breadcrumb__link active">Đăng ký</span></li>
             </ul>
         </section>
 
+        <div class="customer-page theme-default-margin">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+                  <div class="login">
+                    <div id="CustomerLoginForm">
+                      <form method="post" action="/account/login" id="customer_login" accept-charset="UTF-8" data-login-with-shop-sign-in="true"><input type="hidden" name="form_type" value="customer_login"><input type="hidden" name="utf8" value="✓">
+                      
+                      <div class="login-form-container" >
+                        <div class="login-text"style="text-align: center;">
+                            <h2>Tạo Tài Khoản</h2>
+                            
+                            
+                            
+                          </div>
+                          <div class="register-form">
+                            <form method="post" action="/account" id="create_customer" accept-charset="UTF-8" data-login-with-shop-sign-up="true" onsubmit="window.Shopify.recaptchaV3.addToken(this, &quot;create_customer&quot;); return false;"><input type="hidden" name="form_type" value="create_customer"><input type="hidden" name="utf8" value="✓">
+                
+                            
+                            <label for="FirstName" class="hidden-label">Họ</label>
+                            <input type="text" name="customer[first_name]" id="FirstName" class="input-full" placeholder="" autocapitalize="words" autofocus="">
+                
+                            <label for="LastName" class="hidden-label">Tên</label>
+                            <input type="text" name="customer[last_name]" id="LastName" class="input-full" placeholder="" autocapitalize="words">
+                
+                            <label for="Email" class="hidden-label">Email</label>
+                            <input type="email" name="customer[email]" id="Email" class="input-full" placeholder="" autocorrect="off" autocapitalize="off">
+                
+                            <label for="CreatePassword" class="hidden-label">Mật Khẩu</label>
+                            <input type="password" name="customer[password]" id="CreatePassword" class="input-full" placeholder="">
+                
+                            <div class="form-action-button">
+                              <button type="submit" class="theme-default-button">Tạo</button>
+                            </div>
+                            </form>
+                            
+                            <div class="account-optional-action">
+                                <a href="https://lukas-demo.myshopify.com">Quay lại cửa hàng</a>
+                            </div>
+                
+                          </div>
+                      </div>
+                      </form>
+                    </div>
+                    <div id="RecoverPasswordForm" style="display: none;">
+                      <form method="post" action="/account/recover" accept-charset="UTF-8"><input type="hidden" name="form_type" value="recover_customer_password"><input type="hidden" name="utf8" value="✓">
+                      
+                      
+                      <div class="login-form-container">
+                        <div class="login-text">
+                          <h2>Reset your password</h2>
+                          <p>We will send you an email to reset your password.</p>
+                        </div>
+                        <div class="login-form">
+                          <input type="email" value="" name="email" id="RecoverEmail" class="input-full" placeholder="Email" autocorrect="off" autocapitalize="off">
+                          <div class="login-toggle-btn">
+                            <div class="form-action-button">
+                              <button type="submit" class="theme-default-button">Submit</button>
+                              <a href="#" id="HideRecoverPasswordLink">Cancel</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </form>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+        
+        
     </main>
 
     <footer>
