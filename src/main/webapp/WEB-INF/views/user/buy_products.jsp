@@ -20,7 +20,7 @@
 				
 	</form>
 	
-	<form action="/addCart2" method="post">
+	<!-- <form action="/addCart2" method="post">
 		<input name="id2" type="hidden" value="2" /> <input
 			name="price2" type="hidden" value="300" /> <input
 			name="quantity2" type="hidden" value="1" />
@@ -32,7 +32,7 @@
 		
 		
 				
-	</form>
+	</form> -->
 	
 		
 </body>
