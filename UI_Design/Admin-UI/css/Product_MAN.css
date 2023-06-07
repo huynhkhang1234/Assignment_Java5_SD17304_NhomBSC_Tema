@@ -1,3 +1,9 @@
+
+.title{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 35px;
+  margin-bottom: 1.5rem;
+}
 .item {
   border-radius: 10px;
   box-shadow: 0 0 5px gray;
@@ -26,7 +32,7 @@
     font-size: 15px;
     text-align: center;
   }
-  .caption {
+ .caption {
     font-size: 13px;
     margin-top: 7px;
   }
@@ -34,14 +40,12 @@
     color: blue;
   }
   
-  .list-products {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    border-bottom: 3px dotted #eee;
-    position: fixed;
+.list-products {
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
   
-  .list-products .owl-nav {
+.list-products .owl-nav {
     text-align: center;
     position: absolute;
     width: 100%;
@@ -50,39 +54,40 @@
     font-size: 45px;
   }
   
-  .list-products .owl-dots {
+.list-products .owl-dots {
     display: none;
   }
       
-  .list-products .owl-nav .owl-prev{
+.list-products .owl-nav .owl-prev{
     position: absolute;
     left: -40px;
     outline: none;
   }
   
-  .list-products .owl-nav .owl-prev {
+.list-products .owl-nav .owl-prev {
     opacity: 0.75;
     transition: all .5s;
   }
   
-  .list-products .owl-nav .owl-prev:hover {
+.list-products .owl-nav .owl-prev:hover {
     opacity: 1;
   }
   
-  .list-products .owl-nav .owl-next {
+.list-products .owl-nav .owl-next {
     opacity: 0.75;
     transition: all .5s;
   }
   
-  .list-products .owl-nav .owl-next:hover {
+.list-products .owl-nav .owl-next:hover {
     opacity: 1;
   }
   
-  .list-products .owl-nav .owl-next{
+.list-products .owl-nav .owl-next{
     outline: none;
     position: absolute;
     right: 40px;
   }
+  
 
-  
-  
+  /* loa */
+ 
