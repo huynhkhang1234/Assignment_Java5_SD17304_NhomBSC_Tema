@@ -1,6 +1,8 @@
 package com.poly.Controller;
 
+import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -44,53 +46,48 @@ public class CartController {
 
 		try {
 			HttpSession session = request.getSession();
-			// String gioHang = (String) session.getAttribute("cart");
 			System.out.println(session.getAttribute("cart") + "giỏ hàng đầu vô");
-			// System.out.println("giỏ hàng đầu vô :" + gioHang);
 		} catch (Exception e) {
 			System.out.println("session giỏ hàng null");
 		}
-
-		// System.out.println("giỏ hàng 1:" + cart.get(1).getQuantity());
-//		
-//		System.out.println("giỏ hàng 2 :" + cart.get(2).getName());		
-//		System.out.println("giỏ hàng 2:" + cart.get(2).getQuantity());
 		return "user/buy_products";
 	}
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/addCart", method = RequestMethod.POST)
 	public String addToCart() {
-		//null giá trị
-		int id = Integer.parseInt(request.getParameter("id"));
-		String name = request.getParameter("name");
-		int quantity = Integer.parseInt(request.getParameter("quantity"));
-		double price = Double.parseDouble(request.getParameter("price"));
-		System.out.println(id);
-		System.out.println(name);
-		System.out.println(price);	
-		System.out.println(quantity);
-		CartItem item = new CartItem(id, name, quantity, price);
-		Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart");
-		if (cart == null) {
-			cart = new HashMap<Integer, CartItem>();
-		}
-		if (cart.containsKey(id)) {
-			CartItem existingItem = cart.get(id);
-			existingItem.setQuantity(existingItem.getQuantity() + quantity);
-		} else {
-			cart.put(id, item);
-		}
-		session.setAttribute("cart", cart);
+		// bắt try lỗi khi click sản phẩm đầu tiên
 		try {
-			System.out.println("giỏ hàng 1 :" + cart.get(1).getName());
-			System.out.println("giỏ hàng 1:" + cart.get(1).getQuantity());
-
-			System.out.println("giỏ hàng 2 :" + cart.get(2).getName());
-			System.out.println("giỏ hàng 2:" + cart.get(2).getQuantity());
+			int id = Integer.parseInt(request.getParameter("id"));
+			String name = request.getParameter("name");
+			int quantity = Integer.parseInt(request.getParameter("quantity"));
+			double price = Double.parseDouble(request.getParameter("price"));
+			System.out.println(id);
+			System.out.println(name);
+			System.out.println(price);
+			System.out.println(quantity);
+			CartItem item = new CartItem(id, name, quantity, price);
+			Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart");
+			if (cart == null) {
+				cart = new HashMap<Integer, CartItem>();
+			}
+			if (cart.containsKey(id)) {
+				CartItem existingItem = cart.get(id);
+				existingItem.setQuantity(existingItem.getQuantity() + quantity);
+			} else {
+				cart.put(id, item);
+			}
+			session.setAttribute("cart", cart);
+			float total = 0;
+			for (Entry<Integer, CartItem> entry : cart.entrySet()) {
+				total += entry.getValue().getQuantity() *entry.getValue().getPrice(); 
+			}	
+			session.setAttribute("total", total);
+			System.out.println("Tông tiền: " + total);	
 		} catch (Exception e) {
-			System.out.println("Gio hàng in ra 1 trong 2  null");
+			System.out.println("Lỗi truy vấn sản phẩm");
 		}
+		//return "redirect:/home";
 		return "user/cart";
 	}
 
@@ -129,79 +126,56 @@ public class CartController {
 	// nhấn nút lưu tren kia database
 	@RequestMapping(value = "/saveCart", method = RequestMethod.POST)
 	public String saveCart() {
-		try {
-			int id = Integer.parseInt(request.getParameter("id"));
-			String name = request.getParameter("name");
-			int quantity = Integer.parseInt(request.getParameter("quantity"));
-			double price = Double.parseDouble(request.getParameter("price"));
-		} catch (Exception e) {
-			System.out.println("tham so truyen vao null");
-		}
 		Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart"); // Thực hiện lưu thông
-		// tin giỏ hàng vào cơ sở dữ liệu ở đây Products pro =
+		// test thử dữ liệu khi thêm sản phẩm vào
 		try {
 			System.out.println("gio hang database : " + cart.get(1).getName());
 			System.out.println("gio hang database : " + cart.get(2).getName());
 		} catch (Exception e) {
 			System.out.println("lưu 1 giỏ hàng");
 		}
-		
 		// tạo đối tượng
 		Orders order = new Orders();
-		//int start = cart.get(0).getId();		
-		//System.out.println(start+ "start");
-		
+		// int start = cart.get(0).getId();
+		// System.out.println(start+ "start");
+
 		// duyệt vong for lấy ra đối tượng
-		for (int i = 1; i <= cart.size(); i++) {
-			System.out.println(cart.size());
-			// lấy giá trị của id
-			for (Entry<Integer, CartItem> entry : cart.entrySet()) {
-				
-			    Integer key = entry.getKey();
-				Products ps = this.productRepo.findById(cart.get(key).getId());
-//			    CartItem value = entry.getValue().getPrice();
-//			    System.out.println("Key: " + key + ", Value: " + value);
-				order.setNotes("ghi chú");
-				order.setStatus("Đang vẩn chuyển");
-				order.setSum_money((float) 200000);
-				// set đối tượng user vào trang
-				HttpSession session = request.getSession();
-				Users userLogin = (Users) session.getAttribute("userLogin");
-				//String id = String.valueOf(userLogin.getId());
-				//System.out.println(userLogin.getId());			
-				//session.setAttribute("orderId", userLogin);
-//				Integer intValue = userLogin.getId();
-//				Order_details order2 = new Order_details();
-			//	order2.setOrders(intValue.valueOf(intValue.toString()));
-				order.setUsers(userLogin);
-				order.setMoney_received(200000);
-				order.setCreate_date(XDate.now());
-				// lưu vao database
-				this.orderRepo.save(order);
-				Orders orid = this.orderRepo.findByUserID(userLogin.getId());
-				System.out.println(orid);
-				//lưu vào order detail			
-				//HttpSession session1 = request.getSession();
-				Order_details orderd = new Order_details();
-			//	Orders orderId = (Orders) session.getAttribute("orderId");
-				// set vào id			
-			//	Orders orderId = this.orderRepo.findByID(1);
-				orderd.setOrders(orid);
-				System.out.println(orid.getId());
-				orderd.setProducts(ps);
-				orderd.setPrice(3000000);
-				orderd.setQuanlity(2);
-				orderd.setSum_money(6000000);
-				orderd.setCreate_date(XDate.now());
-				this.orderDetailRepo.save(orderd);
-			}
-			//
-			
-			
+		// for (int i = 1; i <= cart.size(); i++) {
+		System.out.println("kích thước của tất cả sản phẩm :" + cart.size());
+		// dùng vong lập duyệt qua giá trị của key và value có trong map
+		for (Entry<Integer, CartItem> entry : cart.entrySet()) {
+			// lấy key
+			Integer key = entry.getKey();
+			Products ps = this.productRepo.findById(cart.get(key).getId());
+			order.setNotes("ghi chú");
+			order.setStatus("Đang vẩn chuyển");
+			// lấy gái trị session và gán vào giá trị
+			Float sumMoney = (Float) session.getAttribute("total");
+			order.setSum_money(sumMoney);
+			// set đối tượng user vào session
+			Users userLogin = (Users) session.getAttribute("userLogin");		
+			order.setUsers(userLogin);
+			// số tiền nhận từ thanh toán // xem lại mua on hay off
+			order.setMoney_received(0);
+			order.setCreate_date(XDate.now());
+			// lưu vao database
+			this.orderRepo.save(order);
+			// tìm kiếm userid để set vào ,...
+			Orders orid = this.orderRepo.findByUserID(userLogin.getId());
+			// lưu vào order detail
+			Order_details orderd = new Order_details();
+			orderd.setOrders(orid);
+			System.out.println(orid.getId());
+			orderd.setProducts(ps);
+			orderd.setPrice((int) entry.getValue().getPrice());
+			orderd.setQuanlity(entry.getValue().getQuantity());
+			orderd.setSum_money((float) (entry.getValue().getPrice() * entry.getValue().getId()));
+			orderd.setCreate_date(XDate.now());
+			this.orderDetailRepo.save(orderd);
 		}
-		
-//		System.err.println(pro);
-		// session.removeAttribute("cart");
+
+		 session.removeAttribute("cart");
+		 session.removeAttribute("total");
 		return "user/cart";
 	}
 

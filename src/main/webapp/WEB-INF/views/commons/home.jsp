@@ -15,10 +15,13 @@
 	<c:forEach var="item" items="${listProduct}">
 		<tr>
 			<form action="/addCart" method="post">
-				<input name="id" value="${item.id}" /> <input name="price"
-					value="${item.price}" />  
-					  <input name="name" value="${item.titles} " />
-				<button class="btn btn-info w-100 text-white">
+				<input id="id" name="id" value="${item.id}" />
+				
+				<input name="price"
+					value="${item.price}"/> 
+										
+				 <input id="name" name="name" value="${item.titles} " />
+				<button onclick="addToCart()"  class="btn btn-info w-100 text-white">
 					<i class="fa-solid fa-cart-shopping"></i> <span>ADD TO CART</span>
 				</button>
 				
@@ -33,18 +36,21 @@
 					<button type="button" class="page-link" onClick="onUp()">
 						<i class="fa-solid fa-plus"> tăng lên</i>
 					</button>
-				
-			</form>
+					<br>
+			 </form>
 
 		</tr>
+		
 
 	</c:forEach>
-
-
+	<!-- <form action="/addCart" method="post"> 
+	<button>Chuyển trang</button>
+	 </form> --> 
 
 
 
 </body>
+<script src="https:code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 	var quantity = 1;
 
@@ -59,5 +65,45 @@
 		quantity += 1;
 		document.getElementById("quantity").value = quantity;
 	};
+	
+	function addToCart() {		 
+		alert("Thêm vào giỏ hàng thành công");
+		/* 
+	        var id = $("#id").val();	     
+	        var name = $("#name").val();
+	       var quantity = $("#quantity").val();
+	       var price = $("#price").val();
+	       alert("name" + name);	     
+	       $.ajax({
+	           type: "POST",
+	           url: "/addCart",
+	           data: {
+	               id: id,
+	               name: name,
+	               quantity: quantity,
+	               price: price
+	           },
+	           success: function(data) { */	        	   
+	             //  alert("Thêm vào giỏ hàng thành công");
+	          /*  },
+	           error: function(data) {
+	               alert("Có lỗi xảy ra");
+	           }
+	       }); */
+	   }  
+	    /* luu data */
+	 /*   function saveCart() {
+	       $.ajax({
+	           type: "POST",
+	           url: "/saveCart",
+	           success: function(data) {
+	               alert("Lưu giỏ hàng thành công");
+	           },
+	           error: function(data) {
+	               alert("Có lỗi xảy ra");
+	           }
+	       });
+	   } */
+
 </script>
 </html>

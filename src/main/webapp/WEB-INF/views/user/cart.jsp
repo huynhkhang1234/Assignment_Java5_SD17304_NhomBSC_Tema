@@ -55,6 +55,7 @@
 			</td>
 		</tr> --%>
 	</c:forEach>
+	<h1>Tổng tiền của đơn hàng: ${sessionScope.total} VND</h1>
 	<form action="saveCart" method="post">
 	
 		<button > Thêm vào database</button>
