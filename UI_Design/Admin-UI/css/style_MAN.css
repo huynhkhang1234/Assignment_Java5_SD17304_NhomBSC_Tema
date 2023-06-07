@@ -290,11 +290,17 @@ nav .profile-area .profile i {
 }
 
 nav .profile-area .profile-photo {
-    display: block;
+    display: flex;
+    justify-content: center;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
     overflow: hidden;
+}
+
+nav .profile-area .profile-photo>img {
+    height: 50px;
+    width: auto;
 }
 
 nav .profile-area button#menu-btn {

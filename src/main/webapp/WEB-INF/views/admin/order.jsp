@@ -1,0 +1,845 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr" %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>B.S.C.Team - CarService</title>
+
+    <!-- Link To Base CSS -->
+    <%@include file="component/_linkCSS.jsp" %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- Start Header -->
+    <%@include file="component/_header.jsp" %>
+    <!-- End Header -->
+
+    <main style="grid-template-columns: 16rem auto 0;">
+        <!-- Start Menu Aside -->
+    	<%@include file="component/_menu.jsp" %>
+    	<!-- End Menu Aside -->
+
+        <section class="middle">
+            <div class="px-4 p-3">
+                <div class="row">
+                    <div class="col-5">
+                        <button class="btn btn-info text-white">Thêm mới</button>
+                        <!-- Modal add -->
+
+                    </div>
+                    <div class="col-5">
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Đã thanh toán</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                value="option2">
+                            <label class="form-check-label" for="inlineRadio2">Chưa thanh toán</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                value="option1">
+                            <label class="form-check-label" for="inlineRadio3">Hủy</label>
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="col-2">
+                        <a type="button" class="btn btn-primary"> <i class="fa-solid fa-file-excel"></i>
+                            <span>Xuất Excel</span>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="table-responsive mt-5" style="overflow-x: auto">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Người đặt</th>
+                                <th>Tổng tiền</th>
+                                <th>Số lượng</th>
+                                <th>Ngày đặt</th>
+                                <th>Địa chỉ</th>
+                                <th>Chi tiết</th>
+                                <th colspan="2">#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--1-->
+                            <tr >
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                        data-bs-target="#modalviews">
+                                        <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+                                    </button>
+
+                                    <div class="modal fade" id="modalviews" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class=" modal-dialog modal-lg">
+                                            <div class="modal-content" >
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">
+                                                        Đơn hàng chi tiết </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body row p-5">
+                                                    <div class="col-10">
+                                                        <img style="width: 100px;height: 100px;">
+                                                        <p>img</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Mã hóa đơn</h5>
+                                                        <p>01</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Mã sản phẩm</h5>
+                                                        <p>1001</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Giá</h5>
+                                                        <p>1200000</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Số lượng</h5>
+                                                        <p>1</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Tiền đặt</h5>
+                                                        <p>1200000</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Tổng tiền</h5>
+                                                        <p class="text-danger">1200000</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Người đặt</h5>
+                                                        <p>Thắm</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Địa chỉ</h5>
+                                                        <p>Cần thơ</p>
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Ghi chú</h5>
+                                                        <p>Sản phẩm tốt</p>
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Ngày đặt</h5>
+                                                        <p>6/5/2023</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Trạng thái đơn hàng</h5>
+                                                        <p class="bg-success text-white p-2">Đã thanh toán</p>
+
+                                                    </div>
+
+
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <div class="col-12 mt-2">
+                                                        <a type="button" class="btn btn-primary w-100"> Xác
+                                                            nhận đơn hàng</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#modaledit">
+
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                    <div class="modal fade" id="modaledit" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class=" modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">
+                                                        Chỉnh sửa đơn hàng</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close" ></button>
+                                                </div>
+
+                                                <div class="modal-body row p-5">
+                                                    <div class="col-10">
+                                                        <img style="width: 100px;height: 100px;">
+                                                        <p>img</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Mã hóa đơn</h5>
+                                                        <p>01</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Mã sản phẩm</h5>
+                                                        <p>1001</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Giá</h5>
+                                                        <p>1200000</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Số lượng</h5>
+                                                        <input type="number" class="form-control" min="1"
+                                                            placeholder="1" disabled>
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <h5>Tiền đặt</h5>
+                                                        <input type="number" class="form-control" min="1"
+                                                            placeholder="1" disabled>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Tổng tiền</h5>
+                                                        <p class="text-danger">1200000</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Người đặt</h5>
+                                                        <input type="text" class="form-check-label" placeholder="Thắm"
+                                                            disabled style="height: 25px;">
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Địa chỉ</h5>
+                                                        <input type="text" class="form-check-label"
+                                                            placeholder="Cần Thơ" disabled style="height: 25px;">
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Ghi chú</h5>
+                                                        <input type="text" class="form-check-label"
+                                                            placeholder="Sản phẩm tốt" style="height: 25px;">
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Ngày đặt</h5>
+                                                        <p>6/5/2023</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Trạng thái đơn hàng</h5>
+                                                        
+                                                        <div class="col-auto">
+                                                            <select class="form-select"
+                                                             aria-label="Default select example">
+                                                                <option selected >Chưa thanh toán</option>
+                                                                <option value="1">Thanh toán</option>
+                                                                <option value="2">Hủy</option>
+                                
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+
+
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <div class="col-12 mt-2">
+                                                        <a type="button" class="btn btn-primary w-100"> Chỉnh sửa đơn
+                                                            hàng</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#modaldelete " tabindex="-1">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button> <!-- Modal delete -->
+                                    <div class="modal fade" id="modaldelete" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class=" modal-dialog ">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">
+                                                        Xóa đơn hàng</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body">
+
+                                                        <p>Bạn có muốn xóa đơn hàng không</p>
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Yes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                               
+                            </tr>
+                            <!--2-->
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                        data-bs-target="#modalviews_2">
+                                        <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+                                    </button>
+
+                                    <div class="modal fade" id="modalviews_2" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class=" modal-dialog modal-lg">
+                                            <div class="modal-content" >
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">
+                                                        Đơn hàng chi tiết </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body row p-5">
+                                                    <div class="col-10">
+                                                        <img style="width: 100px;height: 100px;">
+                                                        <p>img</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Mã hóa đơn</h5>
+                                                        <p>01</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Mã sản phẩm</h5>
+                                                        <p>1001</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Giá</h5>
+                                                        <p>1200000</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Số lượng</h5>
+                                                        <p>1</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Tiền đặt</h5>
+                                                        <p>1200000</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Tổng tiền</h5>
+                                                        <p class="text-danger">1200000</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Người đặt</h5>
+                                                        <p>Thắm</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Địa chỉ</h5>
+                                                        <p>Cần thơ</p>
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Ghi chú</h5>
+                                                        <p>Sản phẩm tốt</p>
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Ngày đặt</h5>
+                                                        <p>6/5/2023</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Trạng thái đơn hàng</h5>
+                                                        <p class="bg-secondary text-white p-2">Chưa thanh
+                                                            toán</p>
+                                                       
+
+                                                    </div>
+
+
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <div class="col-12 mt-2">
+                                                        <a type="button" class="btn btn-primary w-100"> Xác
+                                                            nhận đơn hàng</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#modaledit_2">
+
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                    <div class="modal fade" id="modaledit_2" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class=" modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">
+                                                        Chỉnh sửa đơn hàng</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close" ></button>
+                                                </div>
+
+                                                <div class="modal-body row p-5">
+                                                    <div class="col-10">
+                                                        <img style="width: 100px;height: 100px;">
+                                                        <p>img</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Mã hóa đơn</h5>
+                                                        <p>01</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Mã sản phẩm</h5>
+                                                        <p>1001</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Giá</h5>
+                                                        <p>1200000</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Số lượng</h5>
+                                                        <input type="number" class="form-control" min="1"
+                                                            placeholder="1" >
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <h5>Tiền đặt</h5>
+                                                        <input type="number" class="form-control" min="1"
+                                                            placeholder="1" >
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Tổng tiền</h5>
+                                                        <p class="text-danger">1200000</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Người đặt</h5>
+                                                        <input type="text" class="form-check-label" placeholder="Thắm"
+                                                            style="height: 25px;">
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Địa chỉ</h5>
+                                                        <input type="text" class="form-check-label"
+                                                            placeholder="Cần Thơ"  style="height: 25px;">
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Ghi chú</h5>
+                                                        <input type="text" class="form-check-label"
+                                                            placeholder="Sản phẩm tốt" style="height: 25px;">
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Ngày đặt</h5>
+                                                        <p>6/5/2023</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Trạng thái đơn hàng</h5>
+                                                        
+                                                            <div class="col-auto">
+                                                                <select class="form-select"
+                                                                 aria-label="Default select example">
+                                                                    <option selected >Chưa thanh toán</option>
+                                                                    <option value="1">Thanh toán</option>
+                                                                    <option value="2">Hủy</option>
+                                    
+                                                                </select>
+                                                            </div>
+                                                    </div>
+
+
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <div class="col-12 mt-2">
+                                                        <a type="button" class="btn btn-primary w-100"> Chỉnh sửa đơn
+                                                            hàng</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#modaldelete " tabindex="-1">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button> <!-- Modal delete -->
+                                    <div class="modal fade" id="modaldelete" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class=" modal-dialog ">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">
+                                                        Xóa đơn hàng</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body">
+
+                                                        <p style="font-size: 19px;">Bạn có muốn xóa đơn hàng không</p>
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Yes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                               
+                            </tr>
+
+                             <!--3-->
+                             <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                        data-bs-target="#modalviews_3">
+                                        <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+                                    </button>
+
+                                    <div class="modal fade" id="modalviews_3" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class=" modal-dialog modal-lg">
+                                            <div class="modal-content" >
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">
+                                                        Đơn hàng chi tiết </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body row p-5">
+                                                    <div class="col-10">
+                                                        <img style="width: 100px;height: 100px;">
+                                                        <p>img</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Mã hóa đơn</h5>
+                                                        <p>01</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Mã sản phẩm</h5>
+                                                        <p>1001</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Giá</h5>
+                                                        <p>1200000</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Số lượng</h5>
+                                                        <p>1</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Tiền đặt</h5>
+                                                        <p>1200000</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Tổng tiền</h5>
+                                                        <p class="text-danger">1200000</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Người đặt</h5>
+                                                        <p>Thắm</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Địa chỉ</h5>
+                                                        <p>Cần thơ</p>
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Ghi chú</h5>
+                                                        <p>Sản phẩm tốt</p>
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Ngày đặt</h5>
+                                                        <p>6/5/2023</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Trạng thái đơn hàng</h5>
+                                                        <p class="bg-danger text-white p-2">Đã hủy</p>
+                                                        
+                                                    </div>
+
+
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <div class="col-12 mt-2">
+                                                        <a type="button" class="btn btn-primary w-100"> Xác
+                                                            nhận đơn hàng</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#modaledit_3">
+
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                    <div class="modal fade" id="modaledit_3" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class=" modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">
+                                                        Chỉnh sửa đơn hàng</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close" ></button>
+                                                </div>
+
+                                                <div class="modal-body row p-5">
+                                                    <div class="col-10">
+                                                        <img style="width: 100px;height: 100px;">
+                                                        <p>img</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Mã hóa đơn</h5>
+                                                        <p>01</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Mã sản phẩm</h5>
+                                                        <p>1001</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Giá</h5>
+                                                        <p>1200000</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Số lượng</h5>
+                                                        <input type="number" class="form-control" min="1"
+                                                            placeholder="1" >
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <h5>Tiền đặt</h5>
+                                                        <input type="number" class="form-control" min="1"
+                                                            placeholder="1" >
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Tổng tiền</h5>
+                                                        <p class="text-danger">1200000</p>
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Người đặt</h5>
+                                                        <input type="text" class="form-check-label" placeholder="Thắm"
+                                                            style="height: 25px;">
+                                                    </div>
+
+
+                                                    <div class="col-3">
+                                                        <h5>Địa chỉ</h5>
+                                                        <input type="text" class="form-check-label"
+                                                            placeholder="Cần Thơ"  style="height: 25px;">
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Ghi chú</h5>
+                                                        <input type="text" class="form-check-label"
+                                                            placeholder="Sản phẩm tốt" style="height: 25px;">
+
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Ngày đặt</h5>
+                                                        <p>6/5/2023</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <h5>Trạng thái đơn hàng</h5>
+                                                        <p class="bg-danger text-white p-2">Đã hủy</p>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                             Thanh toán
+                                                            </label>
+                                                          </div>
+                                                          <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                              Chưa thanh toán
+                                                            </label>
+                                                          </div>
+                                                    </div>
+                                                   
+
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <div class="col-12 mt-2">
+                                                        <a type="button" class="btn btn-primary w-100"> Chỉnh sửa đơn
+                                                            hàng</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#modaldelete " tabindex="-1">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button> <!-- Modal delete -->
+                                    <div class="modal fade" id="modaldelete" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class=" modal-dialog ">
+                                            <div class="modal-content" >
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">
+                                                        Xóa đơn hàng</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body row p-5">
+
+                                                        <p style="font-size: 19px;">Bạn có muốn xóa đơn hàng không</p>
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Yes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+            </div>
+            <div class="d-flex justify-content-center">
+
+                <a class="page-link" href="#">1</a>
+                <a class="page-link" href="#">2</a>
+                <a class="page-link" href="#">3</a>
+                <a class="page-link" href="#">4</a>
+        
+            </div>
+
+        </section>
+        <!--end of middle-->
+
+    </main>
+
+    <!-- Link To Base JS -->
+    <%@include file="component/_linkJS.jsp" %>
+</body>
+
+</html>

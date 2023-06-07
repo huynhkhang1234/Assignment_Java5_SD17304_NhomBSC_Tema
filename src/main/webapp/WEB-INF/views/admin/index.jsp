@@ -12,108 +12,21 @@
     
     <title>B.S.C.Team - CarService</title>
     
-    <!--Bootstrap icon-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Link To Base CSS -->
+    <%@include file="component/_linkCSS.jsp" %>
     
-    <!-- Link To Favicon -->
-    <link rel="shortcut icon" th:href="@{/images/favicon.svg}" type="image/svg+xml">
-
-    <!-- Link To Style CSS -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style_MAN.css}">
-
-    <!-- Link To Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
 
 <body>
-    <nav>
-        <div class="my-container">
-            <a href="#" class="left-logo d-flex align-items-center">
-                <img th:src="${pageContext}" class="logo">
-                <span class="title-logo">B.S.C Team</span>
-            </a> 
-            <div class="search-bar">
-                <i class="bi bi-search"></i>
-                <input type="search" placeholder="Search">
-            </div>
-            <div class="profile-area">
-                <!-- sáng tối -->
-                <div class="theme-btn">
-                    <span class="switch">
-                        <i class="bi bi-brightness-high bi-icon"></i>
-                    </span>
-                </div>
-                <div class=" btn-group" >
-                    <button class="profile btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="profile-photo">
-                            <img th:src="@{/images/profile-1.jpg}">
-                        </div>
-                        <div class="profile__content d-flex flex-column">
-                            <h5>Tên: Chu Hua</h5>
-                            <span>Vai trò: Admin</span>
-                        </div>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-lg-right d-right">
-                        <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
-                        <li><a class="dropdown-item" href="#">Quay lại trang chủ</a></li>
-                    </ul>
-                </div>
-                <button id="menu-btn">
-                    <i class="bi bi-list"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-    <!--end of navbar-->
+    <!-- Start Header -->
+    <%@include file="component/_header.jsp" %>
+    <!-- End Header -->
 
     <main>
-        <aside>
-            <button class="close-btn">
-                <span class="material-symbols-sharp">close </span>
-            </button>
-            <!--thanh menu-->
-            <div class="sidebar">
-                <a href="/admin/index" class="active">
-                    <i class="bi bi-bar-chart-fill"></i>
-                    <h4>Thống kê</h4>
-                    
-                </a>
-            </div>
-            <!---->
-            <div class="sidebar">
-                <a href="/admin/order">
-                    <i class="bi bi-receipt-cutoff"></i>
-                    <h4>Quản lí đơn hàng</h4>
-                    
-                </a>
-            </div>
-            <!---->
-            <div class="sidebar">
-                <a href="/admin/product">
-                    <i class="bi bi-box2-fill"></i>
-                    <h4>Quản lí sản phẩm</h4>
-                    
-                </a>
-            </div>
-            <!---->
-            <div class="sidebar">
-                <a href="/admin/news">
-                    <i class="bi bi-newspaper"></i>
-                    <h4>Quản lí tin tức</h4>
-                    
-                </a>
-            </div>
-            <!---->
-            <div class="sidebar">
-                <a href="/admin/account">
-                    <i class="bi bi-person-gear"></i>
-                    <h4>Quản lí tài khoản</h4>
-                    
-                </a>
-            </div>
-            <!--end of sidebar-->
-        </aside>
-        <!--end of aside-->
+    
+        <!-- Start Menu Aside -->
+    	<%@include file="component/_menu.jsp" %>
+    	<!-- End Menu Aside -->
 
         <section class="middle">
             <div class="header">
@@ -466,12 +379,14 @@
 
     </main>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"
-        integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-    <script th:src="@{/js/main_MAN.js}"></script>
+	<!-- Link To Chart JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"
+	        integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ=="
+	        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+	<!-- Link To Base JS -->
+    <%@include file="component/_linkJS.jsp" %>
+    
 </body>
 
 </html>
