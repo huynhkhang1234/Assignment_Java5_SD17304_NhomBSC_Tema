@@ -9,6 +9,7 @@
   flex-wrap: wrap;
   gap: 15px;
 }
+
 .product {
   position: relative;
   background-color: var(--sectionBack);
