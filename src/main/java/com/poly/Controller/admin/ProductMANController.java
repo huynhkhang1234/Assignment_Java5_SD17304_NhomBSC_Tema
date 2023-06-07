@@ -4,15 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ProductController {
+public class ProductMANController {
 	
-	@GetMapping("/admin/index")
+	@GetMapping("/admin/product")
 	public String view() {
-		return "admin/index";
-	}
-	
-	@GetMapping("/admin/order")
-	public String order() {
-		return "admin/Order_MAN";
+		return "admin/product";
 	}
 }

@@ -840,6 +840,16 @@
 
     <!-- Link To Base JS -->
     <%@include file="component/_linkJS.jsp" %>
+    
+    <script type="text/javascript">
+    const sidebarList = document.querySelectorAll('.sidebar');
+    const sidebarActive = document.querySelector('.sidebar#order');
+
+    sidebarList.forEach((sidebar) => {
+    	sidebar.firstElementChild.classList.remove('active');
+        });
+    sidebarActive.firstElementChild.classList.add('active');
+    </script>
 </body>
 
 </html>

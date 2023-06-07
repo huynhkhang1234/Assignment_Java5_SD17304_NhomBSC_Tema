@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,29 +11,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>B.S.C.Team - CarService</title>
-
-	<!-- Link To Base CSS -->
+    
+    <!-- Link To Base CSS -->
     <%@include file="component/_linkCSS.jsp" %>
-	
+
     <!-- Link To Account CSS -->
     <link rel="stylesheet" href="../css/Account_MAN.css">
 
-	
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
-        
 </head>
 
 <body>
-    
     <!-- Start Header -->
     <%@include file="component/_header.jsp" %>
     <!-- End Header -->
 
     <main style="grid-template-columns: 16rem auto 0;">
-        
-         <!-- Start Menu Aside -->
+        <!-- Start Menu Aside -->
     	<%@include file="component/_menu.jsp" %>
     	<!-- End Menu Aside -->
 
@@ -328,6 +326,16 @@
 
     <!-- Link To Base JS -->
     <%@include file="component/_linkJS.jsp" %>
+    
+    <script type="text/javascript">
+    const sidebarList = document.querySelectorAll('.sidebar');
+    const sidebarActive = document.querySelector('.sidebar#account');
+
+    sidebarList.forEach((sidebar) => {
+    	sidebar.firstElementChild.classList.remove('active');
+        });
+    sidebarActive.firstElementChild.classList.add('active');
+    </script>
 </body>
 
 </html>

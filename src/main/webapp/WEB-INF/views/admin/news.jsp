@@ -386,7 +386,17 @@
     <%@include file="component/_linkJS.jsp" %>
     
     <script src="../js/tinymce.min.js"></script>
+    
 <script>
+
+const sidebarList = document.querySelectorAll('.sidebar');
+const sidebarActive = document.querySelector('.sidebar#news');
+
+sidebarList.forEach((sidebar) => {
+	sidebar.firstElementChild.classList.remove('active');
+    });
+sidebarActive.firstElementChild.classList.add('active');
+	
     tinymce.init({
     selector: '#editor',
     plugins: 'powerpaste casechange searchreplace autolink directionality advcode visualblocks visualchars image link media mediaembed codesample table charmap pagebreak nonbreaking anchor tableofcontents insertdatetime advlist lists checklist wordcount tinymcespellchecker editimage help formatpainter permanentpen charmap linkchecker emoticons advtable export autosave',

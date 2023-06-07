@@ -14,7 +14,7 @@
     <title>B.S.C.Team - CarService</title>
     
     <!-- Link To Base CSS -->
-    <%@include file="component/_linkCSS.jsp" %>s
+    <%@include file="component/_linkCSS.jsp" %>
 
     <!-- Link To Own CSS -->
     <link rel="stylesheet" href="../css/Product_MAN.css">
@@ -689,6 +689,16 @@
 
 	<!-- Link To Base JS -->
     <%@include file="component/_linkJS.jsp" %>
+    
+    <script type="text/javascript">
+    const sidebarList = document.querySelectorAll('.sidebar');
+    const sidebarActive = document.querySelector('.sidebar#product');
+
+    sidebarList.forEach((sidebar) => {
+    	sidebar.firstElementChild.classList.remove('active');
+        });
+    sidebarActive.firstElementChild.classList.add('active');
+    </script>
 </body>
 
 

@@ -1,4 +1,4 @@
-package com.poly.Controller.admin;
+package com.poly.Controller.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,13 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomepageController {
 	
-	@GetMapping("/admin/index")
+	@GetMapping("/user/index")
 	public String view() {
-		return "admin/index";
-	}
-	
-	@GetMapping("/admin/order")
-	public String order() {
-		return "admin/Order_MAN";
+		return "user/index";
 	}
 }
