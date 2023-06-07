@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -8,94 +8,38 @@
     <title>B.S.C.Team - CarService</title>
 
     <!-- Link To Favicon -->
-    <link rel="shortcut icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="shortcut icon" th:href="@{/images/favicon.svg}" type="image/svg+xml">
 
     <!-- Link To Base CSS -->
-    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
 
     <!-- Link To Icon Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" th:href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <style>
-        .login-form-container {
-            background: #f3f3f3 none repeat scroll 0 0;
-            padding: 37px 40px;
-            text-align: left;
-            overflow: hidden;
-        }
-
-        .login-form-container input {
-            background: #ffffff none repeat scroll 0 0;
-            border: medium none rgba(0, 0, 0, 0);
-            border-radius: 0;
-            box-shadow: none;
-            color: #333;
-            font-size: 14px;
-            height: 40px;
-            margin-bottom: 20px;
-            padding-left: 10px;
-            width: 100%;
-        }
-
-        .form-action-button {
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        .customer-page .theme-default-button {
-            border-radius: 30px;
-            color: #fff;
-        }
-
-        .theme-default-button {
-            background-color: #000;
-            border: medium none;
-            color: #fff;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 14px;
-            font-weight: 400;
-            height: 40px;
-            line-height: 24px;
-            margin-bottom: 0;
-            padding: 8px 25px;
-            border-radius: 0;
-            text-align: center;
-        }
-
-        .form-action-button a {
-            float: right;
-            margin-top: 7px;
-        }
-
-        .customer-page a {
-            color: #303030;
-        }
-
-        .account-optional-action {
-            margin-top: 20px;
-        }
+        
     </style>
+
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <nav class="my-navbar">
             <div class="container d-grid">
-                <a href="#" class="brand d-flex gap-2">
-                    <img src="../../favicon.svg" alt="" width="36">
+                <a href="index.html" class="brand d-flex gap-2">
+                    <img th:src="@{/images/favicon.svg}" alt="" width="36">
                     <span>Brand</span>
                 </a>
                 <ul class="nav-menu">
                     <li class="active-link">
-                        <a href="#" title="Trang chủ">Trang chủ</a>
+                        <a href="/index" title="Trang chủ">Trang chủ</a>
                     </li>
                     <li>
-                        <a href="#" title="Mua sắm <.">Mua sắm <i class="bi bi-chevron-down"></i></a>
+                        <a href="/shop" title="Mua sắm <.">Mua sắm <i class="bi bi-chevron-down"></i></a>
                         <div class="my-dropdown-menu">
                             <div class="container d-flex" style="grid-gap: 40px;">
-                                <div class="right-section d-grid gap-2" style="grid-template-columns: repeat(6, 1fr);">
+                                <div class="right-section d-grid gap-2" style="grid-template-columns: repeat(5, 1fr);">
                                     <div class="menu-content d-flex flex-column">
                                         <h5>Phụ tùng động cơ</h5>
                                         <ul class="dropdown-links d-grid">
@@ -232,13 +176,13 @@
                                         </ul>
                                     </div>
                                     <div class="menu-content d-flex flex-column">
-                                        <h5>Phụ tùng thân - vỏ</h5>
+                                        <h5>Phụ tùng điều hòa</h5>
                                         <ul class="dropdown-links d-grid">
                                             <li>
                                                 <a href="#">
                                                     <i class="bi bi-grid-1x2-fill"></i>
                                                     <div>
-                                                        <p>Ca pô - Tai xe</p>
+                                                        <p>Hệ thống điều hòa</p>
                                                     </div>
                                                 </a>
                                             </li>
@@ -246,7 +190,7 @@
                                                 <a href="#">
                                                     <i class="bi bi-grid-1x2-fill"></i>
                                                     <div>
-                                                        <p>Cánh cửa</p>
+                                                        <p>Đèn xe hơi</p>
                                                     </div>
                                                 </a>
                                             </li>
@@ -254,7 +198,7 @@
                                                 <a href="#">
                                                     <i class="bi bi-grid-1x2-fill"></i>
                                                     <div>
-                                                        <p>Kính xe</p>
+                                                        <p>Cơ cấu rửa kính</p>
                                                     </div>
                                                 </a>
                                             </li>
@@ -262,7 +206,7 @@
                                                 <a href="#">
                                                     <i class="bi bi-grid-1x2-fill"></i>
                                                     <div>
-                                                        <p>Cản trước - Cản sau</p>
+                                                        <p>Quạt gió điều hòa</p>
                                                     </div>
                                                 </a>
                                             </li>
@@ -270,15 +214,21 @@
                                                 <a href="#">
                                                     <i class="bi bi-grid-1x2-fill"></i>
                                                     <div>
-                                                        <p>Gương xe</p>
+                                                        <p>Công tắc, cầu chì</p>
                                                     </div>
                                                 </a>
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="menu-content d-flex">
-                                        <div class="">
+                                    <div class="menu-content d-flex flex-column align-items-center">
+                                        <h5>Sản phẩm hot</h5>
+                                        <div class="d-flex align-items-center" style="height: 200px;">
                                             <img src="../../images/product-01.png" alt="">
+                                        </div>
+                                        <p>Tên sản phẩm</p>
+                                        <div class="deals__price d-flex align-items-center gap-2">
+                                            <span class="new__price">$139.00</span>
+                                            <span class="old__price">$160.99</span>
                                         </div>
                                     </div>
                                 </div>
@@ -286,7 +236,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" title="Sản phẩm <.">Sản phẩm <i class="bi bi-chevron-down"></i></a>
+                        <a href="/product" title="Sản phẩm <.">Sản phẩm <i class="bi bi-chevron-down"></i></a>
                         <div class="my-dropdown-menu">
                             <div class="container d-grid" style="grid-gap: 40px;">
                                 <div class="left-section">
@@ -364,26 +314,131 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" title="Tin tức">Tin tức</a>
+                        <a href="/news" title="Tin tức">Tin tức</a>
                     </li>
                     <li>
-                        <a href="#" title="Liên hệ">Liên hệ</a>
+                        <a href="/contactus" title="Liên hệ">Liên hệ</a>
                     </li>
                 </ul>
                 <div class="header__user-actions d-flex">
-                    <div class="header__user-left d-flex">
-                        <a href="../../html/register.html" class="btn btn-outline-dark">
+                    <!-- ======================= Cái này là để cho chưa đăng nhập nhé ======================= -->
+                    <!-- <div class="header__user-left d-flex">
+                        <a href="/register" class="btn btn-outline-dark">
                             Đăng ký
                         </a>
-                        <a href="../../html/login.html" class="btn btn-warning">
+                        <a href="/login" class="btn btn-warning">
                             Đăng nhập
                         </a>
-                    </div>
-                    <span><i class="bi bi-dash-lg"></i></span>
-                    <div class="header__user-right">
-                        <a href="#" class="btn btn-dark" id="search-icon">
-                            <i class="bi bi-search"></i>
+                        <span><i class="bi bi-dash-lg"></i></span>
+                        <div class="header__user-right">
+                            <a href="#" class="btn btn-dark" id="search-icon">
+                                <i class="bi bi-search"></i>
+                            </a>
+                        </div>
+                    </div> -->
+                    <!-- ======================= Cái này là để cho đăng nhập rồi nhé ======================= -->
+                    <div class="header__user-left d-flex gap-4">
+                        <a href="/cart" class="d-flex header__action-btn">
+                            <i class="bi bi-bag"></i>
+                            <span class="count">2</span>
                         </a>
+                        <div class="header__action-mini-cart">
+                            <div class="cart-empty-title d-none">
+                                <h3>Giỏ hàng của bạn đang trống.</h3>
+                            </div>
+                            <div class="mini-cart-product">
+
+                                <div class="mini-product">
+                                    <div class="mini-product__thumb">
+                                        <a href="/products/5-simple-product?variant=30694916718638"><img
+                                                src="//cdn.shopify.com/s/files/1/0136/5816/1198/products/product-8_fcd6e163-0227-4680-9dbc-0b5b792e2be5_small.png?v=1571300350"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="mini-product__info">
+                                        <h2 class="title">
+                                            <a href="/products/5-simple-product?variant=30694916718638">
+                                                Tên sản phẩm
+                                            </a>
+                                        </h2>
+
+                                        <div class="mini-calculation">
+                                            <p class="price">1 x <span class="money" data-currency-bdt="Tk 50.00">Tk
+                                                    50.00</span></p>
+                                            <button class="remove-pro">
+                                                <i class="bi bi-trash3-fill"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="cart-subtotal">
+                                <h4>Tổng: <span class="shopping-cart__total"><span class="money"
+                                            data-currency-bdt="Tk 50.00">Tk 50.00</span></span></h4>
+                            </div>
+                            <div class="cart-checkout-btn d-flex justify-content-end gap-2">
+                                <a class="btn btn-outline-dark" href="/cart">Giỏ hàng</a>
+                                <a class="btn btn-outline-warning" href="/checkout">Đặt hàng</a>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-dark" id="search-icon">
+                            <i class="bi bi-search" style="color: white;"></i>
+                        </a>
+                    </div>
+
+                    <span><i class="bi bi-dash-lg"></i></span>
+                    <div class="header__user-right d-flex gap-5">
+
+                        <div class="btn-group">
+                            <button
+                                class="profile d-flex flex-row-reverse align-items-center gap-2 btn btn-outline-dark dropdown-toggle"
+                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="profile-photo overflow-hidden">
+                                    <img th:src="@{/images/profile-1.jpg}">
+                                </div>
+                                <div class="profile__content d-flex flex-column ">
+                                    <p style="margin: 0;">Tên: Chu Hua</p>
+                                </div>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end d-right">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-person-fill"></i>
+                                        Tài khoản
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-person-lines-fill"></i>
+                                        Hồ sơ của tôi
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-bag-heart"></i>
+                                        Yêu thích
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-receipt"></i>
+                                        Lịch sử mua hàng
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-arrow-left-circle"></i>
+                                        Đăng xuất
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -398,101 +453,94 @@
     <main>
 
         <!-- ========================== BREADCRUMB ========================== -->
-        <section class="breadcrumb">
+        <!-- <section class="breadcrumb">
             <ul class="breadcrumb__list d-flex container">
                 <li><a href="../html/index.html" class="breadcrumb__link">Trang chủ</a></li>
                 <li><span class="breadcrumb__link">></span></li>
-                <li><span class="breadcrumb__link active">Đăng ký</span></li>
+                <li><span class="breadcrumb__link active">Trang chủ</span></li>
             </ul>
-        </section>
+        </section> -->
 
-        <div class="customer-page theme-default-margin">
+        <div id="carouselExampleCaptions" class="carousel slide mb-5">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../images/slider-01.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption my-caption d-none d-md-block">
+                        <h3>Công nghệ và hệ thống mới</h3>
+                        <h2>Động cơ mạnh mẽ và mới nhất dành cho bạn</h2>
+                        <a class="btn" href="#">Xem chi tiết</a>
+                    </div>
+                </div>
+                <div class="carousel-item active">
+                    <img src="../images/slider-02.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption my-caption d-none d-md-block">
+                        <h3>Công nghệ và hệ thống mới</h3>
+                        <h2>Bộ sưu tập phụ kiện và đồ chơi</h2>
+                        <a class="btn" href="#">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <div class="ball d-flex align-items-center justify-content-center">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden d-none">Previous</span>
+                </div>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <div class="ball d-flex align-items-center justify-content-center" style="left: auto; right: 50px;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden d-none">Next</span>
+                </div>
+            </button>
+        </div>
+
+        <div class="call-to-action-area">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-                        <div class="login">
-                            <div id="CustomerLoginForm">
-                                <form method="post" action="/account/login" id="customer_login" accept-charset="UTF-8"
-                                    data-login-with-shop-sign-in="true"><input type="hidden" name="form_type"
-                                        value="customer_login"><input type="hidden" name="utf8" value="✓">
-
-                                    <div class="login-form-container">
-                                        <div class="login-text" style="text-align: center;">
-                                            <h2>Tạo Tài Khoản</h2>
-
-
-
-                                        </div>
-                                        <div class="register-form">
-                                            <form method="post" action="/account" id="create_customer"
-                                                accept-charset="UTF-8" data-login-with-shop-sign-up="true">
-                                                <input type="hidden" name="form_type" value="create_customer"><input
-                                                    type="hidden" name="utf8" value="✓">
-
-
-                                                <label for="FirstName" class="hidden-label">Họ</label>
-                                                <input type="text" name="customer[first_name]" id="FirstName"
-                                                    class="input-full" placeholder="" autocapitalize="words"
-                                                    autofocus="">
-
-                                                <label for="LastName" class="hidden-label">Tên</label>
-                                                <input type="text" name="customer[last_name]" id="LastName"
-                                                    class="input-full" placeholder="" autocapitalize="words">
-
-                                                <label for="Email" class="hidden-label">Email</label>
-                                                <input type="email" name="customer[email]" id="Email" class="input-full"
-                                                    placeholder="" autocorrect="off" autocapitalize="off">
-
-                                                <label for="CreatePassword" class="hidden-label">Mật Khẩu</label>
-                                                <input type="password" name="customer[password]" id="CreatePassword"
-                                                    class="input-full" placeholder="">
-
-                                                <div class="form-action-button">
-                                                    <button type="submit" class="theme-default-button">Tạo</button>
-                                                </div>
-                                            </form>
-
-                                            <div class="account-optional-action">
-                                                <a href="index.html">Quay lại cửa hàng</a>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </form>
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <div class="call-to-action-item mt-0">
+                            <div class="call-to-action-item__icon">
+                                <img src="../images/icon-01_small.png" alt="fast delivery">
                             </div>
-                            <div id="RecoverPasswordForm" style="display: none;">
-                                <form method="post" action="/account/recover" accept-charset="UTF-8"><input
-                                        type="hidden" name="form_type" value="recover_customer_password"><input
-                                        type="hidden" name="utf8" value="✓">
-
-
-                                    <div class="login-form-container">
-                                        <div class="login-text">
-                                            <h2>Reset your password</h2>
-                                            <p>We will send you an email to reset your password.</p>
-                                        </div>
-                                        <div class="login-form">
-                                            <input type="email" value="" name="email" id="RecoverEmail"
-                                                class="input-full" placeholder="Email" autocorrect="off"
-                                                autocapitalize="off">
-                                            <div class="login-toggle-btn">
-                                                <div class="form-action-button">
-                                                    <button type="submit" class="theme-default-button">Submit</button>
-                                                    <a href="#" id="HideRecoverPasswordLink">Cancel</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                            <div class="call-to-action-item__info">
+                                <h3>Dịch vụ vận chuyển</h3>
+                                <p>Vận chuyển cấp tốc. Miễn phí cho các đơn hàng > 500.000 VNĐ</p>
                             </div>
-
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <div class="call-to-action-item ">
+                            <div class="call-to-action-item__icon">
+                                <img src="../images/icon-02_small.png" alt="fast delivery">
+                            </div>
+                            <div class="call-to-action-item__info">
+                                <h3>Chất lượng sản phẩm</h3>
+                                <p>Chúng tôi luôn đảm bảo về nguồn gốc và chất lượng sản phẩm của mình</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <div class="call-to-action-item ">
+                            <div class="call-to-action-item__icon">
+                                <img src="../images/icon-03_small.png" alt="fast delivery">
+                            </div>
+                            <div class="call-to-action-item__info">
+                                <h3>Hỗ trợ trực tuyến</h3>
+                                <p>Chúng tôi luôn có đội ngũ trực tuyến, để hổ trợ cho khách hàng</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
 
     </main>
 
@@ -526,7 +574,6 @@
                         </span>
                     </li>
                 </ul>
-
             </div>
             <div class="footer__body d-grid container">
                 <div class="footer__content">
