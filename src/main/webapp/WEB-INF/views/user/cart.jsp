@@ -34,7 +34,7 @@
         <!-- ========================== BREADCRUMB ========================== -->
         <section class="breadcrumb">
             <ul class="breadcrumb__list d-flex container">
-                <li><a href="../html/index.html" class="breadcrumb__link">Trang chủ</a></li>
+                <li><a href="/user/index" class="breadcrumb__link">Trang chủ</a></li>
                 <li><span class="breadcrumb__link">></span></li>
                 <li><span class="breadcrumb__link active">Giỏ hàng</span></li>
             </ul>
@@ -58,7 +58,7 @@
                       <tr>
                         <td class="pro-thumbnail">
                             <a href="#">
-                                <img src="../images/product-01.png" alt="" height="70px;">
+                                <img src="/images/product-01.png" alt="" height="70px;">
                             </a>
                         </td>
                         <td>Động cơ hơi nước quá trời nước</td>
@@ -80,7 +80,7 @@
                       <tr>
                         <td class="pro-thumbnail">
                             <a href="#">
-                                <img src="../images/product-01.png" alt="" height="70px;">
+                                <img src="/images/product-01.png" alt="" height="70px;">
                             </a>
                         </td>
                         <td>Động cơ hơi nước quá trời nước</td>
