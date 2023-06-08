@@ -1,358 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Detail</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Link To Bootstrap Icon -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.S.C.Team - CarService</title>
+	
+	<!-- Link To Base CSS -->
+	<%@include file="component/_linkCSS.jsp" %>
+	
     <!-- Slick -->
     <link rel="stylesheet" type="text/css" href="../css/slick/slick.min.css">
     <link rel="stylesheet" type="text/css" href="../css/slick/slick-theme.css">
-
- 
-    <!-- Link To Favicon -->
-    <link rel="shortcut icon" href="../../favicon.svg" type="image/svg+xml">
-
-    <!-- Link To Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-
-    <!-- Link To Base CSS -->
-    <link rel="stylesheet" href="../css/base.css">
-
-    <!-- Link To Icon Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-    
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
     <link rel="stylesheet" href="../css/detail.css">
-
-
 </head>
 
 <body>
 
-    <header>
-        <nav class="my-navbar">
-            <div class="container d-grid">
-                <a href="#" class="brand d-flex gap-2">
-                    <img src="../../favicon.svg" alt="" width="36">
-                    <span>Brand</span>
-                </a>
-                <ul class="nav-menu">
-                    <li class="active-link">
-                        <a href="#" title="Trang chủ">Trang chủ</a>
-                    </li>
-                    <li>
-                        <a href="#" title="Mua sắm <.">Mua sắm <i class="bi bi-chevron-down"></i></a>
-                        <div class="my-dropdown-menu">
-                            <div class="container d-flex" style="grid-gap: 40px;">
-                                <div class="right-section d-grid gap-2" style="grid-template-columns: repeat(6, 1fr);">
-                                    <div class="menu-content d-flex flex-column">
-                                        <h5>Phụ tùng động cơ</h5>
-                                    <ul class="dropdown-links d-grid">
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Hệ thống bôi trơn</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Hệ thống làm mát</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Hệ thống đánh lửa</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Máy khởi động</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Gioăng động cơ</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    </div>
-                                    <div class="menu-content d-flex flex-column">
-                                        <h5>Phụ tùng gầm</h5>
-                                    <ul class="dropdown-links d-grid">
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Ly hợp</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Hệ thống phanh</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Hộp số</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Hệ thống truyền lực</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Bánh xe - May ơ</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    </div>
-                                    <div class="menu-content d-flex flex-column">
-                                        <h5>Phụ tùng thân - vỏ</h5>
-                                    <ul class="dropdown-links d-grid">
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Ca pô - Tai xe</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Cánh cửa</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Kính xe</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Cản trước - Cản sau</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Gương xe</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    </div>
-                                    <div class="menu-content d-flex flex-column">
-                                        <h5>Phụ tùng thân - vỏ</h5>
-                                    <ul class="dropdown-links d-grid">
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Ca pô - Tai xe</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Cánh cửa</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Kính xe</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Cản trước - Cản sau</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <p>Gương xe</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    </div>
-                                    <div class="menu-content d-flex">
-                                        <div class="">
-                                            <img src="../images/product-01.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" title="Sản phẩm <.">Sản phẩm <i class="bi bi-chevron-down"></i></a>
-                        <div class="my-dropdown-menu">
-                            <div class="container d-grid" style="grid-gap: 40px;">
-                                <div class="left-section">
-                                    <span class="dropdown-close">
-                                        <i class="bi bi-chevron-left"></i>
-                                        Back
-                                    </span>
-                                    <h1>Thương hiệu sản phẩm</h1>
-                                    <p>Mô tả rằng tại đây có rất nhiều thương hiệu nổi tiếng 
-                                        và phù hợp với xe của bạn, bạn có thể tham khảo rất nhiều thứ
-                                        với chúng tôi. Hãy mua chỗ chúng tôi nhé bạn!!!
-                                    </p>
-                                    <a href="#" class="btn btn-primary btn-see-all">Xem thêm</a>
-                                </div>
-                                <div class="right-section">
-                                    <h3>Sản phẩm hot trong tháng</h3>
-                                    <ul class="dropdown-links">
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <h5>Sản phẩm 1</h5>
-                                                    <p>Mô tả sản phẩm 1</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-webcam"></i>
-                                                <div>
-                                                    <h5>Sản phẩm 2</h5>
-                                                    <p>Mô tả sản phẩm 2</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-arrow-repeat"></i>
-                                                <div>
-                                                    <h5>Sản phẩm 3</h5>
-                                                    <p>Mô tả sản phẩm 3</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-boxes"></i>
-                                                <div>
-                                                    <h5>Sản phẩm 4</h5>
-                                                    <p>Mô tả sản phẩm 4</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-gear"></i>
-                                                <div>
-                                                    <h5>Sản phẩm 5</h5>
-                                                    <p>Mô tả sản phẩm 5</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="bi bi-grid-1x2-fill"></i>
-                                                <div>
-                                                    <h5>Sản phẩm 6</h5>
-                                                    <p>Mô tả sản phẩm 6</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" title="Tin tức">Tin tức</a>
-                    </li>
-                    <li>
-                        <a href="#" title="Liên hệ">Liên hệ</a>
-                    </li>
-                </ul>
-                <div class="header__user-actions d-flex">
-                    <div class="header__user-left d-flex">
-                        <a href="../../html/register.html" class="btn btn-outline-dark">
-                            Đăng ký
-                        </a>
-                        <a href="../../html/login.html" class="btn btn-warning">
-                            Đăng nhập
-                        </a>
-                    </div>
-                    <span><i class="bi bi-dash-lg"></i></span>
-                    <div class="header__user-right" >
-                        <a href="#" class="btn btn-dark" id="search-icon">
-                            <i class="bi bi-search" ></i>
-                        </a>
-                    </div>
-                    
-                </div>
-
-                <i class="bi bi-list toggle-navbar"></i>
-            </div>
-        </nav>
-        <div class="search-box container">
-            <input type="search" name="" id="" placeholder="Tìm kiếm ở đây...">
-        </div>
-    </header>
-
+	<!-- Header Start -->
+	<%@include file = "component/_header.jsp" %>
+	<!-- Header End -->
+    
     <main>
 
         <!-- ========================== BREADCRUMB ========================== -->
@@ -897,165 +573,20 @@
         </section>
         <!-- End Article -->
     </main>
-
     
-
-    <footer>
-        <div class="footer__container">
-            <div class="footer__top container">
-                <ul class="footer__info-links">
-                    <li class="footer__info-link">
-                        <i class="bi bi-geo-alt-fill"></i>
-                        <span>
-                            331 Đ. Nguyễn Văn Linh, P. An Khánh,
-                            Q. Ninh Kiều, TP. Cần Thơ
-                        </span>
-                    </li>
-                    <li class="footer__info-link">
-                        <i class="bi bi-telephone-fill"></i>
-                        <span>
-                            +(84) 336 761 552
-                        </span>
-                    </li>
-                    <li class="footer__info-link">
-                        <i class="bi bi-envelope-fill"></i>
-                        <span>
-                            pkqnguyen123@gmail.com
-                        </span>
-                    </li>
-                    <li class="footer__info-link">
-                        <i class="bi bi-alarm-fill"></i>
-                        <span>
-                            Thời gian hoạt động: 8h00' - 22h00'
-                        </span>
-                    </li>
-                </ul>
-
-            </div>
-            <div class="footer__body d-grid container">
-                <div class="footer__content">
-                    <h3 class="footer__title">
-                        <a href="#" class="brand d-flex gap-2">
-                            <img src="../../favicon.svg" alt="" width="36">
-                            <span>Brand</span>
-                        </a>
-                    </h3>
-                    <p class="footer__description">
-                        Trang web của chúng tôi là một trang web bán phụ kiện tốt nhất dành cho xe của bạn. 
-                        Tại đây có tất cả các phần phụ kiện mà bạn cần. Hãy đến với cửa hàng của chúng tôi.
-                        Nơi mà xe bạn cần đến!!!
-                    </p>
-                    <a href="#" class="btn btn-custom">
-                        Xem thêm
-                    </a>
-                </div>
-
-                <div class="footer_content">
-                    <h3 class="footer__title">Thông tin</h3>
     
-                    <ul class="footer__links">
-                        <li>
-                            <a href="" class="footer__link">
-                                <i class="bi bi-caret-right-fill"></i>
-                                Cửa hàng của chúng tôi
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="footer__link">
-                                <i class="bi bi-caret-right-fill"></i>
-                                Liên hệ với chúng tôi
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="footer__link">
-                                <i class="bi bi-caret-right-fill"></i>
-                                Dịch vụ của chúng tôi
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="footer__link">
-                                <i class="bi bi-caret-right-fill"></i>
-                                Tại sao là chúng tôi
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-    
-                <div class="footer_content">
-                    <h3 class="footer__title">Chọn nhanh</h3>
-    
-                    <ul class="footer__links">
-                        <li>
-                            <a href="" class="footer__link">
-                                <i class="bi bi-caret-right-fill"></i>
-                                Về chúng tôi
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="footer__link">
-                                <i class="bi bi-caret-right-fill"></i>
-                                Bài viết
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="footer__link">
-                                <i class="bi bi-caret-right-fill"></i>
-                                Cửa hàng
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="footer__link">
-                                <i class="bi bi-caret-right-fill"></i>
-                                Đơn hàng
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-    
-                <div class="footer__content">
-                    <h3 class="footer__title">Hình thức thanh toán</h3>
-                    <h4 class="footer__subtitle">Hình thức</h4>
-                    <img src="../../images/payment-method.png" alt="" class="payment__img">
-                    <div class="footer__social">
-                        <h4 class="footer__subtitle">Theo dõi chúng tôi</h4>
-
-                        <div class="footer__social-links d-flex">
-                            <a href="">
-                                <i class="bi bi-facebook footer__social-icon"></i>
-                            </a>
-                            <a href="">
-                                <i class="bi bi-twitter footer__social-icon"></i>
-                            </a>
-                            <a href="">
-                                <i class="bi bi-instagram footer__social-icon"></i>
-                            </a>
-                            <a href="">
-                                <i class="bi bi-pinterest footer__social-icon"></i>
-                            </a>
-                            <a href="">
-                                <i class="bi bi-youtube footer__social-icon"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer__bottom container">
-                <p class="copyright">&copy; 2023 B.S.C.Team. All rights reserved</p>
-                <span class="designer">Developed by: B.S.C Team</span>
-            </div>
-        </div>
-    </footer>
-
-
-
-
-    <!-- Start Script -->
+    <!-- Footer Start -->
+	<%@include file = "component/_footer.jsp" %>
+	<!-- Footer End -->
+	
+	<!-- Start Script -->
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-
+    <!-- Link To Base JS -->
+    <%@include file = "component/_linkJS.jsp" %>
+    
     <script src="../js/detail/jquery-1.11.0.min.js"></script>
     <script src="../js/detail/jquery-migrate-1.2.1.min.js"></script>
     <script src="../js/detail/templatemo.js"></script>
@@ -1096,7 +627,6 @@
         });
     </script>
     <!-- End Slider Script -->
-
 </body>
 
 </html>
