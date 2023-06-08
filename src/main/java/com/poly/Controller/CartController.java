@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -80,47 +81,15 @@ public class CartController {
 			session.setAttribute("cart", cart);
 			float total = 0;
 			for (Entry<Integer, CartItem> entry : cart.entrySet()) {
-				total += entry.getValue().getQuantity() *entry.getValue().getPrice(); 
-			}	
+				total += entry.getValue().getQuantity() * entry.getValue().getPrice();
+			}
 			session.setAttribute("total", total);
-			System.out.println("Tông tiền: " + total);	
+			System.out.println("Tông tiền: " + total);
 		} catch (Exception e) {
 			System.out.println("Lỗi truy vấn sản phẩm");
 		}
-		//return "redirect:/home";
-		return "user/cart";
-	}
-
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/addCart2", method = RequestMethod.POST)
-	public String addToCart2() {
-		int id = Integer.parseInt(request.getParameter("id2"));
-		String name = request.getParameter("name2");
-		int quantity = Integer.parseInt(request.getParameter("quantity2"));
-		double price = Double.parseDouble(request.getParameter("price2"));
-
-		CartItem item = new CartItem(id, name, quantity, price);
-		Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart");
-		if (cart == null) {
-			cart = new HashMap<Integer, CartItem>();
-		}
-		if (cart.containsKey(id)) {
-			CartItem existingItem = cart.get(id);
-			existingItem.setQuantity(existingItem.getQuantity() + quantity);
-		} else {
-			cart.put(id, item);
-		}
-		session.setAttribute("cart", cart);
-		try {
-			System.out.println("giỏ hàng 1 :" + cart.get(1).getName());
-			System.out.println("giỏ hàng 1:" + cart.get(1).getQuantity());
-
-			System.out.println("giỏ hàng 2 :" + cart.get(2).getName());
-			System.out.println("giỏ hàng 2:" + cart.get(2).getQuantity());
-		} catch (Exception e) {
-			System.out.println("Gio hàng in ra null");
-		}
-		return "user/cart";
+		// return "redirect:/home";
+		return "redirect:user/cart";
 	}
 
 	// nhấn nút lưu tren kia database
@@ -153,7 +122,7 @@ public class CartController {
 			Float sumMoney = (Float) session.getAttribute("total");
 			order.setSum_money(sumMoney);
 			// set đối tượng user vào session
-			Users userLogin = (Users) session.getAttribute("userLogin");		
+			Users userLogin = (Users) session.getAttribute("userLogin");
 			order.setUsers(userLogin);
 			// số tiền nhận từ thanh toán // xem lại mua on hay off
 			order.setMoney_received(0);
@@ -174,9 +143,22 @@ public class CartController {
 			this.orderDetailRepo.save(orderd);
 		}
 
-		 session.removeAttribute("cart");
-		 session.removeAttribute("total");
+		session.removeAttribute("cart");
+		session.removeAttribute("total");
 		return "user/cart";
+	}
+
+	@RequestMapping(value = "/deleteCart", method = RequestMethod.POST)
+	public String delete(@ModelAttribute("id") int id) {
+		System.out.println("tess");
+		Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart"); // Thực hiện lưu thông
+		// Xóa sản phẩm có khóa (key) là 2
+		cart.remove(id);
+		System.out.println("xóa giỏ hàng thành công");
+		System.out.println(cart.size() + "số lượng sản phẩm");
+		// Cập nhật lại danh sách sản phẩm trong session
+		session.setAttribute("cart", cart);
+		return "redirect:user/cart";
 	}
 
 	// suwr li ajax.

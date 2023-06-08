@@ -12,19 +12,23 @@
 	<!--  đọc dữ liệu từ trang khi mà người dùng click chuột vào giỏ hàng
 	kiểm tra -->
 
-	<c:forEach items="${sessionScope.cart}" var="detail">
+	<c:forEach items="${listCart}" var="detail">
 		<tr>
 			<td>${detail.key}</td>
 			<td>${detail.value.quantity}</td>
 			<td>${detail.value.price}</td>
 			<td>${detail.value.name}</td>
-			
+			<!--lấy id để xóa  -->			
+			<button onclick="deleteToCart(${detail.key})">xóa giỏ hàng</button>
+
+		</tr>
+		<br>
 		<%-- 	<td>${detail.value}</td>
 			<td>${ detail.price }</td>
 			<td>${ detail.quantity }</td>
 
 			<td>${ detail.orderDetail.price*detail.orderDetail.quantity }</td> --%>
-			<%-- <td>
+		<%-- <td>
 				<button class="btn btn-danger" data-bs-toggle="modal"
 					d	ata-bs-target="#modalDelte_${detail.orderDetail.id}_${detail.order.id}">
 					<i class="fa-solid fa-trash-can"></i>
@@ -57,8 +61,30 @@
 	</c:forEach>
 	<h1>Tổng tiền của đơn hàng: ${sessionScope.total} VND</h1>
 	<form action="saveCart" method="post">
-	
-		<button > Thêm vào database</button>
+
+		<button>Thêm vào database</button>
 	</form>
+
+
+	<script src="https:code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+	function deleteToCart(id) {						
+		    alert(id);				      
+		   $.ajax({
+		       type: "POST",
+		       url: "/deleteCart",
+		       data: {
+		           id: id		        
+		       },
+		       success: function(data) {		
+		    	   alert("Xóa vào giỏ hàng thành công");		    	   
+		  },
+		 error: function(data) {
+		     alert("Có lỗi xảy ra");
+		 }
+		}); 
+	}
+</script>
 </body>
+
 </html>
