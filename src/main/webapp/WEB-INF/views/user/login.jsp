@@ -112,19 +112,25 @@
 											<h2>Đăng Nhập</h2>
 										</div>
 										<div class="login-form">
-											<label for="Email" class="hidden-label">Email</label> <input
-												type="email" name="customer[email]" id="CustomerEmail"
-												class="input-full" placeholder="" autocorrect="off"
+											<label for="Email" class="hidden-label">Email</label> 
+											<input
+												type="email" name="email" id="email"
+												class="input-full" placeholder="Vui lòng nhập Email" autocorrect="off"
 												autocapitalize="off" autofocus=""> <label for="Pass"
-												class="hidden-label">Mật khẩu</label> <input type="password"
-												value="" name="customer[password]" id="CustomerPassword"
-												class="input-full" placeholder="">
+												class="hidden-label">Mật khẩu</label>
+											 <input type="pass_words"
+												value="" name="pass_words" id="pass_words"
+												class="input-full" placeholder="Vui lòng nhập mật khẩu">
 
 											<div class="login-toggle-btn">
 												<div class="form-action-button">
-													<button type="submit" class="theme-default-button">Xác
-														Nhận</button>
-
+												<form action="user/login" method="post">
+												<button type="submit" class="theme-default-button">
+												Xác Nhận
+												</button>
+												
+												</form>
+													
 													<a href="#recover" id="RecoverPassword"
 														data-bs-toggle="modal" data-bs-target="#exampleModal">Quên
 														mật khẩu</a>

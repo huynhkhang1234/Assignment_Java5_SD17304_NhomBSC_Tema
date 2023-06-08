@@ -13,7 +13,7 @@ import com.poly.Entities.Products;
 
 import jakarta.servlet.http.HttpSession;
 @Controller
-public class HomeController {
+public class HomeController12 {
 	@Autowired
 	ProductsDAO proRepo;
 	

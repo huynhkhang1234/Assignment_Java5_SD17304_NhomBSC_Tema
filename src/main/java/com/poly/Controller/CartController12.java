@@ -1,8 +1,6 @@
 package com.poly.Controller;
 
-import java.text.NumberFormat;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -27,7 +25,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class CartController {
+public class CartController12 {
 	@Autowired
 	private HttpServletRequest request;
 	@Autowired

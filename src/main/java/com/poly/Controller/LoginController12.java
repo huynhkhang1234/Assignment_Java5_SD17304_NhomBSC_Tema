@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
-public class LoginController {
+public class LoginController12 {
 	@Autowired
 	UsersDAO dao;
 	@Autowired
