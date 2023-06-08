@@ -58,5 +58,9 @@ public class Orders implements Serializable {
 	@ManyToOne
 	@JoinColumn(name ="users_id")
 	Users users;
-
+	
+	@Override
+	public String toString() {
+		return "Orders{" +"id"+id+'}';
+	}
 }
