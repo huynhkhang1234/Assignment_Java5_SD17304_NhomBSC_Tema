@@ -2,6 +2,7 @@ package com.poly.Controller.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,19 +31,29 @@ public class LoginController {
 	HttpServletRequest request;
 
 	@GetMapping("/user/login")
-	public String view() {
+	public String view(@ModelAttribute("login") LoginBean bean, Model model) {
+		// lấy dữ liệu từ cookie ra mà chỉ có name nếu có
+				String user = cookieService.getValue("email");
+				System.out.println("login-name : " + user);
+				// điền thoog tin nếu tên user có tồn tại
+				if (user != null) {
+					String pass = cookieService.getValue("password");
+					// gán dữ liệu với value để hiện thị
+					model.addAttribute("email", user);
+					model.addAttribute("pass", pass);
+				}
 		return "user/login";
 	}
 
 	@PostMapping("user/login")
 	public String isLogin(@RequestParam(name = "email") String email,
-			@RequestParam(name = "pass_words") String password, @Valid @ModelAttribute("login") LoginBean bean,
+			@RequestParam(name = "pass_words") String password,@Valid @ModelAttribute("login") LoginBean bean,
 			BindingResult result) {
 		System.out.println(email);
 		System.out.println(password);
 		if (result.hasErrors()) {
 			System.out.println("Có lỗi");
-			return "commons/login";
+			return "user/login";
 		} else {
 			Users userLogin = this.dao.findByEmail(email);
 			if (userLogin != null && userLogin.getPass_words().equals(password)) {
@@ -62,12 +73,12 @@ public class LoginController {
 				System.out.println(userLogin);
 				if (userLogin.getRoles().getRoles().equals("admin")) {
 
-					return "redirect:/admin";
+					return "redirect:/admin/index";
 				} else {
-					return "redirect:/home";
+					return "redirect:/user/index";
 				}
 			} else {
-				return "commons/login";
+				return "user/login";
 			}
 
 		}
