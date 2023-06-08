@@ -132,6 +132,7 @@
             <!--end of sidebar-->
         </aside>
         <!--end of aside-->
+        
 
         <section class="middle">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -215,8 +216,21 @@
                 </div>
             </div>
 
-
-            <!-- đèn -->
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Sản phẩm</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Mã giảm giá</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    
+                    <!-- đèn -->
             <div class="list-products">
                 <div class="title">
                     <h2>Đèn ô tô</h2>
@@ -981,6 +995,134 @@
                     </div>
                 </div>
             </div>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    
+                    <section class="middle">
+                        <!--from-->
+                        <div class="above">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <img src="" alt="">
+                                </div>
+                                <!--row1-->
+                                <div class="col-6">
+                                    <div class="col-auto">
+                                        <label class="col-form-label">Mã:</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="col-auto">
+                                        <label class="col-form-label">Tiêu đề:</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="col-auto">
+                                        <label class="col-form-label">Giảm giá:</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="col-auto">
+                                        <label class="col-form-label">Ngày bắt đầu</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input class="form-control">
+                                    </div>
+                                </div>
+                                <!--row2-->
+                                <div class="col-6">
+                                    <div class="col-auto">
+                                        <label class="col-form-label">Ngày kết thúc</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input class="form-control">
+                                    </div>
+                                </div>
+                            
+                    
+                                <div class="col-6">
+                                    <div class="col-auto">
+                                        <label class="col-form-label">Miêu tả</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                                            style="height: 100px"></textarea>
+                                        <label for="floatingTextarea2"></label>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                            <!--btn-->
+                    
+                            <div class="btn-acount">
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button class="btn btn-primary">
+                    
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                    
+                                    <button class="btn btn-danger">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="below">
+                            <div class="table-responsive mt-5" style="overflow-x: auto">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã</th>
+                                            <th>Tiêu đề</th>
+                                            <th>Giảm giá</th>
+                                            <th>Ngày bắt đầu</th>
+                                            <th>Ngày kết thúc</th>
+                                            <th>Miêu tả</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                    
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                    
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-center">
+                       
+                                    <nav aria-label="...">
+                                        <ul class="pagination pagination-sm">
+                                          <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1">1</a>
+                                          </li>
+                                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        </ul>
+                                      </nav>
+                                </div>
+                            </div>
+                        </div>
+            
+                    </section>
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+              </div>
+
+            
 
         </section>
         <!--end of middle-->
