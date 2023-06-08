@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 			 <!-- ======================= Cái này là để cho đăng nhập rồi nhé ======================= -->
-                    <div class="header__user-left d-flex gap-4">
+                    <div class="header__user-left d-flex gap-4 me-3">
                         <a href="/user/cart" class="d-flex header__action-btn">
                             <i class="bi bi-bag"></i>
                             <span class="count">2</span>
@@ -46,10 +46,10 @@
                                 <a class="btn btn-outline-warning" href="/user/cart/checkout">Đặt hàng</a>
                             </div>
                         </div>
+                    </div>
                         <a href="#" class="btn btn-dark" id="search-icon">
                             <i class="bi bi-search" style="color: white;"></i>
                         </a>
-                    </div>
 
                     <span><i class="bi bi-dash-lg"></i></span>
                     <div class="header__user-right d-flex gap-5">
