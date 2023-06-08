@@ -77,7 +77,8 @@
 		           id: id		        
 		       },
 		       success: function(data) {		
-		    	   alert("Xóa vào giỏ hàng thành công");		    	   
+		    	   alert("Xóa vào giỏ hàng thành công");		
+		    	   location.reload(); // reload lại trang web
 		  },
 		 error: function(data) {
 		     alert("Có lỗi xảy ra");

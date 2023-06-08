@@ -1,8 +1,6 @@
 package com.poly.Controller;
 
-import java.text.NumberFormat;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -152,12 +150,18 @@ public class CartController {
 	public String delete(@ModelAttribute("id") int id) {
 		System.out.println("tess");
 		Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart"); // Thực hiện lưu thông
+		// set lại tổng số tiền
+		float total = (float) session.getAttribute("total");
+		float price = (float) cart.get(id).getPrice();
+		float money = total - price;
+		session.setAttribute("total", money);
 		// Xóa sản phẩm có khóa (key) là 2
 		cart.remove(id);
 		System.out.println("xóa giỏ hàng thành công");
 		System.out.println(cart.size() + "số lượng sản phẩm");
 		// Cập nhật lại danh sách sản phẩm trong session
 		session.setAttribute("cart", cart);
+
 		return "redirect:user/cart";
 	}
 
