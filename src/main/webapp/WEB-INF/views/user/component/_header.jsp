@@ -300,10 +300,10 @@
                 
                 <div class="header__user-actions d-flex">
                     <!-- Cái này là mặc định -->
-                    <%@include file="_header__user-default.jsp" %>
+                    <%@include file="_header__user-default.jsp" %> 
                     
                     <!-- Cái này là đăng nhập gồi -->
-                    <%-- <%@include file="_header__user-actived.jsp" %> --%>
+                     <%-- <%@include file="_header__user-actived.jsp" %>  --%>
                 </div>
 
                 <i class="bi bi-list toggle-navbar"></i>
