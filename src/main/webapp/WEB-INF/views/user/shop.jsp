@@ -44,9 +44,9 @@
                             <div class="product-grid6">
                                 <div class="card rounded-0">
                                     <div class="product-image6">
-                                        <a href="/user/detail">
+                                        <a href="#">
                                             <img class="card-img rounded-0 img-fluid"
-                                                src="../assets/img/bomlop.png">
+                                                src="../images/product-img/bomlop.png">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -69,7 +69,7 @@
                                         <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a></li>
                                         <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i class="bi bi-heart"></i></a>
                                         </li>
-                                        <li><a href="" data-tip="Thêm vào giỏ hàng"><i class="bi bi-cart"></i></a></li>
+                                        <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i class="bi bi-cart"></i></a></li>
                                     </ul>
                                 </div>
                                 <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span></div>
@@ -84,7 +84,7 @@
                                     <div class="product-image6">
                                         <a href="#">
                                             <img class="card-img rounded-0 img-fluid"
-                                                src="../assets/img/volang.jpg">
+                                                src="../images/product-img/volang.jpg">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -120,7 +120,7 @@
                                 <div class="card rounded-0">
                                     <div class="product-image6">
                                         <a href="#">
-                                            <img class="card-img rounded-0 img-fluid" src="../assets/img/phukien1.jpg">
+                                            <img class="card-img rounded-0 img-fluid" src="../images/product-img/phukien1.jpg">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -156,7 +156,7 @@
                                 <div class="card rounded-0">
                                     <div class="product-image6">
                                         <a href="#">
-                                            <img class="card-img rounded-0 img-fluid" src="../assets/img/manhinh1.png">
+                                            <img class="card-img rounded-0 img-fluid" src="../images/product-img/manhinh1.png">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -193,7 +193,7 @@
                                 <div class="card rounded-0">
                                     <div class="product-image6">
                                         <a href="#">
-                                            <img class="card-img rounded-0 img-fluid" src="../assets/img/thamlot1.jpg">
+                                            <img class="card-img rounded-0 img-fluid" src="../images/product-img/thamlot1.jpg">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -229,7 +229,7 @@
                                 <div class="card rounded-0">
                                     <div class="product-image6">
                                         <a href="#">
-                                            <img class="card-img rounded-0 img-fluid" src="../assets/img/camera1.png">
+                                            <img class="card-img rounded-0 img-fluid" src="../images/product-img/camera1.png">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -266,7 +266,7 @@
                                 <div class="card rounded-0">
                                     <div class="product-image6">
                                         <a href="#">
-                                            <img class="card-img rounded-0 img-fluid" src="../assets/img/pic-51.jpg">
+                                            <img class="card-img rounded-0 img-fluid" src="../images/product-img/pic-51.jpg">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -304,7 +304,7 @@
                                 <div class="card rounded-0">
                                     <div class="product-image6">
                                         <a href="#">
-                                            <img class="card-img rounded-0 img-fluid" src="../assets/img/cambien1.png">
+                                            <img class="card-img rounded-0 img-fluid" src="../images/product-img/cambien1.png">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -341,7 +341,7 @@
                                 <div class="card rounded-0">
                                     <div class="product-image6">
                                         <a href="#">
-                                            <img class="card-img rounded-0 img-fluid" src="../assets/img/loa1.jpg">
+                                            <img class="card-img rounded-0 img-fluid" src="../images/product-img/loa1.jpg">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -377,7 +377,7 @@
                                 <div class="card rounded-0">
                                     <div class="product-image6">
                                         <a href="#">
-                                            <img class="card-img rounded-0 img-fluid" src="../assets/img/loa8.jpg">
+                                            <img class="card-img rounded-0 img-fluid" src="../images/product-img/loa8.jpg">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -413,7 +413,7 @@
                                 <div class="card rounded-0">
                                     <div class="product-image6">
                                         <a href="#">
-                                            <img class="card-img rounded-0 img-fluid" src="../assets/img/manhinh1.jpg">
+                                            <img class="card-img rounded-0 img-fluid" src="../images/product-img/manhinh1.jpg">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -449,7 +449,7 @@
                                 <div class="card rounded-0">
                                     <div class="product-image6">
                                         <a href="#">
-                                            <img class="card-img rounded-0 img-fluid" src="../assets/img/phukien7.jpg">
+                                            <img class="card-img rounded-0 img-fluid" src="../images/product-img/phukien7.jpg">
                                         </a>
                                     </div>
                                     <div class="product-content">
@@ -531,19 +531,19 @@
                                         <div class="carousel-item active">
                                             <div class="row">
                                                 <div class="col-3 p-md-5">
-                                                    <a href="#"><img class="img-fluid brand-img" src="../assets/img/logo6.png"
+                                                    <a href="#"><img class="img-fluid brand-img" src="../images/product-img/logo6.png"
                                                             alt="Brand Logo"></a>
                                                 </div>
                                                 <div class="col-3 p-md-5">
-                                                    <a href="#"><img class="img-fluid brand-img" src="../assets/img/logo2.png"
+                                                    <a href="#"><img class="img-fluid brand-img" src="../images/product-img/logo2.png"
                                                             alt="Brand Logo"></a>
                                                 </div>
                                                 <div class="col-3 p-md-5">
-                                                    <a href="#"><img class="img-fluid brand-img" src="../assets/img/logo3.png"
+                                                    <a href="#"><img class="img-fluid brand-img" src="../images/product-img/logo3.png"
                                                             alt="Brand Logo"></a>
                                                 </div>
                                                 <div class="col-3 p-md-5">
-                                                    <a href="#"><img class="img-fluid brand-img" src="../assets/img/logo4.png"
+                                                    <a href="#"><img class="img-fluid brand-img" src="../images/product-img/logo4.png"
                                                             alt="Brand Logo"></a>
                                                 </div>
     
@@ -555,19 +555,19 @@
                                         <div class="carousel-item">
                                             <div class="row">
                                                 <div class="col-3 p-md-5">
-                                                    <a href="#"><img class="img-fluid brand-img" src="../assets/img/logo5.png"
+                                                    <a href="#"><img class="img-fluid brand-img" src="../images/product-img/logo5.png"
                                                             alt="Brand Logo"></a>
                                                 </div>
                                                 <div class="col-3 p-md-5">
-                                                    <a href="#"><img class="img-fluid brand-img" src="../assets/img/logo1.png"
+                                                    <a href="#"><img class="img-fluid brand-img" src="../images/product-img/logo1.png"
                                                             alt="Brand Logo"></a>
                                                 </div>
                                                 <div class="col-3 p-md-5">
-                                                    <a href="#"><img class="img-fluid brand-img" src="../assets/img/logo7.png"
+                                                    <a href="#"><img class="img-fluid brand-img" src="../images/product-img/logo7.png"
                                                             alt="Brand Logo"></a>
                                                 </div>
                                                 <div class="col-3 p-md-5">
-                                                    <a href="#"><img class="img-fluid brand-img" src="../assets/img/logo8.png"
+                                                    <a href="#"><img class="img-fluid brand-img" src="../images/product-img/logo8.png"
                                                             alt="Brand Logo"></a>
                                                 </div>
                                             </div>
@@ -578,19 +578,19 @@
                                         <div class="carousel-item">
                                             <div class="row">
                                                 <div class="col-3 p-md-5">
-                                                    <a href="#"><img class="img-fluid brand-img" src="../assets/img/logo9.png"
+                                                    <a href="#"><img class="img-fluid brand-img" src="../images/product-img/logo9.png"
                                                             alt="Brand Logo"></a>
                                                 </div>
                                                 <div class="col-3 p-md-5">
-                                                    <a href="#"><img class="img-fluid brand-img" src="../assets/img/logo11.png"
+                                                    <a href="#"><img class="img-fluid brand-img" src="../images/product-img/logo11.png"
                                                             alt="Brand Logo"></a>
                                                 </div>
                                                 <div class="col-3 p-md-5">
-                                                    <a href="#"><img class="img-fluid brand-img" src="../assets/img/logo10.png"
+                                                    <a href="#"><img class="img-fluid brand-img" src="../images/product-img/logo10.png"
                                                             alt="Brand Logo"></a>
                                                 </div>
                                                 <div class="col-3 p-md-5">
-                                                    <a href="#"><img class="img-fluid brand-img" src="../assets/img/logo12.png"
+                                                    <a href="#"><img class="img-fluid brand-img" src="../images/product-img/logo12.png"
                                                             alt="Brand Logo"></a>
                                                 </div>
                                             </div>
@@ -617,6 +617,8 @@
         </section>
 
     </main>
+
+    
     
     
     <!-- Footer Start -->
