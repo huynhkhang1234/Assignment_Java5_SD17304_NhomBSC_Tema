@@ -26,14 +26,10 @@
   background-color: #1d242d !important;
 }
 
-/* .bg-success {
-  background-color: #59ab6e !important;
-} */
-
-/* .btn-success {
-  background-color: #fff !important;
-  border-color: #fff !important;
-} */
+.btn-success {
+  background-color: #f0ac19 !important;
+  border-color: #f0ac19 !important;
+}
 
 .pagination .page-link:hover {
   color: #000;
@@ -167,6 +163,7 @@
 
 #carousel-related-product .slick-dots li button:before {
   font-size: 50px;
+  font-size: 15px;
   margin-top: 20px;
 }
 
@@ -193,7 +190,6 @@
   font-size: .5em !important;
   color: #000 !important;
 }
-
 
 .form-control {
   border: 1px solid #e8e8e8;
@@ -556,22 +552,22 @@ nav>div a.nav-item.nav-link.active:after {
   bottom: -60px;
   left: -10%;
   border: 15px solid transparent;
-  border-top-color: #e74c3c;
+  border-top-color: #f0ac19;
 }
 
 .tab-content {
   background: #fdfdfd;
   line-height: 25px;
   border: 1px solid #ddd;
-  border-top: 5px solid #e74c3c;
-  border-bottom: 5px solid #e74c3c;
+  border-top: 5px solid #f0ac19;
+  border-bottom: 5px solid #f0ac19;
   padding: 30px 25px;
 }
 
 nav>div a.nav-item.nav-link:hover,
 nav>div a.nav-item.nav-link:focus {
   border: none;
-  background: #e74c3c;
+  background: #f0ac19;
   color: #fff;
   border-radius: 0;
   transition: background 0.20s linear;
