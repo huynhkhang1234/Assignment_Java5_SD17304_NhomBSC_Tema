@@ -6,5 +6,5 @@ import com.poly.Entities.News;
 
 public interface NewsDAO extends JpaRepository<News, Integer>  {
 	
-
+	
 }
