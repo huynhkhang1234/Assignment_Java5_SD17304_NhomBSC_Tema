@@ -11,10 +11,9 @@ import com.poly.Entities.Users;
 @Repository
 public interface UsersDAO extends JpaRepository<Users, Integer> {
 	
-	
-	public Users findByEmailEquals(String email);
-
-//	@Query(value = "SELECT user_names, first_names, last_names, roles_id FROM Users")
-//	public List<Users> getDemo();
+//	
+//
+	@Query(value = "SELECT acc FROM Users acc")
+	public List<Users> getDemo();
 	
 }	

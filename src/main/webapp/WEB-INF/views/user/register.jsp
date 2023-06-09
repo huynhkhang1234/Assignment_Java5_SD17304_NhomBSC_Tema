@@ -22,7 +22,9 @@
 	text-align: left;
 	overflow: hidden;
 }
-
+.register-form .col-md-5 {
+float: left;
+}
 .login-form-container input {
 	background: #ffffff none repeat scroll 0 0;
 	border: medium none rgba(0, 0, 0, 0);
@@ -71,6 +73,7 @@
 	color: #303030;
 }
 
+
 .account-optional-action {
 	margin-top: 20px;
 }
@@ -101,45 +104,59 @@
                     <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
                         <div class="login">
                             <div id="CustomerLoginForm">
-                                <form method="post" action="/account/login" id="customer_login" accept-charset="UTF-8"
-                                    data-login-with-shop-sign-in="true"><input type="hidden" name="form_type"
-                                        value="customer_login"><input type="hidden" name="utf8" value="✓">
+                                <form action="/user/register" method="POST" modelAttribute="user" id="customer_register" accept-charset="UTF-8"
+                                    data-login-with-shop-sign-in="true" mod><input type="hidden" name="form_type"
+                                        value="customer_register"><input type="hidden" name="utf8" value="✓">
 
                                     <div class="login-form-container">
                                         <div class="login-text" style="text-align: center;">
                                             <h2>Tạo Tài Khoản</h2>
-
-
-
                                         </div>
                                         <div class="register-form">
-                                            <form method="post" action="/account" id="create_customer"
+                                            <div id="create_customer"
                                                 accept-charset="UTF-8" data-login-with-shop-sign-up="true">
                                                 <input type="hidden" name="form_type" value="create_customer"><input
                                                     type="hidden" name="utf8" value="✓">
 
-
-                                                <label for="FirstName" class="hidden-label">Họ</label>
-                                                <input type="text" name="customer[first_name]" id="first_names"
+												
+												<div class="col-md-5" style="margin-right: 70px;">
+												<label for="FirstName" class="hidden-label">Họ</label>
+                                                <input type="text" name="first_names" id="first_names"
                                                     class="input-full" placeholder="" autocapitalize="words"
                                                     autofocus="">
-
-                                                <label for="LastName" class="hidden-label">Tên</label>
-                                                <input type="text" name="customer[last_name]" id="last_names"
-                                                    class="input-full" placeholder="" autocapitalize="words">
-
+                                                    <p name="message">${FirstName}</p>
+												</div>
+												
+                                                
+												<div class="col-md-5" style="width: 250px;">
+												<label for="LastName" class="hidden-label">Tên</label>
+                                                <input type="text" name="last_names" id="last_names"
+                                                    class="input-full" placeholder="" autocapitalize="words" >
+                                                    <p name="message">${LastName}</p>
+												</div>
+                                                
+                                                    
+                                                    
+												<label for="UserName" class="hidden-label">Tên Đăng Nhập</label>
+                                                <input type="text" name="user_names" id="user_names"
+                                                    class="input-full" placeholder="" autocapitalize="words"
+                                                    autofocus="" >
+                                                    <p name="message">${UserName}</p> <br>
+                                                    
                                                 <label for="Email" class="hidden-label">Email</label>
-                                                <input type="email" name="customer[email]" id="email" class="input-full"
-                                                    placeholder="" autocorrect="off" autocapitalize="off">
-
+                                                <input type="email" name="email" id="email" class="input-full"
+                                                    placeholder="" autocorrect="off" autocapitalize="off" >
+													<p name="message">${email}</p> <br>
+													
                                                 <label for="CreatePassword" class="hidden-label">Mật Khẩu</label>
-                                                <input type="password" name="customer[password]" id="pass_words"
+                                                <input type="password" name="pass_words" id="pass_words"
                                                     class="input-full" placeholder="">
-
+													<p name="message">${password}</p>
+													
                                                 <div class="form-action-button">
                                                     <button type="submit" class="theme-default-button">Tạo</button>
                                                 </div>
-                                            </form>
+                                            </div>
 
                                             <div class="account-optional-action">
                                                 <a href="/user/index">Quay lại cửa hàng</a>
@@ -149,32 +166,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <div id="RecoverPasswordForm" style="display: none;">
-                                <form method="post" action="/account/recover" accept-charset="UTF-8"><input
-                                        type="hidden" name="form_type" value="recover_customer_password"><input
-                                        type="hidden" name="utf8" value="✓">
-
-
-                                    <div class="login-form-container">
-                                        <div class="login-text">
-                                            <h2>Reset your password</h2>
-                                            <p>We will send you an email to reset your password.</p>
-                                        </div>
-                                        <div class="login-form">
-                                            <input type="email" value="" name="email" id="RecoverEmail"
-                                                class="input-full" placeholder="Email" autocorrect="off"
-                                                autocapitalize="off">
-                                            <div class="login-toggle-btn">
-                                                <div class="form-action-button">
-                                                    <button type="submit" class="theme-default-button">Submit</button>
-                                                    <a href="#" id="HideRecoverPasswordLink">Cancel</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
+                            
                         </div>
                     </div>
                 </div>
