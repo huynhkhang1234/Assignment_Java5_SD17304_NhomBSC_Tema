@@ -22,6 +22,24 @@
 
     <!-- Link To Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+
+
 </head>
 
 <body>
@@ -114,8 +132,438 @@
             <!--end of sidebar-->
         </aside>
         <!--end of aside-->
+        
 
         <section class="middle">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                data-bs-whatever="@mdo">Thêm</button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thêm Sản Phẩm</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="inputTitle" class="form-label">Tiêu đề:</label>
+                                    <input type="text" class="form-control" id="title">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputPrice" class="form-label">Giá:</label>
+                                    <input type="number" class="form-control" id="price">
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="inputCraetDate" class="form-label">Ngày đăng:</label>
+                                    <input type="date" class="form-control" id="start" name="trip-start"
+                                        min="2023-01-01" max="2025-12-31">
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="categoryId" class="form-label">Loại:</label>
+                                    <select id="categoryId" class="form-select">
+                                        <option selected>Màn hình</option>
+                                        <option>Thảm lót</option>
+                                        <option>Âm thanh</option>
+                                        <option>Camera</option>
+                                        <option>Cảm biến</option>
+                                        <option>Đèn</option>
+                                    </select>
+                                </div>
+
+                                <fieldset class="row mb-3" style="margin-top: 1rem;">
+                                    <legend class="col-form-label col-sm-2 pt-0">Trạng thái:</legend>
+                                    <div class="col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gridRadios"
+                                                id="gridRadios1" value="option1" checked>
+                                            <label class="form-check-label" for="gridRadios1">
+                                                Còn hàng
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gridRadios"
+                                                id="gridRadios2" value="option2">
+                                            <label class="form-check-label" for="gridRadios2">
+                                                Hết hàng
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+
+                                <div class="col-12">
+                                    <label for="inputDescription" class="form-label">Miêu tả</label>
+                                    <textarea class="form-control" id="description"
+                                        placeholder="Viết bình luận của bạn"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary">Gửi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="prod">
+                    <div class="column1">
+                        <div class="name">Camera</div>
+
+                        <p class="caption">
+                            Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích
+                            thước
+                            nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban
+                            ngày và
+                            ban đêm.
+                        </p>
+                    </div>
+                    <div class="column2">
+                        <img class="image" src="/images/camera1.png" />
+                    </div>
+                </div>
+
+                <div class="prod">
+                    <div class="column1">
+                        <div class="name">Cảm biến</div>
+
+                        <p class="caption">
+                            Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích
+                            thước
+                            nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban
+                            ngày và
+                            ban đêm.
+                        </p>
+
+                    </div>
+                    <div class="column2">
+                        <img class="image" src="/images/cambien1.png" />
+                    </div>
+                </div>
+
+                <div class="prod">
+                    <div class="column1">
+                        <div class="name">Camera</div>
+
+                        <p class="caption">
+                            Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích
+                            thước
+                            nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban
+                            ngày và
+                            ban đêm.
+                        </p>
+
+                    </div>
+                    <div class="column2">
+                        <img class="image" src="/images/den1.png" />
+                    </div>
+                </div>
+
+                <div class="prod">
+                    <div class="column1">
+                        <div class="name">Camera</div>
+
+                        <p class="caption">
+                            Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích
+                            thước
+                            nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban
+                            ngày và
+                            ban đêm.
+                        </p>
+
+                    </div>
+                    <div class="column2">
+                        <img class="image" src="/images/loa1.jpg" />
+                    </div>
+                </div>
+
+                <div class="prod">
+                    <div class="column1">
+                        <div class="name">Camera</div>
+
+                        <p class="caption">
+                            Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích
+                            thước
+                            nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban
+                            ngày và
+                            ban đêm.
+                        </p>
+
+                    </div>
+                    <div class="column2">
+                        <img class="image" src="/images/manhinh1.png" />
+                    </div>
+                </div>
+
+                <div class="prod">
+                    <div class="column1">
+                        <div class="name">Camera</div>
+
+                        <p class="caption">
+                            Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích
+                            thước
+                            nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban
+                            ngày và
+                            ban đêm.
+                        </p>
+
+                    </div>
+                    <div class="column2">
+                        <img class="image" src="/images/volang.jpg" />
+                    </div>
+                </div>
+
+                <div class="prod">
+                    <div class="column1">
+                        <div class="name">Camera</div>
+
+                        <p class="caption">
+                            Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích
+                            thước
+                            nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban
+                            ngày và
+                            ban đêm.
+                        </p>
+                    </div>
+                    <div class="column2">
+                        <img class="image" src="/images/pic-51.jpg" />
+                    </div>
+                </div>
+
+                <div class="prod">
+                    <div class="column1">
+                        <div class="name">Camera</div>
+
+                        <p class="caption">
+                            Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích
+                            thước
+                            nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban
+                            ngày và
+                            ban đêm.
+                        </p>
+
+                    </div>
+                    <div class="column2">
+                        <img class="image" src="/images/phukien1.jpg" />
+                    </div>
+                </div>
+
+                <div class="prod">
+                    <div class="column1">
+                        <div class="name">Camera</div>
+
+                        <p class="caption">
+                            Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích
+                            thước
+                            nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban
+                            ngày và
+                            ban đêm.
+                        </p>
+                    </div>
+                    <div class="column2">
+                        <img class="image" src="/images/thamlot1.jpg" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="prod">
+                <div class="column1">
+                    <div class="name">Camera</div>
+
+                    <p class="caption">
+                        Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích thước
+                        nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban ngày và
+                        ban đêm.
+                    </p>
+                    <div class="bt-group">
+                        <button class="btn btn-primary" type="submit">New</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button class="btn btn-primary" type="submit">Delete</button>
+                        <button class="btn btn-primary" type="submit">Detail</button>
+                    </div>
+                </div>
+                <div class="column2">
+                    <img class="image" src="/images/camera1.png" />
+                </div>
+            </div>
+
+            <div class="prod">
+                <div class="column1">
+                    <div class="name">Camera</div>
+
+                    <p class="caption">
+                        Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích thước
+                        nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban ngày và
+                        ban đêm.
+                    </p>
+                    <div class="bt-group">
+                        <button class="btn btn-primary" type="submit">New</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button class="btn btn-primary" type="submit">Delete</button>
+                        <button class="btn btn-primary" type="submit">Detail</button>
+                    </div>
+                </div>
+                <div class="column2">
+                    <img class="image" src="/images/camera1.png" />
+                </div>
+            </div>
+
+            <div class="prod">
+                <div class="column1">
+                    <div class="name">Camera</div>
+
+                    <p class="caption">
+                        Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích thước
+                        nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban ngày và
+                        ban đêm.
+                    </p>
+                    <div class="bt-group">
+                        <button class="btn btn-primary" type="submit">New</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button class="btn btn-primary" type="submit">Delete</button>
+                        <button class="btn btn-primary" type="submit">Detail</button>
+                    </div>
+                </div>
+                <div class="column2">
+                    <img class="image" src="/images/camera1.png" />
+                </div>
+            </div>
+
+            <div class="prod">
+                <div class="column1">
+                    <div class="name">Camera</div>
+
+                    <p class="caption">
+                        Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích thước
+                        nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban ngày và
+                        ban đêm.
+                    </p>
+                    <div class="bt-group">
+                        <button class="btn btn-primary" type="submit">New</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button class="btn btn-primary" type="submit">Delete</button>
+                        <button class="btn btn-primary" type="submit">Detail</button>
+                    </div>
+                </div>
+                <div class="column2">
+                    <img class="image" src="/images/camera1.png" />
+                </div>
+            </div>
+
+            <div class="prod">
+                <div class="column1">
+                    <div class="name">Camera</div>
+
+                    <p class="caption">
+                        Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích thước
+                        nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban ngày và
+                        ban đêm.
+                    </p>
+                    <div class="bt-group">
+                        <button class="btn btn-primary" type="submit">New</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button class="btn btn-primary" type="submit">Delete</button>
+                        <button class="btn btn-primary" type="submit">Detail</button>
+                    </div>
+                </div>
+                <div class="column2">
+                    <img class="image" src="/images/camera1.png" />
+                </div>
+            </div>
+
+            <div class="prod">
+                <div class="column1">
+                    <div class="name">Camera</div>
+
+                    <p class="caption">
+                        Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích thước
+                        nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban ngày và
+                        ban đêm.
+                    </p>
+                    <div class="bt-group">
+                        <button class="btn btn-primary" type="submit">New</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button class="btn btn-primary" type="submit">Delete</button>
+                        <button class="btn btn-primary" type="submit">Detail</button>
+                    </div>
+                </div>
+                <div class="column2">
+                    <img class="image" src="/images/camera1.png" />
+                </div>
+            </div>
+
+            <div class="prod">
+                <div class="column1">
+                    <div class="name">Camera</div>
+
+                    <p class="caption">
+                        Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích thước
+                        nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban ngày và
+                        ban đêm.
+                    </p>
+                    <div class="bt-group">
+                        <button class="btn btn-primary" type="submit">New</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button class="btn btn-primary" type="submit">Delete</button>
+                        <button class="btn btn-primary" type="submit">Detail</button>
+                    </div>
+                </div>
+                <div class="column2">
+                    <img class="image" src="/images/camera1.png" />
+                </div>
+            </div>
+
+            <div class="prod">
+                <div class="column1">
+                    <div class="name">Camera</div>
+
+                    <p class="caption">
+                        Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích thước
+                        nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban ngày và
+                        ban đêm.
+                    </p>
+                    <div class="bt-group">
+                        <button class="btn btn-primary" type="submit">New</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button class="btn btn-primary" type="submit">Delete</button>
+                        <button class="btn btn-primary" type="submit">Detail</button>
+                    </div>
+                </div>
+                <div class="column2">
+                    <img class="image" src="/images/camera1.png" />
+                </div>
+            </div>
+
+            <div class="prod">
+                <div class="column1">
+                    <div class="name">Camera</div>
+
+                    <p class="caption">
+                        Camera 70Mai M300 là phiên bản nâng cấp mới nhất dựa trên mẫu 70mai Minutes, với có kích thước
+                        nhỏ gọn, chất lượng hình ảnh độ phân giải cao 2K cho phép ghi lại hình ảnh rõ nét cả ban ngày và
+                        ban đêm.
+                    </p>
+                    <div class="bt-group">
+                        <button class="btn btn-primary" type="submit">New</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button class="btn btn-primary" type="submit">Delete</button>
+                        <button class="btn btn-primary" type="submit">Detail</button>
+                    </div>
+                </div>
+                <div class="column2">
+                    <img class="image" src="/images/camera1.png" />
+                </div>
+            </div>
+
 
             <div class="prod">
                 <div class="column1">
@@ -343,6 +791,33 @@
 
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/main_MAN.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel();
+        });
+
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
+    </script>
+
+
+
 </body>
+
 
 </html>
