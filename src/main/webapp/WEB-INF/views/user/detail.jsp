@@ -21,6 +21,34 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
     <link rel="stylesheet" href="../css/detail.css">
+    
+    <style>
+        .content__preview-image {
+            height: 50px;
+            width: 50px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 50%;
+        }
+
+        .content__preview-image img {
+            height: 100%;
+            width: 100%;
+            background-position: 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        i.bi-star {
+            color: var(--first-color);
+        }
+
+        .date-rate {
+            font-size: 13px;
+        }
+    </style>
+    
+    
 </head>
 
 <body>
@@ -34,7 +62,7 @@
         <!-- ========================== BREADCRUMB ========================== -->
         <section class="breadcrumb">
             <ul class="breadcrumb__list d-flex container">
-                <li><a href="../html/index.html" class="breadcrumb__link">Trang chủ</a></li>
+                <li><a href="/user/index" class="breadcrumb__link">Trang chủ</a></li>
                 <li><span class="breadcrumb__link">></span></li>
                 <li><span class="breadcrumb__link">Sản phẩm</span></li>
                 <li><span class="breadcrumb__link">></span></li>
