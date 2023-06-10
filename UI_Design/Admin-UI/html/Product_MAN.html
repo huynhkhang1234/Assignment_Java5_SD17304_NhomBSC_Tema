@@ -173,7 +173,7 @@
                                     </select>
                                 </div>
 
-                                <fieldset class="row mb-3" style="margin-top: 1rem;">
+                                <fieldset class="row mb-3" style="margin-top: 1rem;" id="active">
                                     <legend class="col-form-label col-sm-2 pt-0">Trạng thái:</legend>
                                     <div class="col-sm-4">
                                         <div class="form-check">
@@ -184,6 +184,7 @@
                                             </label>
                                         </div>
                                     </div>
+
                                     <div class="col-sm-4">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gridRadios"
@@ -213,7 +214,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                            <button type="button" class="btn btn-primary" onclick="add()">Gửi</button>
+                            <button type="button" class="btn btn-primary" id="send">Gửi</button>
                         </div>
                     </div>
                 </div>
