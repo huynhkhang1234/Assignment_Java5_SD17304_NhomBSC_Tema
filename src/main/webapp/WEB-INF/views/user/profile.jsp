@@ -101,14 +101,14 @@
                             <a href="/user/account" class="ms-3">Sửa</a>
                         </div>
                     </div>
-                    <a class="btn btn-outline-dark " id="account-tab" data-bs-toggle="pill" data-bs-target="#account"
-                        type="button" role="tab" aria-controls="account-tab" aria-selected="true">Tài khoản</a>
-                    <a class="btn btn-outline-dark" id="profile-tab" data-bs-toggle="pill" data-bs-target="#profile"
-                        type="button" role="tab" aria-controls="profile-tab" aria-selected="false">Hồ sơ</a>
-                    <a class="btn btn-outline-dark" id="favorite-tab" data-bs-toggle="pill" data-bs-target="#favorite"
-                        type="button" role="tab" aria-controls="favorite-tab" aria-selected="false">Yêu thích</a>
-                    <a class="btn btn-outline-dark" id="history-tab" data-bs-toggle="pill" data-bs-target="#history"
-                        type="button" role="tab" aria-controls="history-tab" aria-selected="false">Đơn mua</a>
+                    <a class="btn btn-outline-dark " id="account-tab" href="/user/profile/account" data-bs-toggle="pill" data-bs-target="#account"
+                        role="tab" aria-controls="account-tab" aria-selected="true">Tài khoản</a>
+                    <a class="btn btn-outline-dark" id="profile-tab" href="/user/profile/profile" data-bs-toggle="pill" data-bs-target="#profile"
+                        role="tab" aria-controls="profile-tab" aria-selected="false">Hồ sơ</a>
+                    <a class="btn btn-outline-dark" id="favorite-tab" href="/user/profile/favorite" data-bs-toggle="pill" data-bs-target="#favorite"
+                        role="tab" aria-controls="favorite-tab" aria-selected="false">Yêu thích</a>
+                    <a class="btn btn-outline-dark" id="history-tab" href="/user/profile/history" data-bs-toggle="pill" data-bs-target="#history"
+                        role="tab" aria-controls="history-tab" aria-selected="false">Đơn mua</a>
                 </ul>
                 <div class="tab-content col-md-9 container" id="v-pills-tabContent">
                     <div class="tab-pane fade row" id="account" role="tabpanel" aria-labelledby="account-tab"
@@ -855,7 +855,8 @@
                 event.preventDefault()
                 tabTrigger.show()
             })
-        })
+        });
+        
 		const url = ${url};
         const triggerEl = document.querySelector('#v-pills-tab a[data-bs-target="#url"]');
         console.log(triggerEl);
