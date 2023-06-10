@@ -385,7 +385,7 @@
     <!-- Link To Base JS -->
     <%@include file="component/_linkJS.jsp" %>
     
-    <script src="../js/tinymce.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
     
 <script>
 

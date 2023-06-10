@@ -19,14 +19,4 @@ public class NewsMANController {
 		return "admin/news";
 	}
 	
-	@GetMapping("/admin/news?delete={id}")
-	public String view(
-			@PathVariable("id") Integer ID
-			) {
-		News entity = dao.getById(ID);
-		entity.setIs_active(0);
-		
-		dao.saveAndFlush(entity);
-		return "admin/news";
-	}
 }
