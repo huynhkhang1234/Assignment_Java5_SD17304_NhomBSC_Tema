@@ -52,11 +52,6 @@ public class Products implements Serializable {
 	// khóa chính
 	@JsonIgnore
 	@OneToMany(mappedBy = "products")
-	List<FeedBack> feed_back;
-
-	// khóa chính
-	@JsonIgnore
-	@OneToMany(mappedBy = "products")
 	List<Likes> likes;
 
 	// khóa chính
@@ -81,5 +76,10 @@ public class Products implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "discounts_id")
 	Discounts discounts;
+	
+	@Override
+	public String toString() {
+		return "Products{" + "titles" + titles+'}';
+	}
 
 }

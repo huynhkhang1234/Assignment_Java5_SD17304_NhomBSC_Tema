@@ -1,5 +1,7 @@
 package com.poly.Beans;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -17,9 +19,6 @@ public class Products_reviews_bean   {
 
 	private int id;
 	private int stars_number;
-
-
-
-	
-	
+	private String content;
+	private Date create_date;
 }
