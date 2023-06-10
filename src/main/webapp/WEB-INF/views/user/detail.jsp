@@ -8,23 +8,20 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B.S.C.Team - CarService</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.S.C.Team - CarService</title>
+	
+	<!-- Link To Base CSS -->
+	<%@include file="component/_linkCSS.jsp" %>
+	
+    <!-- Slick -->
+    <link rel="stylesheet" type="text/css" href="../css/slick/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/slick/slick-theme.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-<!-- Link To Base CSS -->
-<%@include file="component/_linkCSS.jsp"%>
-
-<!-- Slick -->
-<link rel="stylesheet" type="text/css" href="../css/slick/slick.min.css">
-<link rel="stylesheet" type="text/css"
-	href="../css/slick/slick-theme.css">
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-
-<link rel="stylesheet" href="../css/detail.css">
+    <link rel="stylesheet" href="../css/detail.css">
 </head>
 
 <body>
