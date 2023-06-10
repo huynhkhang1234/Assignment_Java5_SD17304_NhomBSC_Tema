@@ -63,7 +63,8 @@
 
 					<section class="content-header">
 
-						<fr:form action="/admin/save" modelAttribute="news" method="POST" enctype="multipart/form-data">
+						<fr:form action="/admin/save" modelAttribute="news" method="POST"
+							enctype="multipart/form-data">
 							<div class="container-fluid">
 								<div class="row mb-2">
 									<div class="col-sm-7" style="padding: 0px;">
@@ -136,11 +137,12 @@
 																					<fr:option value="5">5</fr:option>
 
 																				</fr:select> --%>
-	<select name="categories_news" id="viPham" class="form-control">
-						<c:forEach var="item" items="${listLoai}">
-							<option value="${item.id}">${item.titles}</option>
-						</c:forEach>
-					</select>
+																				<select name="categories_news" id="viPham"
+																					class="form-control">
+																					<c:forEach var="item" items="${listLoai}">
+																						<option value="${item.id}">${item.titles}</option>
+																					</c:forEach>
+																				</select>
 
 																			</div>
 
@@ -166,29 +168,31 @@
 										<div class="col-10" style="margin: 25px; width: 90%">
 											<div
 												style="width: 100%; height: 200px; border: 1px dotted gray;">
-												<img alt="" src="${name}" id="img" width="100%" height="100%" style="object-fit: contain;">
-												
-												
+												<img alt="" src="${name}" id="img" width="100%"
+													height="100%" style="object-fit: contain;">
+
+
 											</div>
 										</div>
 
 
 										<!-- /.card-body -->
-										
+
 										<div style="margin: 25px; width: 90%; margin-top: 0px;"
 											class="input-group date" id="reservationdate"
 											data-target-input="nearest">
-											
-													<fr:input path="images" id="inputGroupFile01" type="file" cssClass="form-control datetimepicker-input"
-											 placeholder="choose file" />
-											
-										
+
+											<fr:input path="images" id="inputGroupFile01" type="file"
+												cssClass="form-control datetimepicker-input"
+												placeholder="choose file" />
+
+
 											<div class="input-group-append">
-												
+
 												<fr:button>Upload</fr:button>
 											</div>
 										</div>
-										
+
 
 									</div>
 

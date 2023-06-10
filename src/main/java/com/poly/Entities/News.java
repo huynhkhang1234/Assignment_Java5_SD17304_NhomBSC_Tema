@@ -32,6 +32,7 @@ public class News implements Serializable  {
 	private String contents;
 	private String video_href;
 	private String images;
+	
 	private Date create_date;
 	private Date update_date;
 	private int is_active;
