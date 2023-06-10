@@ -49,7 +49,7 @@
                         <h1>$456,89</h1>
                         <div class="chip">
                             
-                           <img src="/images/icons8-chart-50.png" alt="" style="width: 50px;">
+                           <img src="../images/icons8-chart-50.png" alt="" style="width: 50px;">
                         </div>
 
                     </div>
@@ -74,7 +74,7 @@
                     <div class="middle">
                         <h1>$456,89</h1>
                         <div class="chip">
-                            <img src="/images/icons8-money-50.png" alt="" style="width: 50px;">
+                            <img src="../images/icons8-money-50.png" alt="" style="width: 50px;">
                                 </span>
                         </div>
 
@@ -100,7 +100,7 @@
                     <div class="middle">
                         <h1>$456,89</h1>
                         <div class="chip">
-                            <img src="/images/icons8-expense-64.png" alt="" style="width: 50px;">
+                            <img src="../images/icons8-expense-64.png" alt="" style="width: 50px;">
                         </div>
 
                     </div>
@@ -125,7 +125,7 @@
                     <div class="middle">
                         <h1>$456,89</h1>
                         <div class="chip">
-                            <img src="/images/icons8-transaction-list-64.png" alt="" style="width: 40px;">
+                            <img src="../images/icons8-transaction-list-64.png" alt="" style="width: 40px;">
                         </div>
 
                     </div>
@@ -199,11 +199,18 @@
                         <input type="date" class="form-control">
                     </div>
                   </div>
+                    
+
+            
+                
+                
                
             </div>
             <canvas id="chart">
                 
             </canvas>
+
+        
 
         </section>
         <!--end of middle-->

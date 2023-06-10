@@ -300,21 +300,15 @@
                     </li>
                 </ul>
                 
-                <div class="header__user-actions d-flex">
-                    <!-- Cái này là mặc định -->
-                    <%@include file="_header__user-default.jsp" %> 
-                    
-                    <!-- Cái này là đăng nhập gồi -->
-                     <%-- <%@include file="_header__user-actived.jsp" %>  --%>
-                </div>
+
 
 			<div class="header__user-actions d-flex">
-				<c:if test="${empty session.Scope.userLogin}">
-					<%@include file="_header__user-actived.jsp"%>
+				<c:if test="${empty sessionScope.userLogin}">
+					<%@include file="_header__user-default.jsp"%>
 
 				</c:if>
-				<c:if test="${not empty session.Scope.userLogin}">
-					<%@include file="_header__user-default.jsp"%>
+				<c:if test="${not empty sessionScope.userLogin}">
+					<%@include file="_header__user-actived.jsp"%>
 				</c:if>		
 			</div>
 

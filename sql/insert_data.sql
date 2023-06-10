@@ -22,9 +22,10 @@ INSERT INTO dbo.users
 ,is_active)
      VALUES
 	 (N'huynhkhang',N'Khang',N'Huỳnh','Khanghbpc04012@fpt.edu.vn','123',N'hình ảnh','0123456789','Cà Mau',1,'2023-5-27','2023-5-28',1)
-	 ,(N'nguyenphi',N'Phi',N'Nguyễn','phi0000@fpt.edu.vn','123',N'hình ảnh','0123456789',N'Trà Vinh',2,'2023-5-27','2023-5-28',1)           
-	 ,(N'trantham',N'Thắm',N'Trần','tham0000@fpt.edu.vn','123',N'hình ảnh','0123456789',N'Hậu Giang',2,'2023-5-27','2023-5-28',1)           
-	 
+	 ,(N'nguyenphi',N'Phi',N'Nguyễn','Phinvhpc04124@fpt.edu.vn','123',N'hình ảnh','0123456789',N'Trà Vinh',2,'2023-5-27','2023-5-28',1)           
+	 ,(N'trantham',N'Thắm',N'Trần','Thamtthpc03916@fpt.edu.vn','123',N'hình ảnh','0123456789',N'Hậu Giang',2,'2023-5-27','2023-5-28',1)           
+	 ,(N'phamvan',N'Vương',N'Phạm','Vuongpvpc04124@fpt.edu.vn','123',N'hình ảnh','0123456789',N'Phú Quốc',2,'2023-5-27','2023-5-28',1)           
+	 ,(N'nguyenhong',N'Ngoan',N'Nguyễn','Ngoannpc04172@fpt.edu.vn','123',N'hình ảnh','0123456789',N'Cần Thơ',2,'2023-5-27','2023-5-28',1)           
 GO
 -----------------------------------------------------------------------------------------
 INSERT INTO [dbo].[orders]
@@ -36,21 +37,31 @@ INSERT INTO [dbo].[orders]
            ,[update_date]
            ,[money_received])
      VALUES
-         (N'sản phẩm tốt',N'Đang vẩn chuyển',14000000,1,'2023-05-27','2023-05-28',38000000),
-		  (N'sản phẩm tốt',N'Đã hoàn thành',500000,2,'2023-05-27','2023-05-28',500000)	,
-		  (N'sản phẩm tốt',N'Đang chờ sử lý',600000,3,'2023-05-27','2023-05-28',600000)		
-		  ,(N'sản phẩm tốt',N'Đã hoàn thành',4000000,2,'2023-05-27','2023-05-28',500000),
-		  (N'sản phẩm tốt',N'Đã hoàn thành',6000000,2,'2023-05-27','2023-05-28',10000000)		
+          (N'sản phẩm tốt',N'Đang vẩn chuyển',14000000,1,'2023-05-27','2023-05-28',38000000)
+		  ,(N'sản phẩm tốt',N'Đã hoàn thành',500000,2,'2023-05-27','2023-05-28',500000)
+		  ,(N'sản phẩm tốt',N'Đang chờ sử lý',600000,3,'2023-05-27','2023-05-28',600000)		
+		  ,(N'sản phẩm tốt',N'Đã hoàn thành',4000000,5,'2023-05-27','2023-05-28',500000)
+		  ,(N'sản phẩm tốt',N'Đã hoàn thành',6000000,4,'2023-05-27','2023-05-28',10000000)
+		  ,(N'sản phẩm tốt',N'Đang vẩn chuyển',14000000,1,'2023-05-27','2023-05-28',38000000)
+		  ,(N'sản phẩm tốt',N'Đã hoàn thành',500000,4,'2023-05-27','2023-05-28',500000)
+		  ,(N'sản phẩm tốt',N'Đang chờ sử lý',600000,3,'2023-05-27','2023-05-28',600000)		
+		  ,(N'sản phẩm tốt',N'Đã hoàn thành',4000000,5,'2023-05-27','2023-05-28',500000)
+		  ,(N'sản phẩm tốt',N'Đã hoàn thành',6000000,2,'2023-05-27','2023-05-28',10000000)	
 		  go
 ------------------
 
 INSERT INTO [dbo].[categories]
            ([names])
      VALUES
-           (N'Đèn Bi Led'),(N'Sạc không dây thông minh'),
-		   (N'Sáp Thơm Ô Tô AREON - Khử Mùi Xe Hơi Cao Cấp'),
-		   (N'Camera 360 ô tô GOTECH GP6 Mới nhất – Panda Auto'),
-		   (N'Cảm biến áp suất lốp ô tô GOTECH GL509N - Màn hình rời cao cấp')
+           (N'Màn Hình Android Ô Tô')
+		   ,(N'Android Box')
+		   ,(N'Đèn Ô Tô')
+		   ,(N'Phim Cách Nhiệt')
+		   ,(N'Camera')
+		   ,(N'Âm Thanh Ô Tô')
+		   ,(N'Thảm')
+		   ,(N'Tiện ích xe')
+		   ,(N'Phụ kiện Ô tô')
 GO
 
 ------------------------------------------------------------------------------------
@@ -66,9 +77,9 @@ INSERT INTO [dbo].[suppliers]
            ,[is_active])
      VALUES
           
-		  (N'Phạm Văn Vương',N'Vươngpvpc04000@fpt.edu.vn',N'Hình ảnh','0123456789',N'Phú Quốc',1,'2023-05-27','2023-05-28',1),
-		   (N'Trần Thị Hồng Thắm',N'Thắmthpc04000@fpt.edu.vn',N'Hình ảnh',
-		   '0123456789',N'Hậu Giang',1,'2023-05-27','2023-05-28',1)
+		  (N'Phạm Văn Vương',N'Vuongpvpc04000@fpt.edu.vn',N'Hình ảnh','0123456789',N'Phú Quốc',1,'2023-05-27','2023-05-28',1),
+		  (N'Trần Thị Hồng Thắm',N'Thamthpc04000@fpt.edu.vn',N'Hình ảnh','0123456789',N'Hậu Giang',1,'2023-05-27','2023-05-28',1),
+		  (N'Nguyễn Hồng Ngoan',N'Ngoannhpc04172@fpt.edu.vn',N'Hình ảnh','0123456789',N'Cần Thơ',1,'2023-05-27','2023-05-28',1)
 GO
 ------------------------------------------------------------------------------
 INSERT INTO [dbo].[discounts]
@@ -93,12 +104,20 @@ INSERT INTO [dbo].[products]
            ,[is_active]
            ,[categories_id]
            ,[suppliers_id]
-           ,[original_price]
-           ,[discounts_id])
-     VALUES
-       (N'Đèn Bi Led X-Light V20 New 2022','7000000',N'Hình Ảnh',N'Công suất: Cos 55W/Pha 70W','2023-05-27','2023-05-28',1,1,1,6000000,1),
-	   (N'Sạc không dây thông minh xe ô tô Smart Sensor R1 – Bạc','8000000',N'Hình Ảnh',N'Công suất: Cos 55W/Pha 70W','2023-05-27','2023-05-28',1,2,2,6000000,2),
-	   (N'Đèn Bi Laser Aozoom Light Z22 Pro','8000000',N'Hình Ảnh',N'Mã sản phẩm: Bi LASER LIGHT Z22 PRO','2023-05-27','2023-05-28',1,1,1,5000000,1)
+           ,[original_price])
+VALUES
+       (N'Màn hình Android ô tô thông minh GOTECH GT8 MAX - Best Seller 2022','12900000',N'Hình Ảnh',N'CPU: 8 nhân – 1.8GHz','2023-05-27','2023-05-28',1,1,1,6000000)
+	   ,(N'Màn hình NaviPlay N600 chính hãng – Thiết bị giải trí giá rẻ cho ô tô','6900000',N'Hình Ảnh',N'CPU: 8 nhân – 1.8GHz','2023-05-27','2023-05-28',1,1,2,6000000)
+	   ,(N'Màn hình android OledPro A5','7800000',N'Hình Ảnh',N'CPU: 8 nhân – 1.8GHz','2023-05-27','2023-05-28',1,1,2,6000000)
+	   ,(N'Android Box Safeview SA-6125','6900000',N'Hình Ảnh',N'CPU: 8 nhân – 1.8GHz','2023-05-27','2023-05-28',1,2,1,6000000)
+	   ,(N'Android Box Zestech DX300','9500000',N'Hình Ảnh',N'CPU: 8 nhân – 1.8GHz','2023-05-27','2023-05-28',1,2,2,6000000)
+	   ,(N'Carplay Box GB8 - Android Box Ô Tô Gotech','8900000',N'Hình Ảnh',N'CPU: 8 nhân – 1.8GHz','2023-05-27','2023-05-28',1,2,1,6000000)
+	   ,(N'Đèn Bi Led X-Light V20 New 2022','7500000',N'Hình Ảnh',N'Công suất: Cos 55W/Pha 70W','2023-05-27','2023-05-28',1,3,2,6000000)
+	   ,(N'Bi Gầm Led Aozoom Eagle Light','5050000',N'Hình Ảnh',N'Công suất: Cos 32W/Pha 38W','2023-05-27','2023-05-28',1,3,1,6000000)
+	   ,(N'Đèn Bi Laser TiTan Platinum Plus 9+3','16900000',N'Hình Ảnh',N'Công suất: Cos 80W/Pha 90W','2023-05-27','2023-05-28',1,3,2,6000000)
+	   ,(N'Camera 360 ô tô GOTECH GP6 Mới nhất – Panda Auto','12500000',N'Hình Ảnh',N'Mắt Camera: Sony A225','2023-05-27','2023-05-28',1,5,1,6000000)
+	   ,(N'Camera 360 OledPro AHD','10500000',N'Hình Ảnh',N'Mắt Camera: Sony A225','2023-05-27','2023-05-28',1,5,2,6000000)
+	   ,(N'Camera 360 Safeview LD980H','18900000',N'Hình Ảnh',N'Mắt Camera: Sony','2023-05-27','2023-05-28',1,5,1,6000000)
 
 GO
 --------------------------------------------------------
@@ -126,32 +145,51 @@ INSERT INTO [dbo].[order_details]
            ,[update_date])
      VALUES
           (1,1,7000000,2,14000000,'2023-05-27','2023-05-28'),
-		   (1,1,5000000,2,10000000,'2023-05-27','2023-05-28'),
-		    (1,3,6000000,2,12000000,'2023-05-27','2023-05-28'),
-			(1,2,5000000,3,12000000,'2023-05-27','2023-05-28'),
+		   (1,2,5000000,2,10000000,'2023-05-27','2023-05-28'),
+		    (2,3,6000000,2,12000000,'2023-05-27','2023-05-28'),
+			(2,2,5000000,3,12000000,'2023-05-27','2023-05-28'),
+			(3,2,2000000,2,4000000,'2023-05-27','2023-05-28'),
+		   (3,3,3000000,2,6000000,'2023-05-27','2023-05-28'),
+		   (4,1,7000000,2,14000000,'2023-05-27','2023-05-28'),
+		   (4,1,5000000,2,10000000,'2023-05-27','2023-05-28'),
+		    (5,3,6000000,2,12000000,'2023-05-27','2023-05-28'),
+			(5,2,5000000,3,12000000,'2023-05-27','2023-05-28'),
 			(2,2,2000000,2,4000000,'2023-05-27','2023-05-28'),
-		   (2,3,3000000,2,6000000,'2023-05-27','2023-05-28')
+		   (1,3,3000000,2,6000000,'2023-05-27','2023-05-28')
 GO
 ---------------------------------------
 INSERT INTO [dbo].[likes]
            ([users_id]
            ,[products_id]
-           ,[is_likes]
-           ,[create_like])
+           ,[is_likes])
      VALUES
-          ('1',1,1,'2023-05-27'),
-		   ('2',2,1,'2023-05-27'),
-		   ('1',3,1,'2023-05-27')
-		   ,('2',1,1,'2023-05-27')
+            (1,1,1)
+		   ,(1,2,1)
+		   ,(1,3,1)
+		   ,(2,4,1)
+		   ,(2,5,1)
+		   ,(2,6,1)
+		   ,(3,3,1)
+		   ,(3,4,1)
+		   ,(3,6,1)
+		   ,(4,7,1)
+		   ,(4,1,1)
+		   ,(4,2,1)
+		   ,(5,3,1)
+		   ,(5,2,1)
+		   ,(5,1,1)
 		   go
 ---------------------------------------------------------
 INSERT INTO [dbo].[products_reviews]
            ([stars_number]
+           ,[content]
            ,[users_id]
            ,[orders_id])
      VALUES
-           (4,1,1),
-		   (5,2,2)
+           (4,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha. Tuy nhiên, mình lỡ mua size k vừa, hơi nhỏ quá.',1,1),
+		   (4,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',1,2),
+		   (5,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',2,2),
+		   (5,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',2,1)
 GO
 -------------------------------------------------------------
 INSERT INTO [dbo].[categories_news]
@@ -180,16 +218,6 @@ INSERT INTO [dbo].[news]
 		   ,N'Video ',N'Hình ảnh','2023-05-27','2023-05-28',1,2,2)
 GO
 -----------------------------------------------------
-INSERT INTO [dbo].[feedBack]
-           ([users_id]
-           ,[product_id]
-           ,[title]
-           ,[content]
-           ,[rating])
-     VALUES
-          (1,1,N'Đèn chất lượng thế nào ?',
-		  N'Mình mua hàng với số lượng lớn muốn xem chất lượng thế nào ?',1)
-GO
 
 
 

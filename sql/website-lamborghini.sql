@@ -1,4 +1,4 @@
-
+﻿
 use master
 go
 
@@ -25,10 +25,10 @@ CREATE TABLE [users] (
   [images] nvarchar(255),
   [phones] nvarchar(20),
   [address] nvarchar(255),
-  [roles_id] int NOT NULL,
-  [create_date] datetime,
-  [update_date] datetime,
-  [is_active] int
+  [roles_id] int NOT NULL default 2,
+  [create_date] datetime default getdate(),
+  [update_date] datetime default getdate(),
+  [is_active] int default 1
 )
 GO
 
@@ -51,24 +51,24 @@ CREATE TABLE [products] (
   [price] int NOT NULL,
   [images] nvarchar(255),
   [description] nvarchar(255),
-  [create_date] datetime,
-  [update_date] datetime,
-  [is_active] int,
+  [create_date] datetime default getdate(),
+  [update_date] datetime default getdate(),
+  [is_active] int default 1,
   [categories_id] int NOT NULL,
   [suppliers_id] int NOT NULL,
   [original_price] int,
-  [discounts_id] int NOT NULL
+  [discounts_id] int
 )
 GO
 
 CREATE TABLE [orders] (
   [id] int PRIMARY KEY IDENTITY(1, 1),
   [notes] nvarchar(50),
-  [status] nvarchar(50),
+  [status] nvarchar(50) default N'Chưa thanh toán',
   [sum_money] float,
   [users_id] int NOT NULL,
-  [create_date] datetime,
-  [update_date] datetime,
+  [create_date] datetime default getdate(),
+  [update_date] datetime default getdate(),
   [money_received] int
 )
 GO
@@ -80,20 +80,20 @@ CREATE TABLE [order_details] (
   [price] int,
   [quanlity] int NOT NULL,
   [sum_money] float,
-  [create_date] datetime,
-  [update_date] datetime
+  [create_date] datetime default getdate(),
+  [update_date] datetime default getdate()
 )
 GO
 
 CREATE TABLE [news] (
   [id] int PRIMARY KEY IDENTITY(1, 1),
   [titles] nvarchar(100),
-  [contents] nvarchar(255),
+  [contents] nvarchar(4000),
   [video_href] nvarchar(255),
   [images] nvarchar(255),
-  [create_date] datetime,
-  [update_date] datetime,
-  [is_active] int,
+  [create_date] datetime default getdate(),
+  [update_date] datetime default getdate(),
+  [is_active] int default 1,
   [categories_id] int NOT NULL,
   [users_id] int NOT NULL
 )
@@ -103,9 +103,9 @@ CREATE TABLE [histories] (
   [id] int PRIMARY KEY IDENTITY(1, 1),
   [orders_id] int NOT NULL,
   [users_id] int NOT NULL,
-  [create_date] datetime,
-  [update_date] datetime,
-  [is_active] int
+  [create_date] datetime default getdate(),
+  [update_date] datetime default getdate(),
+  [is_active] int default 1
 )
 GO
 
@@ -117,9 +117,9 @@ CREATE TABLE [suppliers] (
   [phones] nvarchar(20),
   [address] nvarchar(255),
   [status] int,
-  [create_date] datetime,
-  [update_date] datetime,
-  [is_active] int
+  [create_date] datetime default getdate(),
+  [update_date] datetime default getdate(),
+  [is_active] int default 1
 )
 GO
 
@@ -127,8 +127,8 @@ CREATE TABLE [likes] (
   [id] int PRIMARY KEY IDENTITY(1, 1),
   [users_id] int NOT NULL,
   [products_id] int,
-  [is_likes] int,
-  [create_like] datetime
+  [is_likes] int default 0,
+  [create_like] datetime default getdate()
 )
 GO
 
@@ -137,8 +137,8 @@ CREATE TABLE [discounts] (
   [titles] nvarchar(100),
   [descriptions] nvarchar(255),
   [price_discounts] int,
-  [start_day] datetime,
-  [end_day] datetime
+  [start_day] datetime NOT NULL,
+  [end_day] datetime NOT NULL
 )
 GO
 
@@ -151,18 +151,10 @@ GO
 CREATE TABLE [products_reviews] (
   [id] int PRIMARY KEY NOT NULL IDENTITY(1, 1),
   [stars_number] int,
+  [content] nvarchar(255),
+  [create_date] datetime default getdate(),
   [users_id] int NOT NULL,
   [orders_id] int NOT NULL
-)
-GO
-
-CREATE TABLE [feedBack] (
-  [id] int PRIMARY KEY NOT NULL IDENTITY(1, 1),
-  [users_id] int,
-  [product_id] int,
-  [title] nvarchar(255),
-  [content] nvarchar(255),
-  [rating] int
 )
 GO
 
@@ -212,10 +204,4 @@ ALTER TABLE [products_reviews] ADD FOREIGN KEY ([users_id]) REFERENCES [users] (
 GO
 
 ALTER TABLE [products_reviews] ADD FOREIGN KEY ([orders_id]) REFERENCES [orders] ([id])
-GO
-
-ALTER TABLE [feedBack] ADD FOREIGN KEY ([users_id]) REFERENCES [users] ([id])
-GO
-
-ALTER TABLE [feedBack] ADD FOREIGN KEY ([product_id]) REFERENCES [products] ([id])
 GO

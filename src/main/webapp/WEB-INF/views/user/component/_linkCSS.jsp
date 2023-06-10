@@ -10,5 +10,5 @@
     <!-- Link To Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-    <!-- Link To Boostrap CSS -->
-    <link rel="stylesheet" href="/css/boostrap.min.css">
+    <!-- Link To Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">

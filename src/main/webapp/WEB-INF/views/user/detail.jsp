@@ -74,8 +74,8 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="../images/product-img/volang.jpg"
-                            alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="../images/product-img/volang.jpg" alt="Card image cap"
+                            id="product-detail">
                     </div>
                     <div class="row">
                         <!--Start Controls-->
@@ -91,14 +91,12 @@
                             data-bs-ride="carousel">
                             <!--Start Slides-->
                             <div class="carousel-inner product-links-wap" role="listbox">
-    
                                 <!--First slide-->
                                 <div class="carousel-item active">
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid"
-                                                    src="../images/product-img/volang.jpg"
+                                                <img class="card-img img-fluid" src="../images/product-img/volang.jpg"
                                                     alt="Product Image 3">
                                             </a>
                                         </div>
@@ -117,7 +115,6 @@
                                     </div>
                                 </div>
                                 <!--/.First slide-->
-    
                                 <!--Second slide-->
                                 <div class="carousel-item">
                                     <div class="row">
@@ -143,7 +140,6 @@
                                 </div>
                             </div>
                         </div>
-    
                         <div class="col-1 align-self-center">
                             <a href="#multi-item-example" role="button" data-bs-slide="next">
                                 <i class="bi bi-chevron-right"></i>
@@ -159,7 +155,6 @@
                         <div class="card-body">
                             <h1 class="h2">Bọc Vô Lăng Ô Tô Da Cao Cấp SPARCO Italia</h1>
                             <p class="h3 py-2">$240.00</p>
-    
                             <div class="rate">
                                 <input type="radio" id="star5" name="rate" value="5" />
                                 <label for="star5" title="text">5 stars</label>
@@ -171,14 +166,13 @@
                                 <label for="star2" title="text">2 stars</label>
                                 <input type="radio" id="star1" name="rate" value="1" />
                                 <label for="star1" title="text">1 star</label>
-                              </div>
-    
+                            </div>
+
                             <h5>Thông tin sản phẩm:</h5>
                             <ul class="list-unstyled pb-3">
                                 <li>Thương hiệu phụ kiện thể thao nổi tiếng của Ý</li>
                                 <li>Thiết kế vừa với vô lăng của tất cả các hãng xe.</li>
                             </ul>
-    
                             <form action="" method="GET">
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row pb-3">
@@ -192,29 +186,32 @@
                                     </div>
                                 </div>
                             </form>
-    
+
                         </div>
                     </div>
                 </div>
-    
+
             </div>
         </div>
-      
-    
+
+
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <nav>
                         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active text-uppercase fw-bold" id="nav-home-tab" data-toggle="tab" href="#nav-home"
-                                role="tab" aria-controls="nav-home" aria-selected="true">Mô Tả Sản Phẩm</a>
-                            <a class="nav-item nav-link text-uppercase fw-bold" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-                                role="tab" aria-controls="nav-profile" aria-selected="false">Đánh Giá Sản Phẩm</a>
-            
+                            <a class="nav-item nav-link active text-uppercase fw-bold" id="nav-home-tab"
+                                data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
+                                aria-selected="true">Mô Tả Sản Phẩm</a>
+                            <a class="nav-item nav-link text-uppercase fw-bold" id="nav-profile-tab" data-toggle="tab"
+                                href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Đánh
+                                Giá Sản Phẩm</a>
+
                         </div>
                     </nav>
                     <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                            aria-labelledby="nav-home-tab">
                             <ul class="list-unstyled pb-3">
                                 <li>Chất liệu : được làm từ chất liệu da PU bên trong là lớp cao su non, bên ngoài được
                                     bọc lớp da.</li>
@@ -223,52 +220,57 @@
                                     cao hơn so với các loại bọc vô lăng thông thường khác. Được tinh chế chống bay màu
                                     theo thời gian sử dụng</li>
                                 <li>Phù hợp với hầu hết các loại xe 4 – 7 chỗ</li>
-    
+
                             </ul>
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <form>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Name</label>
-                                    <input type="text" class="form-control" id="Username" placeholder="Username">
+                            <div class="m-5 pb-4" style="border-bottom: 1px solid #ccc;">
+                                <div class="content__preview-header d-flex gap-2 align-items-center">
+                                    <div class="content__preview-image">
+                                        <img alt="" style="background-image: url(../images/anh7.jpg);">
+                                    </div>
+                                    <div class="content__preview-title">
+                                        <span class="fw-bold">Tên người dùng</span>
+                                        <div class="d-flex gap-1">
+                                            <i class="bi bi-star"></i>
+                                            <i class="bi bi-star"></i>
+                                            <i class="bi bi-star"></i>
+                                            <i class="bi bi-star"></i>
+                                            <i class="bi bi-star"></i>
+                                        </div>
+                                        <div class="date-rate">
+                                            dd-MM-yyyy hh:mm
+                                        </div>
+                                    </div>
                                 </div>
-    
-                                <div class="form-group">
-                                  <label for="exampleInputEmail1">Email address</label>
-                                  <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <div class="content__preview-body mt-2">
+                                    <div>
+                                        Nội dung đánh giá
+                                    </div>
                                 </div>
-    
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Review title</label>
-                                    <input type="text" class="form-control" id="reviewTitle" placeholder="Give your review a title">
-                                </div>
-    
-                                <div class="form-group">
-                                    <label for="writeReview">Body of review(1500)</label>
-                                    <textarea class="form-control" id="" rows="3" placeholder="Write your comments here"></textarea>
-                                  </div>
-    
-                              </form>
-                        </div>
-                        
+                            </div>
+                            
                         </div>
                     </div>
-    
+
                 </div>
             </div>
+
+        </div>
+        </div>
         </div>
         <!-- Close Content -->
-    
+
         <!-- Start Article -->
         <section class="py-5">
             <div class="container">
                 <div class="row text-left p-2 pb-3 text-center">
-                    <h4 >Có Thể Bạn Thích</h4>
+                    <h4>Có Thể Bạn Thích</h4>
                 </div>
-    
+
                 <!--Start Carousel Wrapper-->
                 <div id="carousel-related-product">
-    
+
                     <div class="p-2 pb-3">
                         <div class="product-grid6">
                             <div class="card rounded-0">
@@ -297,15 +299,16 @@
                                 </div>
                                 <ul class="social">
                                     <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a></li>
-                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i class="bi bi-heart"></i></a>
+                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i
+                                                class="bi bi-heart"></i></a>
                                     </li>
-                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i class="bi bi-cart"></i></a></li>
+                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
+                                                class="bi bi-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span></div>
                         </div>
                     </div>
-    
                     <div class="p-2 pb-3">
                         <div class="product-grid6">
                             <div class="card rounded-0">
@@ -317,7 +320,6 @@
                                 </div>
                                 <div class="product-content">
                                     <a href="shop-single.html" class="h3 text-decoration-none"></a>
-    
                                     <ul class="list-unstyled d-flex justify-content-center mb-1">
                                         <li>
                                             <i class="bi bi-star"></i>
@@ -334,26 +336,27 @@
                                 </div>
                                 <ul class="social">
                                     <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a></li>
-                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i class="bi bi-heart"></i></a>
+                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i
+                                                class="bi bi-heart"></i></a>
                                     </li>
-                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i class="bi bi-cart"></i></a></li>
+                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
+                                                class="bi bi-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span></div>
                         </div>
                     </div>
-    
                     <div class="p-2 pb-3">
                         <div class="product-grid6">
                             <div class="card rounded-0">
                                 <div class="product-image6">
                                     <a href="#">
-                                        <img class="card-img rounded-0 img-fluid" src="../images/product-img/phukien1.jpg">
+                                        <img class="card-img rounded-0 img-fluid"
+                                            src="../images/product-img/phukien1.jpg">
                                     </a>
                                 </div>
                                 <div class="product-content">
                                     <a href="shop-single.html" class="h3 text-decoration-none"></a>
-    
                                     <ul class="list-unstyled d-flex justify-content-center mb-1">
                                         <li>
                                             <i class="bi bi-star"></i>
@@ -370,26 +373,27 @@
                                 </div>
                                 <ul class="social">
                                     <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a></li>
-                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i class="bi bi-heart"></i></a>
+                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i
+                                                class="bi bi-heart"></i></a>
                                     </li>
-                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i class="bi bi-cart"></i></a></li>
+                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
+                                                class="bi bi-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span></div>
                         </div>
                     </div>
-    
                     <div class="p-2 pb-3">
                         <div class="product-grid6">
                             <div class="card rounded-0">
                                 <div class="product-image6">
                                     <a href="#">
-                                        <img class="card-img rounded-0 img-fluid" src="../images/product-img/manhinh1.png">
+                                        <img class="card-img rounded-0 img-fluid"
+                                            src="../images/product-img/manhinh1.png">
                                     </a>
                                 </div>
                                 <div class="product-content">
                                     <a href="shop-single.html" class="h3 text-decoration-none"></a>
-    
                                     <ul class="list-unstyled d-flex justify-content-center mb-1">
                                         <li>
                                             <i class="bi bi-star"></i>
@@ -407,26 +411,27 @@
                                 </div>
                                 <ul class="social">
                                     <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a></li>
-                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i class="bi bi-heart"></i></a>
+                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i
+                                                class="bi bi-heart"></i></a>
                                     </li>
-                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i class="bi bi-cart"></i></a></li>
+                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
+                                                class="bi bi-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span></div>
                         </div>
                     </div>
-    
                     <div class="p-2 pb-3">
                         <div class="product-grid6">
                             <div class="card rounded-0">
                                 <div class="product-image6">
                                     <a href="#">
-                                        <img class="card-img rounded-0 img-fluid" src="../images/product-img/thamlot1.jpg">
+                                        <img class="card-img rounded-0 img-fluid"
+                                            src="../images/product-img/thamlot1.jpg">
                                     </a>
                                 </div>
                                 <div class="product-content">
                                     <a href="shop-single.html" class="h3 text-decoration-none"></a>
-    
                                     <ul class="list-unstyled d-flex justify-content-center mb-1">
                                         <li>
                                             <i class="bi bi-star"></i>
@@ -443,26 +448,27 @@
                                 </div>
                                 <ul class="social">
                                     <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a></li>
-                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i class="bi bi-heart"></i></a>
+                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i
+                                                class="bi bi-heart"></i></a>
                                     </li>
-                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i class="bi bi-cart"></i></a></li>
+                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
+                                                class="bi bi-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span></div>
                         </div>
                     </div>
-    
                     <div class="p-2 pb-3">
                         <div class="product-grid6">
                             <div class="card rounded-0">
                                 <div class="product-image6">
                                     <a href="#">
-                                        <img class="card-img rounded-0 img-fluid" src="../images/product-img/camera1.png">
+                                        <img class="card-img rounded-0 img-fluid"
+                                            src="../images/product-img/camera1.png">
                                     </a>
                                 </div>
                                 <div class="product-content">
                                     <a href="shop-single.html" class="h3 text-decoration-none"></a>
-    
                                     <ul class="list-unstyled d-flex justify-content-center mb-1">
                                         <li>
                                             <i class="bi bi-star"></i>
@@ -479,26 +485,27 @@
                                 </div>
                                 <ul class="social">
                                     <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a></li>
-                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i class="bi bi-heart"></i></a>
+                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i
+                                                class="bi bi-heart"></i></a>
                                     </li>
-                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i class="bi bi-cart"></i></a></li>
+                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
+                                                class="bi bi-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span></div>
                         </div>
                     </div>
-    
                     <div class="p-2 pb-3">
                         <div class="product-grid6">
                             <div class="card rounded-0">
                                 <div class="product-image6">
                                     <a href="#">
-                                        <img class="card-img rounded-0 img-fluid" src="../images/product-img/pic-51.jpg">
+                                        <img class="card-img rounded-0 img-fluid"
+                                            src="../images/product-img/pic-51.jpg">
                                     </a>
                                 </div>
                                 <div class="product-content">
                                     <a href="shop-single.html" class="h3 text-decoration-none"></a>
-    
                                     <ul class="list-unstyled d-flex justify-content-center mb-1">
                                         <li>
                                             <i class="bi bi-star"></i>
@@ -508,33 +515,35 @@
                                             <i class="bi bi-star"></i>
                                         </li>
                                     </ul>
-                                    <h3 class="title"><a href="#">Sạc Không Dây Thông Minh Smart Sensor R1 - Vàng</a></h3>
+                                    <h3 class="title"><a href="#">Sạc Không Dây Thông Minh Smart Sensor R1 - Vàng</a>
+                                    </h3>
                                     <div class="price">$50.00
                                         <!-- <span>$14.00</span> -->
                                     </div>
                                 </div>
                                 <ul class="social">
                                     <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a></li>
-                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i class="bi bi-heart"></i></a>
+                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i
+                                                class="bi bi-heart"></i></a>
                                     </li>
-                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i class="bi bi-cart"></i></a></li>
+                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
+                                                class="bi bi-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span></div>
                         </div>
                     </div>
-    
                     <div class="p-2 pb-3">
                         <div class="product-grid6">
                             <div class="card rounded-0">
                                 <div class="product-image6">
                                     <a href="#">
-                                        <img class="card-img rounded-0 img-fluid" src="../images/product-img/cambien1.png">
+                                        <img class="card-img rounded-0 img-fluid"
+                                            src="../images/product-img/cambien1.png">
                                     </a>
                                 </div>
                                 <div class="product-content">
                                     <a href="shop-single.html" class="h3 text-decoration-none"></a>
-    
                                     <ul class="list-unstyled d-flex justify-content-center mb-1">
                                         <li>
                                             <i class="bi bi-star"></i>
@@ -551,15 +560,16 @@
                                 </div>
                                 <ul class="social">
                                     <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a></li>
-                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i class="bi bi-heart"></i></a>
+                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i
+                                                class="bi bi-heart"></i></a>
                                     </li>
-                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i class="bi bi-cart"></i></a></li>
+                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
+                                                class="bi bi-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span></div>
                         </div>
                     </div>
-    
                     <div class="p-2 pb-3">
                         <div class="product-grid6">
                             <div class="card rounded-0">
@@ -570,7 +580,6 @@
                                 </div>
                                 <div class="product-content">
                                     <a href="shop-single.html" class="h3 text-decoration-none"></a>
-    
                                     <ul class="list-unstyled d-flex justify-content-center mb-1">
                                         <li>
                                             <i class="bi bi-star"></i>
@@ -587,15 +596,16 @@
                                 </div>
                                 <ul class="social">
                                     <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a></li>
-                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i class="bi bi-heart"></i></a>
+                                    <li><a href="" data-tip="Thêm vào danh sách yêu thích"><i
+                                                class="bi bi-heart"></i></a>
                                     </li>
-                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i class="bi bi-cart"></i></a></li>
+                                    <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
+                                                class="bi bi-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span></div>
                         </div>
                     </div>
-    
                 </div>
             </div>
         </section>
@@ -620,6 +630,7 @@
     <script src="../js/detail/templatemo.js"></script>
     <!-- End Script -->
 
+	<script src="../js/detail/detail.js"></script>
     <!-- Start Slider Script -->
     <script src="../js/detail/slick.min.js"></script>
 
