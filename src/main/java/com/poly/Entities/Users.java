@@ -52,10 +52,6 @@ public class Users implements Serializable {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "users")
-	List<FeedBack> feed_back ;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "users")
 	List<Likes> likes;
 	
 	@JsonIgnore
