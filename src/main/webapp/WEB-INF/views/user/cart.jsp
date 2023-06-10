@@ -2,27 +2,28 @@
 <%-- <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%> --%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr" %>
-
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page import="java.text.DecimalFormat"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.S.C.Team - CarService</title>
-	
-	<!-- Link To Base CSS -->
-	<%@include file="component/_linkCSS.jsp" %>
-	
-	<style>
-        .pro-thumbnail {
-            width: 80px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B.S.C.Team - CarService</title>
+
+<!-- Link To Base CSS -->
+<%@include file="component/_linkCSS.jsp"%>
+
+<style>
+.pro-thumbnail {
+	width: 80px;
+}
+</style>
 
 </head>
 
@@ -31,121 +32,334 @@
 	kiểm tra -->
 
 	<!-- Header Start -->
-	<%@include file = "component/_header.jsp" %>
+	<%@include file="component/_header.jsp"%>
 	<!-- Header End -->
-    
-    <main>
 
-        <!-- ========================== BREADCRUMB ========================== -->
-        <section class="breadcrumb">
-            <ul class="breadcrumb__list d-flex container">
-                <li><a href="/user/index" class="breadcrumb__link">Trang chủ</a></li>
-                <li><span class="breadcrumb__link">></span></li>
-                <li><span class="breadcrumb__link active">Giỏ hàng</span></li>
-            </ul>
-        </section>
+	<main>
 
-        <div class="container mt-5 d-flex justify-content-center gap-4">
-            <div class="table-cart col-md-8">
-                <table class="table caption-top align-middle">
-                    <caption>Danh sách sản phẩm</caption>
-                    <thead class="table-dark text-center">
-                      <tr>
-                        <th scope="col" class="col-md-2">Hình</th>
-                        <th scope="col" class="col-md-2">Tên</th>
-                        <th scope="col" class="col-md-2">Giá</th>
-                        <th scope="col" class="col-md-2">Số lượng</th>
-                        <th scope="col" class="col-md-2">Tổng</th>
-                        <th scope="col" class="col-md-2">Xóa</th>
-                      </tr>
-                    </thead>
-                    <tbody class="text-center">
-                      <tr>
-                        <td class="pro-thumbnail">
-                            <a href="#">
-                                <img src="/images/product-01.png" alt="" height="70px;">
-                            </a>
-                        </td>
-                        <td>Động cơ hơi nước quá trời nước</td>
-                        <td>300.000 VNĐ</td>
-                        <td class="me-2 ms-2">
-                            <div class="input-group">
-                                <button class="btn btn-outline-warning" id="quantityBtn">+</button>
-                                <input type="text" class="form-control text-center" min="1" placeholder="1" aria-describedby="quantityBtn">
-                                <button class="btn btn-outline-warning" id="quantityBtn">-</button>
-                              </div>
-                        </td>
-                        <td>300.000 VNĐ</td>
-                        <td>
-                            <a href="#" class="btn btn-danger">
-                                <i class="bi bi-trash3" style="color: #fff;"></i>
-                            </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="pro-thumbnail">
-                            <a href="#">
-                                <img src="/images/product-01.png" alt="" height="70px;">
-                            </a>
-                        </td>
-                        <td>Động cơ hơi nước quá trời nước</td>
-                        <td>300.000 VNĐ</td>
-                        <td class="me-2 ms-2">
-                            <div class="input-group">
-                                <button class="btn btn-outline-warning" id="quantityBtn">+</button>
-                                <input type="text" class="form-control text-center" min="1" placeholder="1" aria-describedby="quantityBtn">
-                                <button class="btn btn-outline-warning" id="quantityBtn">-</button>
-                              </div>
-                        </td>
-                        <td>300.000 VNĐ</td>
-                        <td>
-                            <a href="#" class="btn btn-danger">
-                                <i class="bi bi-trash3-fill"></i>
-                            </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-4">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Mã giảm giá" aria-label="Mã giảm giá" aria-describedby="discountBtn">
-                    <a href="#" class="btn btn-outline-warning" id="discountBtn">Áp dụng</a>
-                </div>
-                <div class="box-bill col-md-12">
-                    <div class="card border-secondary mb-3">
-                        <div class="card-header">Hóa đơn</div>
-                        <div class="card-body text-secondary">
-                            <div class="d-flex justify-content-between" style="color: #333;">
-                                <p class="card-text" style="font-weight: 500;">Tạm tính:</p>
-                                <span>123.000 VNĐ</span>
-                            </div>
-                            <div class="d-flex justify-content-between" style="color: #333; border-bottom: 1px solid #ccc;">
-                                <p class="card-text" style="font-weight: 500; ">Giảm giá:</p>
-                                <span>0 VNĐ</span>
-                            </div>
-                            <div class="d-flex justify-content-between mt-3" style="color: #333;">
-                                <h5 class="card-title" style="font-weight: 500;">Tổng cộng:</h5>
-                                <span>123.000 VNĐ</span>
-                            </div>
-                            <a href="#" class="btn btn-warning w-100 mt-4 fw-bolder">Tiến hành đặt hàng</a>
-                        </div>
-                      </div>
-                </div>
-            </div>
-        </div>
-       
-    </main>
-    
-    
-    <!-- Footer Start -->
-	<%@include file = "component/_footer.jsp" %>
+		<!-- ========================== BREADCRUMB ========================== -->
+		<section class="breadcrumb">
+			<ul class="breadcrumb__list d-flex container">
+				<li><a href="/user/index" class="breadcrumb__link">Trang
+						chủ</a></li>
+				<li><span class="breadcrumb__link">></span></li>
+				<li><span class="breadcrumb__link active">Giỏ hàng</span></li>
+			</ul>
+		</section>
+
+		<div class="container mt-5 d-flex justify-content-center gap-4">
+			<div class="table-cart col-md-8">
+				<table class="table caption-top align-middle">
+					<caption>Danh sách sản phẩm</caption>
+					<thead class="table-dark text-center">
+						<tr>
+							<th scope="col" class="col-md-2">Hình</th>
+							<th scope="col" class="col-md-2">Tên</th>
+							<th scope="col" class="col-md-2">Giá</th>
+							<th scope="col" class="col-md-2">Số lượng</th>
+							<th scope="col" class="col-md-2">Tổng</th>
+							<th scope="col" class="col-md-2">Xóa</th>
+						</tr>
+					</thead>
+					<tbody class="text-center">
+
+						<!-- ------------------------vòng lập---------------------------------------------- -->
+						<c:forEach items="${listCart}" var="item">
+
+							<tr id="cart" data-product-id="${item.value.id}">
+								<td class="pro-thumbnail"><a href="#"> <img
+										src="/images/${item.value.images}" alt="" height="70px;">
+								</a></td>
+								<td>${item.value.name}</td>
+								<!----------------- giá có trong cart------------------------------------ -->
+								<c:if test="${not empty item.value.price}">
+									<!-- sdfsdffsdf -->
+									<td><fmt:formatNumber type="currency"
+											value="${item.value.price}" currencySymbol="đ"
+											pattern="###,###" /> VNĐ</td>
+								</c:if>
+								<!-- -------------------------------------------------------- -->
+								<c:if test="${ empty item.value.price}">
+									<td>0 VNĐ</td>
+								</c:if>
+								<!-- --------------------------------------------------------------------- -->
+								<td class="me-2 ms-2">
+									<div class="input-group" data-product-id="${item.value.id}"
+										data-min-qty="1" data-max-qty="10" data-curr-qty="1">
+
+										<!-- Cộng -->
+										<button onclick="onUp(${item.value.id},'${item.value.price}')"
+											class="btn btn-outline-warning qty-plus">+</button>
+
+										<input onclick="inputClick(${item.value.id})"
+											id="${item.value.id}" value="${item.value.quantity}"
+											type="text" class="form-control text-center qty-input"
+											min="1" placeholder="1" aria-describedby="quantityBtn">
+										<!-- trừ -->
+										<button id="bt${item.value.id}"
+											onclick="onDown(${item.value.id},'${item.value.price}')"
+											class="btn btn-outline-warning">-</button>
+									</div>
+								</td>
+								<!-- Giá tiền -->
+
+								<c:if test="${not empty item.value.orderMoney}">
+									<td id="td${item.value.id}"><fmt:formatNumber
+											type="currency" value="${item.value.orderMoney}"
+											currencySymbol="đ" pattern="###,###" /> VNĐ</td>
+								</c:if>
+
+								<c:if test="${ empty item.value.orderMoney}">
+									<td>0 VNĐ</td>
+								</c:if>
+
+								<!---------------------- xóa dữ liệu ---------------------------------->
+								<td><a
+									onclick="orderdelete(${item.value.id},'${sessionScope.total}','${item.value.price}','${item.value.quantity}')"
+									href="#" class="btn btn-danger"> <i class="bi bi-trash3"
+										style="color: #fff;"></i>
+								</a></td>
+								<!-- -------------------------------------------------------------------------- -->
+								<%-- <c:set var="total" value="${total + item.value.orderMoney}" /> --%>
+							</tr>
+
+						</c:forEach>
+
+
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-4">
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Mã giảm giá"
+						aria-label="Mã giảm giá" aria-describedby="discountBtn"> <a
+						href="#" class="btn btn-outline-warning" id="discountBtn">Áp
+						dụng</a>
+				</div>
+				<div class="box-bill col-md-12">
+					<div class="card border-secondary mb-3">
+						<div class="card-header">Hóa đơn</div>
+						<div class="card-body text-secondary">
+							<div class="d-flex justify-content-between" style="color: #333;">
+								<p class="card-text" style="font-weight: 500;">Tạm tính:</p>
+								<span>123.000 VNĐ</span>
+							</div>
+							<div class="d-flex justify-content-between"
+								style="color: #333; border-bottom: 1px solid #ccc;">
+								<p class="card-text" style="font-weight: 500;">Giảm giá:</p>
+								<span>0 VNĐ</span>
+							</div>
+							<div class="d-flex justify-content-between mt-3"
+								style="color: #333;">
+								<h5 class="card-title" style="font-weight: 500;">Tổng cộng:</h5>
+								<!-- Tính  tổng tiền -->
+								<c:if test="${not empty sessionScope.total}">
+
+									<span id="setMoney"> ${sessionScope.total} <%-- <fmt:formatNumber  type="currency"
+											value="${sessionScope.total}" currencySymbol="đ"
+											pattern="###,###"  /> --%>
+									</span>
+
+								</c:if>
+								<c:if test="${ empty sessionScope.total}">
+									<span>0</span>
+								</c:if>
+
+							</div>
+							<a href="#" class="btn btn-warning w-100 mt-4 fw-bolder">Tiến
+								hành đặt hàng</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+
+	<!-- Footer Start -->
+	<%@include file="component/_footer.jsp"%>
 	<!-- Footer End -->
 
-    <!-- Link To Base JS -->
-    <%@include file = "component/_linkJS.jsp" %>
-
+	<!-- Link To Base JS -->
+	<%@include file="component/_linkJS.jsp"%>
+	<script src="https:code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>	
+function onUp(id,price) {
+			// lấy số lượng của input số lượng
+			var quantityInput = document.getElementById(id);			
+			var quantity = parseInt(quantityInput.value);
+			//l
+			var priceID = document.getElementById('td'+id);
+			//tăng lên
+			  quantity++;
+			//số lượng input sao khi tăng
+			  quantityInput.value = quantity.toString();
+			// sử lí giá tiền * sl
+			var orderquantity =  quantityInput.value ;
+			var orderprice = price; 							
+				// Định nghĩa symbol mới cho đơn vị tiền tệ là "VNĐ"
+				var currencySymbol = "VNĐ";
+				var currencyFormatter = new Intl.NumberFormat({
+				  style: 'currency',
+				  currency: 'VND',
+				  currencyDisplay: 'symbol',
+				  // Sử dụng symbol mới thay cho ký hiệu mặc định
+				  // Chú ý rằng dấu cách trước symbol sẽ không được thêm tự động
+				  currencySymbol: currencySymbol,
+				});				
+				var formattedCurrency = currencyFormatter.format(price *orderquantity);
+				priceID.textContent = formattedCurrency+"VNĐ";
+				// set đến tổng tiền của đơn hàng tăng 				
+				 if(quantity >= 1){
+					
+					 var setMoney = document.getElementById("setMoney");					
+						var result =  parseFloat(setMoney.textContent)+ parseFloat(orderprice);				
+							 setMoney.textContent = result;
+							 var button =  document.getElementById('bt'+id);
+							 button.removeAttribute("disabled");
+				} 
+				// sử lí code ajax
+												
+						$.ajax({
+							url : "/shop/user/addCart",
+							type : "POST",
+							data : JSON.stringify({
+								id : id	,
+								quantity: quantity
+							}),
+						contentType : "application/json",
+							success : function(data) {
+								 /* alert("Thêm số lượng thành công"); */ 
+							},
+							error : function(data) {
+								 alert("Lỗi thêm số lượng thất bại thất bại"); 
+							}
+						});
+					
+				
+		}
+		
+		/* function orderPrice(price) {
+			var price = document.getElementById(price);	
+			alert(price);
+		} */
+		
+function onDown(id,price){
+		var quantityInput = document.getElementById(id);
+		var priceID = document.getElementById('td'+id);
+		const inputValue = event.target.value;	
+		 var quantity = parseInt(quantityInput.value);
+		if(quantity == 1){
+ 			 var button = document.getElementById('bt'+id);
+			 button.setAttribute("disabled", true);
+ 		} else{
+ 			  if (quantity > 1) {
+ 				    quantity--;
+ 				    quantityInput.value = quantity.toString();
+ 				  }	
+ 				// sử lí giá tiền * sl
+ 					var orderquantity =  quantityInput.value ;
+ 					var orderprice = price; 								
+ 						// Định nghĩa symbol mới cho đơn vị tiền tệ là "VNĐ"
+ 						var currencySymbol = "VNĐ";
+ 						var currencyFormatter = new Intl.NumberFormat({
+ 						  style: 'currency',
+ 						  currency: 'VND',
+ 						  currencyDisplay: 'symbol',
+ 						  // Sử dụng symbol mới thay cho ký hiệu mặc định
+ 						  // Chú ý rằng dấu cách trước symbol sẽ không được thêm tự động
+ 						  currencySymbol: currencySymbol,
+ 						});
+ 						var formattedCurrency = currencyFormatter.format(price *orderquantity);
+ 						priceID.textContent = formattedCurrency+"VNĐ";
+ 						// set đến tổng tiền của đơn hàng giảm 
+ 						if(quantity >= 1){						
+ 							 var setMoney = document.getElementById("setMoney");						
+ 								var result =  parseFloat(setMoney.textContent)- parseFloat(orderprice);				
+ 									 setMoney.textContent = result;								 
+ 						} 
+ 					} 
+					
+					// sử lí code ajax
+					
+					$.ajax({
+						url : "/shop/user/disCart",
+						type : "POST",
+						data : JSON.stringify({
+							id : id	,
+							quantity: quantity
+						}),
+					contentType : "application/json",
+						success : function(data) {
+							 /* alert("Thêm số lượng thành công"); */ 
+						},
+						error : function(data) {
+							 alert("Lỗi thêm số lượng thất bại thất bại"); 
+						}
+					});
 	
-</body>
+			 						  	
+}
+		//click vào input sửa vô lượng
+function inputClick(id) {
+			const input = document.getElementById(id);
+			input.addEventListener('input', (event) => {
+			    // Thực hiện các hành động khi click vào input
+			     const inputValue = event.target.value;			 
+			    if(inputValue <= 0){
+			    	alert('Sản phẩm số lượng không hợp lệ');
+			    	input.value = 1;
+			    }
+			});
+		}
+		///xoa du lieu san pham
+function orderdelete(id,total,price,quantity){
+			
+			//lấy danh cart để lọc			
+			var cartItems = document.querySelectorAll('#cart');
+			//alert(cartItems);
+			// đối tượng cần xóa			
+		var productIdToRemove = id;	
+			for (var i = 0; i < cartItems.length; i++) {
+			  var productId = Number(cartItems[i].getAttribute('data-product-id'));
+			  if (productId === productIdToRemove) {
+			    // Xóa phần tử tại vị trí i trong mảng cartItems
+			  //  alert('Vi trị xóa là: ' + productId);			   			   
+			     cartItems[i].remove();
+			     //console.log(cartItems.length);
+			    break;
+			  }
+			}
+			 var setMoney = document.getElementById("setMoney");											
+				var orderMoney = setMoney.innerText-(price * quantity);
+				alert(orderMoney + "sau khi định dạng");					
+				setMoney.innerHTML  = orderMoney; 
+														
+			// Cập nhật giao diện người dùng với giỏ hàng mới
+			/* var cartList = document.getElementById('cart');
+			cartList.innerHTML = '';
+			for (var i = 0; i < cartItems.length; i++) {
+			  cartList.appendChild(cartItems[i]);
+			} */
+			
+			$.ajax({			
+				url: '/delete/cart',
+				type: 'post',
+				data: JSON.stringify({
+					id: id
+				}),
+				contentType : "application/json",				
+				success: function (data) {					
+				alert('Xóa thành công');									
+				},				
+				error: function (data) {					
+					alert('Xóa thất bại');					
+				}							
+			});
+			
+		}
+	
+	</script>
 
-</html>
+</body>

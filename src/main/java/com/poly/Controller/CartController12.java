@@ -90,7 +90,7 @@
 //		return "redirect:user/cart";
 //	}
 //
-//	// nhấn nút lưu tren kia database
+//	// nhấn nút lưu tren kia mua sản phẩm
 //	@RequestMapping(value = "/saveCart", method = RequestMethod.POST)
 //	public String saveCart() {
 //		Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart"); // Thực hiện lưu thông

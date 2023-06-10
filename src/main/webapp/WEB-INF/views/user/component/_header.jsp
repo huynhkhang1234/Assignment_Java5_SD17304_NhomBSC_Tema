@@ -7,7 +7,7 @@
 	<nav class="my-navbar">
 		<div class="container d-grid">
 			<a href="index.html" class="brand d-flex gap-2"> <img
-				src="images/favicon.svg" alt="" width="36"> <span>Brand</span>
+				src="/images/favicon.svg" alt="" width="36"> <span>Brand</span>
 			</a>
 			<ul class="nav-menu">
 				<li class="active-link"><a href="/user/index" title="Trang chủ">Trang
@@ -214,12 +214,12 @@
 			</ul>
 
 			<div class="header__user-actions d-flex">
-				<c:if test="${empty session.Scope.userLogin}">
-					<%@include file="_header__user-actived.jsp"%>
-
+				<c:if test="${empty sessionScope.userLogin}">
+			
+				 <%@include file="_header__user-default.jsp"%> 					
 				</c:if>
-				<c:if test="${not empty session.Scope.userLogin}">
-					<%@include file="_header__user-default.jsp"%>
+				<c:if test="${not empty sessionScope.userLogin}">
+					<%@include file="_header__user-actived.jsp"%>
 				</c:if>		
 			</div>
 
