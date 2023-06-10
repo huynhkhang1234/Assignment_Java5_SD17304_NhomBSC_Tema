@@ -17,6 +17,24 @@
     <%@include file="component/_linkCSS.jsp" %>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    
+    <style>
+        .box-image {
+            height: 50px;
+            width: 50px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+        }
+
+        .box-image img {
+            height: 100%;
+            width: 100%;
+            background-position: 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 
 <body>
@@ -84,7 +102,7 @@
                         </thead>
                         <tbody>
                             <!--1-->
-                            <tr >
+                            <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -102,7 +120,7 @@
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                         aria-hidden="true">
                                         <div class=" modal-dialog modal-lg">
-                                            <div class="modal-content" >
+                                            <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="staticBackdropLabel">
                                                         Đơn hàng chi tiết </h5>
@@ -200,7 +218,7 @@
                                                     <h5 class="modal-title" id="staticBackdropLabel">
                                                         Chỉnh sửa đơn hàng</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close" ></button>
+                                                        aria-label="Close"></button>
                                                 </div>
 
                                                 <div class="modal-body row p-5">
@@ -264,14 +282,14 @@
                                                     </div>
                                                     <div class="col-3">
                                                         <h5>Trạng thái đơn hàng</h5>
-                                                        
+
                                                         <div class="col-auto">
                                                             <select class="form-select"
-                                                             aria-label="Default select example">
-                                                                <option selected >Chưa thanh toán</option>
+                                                                aria-label="Default select example">
+                                                                <option selected>Chưa thanh toán</option>
                                                                 <option value="1">Thanh toán</option>
                                                                 <option value="2">Hủy</option>
-                                
+
                                                             </select>
                                                         </div>
 
@@ -311,7 +329,7 @@
 
                                                 <div class="modal-body">
 
-                                                        <p>Bạn có muốn xóa đơn hàng không</p>
+                                                    <p>Bạn có muốn xóa đơn hàng không</p>
 
                                                 </div>
 
@@ -324,7 +342,6 @@
                                         </div>
                                     </div>
                                 </td>
-                               
                             </tr>
                             <!--2-->
                             <tr>
@@ -345,7 +362,7 @@
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                         aria-hidden="true">
                                         <div class=" modal-dialog modal-lg">
-                                            <div class="modal-content" >
+                                            <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="staticBackdropLabel">
                                                         Đơn hàng chi tiết </h5>
@@ -410,7 +427,6 @@
                                                         <h5>Trạng thái đơn hàng</h5>
                                                         <p class="bg-secondary text-white p-2">Chưa thanh
                                                             toán</p>
-                                                       
 
                                                     </div>
 
@@ -445,7 +461,7 @@
                                                     <h5 class="modal-title" id="staticBackdropLabel">
                                                         Chỉnh sửa đơn hàng</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close" ></button>
+                                                        aria-label="Close"></button>
                                                 </div>
 
                                                 <div class="modal-body row p-5">
@@ -470,13 +486,13 @@
                                                     <div class="col-3">
                                                         <h5>Số lượng</h5>
                                                         <input type="number" class="form-control" min="1"
-                                                            placeholder="1" >
+                                                            placeholder="1">
                                                     </div>
 
                                                     <div class="col-3">
                                                         <h5>Tiền đặt</h5>
                                                         <input type="number" class="form-control" min="1"
-                                                            placeholder="1" >
+                                                            placeholder="1">
                                                     </div>
                                                     <div class="col-3">
                                                         <h5>Tổng tiền</h5>
@@ -494,7 +510,7 @@
                                                     <div class="col-3">
                                                         <h5>Địa chỉ</h5>
                                                         <input type="text" class="form-check-label"
-                                                            placeholder="Cần Thơ"  style="height: 25px;">
+                                                            placeholder="Cần Thơ" style="height: 25px;">
 
                                                     </div>
                                                     <div class="col-3">
@@ -509,16 +525,16 @@
                                                     </div>
                                                     <div class="col-3">
                                                         <h5>Trạng thái đơn hàng</h5>
-                                                        
-                                                            <div class="col-auto">
-                                                                <select class="form-select"
-                                                                 aria-label="Default select example">
-                                                                    <option selected >Chưa thanh toán</option>
-                                                                    <option value="1">Thanh toán</option>
-                                                                    <option value="2">Hủy</option>
-                                    
-                                                                </select>
-                                                            </div>
+
+                                                        <div class="col-auto">
+                                                            <select class="form-select"
+                                                                aria-label="Default select example">
+                                                                <option selected>Chưa thanh toán</option>
+                                                                <option value="1">Thanh toán</option>
+                                                                <option value="2">Hủy</option>
+
+                                                            </select>
+                                                        </div>
                                                     </div>
 
 
@@ -555,7 +571,7 @@
 
                                                 <div class="modal-body">
 
-                                                        <p style="font-size: 19px;">Bạn có muốn xóa đơn hàng không</p>
+                                                    <p style="font-size: 19px;">Bạn có muốn xóa đơn hàng không</p>
 
                                                 </div>
 
@@ -568,11 +584,11 @@
                                         </div>
                                     </div>
                                 </td>
-                               
+
                             </tr>
 
-                             <!--3-->
-                             <tr>
+                            <!--3-->
+                            <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -590,7 +606,7 @@
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                         aria-hidden="true">
                                         <div class=" modal-dialog modal-lg">
-                                            <div class="modal-content" >
+                                            <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="staticBackdropLabel">
                                                         Đơn hàng chi tiết </h5>
@@ -654,7 +670,6 @@
                                                     <div class="col-3">
                                                         <h5>Trạng thái đơn hàng</h5>
                                                         <p class="bg-danger text-white p-2">Đã hủy</p>
-                                                        
                                                     </div>
 
 
@@ -688,7 +703,7 @@
                                                     <h5 class="modal-title" id="staticBackdropLabel">
                                                         Chỉnh sửa đơn hàng</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close" ></button>
+                                                        aria-label="Close"></button>
                                                 </div>
 
                                                 <div class="modal-body row p-5">
@@ -713,13 +728,13 @@
                                                     <div class="col-3">
                                                         <h5>Số lượng</h5>
                                                         <input type="number" class="form-control" min="1"
-                                                            placeholder="1" >
+                                                            placeholder="1">
                                                     </div>
 
                                                     <div class="col-3">
                                                         <h5>Tiền đặt</h5>
                                                         <input type="number" class="form-control" min="1"
-                                                            placeholder="1" >
+                                                            placeholder="1">
                                                     </div>
                                                     <div class="col-3">
                                                         <h5>Tổng tiền</h5>
@@ -737,7 +752,7 @@
                                                     <div class="col-3">
                                                         <h5>Địa chỉ</h5>
                                                         <input type="text" class="form-check-label"
-                                                            placeholder="Cần Thơ"  style="height: 25px;">
+                                                            placeholder="Cần Thơ" style="height: 25px;">
 
                                                     </div>
                                                     <div class="col-3">
@@ -754,19 +769,21 @@
                                                         <h5>Trạng thái đơn hàng</h5>
                                                         <p class="bg-danger text-white p-2">Đã hủy</p>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="flexRadioDefault" id="flexRadioDefault1">
                                                             <label class="form-check-label" for="flexRadioDefault1">
-                                                             Thanh toán
+                                                                Thanh toán
                                                             </label>
-                                                          </div>
-                                                          <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="flexRadioDefault" id="flexRadioDefault2" checked>
                                                             <label class="form-check-label" for="flexRadioDefault2">
-                                                              Chưa thanh toán
+                                                                Chưa thanh toán
                                                             </label>
-                                                          </div>
+                                                        </div>
                                                     </div>
-                                                   
+
 
 
                                                 </div>
@@ -791,7 +808,7 @@
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                         aria-hidden="true">
                                         <div class=" modal-dialog ">
-                                            <div class="modal-content" >
+                                            <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="staticBackdropLabel">
                                                         Xóa đơn hàng</h5>
@@ -801,7 +818,7 @@
 
                                                 <div class="modal-body row p-5">
 
-                                                        <p style="font-size: 19px;">Bạn có muốn xóa đơn hàng không</p>
+                                                    <p style="font-size: 19px;">Bạn có muốn xóa đơn hàng không</p>
 
                                                 </div>
 
@@ -814,7 +831,6 @@
                                         </div>
                                     </div>
                                 </td>
-                               
                             </tr>
                         </tbody>
                     </table>
@@ -830,11 +846,34 @@
                 <a class="page-link" href="#">2</a>
                 <a class="page-link" href="#">3</a>
                 <a class="page-link" href="#">4</a>
-        
             </div>
 
         </section>
         <!--end of middle-->
+
+
+        <section>
+            <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
+
+        </section>
+
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="liveToast" class="toast toa" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="10000">
+                <div class="toast-header">
+                    <div class="box-image">
+                        <img style="background-image: url(../images/camera1.png);" class="rounded me-2">
+                    </div>
+                    <strong class="me-auto ms-2">Thông báo</strong>
+                    <span style="font-family: var(--font-poppins);">mới nhất</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
+            </div>
+        </div>
 
     </main>
 
@@ -849,6 +888,17 @@
     	sidebar.firstElementChild.classList.remove('active');
         });
     sidebarActive.firstElementChild.classList.add('active');
+    
+    /* ================ Notification ================ */
+    const toastTrigger = document.getElementById('liveToastBtn')
+    const toastLiveExample = document.getElementById('liveToast')
+
+    if (toastTrigger) {
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+        toastTrigger.addEventListener('click', () => {
+            toastBootstrap.show()
+        })
+    }
     </script>
 </body>
 

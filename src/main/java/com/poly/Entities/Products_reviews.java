@@ -1,6 +1,7 @@
 package com.poly.Entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +30,10 @@ public class Products_reviews implements Serializable  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int stars_number;
+
+	private String content;
+	
+	private Date create_date;
 	
 	@ManyToOne
 	@JoinColumn(name="users_id")

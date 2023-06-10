@@ -615,6 +615,58 @@
                 </div>
             </div>
         </section>
+        
+        <!-- Modal Quick View -->
+        <div class="modal fade modal-xl" id="QuickViewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body" style="padding: 100px;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="box__quickview-image">
+                                    <img alt="" style="background-image: url(../images/product-img/bomlop.png);">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Tên sản phẩm</h4>
+                                <div class="price d-flex align-items-center gap-2">
+                                    <span class="old__price">345.000 VNĐ</span>
+                                    <span class="new__price">123.000 VNĐ</span>
+                                </div>
+                                <div class="my-4">
+                                    <ul class="list-unstyled pb-3 description">
+                                        <li>Chất liệu : được làm từ chất liệu da PU bên trong là lớp cao su non, bên
+                                            ngoài
+                                            được
+                                            bọc lớp da.
+                                        </li>
+                                        <li>Kích thước: Đường kính vô lăng từ 37 – 38 cm</li>
+                                        <li>Đặc tính : thoải mái, êm, ôm sát vô lăng, dễ dàng lắp đặt. Loại bọc này có
+                                            tuổi
+                                            thọ
+                                            cao hơn so với các loại bọc vô lăng thông thường khác. Được tinh chế chống
+                                            bay
+                                            màu
+                                            theo thời gian sử dụng</li>
+                                        <li>Phù hợp với hầu hết các loại xe 4 – 7 chỗ</li>
+
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <input type="number" min="1" value="1" class="form-control">
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#" class="btn btn-dark">Thêm vào giỏ hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </main>
 

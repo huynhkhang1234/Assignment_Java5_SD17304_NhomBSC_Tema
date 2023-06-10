@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <header class="header">
         <nav class="my-navbar">
             <div class="container d-grid">
@@ -298,18 +300,22 @@
                     </li>
                 </ul>
                 
-                <div class="header__user-actions d-flex">
-                    <!-- Cái này là mặc định -->
-                    <%@include file="_header__user-default.jsp" %>
-                    
-                    <!-- Cái này là đăng nhập gồi -->
-                    <%-- <%@include file="_header__user-actived.jsp" %> --%>
-                </div>
 
-                <i class="bi bi-list toggle-navbar"></i>
-            </div>
-        </nav>
-        <div class="search-box container">
-            <input type="search" name="" id="" placeholder="Tìm kiếm ở đây...">
-        </div>
-    </header>
+
+			<div class="header__user-actions d-flex">
+				<c:if test="${empty sessionScope.userLogin}">
+					<%@include file="_header__user-default.jsp"%>
+
+				</c:if>
+				<c:if test="${not empty sessionScope.userLogin}">
+					<%@include file="_header__user-actived.jsp"%>
+				</c:if>		
+			</div>
+
+			<i class="bi bi-list toggle-navbar"></i>
+		</div>
+	</nav>
+	<div class="search-box container">
+		<input type="search" name="" id="" placeholder="Tìm kiếm ở đây...">
+	</div>
+</header>
