@@ -56,10 +56,14 @@ div {
   background-color: #1d242d !important;
 }
 
-.btn-success {
-  background-color: #f0ac19 !important;
-  border-color: #f0ac19 !important;
-}
+/* .bg-success {
+  background-color: #59ab6e !important;
+} */
+
+/* .btn-success {
+  background-color: #fff !important;
+  border-color: #fff !important;
+} */
 
 .pagination .page-link:hover {
   color: #000;
@@ -101,7 +105,6 @@ div {
 #template-mo-zay-hero-carousel {
   background: #161515 !important;
 }
-
 
 .img-fluid-banner {
   display: flex;
@@ -193,7 +196,7 @@ div {
 }
 
 #carousel-related-product .slick-dots li button:before {
-  font-size: 15px;
+  font-size: 50px;
   margin-top: 20px;
 }
 
@@ -243,6 +246,7 @@ div {
   }
 }
 
+/*// Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
   #templatemo_main_nav .navbar-nav {
     max-width: 450px;

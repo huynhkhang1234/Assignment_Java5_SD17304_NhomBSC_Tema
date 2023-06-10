@@ -12,113 +12,26 @@
     
     <title>B.S.C.Team - CarService</title>
     
-    <!--Bootstrap icon-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Link To Base CSS -->
+    <%@include file="component/_linkCSS.jsp" %>
     
-    <!-- Link To Favicon -->
-    <link rel="shortcut icon" th:href="@{/images/favicon.svg}" type="image/svg+xml">
-
-    <!-- Link To Style CSS -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style_MAN.css}">
-
-    <!-- Link To Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </head>
 
 <body>
-    <nav>
-        <div class="my-container">
-            <a href="#" class="left-logo d-flex align-items-center">
-                <img th:src="${pageContext}" class="logo">
-                <span class="title-logo">B.S.C Team</span>
-            </a> 
-            <div class="search-bar">
-                <i class="bi bi-search"></i>
-                <input type="search" placeholder="Search">
-            </div>
-            <div class="profile-area">
-                <!-- sáng tối -->
-                <div class="theme-btn">
-                    <span class="switch">
-                        <i class="bi bi-brightness-high bi-icon"></i>
-                    </span>
-                </div>
-                <div class=" btn-group" >
-                    <button class="profile btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="profile-photo">
-                            <img th:src="@{/images/profile-1.jpg}">
-                        </div>
-                        <div class="profile__content d-flex flex-column">
-                            <h5>Tên: Chu Hua</h5>
-                            <span>Vai trò: Admin</span>
-                        </div>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-lg-right d-right">
-                        <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
-                        <li><a class="dropdown-item" href="#">Quay lại trang chủ</a></li>
-                    </ul>
-                </div>
-                <button id="menu-btn">
-                    <i class="bi bi-list"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-    <!--end of navbar-->
+    <!-- Start Header -->
+    <%@include file="component/_header.jsp" %>
+    <!-- End Header -->
 
-    <main>
-        <aside>
-            <button class="close-btn">
-                <span class="material-symbols-sharp">close </span>
-            </button>
-            <!--thanh menu-->
-            <div class="sidebar">
-                <a href="/admin/index" class="active">
-                    <i class="bi bi-bar-chart-fill"></i>
-                    <h4>Thống kê</h4>
-                    
-                </a>
-            </div>
-            <!---->
-            <div class="sidebar">
-                <a href="/admin/order">
-                    <i class="bi bi-receipt-cutoff"></i>
-                    <h4>Quản lí đơn hàng</h4>
-                    
-                </a>
-            </div>
-            <!---->
-            <div class="sidebar">
-                <a href="/admin/product">
-                    <i class="bi bi-box2-fill"></i>
-                    <h4>Quản lí sản phẩm</h4>
-                    
-                </a>
-            </div>
-            <!---->
-            <div class="sidebar">
-                <a href="/admin/news">
-                    <i class="bi bi-newspaper"></i>
-                    <h4>Quản lí tin tức</h4>
-                    
-                </a>
-            </div>
-            <!---->
-            <div class="sidebar">
-                <a href="/admin/account">
-                    <i class="bi bi-person-gear"></i>
-                    <h4>Quản lí tài khoản</h4>
-                    
-                </a>
-            </div>
-            <!--end of sidebar-->
-        </aside>
-        <!--end of aside-->
+	<main>
+        
+    <!-- Start Header -->
+    <%@include file="component/_menu.jsp" %>
+    <!-- End Header -->
 
         <section class="middle">
             <div class="header">
                 <h1>Overview</h1>
-                <input type="date">
+               
 
             </div>
 
@@ -126,38 +39,25 @@
                 <div class="card">
                     <div class="top">
                         <div class="left">
-                            <img src="../images/BTC.png" alt="">
-                            <h2>BTC</h2>
+                        
+                            <h2>Doanh thu</h2>
                         </div>
 
-                        <img src="../images/visa.png" class="right">
-                    </div>
+                       </div>
 
                     <div class="middle">
                         <h1>$456,89</h1>
                         <div class="chip">
-                            <img src="../images/card chip.png">
+                            
+                           <img src="/images/icons8-chart-50.png" alt="" style="width: 50px;">
                         </div>
 
                     </div>
 
                     <div class="bottom">
-                        <div class="left">
-                            <small>Card Holder</small>
-                            <h5>JOHN DOE</h5>
-                        </div>
+                        
 
-                        <div class="right">
-                            <div class="expriry">
-                                <small>Expiry</small>
-                                <h5>08/23</h5>
-                            </div>
-
-                            <div class="cvv">
-                                <small>CVV</small>
-                                <h5>089</h5>
-                            </div>
-                        </div>
+                  
                     </div>
 
                 </div>
@@ -165,37 +65,25 @@
                 <div class="card">
                     <div class="top">
                         <div class="left">
-                            <img src="../images/ETH.png" alt="">
-                            <h2>EHT</h2>
+                        
+                            <h2>Số lượng</h2>
                         </div>
 
-                        <img src="../images/master card.png" class="right">
-                    </div>
+                       </div>
 
                     <div class="middle">
-                        <h1>$489,89</h1>
+                        <h1>$456,89</h1>
                         <div class="chip">
-                            <img src="../images/card chip.png">
+                            <img src="/images/icons8-money-50.png" alt="" style="width: 50px;">
+                                </span>
                         </div>
+
                     </div>
 
                     <div class="bottom">
-                        <div class="left">
-                            <small>Card Holder</small>
-                            <h5>JOHN DOE</h5>
-                        </div>
+                        
 
-                        <div class="right">
-                            <div class="expriry">
-                                <small>Expiry</small>
-                                <h5>08/23</h5>
-                            </div>
-
-                            <div class="cvv">
-                                <small>CVV</small>
-                                <h5>089</h5>
-                            </div>
-                        </div>
+                  
                     </div>
 
                 </div>
@@ -203,47 +91,58 @@
                 <div class="card">
                     <div class="top">
                         <div class="left">
-                            <img src="../images/BTC.png" alt="">
-                            <h2>BTC</h2>
-
+                        
+                            <h2>Chi phí</h2>
                         </div>
 
-                        <img src="../images/visa.png" class="right">
-                    </div>
+                       </div>
 
                     <div class="middle">
                         <h1>$456,89</h1>
                         <div class="chip">
-                            <img src="../images/card chip.png">
+                            <img src="/images/icons8-expense-64.png" alt="" style="width: 50px;">
                         </div>
+
                     </div>
 
                     <div class="bottom">
-                        <div class="left">
-                            <small>Card Holder</small>
-                            <h5>JOHN DOE</h5>
-                        </div>
+                        
 
-                        <div class="right">
-                            <div class="expriry">
-                                <small>Expiry</small>
-                                <h5>08/23</h5>
-                            </div>
-
-                            <div class="cvv">
-                                <small>CVV</small>
-                                <h5>089</h5>
-                            </div>
-                        </div>
+                  
                     </div>
 
                 </div>
                 <!--end of card 3-->
+                <div class="card">
+                    <div class="top">
+                        <div class="left">
+                        
+                            <h2>Chi phí khác</h2>
+                        </div>
+
+                       </div>
+
+                    <div class="middle">
+                        <h1>$456,89</h1>
+                        <div class="chip">
+                            <img src="/images/icons8-transaction-list-64.png" alt="" style="width: 40px;">
+                        </div>
+
+                    </div>
+
+                    <div class="bottom">
+                        
+
+                  
+                    </div>
+
+                </div>
+                <!--end of card 4-->
             </div>
             <!--end of cards-->
             <div class="monthly-report">
                 <div class="report">
-                    <h3>Income</h3>
+                    <h3>Doanh thu</h3>
                     <div>
                         <details>
                             <h1>$29,023</h1>
@@ -254,7 +153,7 @@
                 </div>
                 <!--end of income report -->
                 <div class="report">
-                    <h3>Expenses</h3>
+                    <h3>Số lượng</h3>
                     <div>
                         <details>
                             <h1>$9,005</h1>
@@ -265,7 +164,7 @@
                 </div>
                 <!--end of income Expenses-->
                 <div class="report">
-                    <h3>Cashback</h3>
+                    <h3>Chi phí</h3>
                     <div>
                         <details>
                             <h1>$4,4507</h1>
@@ -275,203 +174,54 @@
                     </div>
                 </div>
                 <!--end of income Cashback-->
+                <div class="report">
+                    <h3>Chi phí khác</h3>
+                    <div>
+                        <details>
+                            <h1>$29,023</h1>
+                            <h6 class="success">+3.5%</h6>
+                        </details>
+                        <p class="text-mutes">Compared to 26, 938 last moth</p>
+                    </div>
+                </div>
+                <!--end of income report -->
             </div>
             <!--end of monthy report-->
             <!--biểu đồ-->
-            <canvas id="chart"></canvas>
+            <div class="div-date ">
+                  <div class="col-12">
+                    <div class="col-6">
+                        <label for="">Từ:</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="">Đến:</label>
+                        <input type="date" class="form-control">
+                    </div>
+                  </div>
+               
+            </div>
+            <canvas id="chart">
+                
+            </canvas>
 
         </section>
         <!--end of middle-->
 
-        <section class="right">
-            <div class="investments">
-                <div class="header">
-                    <h2>Investments</h2>
-                    <a href="#">More
-
-                        <span class="material-symbols-sharp">chevron_right</span>
-                    </a>
-                </div>
-                <div class="investment">
-                    <img src="../images/uniliver.png">
-                    <h4>Uniliver</h4>
-
-                    <div class="date-time">
-                        <p>7 Now,2023</p>
-                        <small class="text-muted">9:14pm</small>
-                    </div>
-                    <div class="bonds">
-                        <p>1402</p>
-                        <small class="text-muted">Bonds</small>
-
-                    </div>
-                    <div class="amount">
-                        <h4>$20,0</h4>
-                        <small class="danger">-4,27</small>
-                    </div>
-                </div>
-                <!--end investment 1-->
-
-                <div class="investment">
-                    <img src="../images/tesla.png">
-                    <h4>Tesla</h4>
-
-                    <div class="date-time">
-                        <p>2 Dec,2023</p>
-                        <small class="text-muted">9:14pm</small>
-                    </div>
-                    <div class="bonds">
-                        <p>8492</p>
-                        <small class="text-muted">Bonds</small>
-
-                    </div>
-                    <div class="amount">
-                        <h4>$202,40</h4>
-                        <small class="success">+9,27</small>
-                    </div>
-                </div>
-                <!--end investment 2-->
-                <div class="investment">
-                    <img src="../images/monster.png">
-                    <h4>Moster</h4>
-
-                    <div class="date-time">
-                        <p>3 Dec,2023</p>
-                        <small class="text-muted">9:14pm</small>
-                    </div>
-                    <div class="bonds">
-                        <p>1402</p>
-                        <small class="text-muted">Bonds</small>
-
-                    </div>
-                    <div class="amount">
-                        <h4>$123,0</h4>
-                        <small class="success">+,27</small>
-                    </div>
-                </div>
-                <!--end investment 3-->
-                <div class="investment">
-                    <img src="../images/mcdonalds.png">
-                    <h4>Mcdonalds</h4>
-
-                    <div class="date-time">
-                        <p>7 Now,2023</p>
-                        <small class="text-muted">9:14pm</small>
-                    </div>
-                    <div class="bonds">
-                        <p>1402</p>
-                        <small class="text-muted">Bonds</small>
-
-                    </div>
-                    <div class="amount">
-                        <h4>$20,0</h4>
-                        <small class="success">+7,27</small>
-                    </div>
-                </div>
-                <!--end investment-->
-            </div>
-            <!--end investments-->
-            <div class="recent-transactions">
-
-                <div class="header">
-                    <h2>Recent Transactions</h2>
-                    <a href="#">More
-                        <span class="material-symbols-sharp">
-                            chevron_right
-                        </span>
-                    </a>
-                </div>
-                <div class="transaction">
-                    <div class="service">
-                        <div class="icon ng-purple-light purple">
-                            <span class="material-symbols-sharp">
-                                headset_mic
-                            </span>
-                        </div>
-                        <div class="details">
-                            <h4>Music</h4>
-                            <p>20.11.2021</p>
-                        </div>
-                    </div>
-                    <div class="card-details">
-
-                        <div class="card bg-danger">
-                            <img src="../images/visa.png">
-                        </div>
-
-                        <div class="details">
-                            <p> *2757</p>
-                            <small class="text-muted">Credit Card</small>
-                        </div>
-                    </div>
-                    <h4>$20</h4>
-                </div>
-                <!--end of transaction 1-->
-                <div class="transaction">
-                    <div class="service">
-                        <div class="icon ng-purple-light purple">
-                            <span class="material-symbols-sharp">
-                                shopping_bag
-                            </span>
-                        </div>
-                        <div class="details">
-                            <h4>Shopping</h4>
-                            <p>20.10.2021</p>
-                        </div>
-                    </div>
-                    <div class="card-details">
-
-                        <div class="card bg-primary">
-                            <img src="../images/visa.png">
-                        </div>
-
-                        <div class="details">
-                            <p> *2757</p>
-                            <small class="text-muted">Credit Card</small>
-                        </div>
-                    </div>
-                    <h4>$20</h4>
-                </div>
-                <!--end of transaction 2-->
-                <div class="transaction">
-                    <div class="service">
-                        <div class="icon ng-purple-light">
-                            <span class="material-symbols-sharp">
-                                shopping_bag
-                            </span>
-                        </div>
-                        <div class="details">
-                            <h4>Shopping</h4>
-                            <p>20.10.2021</p>
-                        </div>
-                    </div>
-                    <div class="card-details">
-
-                        <div class="card bg-danger">
-                            <img src="../images/master card.png">
-                        </div>
-
-                        <div class="details">
-                            <p> *2757</p>
-                            <small class="text-muted">Credit Card</small>
-                        </div>
-                    </div>
-                    <h4>$20</h4>
-                </div>
-                <!--end of transaction 3-->
-            </div>
-            <!--end of transactions-->
-        </section>
+      
         <!--end of right-->
 
     </main>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"
-        integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-    <script th:src="@{/js/main_MAN.js}"></script>
+	
+    
+	<!-- Link To Chart JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"
+	        integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ=="
+	        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+	<!-- Link To Base JS -->
+    <%@include file="component/_linkJS.jsp" %>
+    
 </body>
 
 </html>
