@@ -76,5 +76,10 @@ public class Products implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "discounts_id")
 	Discounts discounts;
+	
+	@Override
+	public String toString() {
+		return "Products{" + "titles" + titles+'}';
+	}
 
 }

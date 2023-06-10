@@ -27,7 +27,7 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
-@Table(name ="users")
+@Table(name = "users")
 public class Users implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -41,7 +41,7 @@ public class Users implements Serializable {
 	private String images;
 	private String phones;
 	private String address;
-	
+
 	private Date create_date;
 	private Date update_date;
 	private int is_active;
@@ -53,21 +53,26 @@ public class Users implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "users")
 	List<Likes> likes;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "users")
 	List<Products_reviews> product_reviews;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "users")
-	List<Orders> orders ;
-	
+	List<Orders> orders;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "users")
-	List<Histories> histories ;
+	List<Histories> histories;
 	// khóa ngoại
 	@ManyToOne
-	@JoinColumn(name="roles_id")
+	@JoinColumn(name = "roles_id")
 	Roles roles;
-	
-}	
+
+	@Override
+	public String toString() {
+		return "Users{" + "user_names=" + id + '}';
+	}
+
+}

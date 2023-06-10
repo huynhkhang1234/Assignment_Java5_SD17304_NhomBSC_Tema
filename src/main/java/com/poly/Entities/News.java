@@ -15,6 +15,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 @Data
 @Getter
 @Setter
@@ -22,8 +23,8 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
-@Table(name ="news")
-public class News implements Serializable  {
+@Table(name = "news")
+public class News implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,23 +36,19 @@ public class News implements Serializable  {
 	private Date create_date;
 	private Date update_date;
 	private int is_active;
-	
+
 	// khóa ngoại
 	@ManyToOne
-	@JoinColumn(name="categories_id")
+	@JoinColumn(name = "categories_id")
 	Categories_news categories_news;
 
 	@ManyToOne
-	@JoinColumn(name="users_id")
+	@JoinColumn(name = "users_id")
 	Users users;
-	
-	 @Override
-	    public String toString() {
-	        return "News{" +
-	               "id=" + id +
-	               ", title='" + titles + '\'' +
-	               ", content='" + contents + '\'' +	              
-	               '}';
-	    }
+
+	@Override
+	public String toString() {
+		return "News{" + "id=" + id + '}';
+	}
 
 }
