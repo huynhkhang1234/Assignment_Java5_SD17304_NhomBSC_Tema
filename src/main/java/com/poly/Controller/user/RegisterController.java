@@ -1,6 +1,8 @@
 package com.poly.Controller.user;
 
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -29,10 +31,10 @@ public class RegisterController {
 	
 	@PostMapping("/user/register")
 	public String signup( @Valid @ModelAttribute("user") Users_bean model, BindingResult result) {
-		if (result.hasErrors()) {
-			System.out.println(result.hasErrors());
-			return "/user/register";
-		} else {
+//		if (result.hasErrors()) {
+//			System.out.println(result.hasErrors());
+//			return "/user/register";
+//		} else {
 			Users acc = new Users();
 			Roles roles = new Roles();
 			
@@ -41,15 +43,19 @@ public class RegisterController {
 			acc.setLast_names(model.getLast_names().trim());
 			acc.setEmail(model.getEmail().trim());
 			acc.setPass_words(model.getPass_words().trim());
-			
+			acc.setAddress(null);
+			acc.setPhones(null);
+			acc.setImages(null);
+			acc.setCreate_date(new Date(System.currentTimeMillis()));
+			acc.setUpdate_date(null);
 			roles.setId(2);
 			roles.setRoles("user");
 			roles.setActions("views");
 			acc.setRoles(roles);
 			
 			this.userDao.save(acc);
-			return "/user/login";
-		}
+			return "redirect:/user/login";
+//		}
 	}
 	
 	

@@ -28,8 +28,8 @@ public interface UsersDAO extends JpaRepository<Users, Integer> {
 	public List<Users> getDemo();
 	
 	
-	@Query("SELECT n FROM Users n")
-	List<Users> findAll();
+	@Query("SELECT n FROM Users n where n.is_active = 1 or n.is_active = 3")
+	List<Users> findByEquals();
 	
 	
 }	

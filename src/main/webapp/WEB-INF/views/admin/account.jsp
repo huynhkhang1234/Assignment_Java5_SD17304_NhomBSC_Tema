@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr" %>
 <%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +44,7 @@
                 </div>
             </div>
             <!--from-->
-            <fr:form class="above" action="/admin/account"  method="POST" modelAttribute="news" enctype="multipart/form-data">
+            <fr:form class="above" action="/admin/account"  method="POST" modelAttribute="users" enctype="multipart/form-data">
             <div class="row">
                     <div class="col-12">
                         <img src="" alt="">
@@ -54,7 +55,7 @@
                             <label class="col-form-label">ID</label>
                         </div>
                         <div class="col-auto">
-                            <fr:input path="id" class="form-control"/>
+                            <input name="id" value="${users.id}" class="form-control" readonly />
                         </div>
                     </div>
                     <div class="col-3">
@@ -129,12 +130,14 @@
                             <label class="col-form-label">Vai trò</label>
                         </div>
                         <div class="col-auto">
-                        
-                            <fr:select path="${roles.id}" class="form-select" aria-label="Default select example">
-                                <option selected value="1">Quản lý</option>
-                                <option value="3">Nhân viên</option>
-                                <option value="2">Người dùng</option>
+                       
+                        <fr:select path="roles" class="form-select" aria-label="Default select example">
+                                <option ${users.roles.id == 1 ? 'selected':'' } value="1">Quản lý</option>
+                                <option ${users.roles.id == 3 ? 'selected':'' } value="3">Nhân viên</option>
+                                <option ${users.roles.id == 2 ? 'selected':'' } value="2">Người dùng</option>
                             </fr:select>
+                       
+                            
                         </div>
                        
                     </div>
@@ -144,9 +147,8 @@
                             <label class="col-form-label">Ngày tạo</label>
                         </div>
                         <div class="col-auto">
-                        <fr:input path="create_date" class="form-control"/>
+                        <input value="${users.create_date}" class="form-control"/>
                             
-                             <input type="text"  name="create_date"/>
                         </div>
                     </div>
                     <div class="col-3">
@@ -154,20 +156,45 @@
                             <label class="col-form-label">Ngày cập nhật</label>
                         </div>
                         <div class="col-auto">
-                            <fr:input path="update_date" class="form-control"/>
+                            <input value="${users.update_date}" class="form-control"/>
                             
                         </div>
                     </div>
-                   
+					<div class="col-4" style="padding: 0px;">
+						
 
-                </div>
+						<div class="col-10" style="margin: 25px; width: 90%">
+							<div style="width: 100%; height: 200px; border: 1px dotted gray;">
+								<c:if test="${!empty name}">
+									<img alt="" src="${name}" id="img" width="100%" height="100%"
+									style="object-fit: contain;">
+								</c:if>
+								<c:if test="${empty name}">
+									<img alt="" src="/images/user-img/${users.images}" id="img" width="100%" height="100%"
+									style="object-fit: contain;">
+								</c:if>
+							</div>
+						</div>
+						<!-- /.card-body -->
+						<div style="margin: 25px; width: 90%; margin-top: 0px;" class="input-group date" id="reservationdate"data-target-input="nearest">
+
+							<input name="file" id="inputGroupFile01" type="file"
+								cssClass="form-control datetimepicker-input"
+								placeholder="choose file" />
+							
+						</div>
+
+
+					</div>
+
+				</div>
                 <!--btn-->
 
                 <div class="btn-account">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
                         <fr:button class="btn btn-warning"
-				formaction="/account/update/${users.id}">Cập nhật</fr:button>
+								formaction="/account/update/${users.id}">Cập nhật</fr:button>
 
                     </div>
                 </div>
@@ -206,12 +233,17 @@
                                 <td>${item.roles.id}</td>
                                 <td style="text-align: center;">
                                     <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                        data-bs-target="#modal-active">
-
-                                        <i class="fa-solid fa-lock "></i>
+                                        data-bs-target="#modal-Close${item.id}">
+                                        <c:if test="${item.is_active == 3}">
+                                        	<i class="fa-solid fa-lock "></i>
+                                        </c:if>
+                                        <c:if test="${item.is_active == 1}">
+                                        	<i class="bi bi-unlock-fill"></i>
+                                        </c:if>
                                     </button>
 
-                                    <div class="modal fade" id="modal-active" data-bs-backdrop="static"
+									<c:if test="${item.is_active == 3}">
+									<div class="modal fade" id="modal-Close${item.id}" data-bs-backdrop="static"
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                         aria-hidden="true">
                                         <div class=" modal-dialog">
@@ -222,24 +254,50 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-
                                             <div class="modal-body">
 
-                                                <p style="font-size: 19px;">Bạn có muốn khóa thông tin </p>
+                                                <p style="font-size: 19px;">Bạn có muốn Mở khóa thông tin của ${item.user_names} </p>
 
                                             </div>
-
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Yes</button>
+                                               <button type="button" class="btn btn-secondary"
+													data-bs-dismiss="modal">NO</button>
+												<a href="/account/close/${item.id}" class="btn btn-primary">YES</a>
                                             </div>
                                         </div>
                                     </div>
+									</c:if>
+									<c:if test="${item.is_active == 1}">
+									<div class="modal fade" id="modal-Close${item.id}" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class=" modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">
+                                                   Mở Khóa tài khoản </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <p style="font-size: 19px;">Bạn có muốn  Khóa thông tin của ${item.user_names} </p>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                               <button type="button" class="btn btn-secondary"
+													data-bs-dismiss="modal">NO</button>
+												<a href="/account/close/${item.id}" class="btn btn-primary">YES</a>
+                                            </div>
+                                        </div>
+                                    </div>
+									</c:if>
+                                    
+                                    
+                                    
                 </div>
                 </td>
-
-                <td></td>
+                <td >${item.images}</td>
                 <td>
                 <!-- Modal update --> 
                 				<a href="/account/edit/${item.id}"
@@ -305,6 +363,14 @@
     const sidebarList = document.querySelectorAll('.sidebar');
     const sidebarActive = document.querySelector('.sidebar#account');
 
+    let img = document.getElementById('img');
+    let input = document.getElementById('inputGroupFile01');
+    input.onchange = (e) => {
+        if (input.files[0])
+            img.src = URL.createObjectURL(input.files[0]);
+    } 
+    
+    
     sidebarList.forEach((sidebar) => {
     	sidebar.firstElementChild.classList.remove('active');
         });
@@ -313,3 +379,11 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+

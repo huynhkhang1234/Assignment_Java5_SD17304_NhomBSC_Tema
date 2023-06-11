@@ -118,7 +118,10 @@
                                 <h2>Tài khoản của tôi</h2>
                                 <h4>Quản lý tài khoản để bảo mật</h4>
                             </div>
-                            <div class="col-8 pt-3">
+                            
+                             <!-- form  -->
+                             
+                            <fr:form class="col-8 pt-3" method="POST" modelAttribute="users" enctype="multipart/form-data">
                                 <div class="p-3">
                                     <div class="row mb-3 align-items-center">
                                         <div class="col-4">
@@ -126,7 +129,7 @@
                                         </div>
                                         <div class="col-7">
                                             <input type="text" id="txtUsername" class="form-control" 
-                                                aria-labelledby="passwordHelpInline">
+                                                aria-labelledby="passwordHelpInline" value="">
                                         </div>
                                     </div>
                                     <div class="row mb-3 align-items-center">
@@ -175,7 +178,9 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </fr:form>
+                            
+                            <!-- form  -->
                             <div class="col-4 pt-3">
                                 <div class="p-3 d-flex flex-column align-items-center justify-content-center">
                                     <div class="profile-top mb-5">

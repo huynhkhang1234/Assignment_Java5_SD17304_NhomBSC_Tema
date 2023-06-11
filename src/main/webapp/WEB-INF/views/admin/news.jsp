@@ -179,7 +179,7 @@
 											class="input-group date" id="reservationdate"
 											data-target-input="nearest">
 											
-													<fr:input path="images" id="inputGroupFile01" type="file" cssClass="form-control datetimepicker-input"
+											<fr:input path="images" id="inputGroupFile01" type="file" cssClass="form-control datetimepicker-input"
 											 placeholder="choose file" />
 											
 										
