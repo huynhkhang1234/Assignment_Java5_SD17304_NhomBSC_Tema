@@ -22,7 +22,13 @@
 	text-align: left;
 	overflow: hidden;
 }
+<<<<<<< HEAD
 
+=======
+.register-form .col-md-5 {
+float: left;
+}
+>>>>>>> parent of d90bdff (register)
 .login-form-container input {
 	background: #ffffff none repeat scroll 0 0;
 	border: medium none rgba(0, 0, 0, 0);
@@ -118,6 +124,7 @@
                                                 <input type="hidden" name="form_type" value="create_customer"><input
                                                     type="hidden" name="utf8" value="✓">
 
+<<<<<<< HEAD
 
                                                 <label for="FirstName" class="hidden-label">Họ</label>
                                                 <input type="text" name="customer[first_name]" id="first_names"
@@ -136,6 +143,43 @@
                                                 <input type="password" name="customer[password]" id="pass_words"
                                                     class="input-full" placeholder="">
 
+=======
+												
+												<div class="col-md-5" style="margin-right: 70px;">
+												<label for="FirstName" class="hidden-label">Họ</label>
+                                                <input type="text" name="first_names" id="first_names"
+                                                    class="input-full" placeholder="" autocapitalize="words"
+                                                    autofocus="">
+                                                    <p name="message">${FirstName}</p>
+												</div>
+												
+                                                
+												<div class="col-md-5" style="width: 250px;">
+												<label for="LastName" class="hidden-label">Tên</label>
+                                                <input type="text" name="last_names" id="last_names"
+                                                    class="input-full" placeholder="" autocapitalize="words" >
+                                                    <p name="message">${LastName}</p>
+												</div>
+                                                
+                                                    
+                                                    
+												<label for="UserName" class="hidden-label">Tên Đăng Nhập</label>
+                                                <input type="text" name="user_names" id="user_names"
+                                                    class="input-full" placeholder="" autocapitalize="words"
+                                                    autofocus="" >
+                                                    <p name="message">${UserName}</p> <br>
+                                                    
+                                                <label for="Email" class="hidden-label">Email</label>
+                                                <input type="email" name="email" id="email" class="input-full"
+                                                    placeholder="" autocorrect="off" autocapitalize="off" >
+													<p name="message">${email}</p> <br>
+													
+                                                <label for="CreatePassword" class="hidden-label">Mật Khẩu</label>
+                                                <input type="password" name="pass_words" id="pass_words"
+                                                    class="input-full" placeholder="">
+													<p name="message">${password}</p>
+													
+>>>>>>> parent of d90bdff (register)
                                                 <div class="form-action-button">
                                                     <button type="submit" class="theme-default-button">Tạo</button>
                                                 </div>

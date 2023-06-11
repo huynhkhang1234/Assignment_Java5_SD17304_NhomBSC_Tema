@@ -18,6 +18,7 @@ public interface UsersDAO extends JpaRepository<Users, Integer> {
 //	public List<Users> getDemo();
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	
 	public Users findByEmailEquals(String email);
@@ -26,4 +27,6 @@ public interface UsersDAO extends JpaRepository<Users, Integer> {
 //	public List<Users> getDemo();
 >>>>>>> parent of 0060f9a (Register)
 	
+=======
+>>>>>>> parent of d90bdff (register)
 }	

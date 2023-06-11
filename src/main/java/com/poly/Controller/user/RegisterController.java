@@ -29,7 +29,9 @@ public class RegisterController {
 	public String signup(Users_bean model, BindingResult result) {
 		if (result.hasErrors()) {
 			return "/user/register";
-		} else {
+		}
+			
+			else {
 			Users acc = new Users();
 			Roles roles = new Roles();
 			acc.setUser_names(model.getUser_names().trim());
@@ -44,8 +46,20 @@ public class RegisterController {
 			this.userDao.save(acc);
 			return "/user/register";
 		}
+		
 	}
 	
 	
 	
+<<<<<<< HEAD
+=======
+	
+	
+	
+	
+	
+	
+	
+	
+>>>>>>> parent of d90bdff (register)
 }
