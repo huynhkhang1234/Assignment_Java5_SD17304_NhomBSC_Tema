@@ -4,29 +4,16 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.poly.Entities.Users;
 
+@Repository
 public interface UsersDAO extends JpaRepository<Users, Integer> {
-	@Query("SELECT u FROM Users u WHERE u.email = :email")
-	Users findByEmail(@Param("email") String username);
 	
-	public Users findByEmailEquals(String email);
-
-//	@Query(value = "SELECT user_names, first_names, last_names, roles_id FROM Users")
-//	public List<Users> getDemo();
+//	
+//
+	@Query(value = "SELECT acc FROM Users acc")
+	public List<Users> getDemo();
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-	
-	public Users findByEmailEquals(String email);
-
-//	@Query(value = "SELECT user_names, first_names, last_names, roles_id FROM Users")
-//	public List<Users> getDemo();
->>>>>>> parent of 0060f9a (Register)
-	
-=======
->>>>>>> parent of d90bdff (register)
 }	

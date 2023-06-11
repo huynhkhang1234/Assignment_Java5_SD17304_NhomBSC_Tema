@@ -1,13 +1,11 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="UTF-8"%>
+
 <header class="header">
         <nav class="my-navbar">
             <div class="container d-grid">
                 <a href="index.html" class="brand d-flex gap-2">
-                    <img src="../images/favicon.svg" alt="" width="36">
+                    <img src="images/favicon.svg" alt="" width="36">
                     <span>Brand</span>
                 </a>
                 <ul class="nav-menu">
@@ -300,22 +298,18 @@
                     </li>
                 </ul>
                 
+                <div class="header__user-actions d-flex">
+                    <!-- Cái này là mặc định -->
+                    <%@include file="_header__user-default.jsp" %> 
+                    
+                    <!-- Cái này là đăng nhập gồi -->
+                     <%-- <%@include file="_header__user-actived.jsp" %>  --%>
+                </div>
 
-
-			<div class="header__user-actions d-flex">
-				<c:if test="${empty sessionScope.userLogin}">
-					<%@include file="_header__user-default.jsp"%>
-
-				</c:if>
-				<c:if test="${not empty sessionScope.userLogin}">
-					<%@include file="_header__user-actived.jsp"%>
-				</c:if>		
-			</div>
-
-			<i class="bi bi-list toggle-navbar"></i>
-		</div>
-	</nav>
-	<div class="search-box container">
-		<input type="search" name="" id="" placeholder="Tìm kiếm ở đây...">
-	</div>
-</header>
+                <i class="bi bi-list toggle-navbar"></i>
+            </div>
+        </nav>
+        <div class="search-box container">
+            <input type="search" name="" id="" placeholder="Tìm kiếm ở đây...">
+        </div>
+    </header>

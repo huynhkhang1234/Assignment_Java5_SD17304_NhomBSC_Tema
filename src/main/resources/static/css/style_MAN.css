@@ -599,6 +599,8 @@ canvas#chart {
     max-height: 59%;
     max-width: 95%;
 
+    /* max-width: 100%;
+    margin-top: 2rem; */
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
 
@@ -773,7 +775,7 @@ main .recent-transactions .card-details .card {
         display: inline-block;
         width: 3rem;
         height: 3rem;
-        postion: absolute;
+        position: absolute;
         top: 1rem;
         right: 1rem;
         z-index: 4;
