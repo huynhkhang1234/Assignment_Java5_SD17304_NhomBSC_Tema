@@ -83,8 +83,9 @@
 										</div>
 
 										<ul class="social">
-											<li><a href="" data-tip="Xem lướt qua"><i
-													class="bi bi-eye"></i></a></li>
+											<li><a href="" data-tip="Xem lướt qua" data-bs-toggle="modal"
+                                            data-bs-target="#QuickViewModal"><i
+													class="bi bi-eye" ></i></a></li>
 											<li><a href="" data-tip="Thêm vào danh sách yêu thích"><i
 													class="bi bi-heart"></i></a></li>
 
