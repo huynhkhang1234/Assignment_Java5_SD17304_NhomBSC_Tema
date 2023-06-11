@@ -447,7 +447,6 @@ main section.middle .cards .card {
     box-shadow: 0 2rem 3rem var(--color-danger-light);
     transition: all 300ms ease;
     width: 250px;
-    /* width: 230px; */
     height: 155px;
 
 }
@@ -513,6 +512,7 @@ main section.middle .card .middle .chip {
     padding-bottom: 16px;
 
 }
+
 
 main section.middle .card .bottom {
     display: flex;
@@ -599,8 +599,6 @@ canvas#chart {
     max-height: 59%;
     max-width: 95%;
 
-    /* max-width: 100%;
-    margin-top: 2rem; */
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
 
