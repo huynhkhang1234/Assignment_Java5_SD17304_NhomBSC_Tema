@@ -7,16 +7,16 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B.S.C.Team - CarService</title>
-
-<!-- Link To Base CSS -->
-<%@include file="component/_linkCSS.jsp"%>
-
-<link rel="stylesheet" href="../css/product.css">
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.S.C.Team - CarService</title>
+	
+	<!-- Link To Base CSS -->
+	<%@include file="component/_linkCSS.jsp" %>
+	
+    <link rel="stylesheet" href="../css/product.css">
+	
 </head>
 
 <body>
@@ -83,8 +83,9 @@
 										</div>
 
 										<ul class="social">
-											<li><a href="" data-tip="Xem lướt qua"><i
-													class="bi bi-eye"></i></a></li>
+											<li><a href="" data-tip="Xem lướt qua" data-bs-toggle="modal"
+                                            data-bs-target="#QuickViewModal"><i
+													class="bi bi-eye" ></i></a></li>
 											<li><a href="" data-tip="Thêm vào danh sách yêu thích"><i
 													class="bi bi-heart"></i></a></li>
 
@@ -917,17 +918,35 @@
             </div>
         </div>
 
-    </main>
+	</main>
 
-    
-    
-    
-    <!-- Footer Start -->
-	<%@include file = "component/_footer.jsp" %>
+	<!-- Footer Start -->
+	<%@include file="component/_footer.jsp"%>
 	<!-- Footer End -->
 
-    <!-- Link To Base JS -->
-    <%@include file = "component/_linkJS.jsp" %>
+	<!-- Link To Base JS -->
+	<%@include file="component/_linkJS.jsp"%>
+	<!-- thư viện query  -->
+	<script src="https:code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		// sử lí code ajax
+		function addToCart( id) {									
+			$.ajax({
+				url : "/shop/user/addCart",
+				type : "POST",
+				data : JSON.stringify({
+					id : id		
+				}),
+			contentType : "application/json",
+				success : function(data) {
+					 alert("Thêm sản phẩm thành công"); 
+				},
+				error : function(data) {
+					 alert("Lỗi thêm sản phẩm thất bại"); 
+				}
+			});
+		}
+	</script>
 </body>
 
 </html>

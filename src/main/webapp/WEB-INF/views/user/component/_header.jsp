@@ -7,7 +7,7 @@
         <nav class="my-navbar">
             <div class="container d-grid">
                 <a href="index.html" class="brand d-flex gap-2">
-                    <img src="images/favicon.svg" alt="" width="36">
+                    <img src="../images/favicon.svg" alt="" width="36">
                     <span>Brand</span>
                 </a>
                 <ul class="nav-menu">
