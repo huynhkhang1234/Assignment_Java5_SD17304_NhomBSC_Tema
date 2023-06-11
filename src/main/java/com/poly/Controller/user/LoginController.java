@@ -49,8 +49,6 @@ public class LoginController {
 	public String isLogin(@RequestParam(name = "email") String email,
 			@RequestParam(name = "pass_words") String password,@Valid @ModelAttribute("login") LoginBean bean,
 			BindingResult result) {
-		System.out.println(email);
-		System.out.println(password);
 		if (result.hasErrors()) {
 			System.out.println("Có lỗi");
 			return "user/login";
