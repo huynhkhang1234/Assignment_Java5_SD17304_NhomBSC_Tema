@@ -60,7 +60,10 @@
                                 class="profile d-flex flex-row-reverse align-items-center gap-2 btn btn-outline-dark dropdown-toggle"
                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="profile-photo overflow-hidden">
-                                    <img src="/images/profile-1.jpg">
+                                    <c:if test="${not empty sessionScope.userLogin}">
+							<img src="/images/user-img/${sessionScope.userLogin.getImages()}" id="img" height="50px"
+							style="width: auto !important;">
+						</c:if>
                                 </div>
                                 <div class="profile__content d-flex flex-column ">
                                     <p style="margin: 0;">

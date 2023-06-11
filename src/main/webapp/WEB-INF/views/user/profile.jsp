@@ -128,8 +128,11 @@
                                             <label for="txtUsername" class="col-form-label">Tên đăng nhập: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="text" id="txtUsername" class="form-control" 
-                                                aria-labelledby="passwordHelpInline" value="">
+                                        <c:if test="${not empty sessionScope.userLogin}">
+												<input type="text" id="txtUsername" class="form-control" 
+                                                aria-labelledby="passwordHelpInline" value="${sessionScope.userLogin.getUser_names()}">
+										</c:if>
+                                            
                                         </div>
                                     </div>
                                     <div class="row mb-3 align-items-center">
@@ -137,8 +140,11 @@
                                             <label for="txtEmail" class="col-form-label">Email: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="email" id="txtEmail" class="form-control" 
-                                                aria-labelledby="passwordHelpInline">
+                                        <c:if test="${not empty sessionScope.userLogin}">
+												 <input type="email" id="txtEmail" class="form-control" 
+                                                aria-labelledby="passwordHelpInline"value="${sessionScope.userLogin.getEmail()}">
+										</c:if>
+                                           
                                         </div>
                                     </div>
                                     <div class="row mb-3 align-items-center">
@@ -146,8 +152,11 @@
                                             <label for="txtNumberPhone" class="col-form-label">Số điện thoại: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="text" id="txtNumberPhone" class="form-control" 
-                                                aria-labelledby="passwordHelpInline">
+                                          <c:if test="${not empty sessionScope.userLogin}">
+												 <input type="text" id="txtNumberPhone" class="form-control" 
+                                                aria-labelledby="passwordHelpInline" value="${sessionScope.userLogin.getPhones()}">
+										</c:if>
+                                            
                                         </div>
                                     </div>
                                     <div class="row mb-3 align-items-center">
@@ -182,24 +191,32 @@
                             
                             <!-- form  -->
                             <div class="col-4 pt-3">
-                                <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                                    <div class="profile-top mb-5">
-                                        <div class="profile-box">
-                                            <a href="#" class="profile-link">
-                                                <img src="" alt="" style="background-image: url(../images/anh7.jpg);"
-                                                    class="profile-img">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="profile-bottom">
-                                        <div class="mb-3">
-                                            <input class="form-control" type="file" id="formFile">
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="col-10" style="margin: 25px; width: 90%">
+							<div style="width: 100%; height: 200px; border: 1px dotted gray;">
+								<c:if test="${!empty name}">
+									<img alt="" src="${name}" id="img" width="100%" height="100%"
+									style="object-fit: contain;">
+								</c:if>
+								<c:if test="${empty name}">
+									<img alt="" src="/images/user-img/${sessionScope.userLogin.getImages()}" id="img" width="100%" height="100%"
+									style="object-fit: contain;">
+								</c:if>
+							</div>
+						</div>
+						<!-- /.card-body -->
+						<div style="margin: 25px; width: 90%; margin-top: 0px;" class="input-group date" id="reservationdate"data-target-input="nearest">
+
+							<input name="file" id="inputGroupFile01" type="file"
+								cssClass="form-control datetimepicker-input"
+								placeholder="choose file" />
+							
+						</div>
                             </div>
+                            <!-- form -->
                         </div>
                     </div>
+                    
+                    
                     <div class="tab-pane fade " id="profile" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                         <div class="container overflow-hidden text-center">
                             <div class="row">
@@ -870,6 +887,25 @@
         const triggerFirstTabEl = document.querySelector('#v-pills-tab li:first-child button')
         bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab
     </script>
+    
+    <script type="text/javascript">
+    const sidebarList = document.querySelectorAll('.sidebar');
+    const sidebarActive = document.querySelector('.sidebar#account');
+
+    let img = document.getElementById('img');
+    let input = document.getElementById('inputGroupFile01');
+    input.onchange = (e) => {
+        if (input.files[0])
+            img.src = URL.createObjectURL(input.files[0]);
+    } 
+    
+    
+    sidebarList.forEach((sidebar) => {
+    	sidebar.firstElementChild.classList.remove('active');
+        });
+    sidebarActive.firstElementChild.classList.add('active');
+    </script>
+    
 </body>
 
 </html>
