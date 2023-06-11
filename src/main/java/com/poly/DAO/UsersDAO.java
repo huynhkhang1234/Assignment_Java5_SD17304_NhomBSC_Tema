@@ -17,5 +17,13 @@ public interface UsersDAO extends JpaRepository<Users, Integer> {
 //	@Query(value = "SELECT user_names, first_names, last_names, roles_id FROM Users")
 //	public List<Users> getDemo();
 	
+<<<<<<< HEAD
+=======
+	
+	public Users findByEmailEquals(String email);
+
+//	@Query(value = "SELECT user_names, first_names, last_names, roles_id FROM Users")
+//	public List<Users> getDemo();
+>>>>>>> parent of 0060f9a (Register)
 	
 }	

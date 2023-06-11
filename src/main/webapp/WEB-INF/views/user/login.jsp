@@ -102,10 +102,17 @@
 					<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
 						<div class="login">
 							<div id="CustomerLoginForm">
+<<<<<<< HEAD
 								<fr:form modelAttribute="login" method="post"
 									action="/user/login" id="customer_login">
 									<input type="hidden" name="form_type" value="customer_login">
 									<input type="hidden" name="utf8" value="✓">
+=======
+								<form method="post" action="/account/login" id="customer_login"
+									accept-charset="UTF-8" data-login-with-shop-sign-in="true">
+									<input type="hidden" name="form_type" value="customer_login"><input
+										type="hidden" name="utf8" value="✓">
+>>>>>>> parent of 0060f9a (Register)
 
 									<div class="login-form-container">
 										<div class="login-text" style="text-align: center;">
