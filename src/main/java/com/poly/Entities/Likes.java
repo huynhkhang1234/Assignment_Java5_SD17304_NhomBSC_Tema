@@ -41,5 +41,10 @@ public class Likes implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "products_id")
 	Products products;
-
+	
+	 @Override
+	    public String toString() {
+	        return "Likes{" +
+	               "id=" + id +'}';
+	    }
 }

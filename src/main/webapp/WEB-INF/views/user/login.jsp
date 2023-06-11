@@ -1,21 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr"%>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.S.C.Team - CarService</title>
-	
-	<!-- Link To Base CSS -->
-	<%@include file="component/_linkCSS.jsp" %>
-	
-	<style>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B.S.C.Team - CarService</title>
+
+<!-- Link To Base CSS -->
+<%@include file="component/_linkCSS.jsp"%>
+
+<style>
 .login-form-container {
 	background: #f3f3f3 none repeat scroll 0 0;
 	padding: 37px 40px;
@@ -81,10 +81,10 @@
 <body>
 
 	<!-- Header Start -->
-	<%@include file = "component/_header.jsp" %>
+	<%@include file="component/_header.jsp"%>
 	<!-- Header End -->
-    
-    <main>
+
+	<main>
 
 		<!-- ========================== BREADCRUMB ========================== -->
 		<section class="breadcrumb">
@@ -102,28 +102,39 @@
 					<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
 						<div class="login">
 							<div id="CustomerLoginForm">
-								<form method="post" action="/account/login" id="customer_login"
-									accept-charset="UTF-8" data-login-with-shop-sign-in="true">
-									<input type="hidden" name="form_type" value="customer_login"><input
-										type="hidden" name="utf8" value="✓">
+								<fr:form modelAttribute="login" method="post"
+									action="/user/login" id="customer_login">
+									<input type="hidden" name="form_type" value="customer_login">
+									<input type="hidden" name="utf8" value="✓">
 
 									<div class="login-form-container">
 										<div class="login-text" style="text-align: center;">
 											<h2>Đăng Nhập</h2>
 										</div>
 										<div class="login-form">
-											<label for="Email" class="hidden-label">Email</label> <input
-												type="email" name="customer[email]" id="CustomerEmail"
-												class="input-full" placeholder="" autocorrect="off"
-												autocapitalize="off" autofocus=""> <label for="Pass"
-												class="hidden-label">Mật khẩu</label> <input type="password"
-												value="" name="customer[password]" id="CustomerPassword"
-												class="input-full" placeholder="">
+											<label for="Email" class="hidden-label">Email</label>
+											<fr:input path="email" class="input-full"
+												placeholder="Vui lòng nhập Email" value="${email}" />
+											<fr:errors path="email" />
+											<br> <label for="Pass" class="hidden-label">Mật
+												khẩu</label>
+											<fr:input path="pass_words" type="password" name="pass_words"
+												value="${pass}" placeholder="Vui lòng nhập mật khẩu" />
+											<fr:errors path="pass_words" class="input-full" />
+											<div style="display: flex;">
+											<input style="width: 17px" type="checkbox" name="remember" value="true">
+											<span style="padding-top: 10px;margin-left: 5px">Lưu thông tin</span>
+											</div>
+											
+											
 
 											<div class="login-toggle-btn">
 												<div class="form-action-button">
-													<button type="submit" class="theme-default-button">Xác
-														Nhận</button>
+
+													<button type="submit" class="theme-default-button">
+														Xác Nhận</button>
+
+
 
 													<a href="#recover" id="RecoverPassword"
 														data-bs-toggle="modal" data-bs-target="#exampleModal">Quên
@@ -131,13 +142,13 @@
 
 												</div>
 												<div class="account-optional-action">
-													<a href="/user/register"
-														id="customer_register_link">Tạo Tài khoản</a>
+													<a href="/user/register" id="customer_register_link">Tạo
+														Tài khoản</a>
 												</div>
 											</div>
 										</div>
 									</div>
-								</form>
+								</fr:form>
 							</div>
 							<div id="RecoverPasswordForm" style="display: none;">
 								<form method="post" action="/account/recover"
@@ -174,12 +185,12 @@
 		</div>
 
 	</main>
-    
-    
-    <!-- Footer Start -->
-	<%@include file = "component/_footer.jsp" %>
+
+
+	<!-- Footer Start -->
+	<%@include file="component/_footer.jsp"%>
 	<!-- Footer End -->
-	
+
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -207,10 +218,10 @@
 			</div>
 		</div>
 	</div>
-	
 
-    <!-- Link To Base JS -->
-    <%@include file = "component/_linkJS.jsp" %>
+
+	<!-- Link To Base JS -->
+	<%@include file="component/_linkJS.jsp"%>
 </body>
 
 </html>
