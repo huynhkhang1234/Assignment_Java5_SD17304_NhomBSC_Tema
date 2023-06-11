@@ -16,4 +16,6 @@ public interface UsersDAO extends JpaRepository<Users, Integer> {
 	@Query(value = "SELECT acc FROM Users acc")
 	public List<Users> getDemo();
 	
+	
+	
 }	

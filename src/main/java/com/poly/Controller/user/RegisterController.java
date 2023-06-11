@@ -31,10 +31,9 @@ public class RegisterController {
 	@PostMapping("/user/register")
 	public String signup( @Valid @ModelAttribute("user") Users_bean model, BindingResult result) {
 		if (result.hasErrors()) {
+			System.out.println(result.hasErrors());
 			return "/user/register";
-		}
-			
-			else {
+		} else {
 			Users acc = new Users();
 			
 			Roles roles = new Roles();
@@ -54,8 +53,8 @@ public class RegisterController {
 			
 			return "/user/login";
 		}
-		
 	}
+	
 	
 	
 	
