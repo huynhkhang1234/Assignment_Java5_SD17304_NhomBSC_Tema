@@ -28,6 +28,7 @@ public class Galleries_bean  {
 	private int id;
 	@NotBlank(message = "Vui lòng chọn ảnh")
 	private String images;	
+	
 	Products_bean products;
 	
 }

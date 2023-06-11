@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr" %>
+<%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,8 +43,8 @@
                 </div>
             </div>
             <!--from-->
-            <div class="above">
-                <div class="row">
+            <fr:form class="above" action="/admin/account"  method="POST" modelAttribute="news" enctype="multipart/form-data">
+            <div class="row">
                     <div class="col-12">
                         <img src="" alt="">
                     </div>
@@ -53,7 +54,7 @@
                             <label class="col-form-label">ID</label>
                         </div>
                         <div class="col-auto">
-                            <input class="form-control">
+                            <fr:input path="id" class="form-control"/>
                         </div>
                     </div>
                     <div class="col-3">
@@ -61,7 +62,7 @@
                             <label class="col-form-label">Tên tài khoản</label>
                         </div>
                         <div class="col-auto">
-                            <input class="form-control">
+                            <fr:input path="user_names" class="form-control"/>
                         </div>
                     </div>
                     <div class="col-3">
@@ -72,7 +73,7 @@
                                     <label class="col-form-label">Tên</label>
                                 </div>
                                 <div class="col-auto">
-                                    <input class="form-control">
+                                    <fr:input path="first_names" class="form-control"/>
                                 </div>
                             </div>
                             <div class="col-md">
@@ -80,7 +81,7 @@
                                     <label class="col-form-label">Họ</label>
                                 </div>
                                 <div class="col-auto">
-                                    <input class="form-control">
+                                    <fr:input path="last_names" class="form-control"/>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +94,7 @@
                             <label class="col-form-label">Email</label>
                         </div>
                         <div class="col-auto">
-                            <input class="form-control">
+                            <fr:input path="email" class="form-control"/>
                         </div>
                     </div>
                     <!--row2-->
@@ -102,7 +103,7 @@
                             <label class="col-form-label">Mật khẩu</label>
                         </div>
                         <div class="col-auto">
-                            <input class="form-control">
+                            <fr:input path="pass_words" class="form-control"/>
                         </div>
                     </div>
                     <div class="col-3">
@@ -110,7 +111,7 @@
                             <label class="col-form-label">Số điện thoại</label>
                         </div>
                         <div class="col-auto">
-                            <input class="form-control" type="number" max="10" min="1">
+                            <fr:input path="phones" class="form-control" type="number"/>
                         </div>
                     </div>
                     <div class="col-3">
@@ -118,7 +119,7 @@
                             <label class="col-form-label">Địa chỉ</label>
                         </div>
                         <div class="col-auto">
-                            <input class="form-control">
+                            <fr:input path="address" class="form-control"/>
                         </div>
                     </div>
 
@@ -128,12 +129,12 @@
                             <label class="col-form-label">Vai trò</label>
                         </div>
                         <div class="col-auto">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Quản lý</option>
-                                <option value="1">Nhân viên</option>
+                        
+                            <fr:select path="${roles.id}" class="form-select" aria-label="Default select example">
+                                <option selected value="1">Quản lý</option>
+                                <option value="3">Nhân viên</option>
                                 <option value="2">Người dùng</option>
-
-                            </select>
+                            </fr:select>
                         </div>
                        
                     </div>
@@ -143,7 +144,9 @@
                             <label class="col-form-label">Ngày tạo</label>
                         </div>
                         <div class="col-auto">
-                            <input class="form-control">
+                        <fr:input path="create_date" class="form-control"/>
+                            
+                             <input type="text"  name="create_date"/>
                         </div>
                     </div>
                     <div class="col-3">
@@ -151,19 +154,11 @@
                             <label class="col-form-label">Ngày cập nhật</label>
                         </div>
                         <div class="col-auto">
-                            <input class="form-control">
+                            <fr:input path="update_date" class="form-control"/>
+                            
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="col-auto">
-                            <label class="col-form-label">Ghi chú</label>
-                        </div>
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                                style="height: 100px"></textarea>
-                            <label for="floatingTextarea2"></label>
-                        </div>
-                    </div>
+                   
 
                 </div>
                 <!--btn-->
@@ -171,71 +166,13 @@
                 <div class="btn-account">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-                        <!--btn cập nhật-->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#modaledit">
+                        <fr:button class="btn btn-warning"
+				formaction="/account/update/${users.id}">Cập nhật</fr:button>
 
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                        <div class="modal fade" id="modaledit" data-bs-backdrop="static" data-bs-keyboard="false"
-                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class=" modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">
-                                            Cập nhật người dùng</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-
-                                    <div class="modal-body">
-
-                                        <p>Bạn có muốn cập nhật thông tin</p>
-
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Yes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--btn xóa-->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#modaldelete " tabindex="-1">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button> <!-- Modal delete -->
-                        <div class="modal fade" id="modaldelete" data-bs-backdrop="static" data-bs-keyboard="false"
-                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class=" modal-dialog ">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">
-                                            Xóa người dùng</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-
-                                    <div class="modal-body">
-
-                                        <p>Bạn có muốn xóa thông tin </p>
-
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Yes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div>
+            </fr:form>
+            
             <div class="below">
                 <div class="table-responsive mt-5" style="overflow-x: auto">
                     <table class="table table-bordered">
@@ -252,21 +189,21 @@
                                 <th>Vai trò</th>
                                 <th>Tình trạng</th>
                                 <th>Hình ảnh</th>
-                                <th>Ghi chú</th>
+                                <th colspan="2">Thao Tác</th>
                             </tr>
                         </thead>
                         <tbody>
-
+							<c:forEach var="item" items="${list}">
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>${item.id}</td>
+                                <td>${item.user_names}</td>
+                                <td>${item.first_names}</td>
+                                <td>${item.last_names}</td>
+                                <td>${item.email}</td>
+                                <td>${item.pass_words}</td>
+                                <td>${item.phones}</td>
+                                <td>${item.address}</td>
+                                <td>${item.roles.id}</td>
                                 <td style="text-align: center;">
                                     <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                         data-bs-target="#modal-active">
@@ -303,8 +240,45 @@
                 </td>
 
                 <td></td>
-                <td></td>
+                <td>
+                <!-- Modal update --> 
+                				<a href="/account/edit/${item.id}"
+										class="btn btn-primary"> 
+										<i class="bi bi-pencil-square"></i>
+									</a>
+									
+									
+										<button class="btn btn-danger" data-bs-toggle="modal"
+											data-bs-target="#modalDelte${item.id }">
+											<i class="bi bi-trash-fill"></i>
+										</button> <!-- Modal delete -->
+								
+                    </td>
                 </tr>
+                
+                
+                <!-- Modal -->
+								<div class="modal fade" id="modalDelte${item.id }" tabindex="-1"
+									aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+													title</h1>
+												<button type="button" class="btn-close"
+													data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">Bạn muốn Xóa Tài Khoản</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-bs-dismiss="modal">NO</button>
+												<a href="/account/delete/${item.id}" class="btn btn-primary">YES</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal -->
+</c:forEach>
 
                 </tbody>
                 </table>

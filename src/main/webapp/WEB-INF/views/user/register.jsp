@@ -105,10 +105,11 @@ color: red
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+                    
                         <div class="login">
                             <div id="CustomerLoginForm">
-                                <form action="/user/register" method="POST" modelAttribute="user" id="customer_register" accept-charset="UTF-8"
-                                    data-login-with-shop-sign-in="true" mod><input type="hidden" name="form_type"
+                                <fr:form action="/user/register" method="POST" modelAttribute="user" id="customer_register" accept-charset="UTF-8"
+                                    data-login-with-shop-sign-in="true" ><input type="hidden" name="form_type"
                                         value="customer_register"><input type="hidden" name="utf8" value="✓">
 
                                     <div class="login-form-container">
@@ -127,8 +128,8 @@ color: red
                                                 <input type="text" name="first_names" id="first_names"
                                                     class="input-full" placeholder="" autocapitalize="words"
                                                     autofocus="">
-                                                    <form:errors path="message" element="small"
-														cssClass="form-text text-danger"></form:errors>
+                                                    <fr:errors path="first_names" element="small"
+														cssClass="form-text text-danger"></fr:errors>
 												</div>
 												
                                                 
@@ -136,26 +137,32 @@ color: red
 												<label class="hidden-label">Tên</label>
                                                 <input type="text" name="last_names" id="last_names"
                                                     class="input-full" placeholder="" autocapitalize="words" >
-                                                    
+                                                    <fr:errors path="last_names" element="small"
+														cssClass="form-text text-danger"></fr:errors>
 												</div>
-                                                
+                                                <br>
                                                     
                                                     
 												<label class="hidden-label">Tên Đăng Nhập</label>
                                                 <input type="text" name="user_names" id="user_names"
                                                     class="input-full" placeholder="" autocapitalize="words"
                                                     autofocus="" >
-                                                   
+                                                   <fr:errors path="user_names" element="small"
+							cssClass="form-text text-danger"></fr:errors>
+							<br>
                                                     
                                                 <label  class="hidden-label">Email</label>
                                                 <input type="email" name="email" id="email" class="input-full"
                                                     placeholder="" autocorrect="off" autocapitalize="off" >
-													
+													<fr:errors path="email" element="small"
+							cssClass="form-text text-danger"></fr:errors>
+							<br>
 													
                                                 <label  class="hidden-label">Mật Khẩu</label>
                                                 <input type="password" name="pass_words" id="pass_words"
                                                     class="input-full" placeholder="">
-													
+													<fr:errors path="pass_words" element="small"
+							cssClass="form-text text-danger"></fr:errors>
 													
                                                 <div class="form-action-button">
                                                     <button type="submit" class="theme-default-button">Tạo</button>
@@ -165,10 +172,9 @@ color: red
                                             <div class="account-optional-action">
                                                 <a href="/user/index">Quay lại cửa hàng</a>
                                             </div>
-															${message}
                                         </div>
                                     </div>
-                                </form>
+                                </fr:form>
                             </div>
                             
                         </div>
