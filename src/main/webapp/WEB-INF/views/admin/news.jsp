@@ -2,8 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr"%>
+<%@page import="com.poly.Entities.Users"%>
+<%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
 <meta charset="UTF-8">
@@ -110,20 +113,32 @@
 																		<div class="col-sm-4">
 																			<div class="form-group">
 																				<fr:label path="" for="">Ngày đăng </fr:label>
-																				<fr:input path="create_date" cssClass="form-control"  />
 
+																				<c:if test="${empty news.create_date}">
+																					<input readonly class="form-control"
+																						value="<fmt:formatDate value="${now}" pattern="dd-MM-yyyy HH:mm" />" />
+																				</c:if>
+
+																				<c:if test="${!empty news.create_date}">
+																					<input readonly class="form-control"
+																						value="<fmt:formatDate value="${news.create_date}" pattern="dd-MM-yyyy HH:mm" />" />
+																				</c:if>
 
 																			</div>
-
 																		</div>
 																		<div class="col-sm-4">
 																			<fr:label path="" for="">Tài khoản</fr:label>
-																			
+
 																			<c:if test="${empty news.users}">
-																				<input name="users" value="${sessionScope.userLogin.user_names}" class="form-control" disabled="true" />
+																				<input name="users"
+																					value="${sessionScope.userLogin.user_names}"
+																					class="form-control" disabled="true" />
 																			</c:if>
+
 																			<c:if test="${!empty news.users}">
-																				<fr:input path="users.user_names" cssClass="form-control" disabled="true" />
+																				<input name="username"
+																					value="${news.users.user_names}"
+																					class="form-control" readonly />
 																			</c:if>
 
 
@@ -131,14 +146,15 @@
 																		<div class="col-sm-4">
 																			<div class="form-group">
 																				<fr:label path="">Thể loại</fr:label>
-																				
-																					<select name="categories_news" 
-																					class="form-control">
+
+																				<select name="categories_news" class="form-control">
 																					<c:forEach var="item" items="${listLoai}">
-																						<option ${news.categories_news.id == item.id ? 'selected':''}  value="${item.id}">${item.titles}</option>
+																						<option
+																							${news.categories_news.id == item.id ? 'selected':''}
+																							value="${item.id}">${item.titles}</option>
 																					</c:forEach>
 																				</select>
-																				
+
 
 																			</div>
 
@@ -164,8 +180,14 @@
 										<div class="col-10" style="margin: 25px; width: 90%">
 											<div
 												style="width: 100%; height: 200px; border: 1px dotted gray;">
-												<img alt="" src="${name}" id="img" width="100%"
-													height="100%" style="object-fit: contain;">
+												<c:if test="${empty name}">
+													<img alt="" src="/images/news-img/${news.images}" id="img"
+														width="100%" height="100%" style="object-fit: contain;">
+												</c:if>
+												<c:if test="${!empty name}">
+													<img alt="" src="${name}" id="img" width="100%"
+														height="100%" style="object-fit: contain;">
+												</c:if>
 
 
 											</div>
@@ -178,15 +200,13 @@
 											class="input-group date" id="reservationdate"
 											data-target-input="nearest">
 
-											<fr:input path="images" id="inputGroupFile01" type="file"
+											<input name="image" value="${news.images}"
+												id="inputGroupFile01" type="file"
 												cssClass="form-control datetimepicker-input"
 												placeholder="choose file" />
 
 
-											<div class="input-group-append">
-
-												
-											</div>
+											<div class="input-group-append"></div>
 										</div>
 
 
@@ -228,10 +248,14 @@
 			<!-- /.container-fluid -->
 
 			<fr:button class="btn btn-success">Đăng Bài</fr:button>
-			<fr:button class="btn btn-warning"
-				formaction="/admin/update/${news.id}">Lưu</fr:button>
+			<fr:button class="btn btn-warning" formaction="/admin/update/${news.id}">Lưu</fr:button>
+				
+			<button class="btn btn-primary" >
+			<a href="/admin/reset"></a>
+               
+			Làm mới</button>
 
-		</fr:form>
+			</fr:form>
 		</section>
 
 

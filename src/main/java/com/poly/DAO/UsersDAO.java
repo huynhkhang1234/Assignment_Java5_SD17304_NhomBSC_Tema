@@ -10,7 +10,10 @@ import com.poly.Entities.Users;
 
 public interface UsersDAO extends JpaRepository<Users, Integer> {
 	@Query("SELECT u FROM Users u WHERE u.email = :email")
-	Users findByEmail(@Param("email") String username);
+	Users findByEmail(@Param("email") String email);
+	
+	@Query("SELECT u FROM Users u WHERE u.user_names = :users")
+	Users findByUsername(@Param("users") String users);
 	
 	public Users findByEmailEquals(String email);
 
