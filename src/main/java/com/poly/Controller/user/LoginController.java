@@ -32,7 +32,7 @@ public class LoginController {
 
 	@GetMapping("/user/login")
 	public String view(@ModelAttribute("login") LoginBean bean, Model model) {
-	//	 lấy dữ liệu từ cookie ra mà chỉ có name nếu có
+		// lấy dữ liệu từ cookie ra mà chỉ có name nếu có
 				String user = cookieService.getValue("email");
 				System.out.println("login-name : " + user);
 				// điền thoog tin nếu tên user có tồn tại

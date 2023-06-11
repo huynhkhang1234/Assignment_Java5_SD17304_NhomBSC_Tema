@@ -120,20 +120,20 @@
 
 
                                                 <label for="FirstName" class="hidden-label">Họ</label>
-                                                <input type="text" name="customer[first_name]" id="FirstName"
+                                                <input type="text" name="customer[first_name]" id="first_names"
                                                     class="input-full" placeholder="" autocapitalize="words"
                                                     autofocus="">
 
                                                 <label for="LastName" class="hidden-label">Tên</label>
-                                                <input type="text" name="customer[last_name]" id="LastName"
+                                                <input type="text" name="customer[last_name]" id="last_names"
                                                     class="input-full" placeholder="" autocapitalize="words">
 
                                                 <label for="Email" class="hidden-label">Email</label>
-                                                <input type="email" name="customer[email]" id="Email" class="input-full"
+                                                <input type="email" name="customer[email]" id="email" class="input-full"
                                                     placeholder="" autocorrect="off" autocapitalize="off">
 
                                                 <label for="CreatePassword" class="hidden-label">Mật Khẩu</label>
-                                                <input type="password" name="customer[password]" id="CreatePassword"
+                                                <input type="password" name="customer[password]" id="pass_words"
                                                     class="input-full" placeholder="">
 
                                                 <div class="form-action-button">

@@ -42,7 +42,7 @@ public class CartController {
 		} else {
 			
 			float total = (float) session.getAttribute("total");
-			float price = total - (cart.get(id).getPrice()*cart.get(id).getQuantity());
+			float price = (float) (total - (cart.get(id).getPrice()*cart.get(id).getQuantity()));
 			cart.remove(id);
 			session.setAttribute("total", price);
 			System.out.println(session.getAttribute("total"));
@@ -50,5 +50,11 @@ public class CartController {
 		}
 
 		return "user/cart";
+	}
+	
+	@GetMapping("/user/order")
+	public String view2() {
+		// giỏ hàng
+		return "/admin/product";
 	}
 }

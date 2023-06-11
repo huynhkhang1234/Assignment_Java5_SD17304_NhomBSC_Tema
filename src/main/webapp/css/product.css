@@ -120,6 +120,35 @@ div {
   color: #000;
 }
 
+
+.box__quickview-image {
+  height: 350px;
+  width: 350px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+
+.box__quickview-image img {
+  height: 100%;
+  width: 100%;
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.product-content>.title>a {
+  text-align: justify;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.product-content>.title>a p {
+  margin-bottom: 0px !important;
+}
+
 /* Brand */
 .brand-img {
   filter: grayscale(100%);
@@ -285,16 +314,17 @@ div {
 }
 
 .product-grid6 .title a:hover {
-  color: #2e86de;
+  color: var(--first-color);
 }
 
 .product-grid6 .price {
+  margin-top: 15px;
   font-size: 18px;
   font-weight: 600;
-  color: #2e86de;
+  color: var(--first-color);
 }
 
-.product-grid6 .price span {
+.product-grid6 .price>span:not(.old__price, .new__price) {
   color: #999;
   font-size: 15px;
   font-weight: 400;

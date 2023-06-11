@@ -71,13 +71,13 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end d-right">
                                 <li>
-                                    <a class="dropdown-item" href="/user/account">
+                                    <a class="dropdown-item" href="/user/profile/account">
                                         <i class="bi bi-person-fill"></i>
                                         Tài khoản
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="/user/account/profile">
+                                    <a class="dropdown-item" href="/user/profile/profile">
                                         <i class="bi bi-person-lines-fill"></i>
                                         Hồ sơ của tôi
                                     </a>
@@ -86,13 +86,13 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="/user/account/favorites">
+                                    <a class="dropdown-item" href="/user/profile/favorites">
                                         <i class="bi bi-bag-heart"></i>
                                         Yêu thích
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="/user/account/history">
+                                    <a class="dropdown-item" href="/user/profile/history">
                                         <i class="bi bi-receipt"></i>
                                         Lịch sử mua hàng
                                     </a>
