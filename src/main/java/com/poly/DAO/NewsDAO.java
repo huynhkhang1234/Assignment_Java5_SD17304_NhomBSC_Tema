@@ -9,4 +9,6 @@ import com.poly.Entities.News;
 
 public interface NewsDAO extends JpaRepository<News, Integer>  {
 	
+	@Query("SELECT n FROM News n WHERE n.is_active =1")
+	List<News> findAllActiveTrue();
 }
