@@ -17,9 +17,5 @@ public interface UsersDAO extends JpaRepository<Users, Integer> {
 //	@Query(value = "SELECT user_names, first_names, last_names, roles_id FROM Users")
 //	public List<Users> getDemo();
 	
-	public Users findByEmailEquals(String email);
-
-//	@Query(value = "SELECT user_names, first_names, last_names, roles_id FROM Users")
-//	public List<Users> getDemo();
 	
 }	
