@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr" %>
+
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +61,8 @@
                             <h5 class="modal-title" id="exampleModalLabel">Thêm Sản Phẩm</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                         <form action="/admin/save" modelAttribute="products">
+                        
+                         <form:form action="/admin/save" modelAttribute="products">
                         	<div class="modal-body">
                         
                                 <div class="col-md-6">
@@ -149,7 +151,7 @@
 
                                 <div class="col-12">
                                     <label for="inputDescription" class="form-label">Mô tả</label>
-                                    <textarea name="description" value="${products.description}" class="form-control" placeholder="Viết bình luận của bạn" ></textarea>
+                                    <textarea name="description" value="${products.description}" class="form-control"></textarea>
                                 </div>
                         	</div>                        
                         
@@ -158,7 +160,8 @@
 	                            
 	                            <button type="button" class="btn btn-primary">Thêm mới</button>
 	                        </div> 
-                       </form>
+                       </form:form>
+                       
                     </div>
                 </div>
             </div>
@@ -251,8 +254,8 @@
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">						
 							<section class="middle">
 								<!--form-->
-                           <form action="/admin/save" modelAttribute="discounts">
-								<div class="above">
+                           <form:form action="/admin/save" modelAttribute="discounts">
+                           
 									<div class="row">
 										<!--row1-->
 
@@ -260,8 +263,9 @@
 											<div class="col-auto">
 												<label class="col-form-label">Mã:</label>
 											</div>
-
+											
 											<input name="id" value="${discounts.id}" class="form-control" />
+											
 										</div>
 
 										<div class="col-6">
@@ -301,12 +305,14 @@
 												<label class="col-form-label">Mô tả</label>
 											</div>
 									
-											<textarea name="descriptions" value="${discounts.descriptions}" class="form-control"
-												placeholder="Leave a comment here" style="height: 100px"></textarea>
+										<form:textarea path="descriptions" class="form-control"
+												 style="height: 100px"/>
+													
 												
 											<label for="floatingTextarea2"></label>							
 										</div>
 									</div>
+									</form:form>
 									<!--btn-->
 
 									<div class="btn-add">
@@ -325,11 +331,12 @@
 											<button formaction="/admin/update/${discounts.id}" class="btn btn-primary">
 												<i class="bi bi-pencil-square"></i>update
 											</button>
-
+											
+											
+											
 										</div>
 									</div>
-								</div>
-							</form>
+
 							
 								<div class="below">
 									<div class="table-responsive mt-5" style="overflow-x: auto">
@@ -356,19 +363,21 @@
 														<td>${item.end_day}</td>
 														<td>${item.descriptions}</td>
 
-														<td><a href="/admin/edit/${item.id}">
+														<td>
+															<a href="/admin/edit/${item.id}">
 																<button class="btn btn-primary">
 																	<i class="bi bi-pencil-square"></i>Edit
 																</button>
 															</a> 
-																
+															
 															<a href="/admin/delete/${discounts.id}">
 																<button class="btn btn-danger">
 																	<i class="bi bi-trash"></i>delete
 																</button>
 															</a>
+																
 														</td>
-														
+
 													</tr>
 												</c:forEach>
 											</tbody>
@@ -387,6 +396,7 @@
 
 									</div>
 								</div>
+								
 							</section>
 						
 					</div>
@@ -394,8 +404,8 @@
                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"> 
                         <section class="middle">
                             <!--from-->
-                          <form action="/admin/save" modelAttribute="categories">
-                            <div class="above">
+                          <form:form action="/admin/save" modelAttribute="categories">
+                                    
                                 <div class="row">
                                     <!--row1-->
                                     <div class="col-12">
@@ -415,6 +425,7 @@
                                         </div>
                                     </div>
                                 </div>
+                             
                                 <!--btn-->
     
                                 <div class="btn-add">
@@ -432,10 +443,12 @@
 										<button formaction="/admin/update/${categories.id}" class="btn btn-primary">
 											<i class="bi bi-pencil-square"></i>update
 										</button>
+										
+										
                                     </div>
                                 </div>
-                            </div>
-                            </form>
+                                </form:form>
+                           
                             
                             <div class="below">
                                 <div class="table-responsive mt-5" style="overflow-x: auto">
@@ -459,13 +472,13 @@
                                                         <i class="bi bi-pencil-square"></i>edit
                                                     </button>
                                                 </a>
-                                                     
-            									<a href="/admin/delete/${categories.id}">
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i>delete
-                                                    </button>
-                                                 </a>
-                                                 
+                                                
+                                                <a href="/admin/delete/${categories.id}">
+		                                            <button class="btn btn-danger">
+		                                                <i class="bi bi-trash"></i>delete
+		                                             </button>
+		                                        </a>
+
                                                 </td>                                    
                                             </tr>
                                             </c:forEach>
