@@ -55,9 +55,9 @@ CREATE TABLE [products] (
   [update_date] datetime,
   [is_active] int,
   [categories_id] int NOT NULL,
-  [suppliers_id] int NOT NULL,
+  [suppliers_id] int,
   [original_price] int,
-  [discounts_id] int NOT NULL
+  [discounts_id] int
 )
 GO
 

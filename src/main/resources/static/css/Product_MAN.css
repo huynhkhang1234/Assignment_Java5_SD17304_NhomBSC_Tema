@@ -13,18 +13,6 @@
   width: 85%;
   height: 260px;
   }
-
-  .column1 {
-    width: 50%;
-    height: 170px;
-    float: left;
-  }
-  .column2 {
-    margin-top: 4rem;
-    width: 35%;
-    float: right;
-    height: 150px;
-  }
   
   .name {
     font-variant: small-caps;
@@ -94,8 +82,39 @@
 .btn-product {
   margin-top: 17rem;
 }
+.btn-pro {
+  margin-bottom: 0.5rem;
+  margin-right: 1.5rem;
+}
 .tab{
   margin-top: 3rem;
 }
+
+.product-grid6,
+.product-grid6 .product-image6 {
+  overflow: hidden;
+}
+
+.product-grid6 {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  position: relative;
+}
+.product-grid6 .title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.product-grid6 .title{
+  color: #000;
+}
+
+.product-grid6 .price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2e86de;
+}
+
 
  
