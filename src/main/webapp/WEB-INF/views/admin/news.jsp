@@ -213,8 +213,7 @@
 									</div>
 
 								</div>
-							</div>
-				</div>
+							</div></div>
 				<!-- /.container-fluid -->
 		</section>
 
@@ -371,6 +370,7 @@
 			<!-- container-fluid, tm-container-content -->
 
 		</div>
+		
 		</section>
 		<!--end of middle-->
 

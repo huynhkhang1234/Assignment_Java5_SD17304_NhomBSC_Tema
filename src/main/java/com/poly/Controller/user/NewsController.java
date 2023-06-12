@@ -22,20 +22,13 @@ public class NewsController {
 		News entity = new News();
 		model.addAttribute("news", entity);
 
-//		Date now = new Date();
-//
-//		model.addAttribute("now", now);
 
 		List<News> list = dao.findAllActiveTrue();
 
-//		List<Categories_news> listLoai = cateNewsDao.findAll();
-
 		model.addAttribute("list", list);
-//		model.addAttribute("listLoai", listLoai);
-		
-		
-		
 
+		
+	
 		return "user/news";
 	}
 	

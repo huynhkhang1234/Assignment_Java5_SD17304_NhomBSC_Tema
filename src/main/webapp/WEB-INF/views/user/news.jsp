@@ -52,40 +52,35 @@
 						<h1 class="fw-bold text-uppercase" style="font-size: 60px;">Chào
 							mừng đến với thế giới phụ kiện</h1>
 					</div>
-					<c:forEach var="item" items="${list}">
+				
 					<div class="row">
 						<div class="col-md-12">
-							<a href="#">
-								  <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/news/2023/05_23_emilia_donation/emilia_donation_cover.jpg"
-                                alt="">
-								<%-- <img src="images/news-img/${item.images}" alt="images"> --%>
-							</a>
+						
+								 <img src="/images/imager_oto.jpg" style="height: 94%"
+                                alt=""> 
+								<%--  <img src="/images/news-img/${item.images}" alt="images" style="object-fit: contain">  --%>
+								
+							
 							
 						</div>
 						<div class="col-md-12 mt-5">
-							<div>
-								<span style="font-size: 18px;">${item.create_date}</span>
-							</div>
+							
 						</div>
 						<div class="col-md-12 mt-4">
 							<div class="row">
 								<div class="col-md-8">
-									<a href="#"> ${item.titles}
+									<a href="#">
 										</h3>
 									</a>
 									<div>
-										<p>Mô tả hoặc tóm tắt bài viết</p>
+										
 									</div>
 								</div>
-								<div class="col-md-4 text-end pe-5">
-									<a href="/user/news/detail"
-										class="btn btn-outline-dark text-uppercase"
-										style="font-size: 20px; padding: 10px 25px;"> Xem thêm </a>
-								</div>
+								
 							</div>
 						</div>
 					</div>
-					</c:forEach>
+					
 				</div>
 			
 		</section>
@@ -96,10 +91,8 @@
 					<div class="row my-5">
 						<div class="col-md-5">
 							<div class="thumbnail-image">
-								<img alt="" src="${item.images}"
-							
-									>
-									<p>${item.images}</p>
+								<img src="/images/news-img/${item.images}" alt="images" style="object-fit: contain">
+									
 							</div>
 						</div>
 						<div class="col-md-7 ">
@@ -117,7 +110,7 @@
 									</div>
 								</div>
 								<div class="content__news-btn">
-									<a href="#" class="btn btn-outline-dark text-uppercase">Xem
+									<a href="/user/news/detail" class="btn btn-outline-dark text-uppercase">Xem
 										thêm</a>
 								</div>
 							</div>
