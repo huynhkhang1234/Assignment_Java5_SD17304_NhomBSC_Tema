@@ -36,15 +36,16 @@
     	<!-- End Menu Aside -->
 
         <section class="middle">
+          
+            <!--from-->
+            <fr:form class="above" action="/account/create"  method="POST" modelAttribute="users" enctype="multipart/form-data">
             <div class="px-4 p-3">
                 <div class="row">
                     <div class="col-5">
-                        <a  href="/account/create" class="btn btn-info text-white">Thêm mới</a>
+                        <button  class="btn btn-info text-white">Thêm mới</button>
                     </div>
                 </div>
             </div>
-            <!--from-->
-            <fr:form class="above" action="/admin/account"  method="POST" modelAttribute="users" enctype="multipart/form-data">
             <div class="row">
                     <div class="col-12">
                         <img src="" alt="">
@@ -132,10 +133,10 @@
                         <div class="col-auto">
                        
                         <fr:select path="roles" class="form-select" aria-label="Default select example">
-                                <option ${users.roles.id == 1 ? 'selected':'' } value="1">Quản lý</option>
+                                <option  ${users.roles.id == 1 ? 'selected':'' } value="1">Quản lý</option>
                                 <option ${users.roles.id == 3 ? 'selected':'' } value="3">Nhân viên</option>
                                 <option ${users.roles.id == 2 ? 'selected':'' } value="2">Người dùng</option>
-                            </fr:select>
+                        </fr:select>
                        
                             
                         </div>

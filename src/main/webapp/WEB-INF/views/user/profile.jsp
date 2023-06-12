@@ -121,7 +121,7 @@
                             
                              <!-- form  -->
                              
-                            <fr:form class="col-8 pt-3" action="/user/profile/account" method="POST" modelAttribute="users" enctype="multipart/form-data">
+                            <fr:form class="col-8 pt-3" action="/user/profile/account/" method="POST" modelAttribute="users" enctype="multipart/form-data">
                                 <div class="p-3">
                                     <div class="row mb-3 align-items-center">
                                         <div class="col-4">
@@ -129,7 +129,7 @@
                                         </div>
                                         <div class="col-7">
                                         <c:if test="${not empty sessionScope.userLogin}">
-												<input type="text" id="txtUsername" class="form-control" 
+												<input type="text" id="txtUsername" name="user_names" class="form-control" 
                                                 aria-labelledby="passwordHelpInline" value="${sessionScope.userLogin.getUser_names()}">
 										</c:if>
                                             
@@ -141,7 +141,7 @@
                                         </div>
                                         <div class="col-7">
                                         <c:if test="${not empty sessionScope.userLogin}">
-												 <input type="email" id="txtEmail" class="form-control" 
+												 <input type="email" id="txtEmail" name="email" class="form-control" 
                                                 aria-labelledby="passwordHelpInline"value="${sessionScope.userLogin.getEmail()}">
 										</c:if>
                                            
@@ -153,7 +153,7 @@
                                         </div>
                                         <div class="col-7">
                                           <c:if test="${not empty sessionScope.userLogin}">
-												 <input type="text" id="txtNumberPhone" class="form-control" 
+												 <input type="text" id="txtNumberPhone" name="phones" class="form-control" 
                                                 aria-labelledby="passwordHelpInline" value="${sessionScope.userLogin.getPhones()}">
 										</c:if>
                                             
@@ -161,20 +161,20 @@
                                     </div>
                                     <div class="row mb-3 align-items-center">
                                         <div class="col-4">
-                                            <label for="txtPassword" class="col-form-label">Mật khẩu: </label>
+                                            <label for="" class="col-form-label">Mật khẩu: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="password" id="txtPassword" class="form-control" 
+                                            <input type="password" id="txtPassword" name="txtPassword" class="form-control" 
                                                 aria-labelledby="passwordHelpInline">
                                         </div>
                                     </div>
                                     <div class="row mb-3 align-items-center">
                                         <div class="col-4">
-                                            <label for="txtConfirmPassword" class="col-form-label">Xác nhận mật khẩu:
+                                            <label for="" class="col-form-label">Xác nhận mật khẩu:
                                             </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="password" id="txtConfirmPassword" class="form-control" 
+                                            <input type="password" id="txtConfirmPassword" name="txtConfirmPassword" class="form-control" 
                                                 aria-labelledby="passwordHelpInline">
                                         </div>
                                     </div>
@@ -182,9 +182,9 @@
                                     <hr>
 
                                     <div class="row justify-content-center">
-                                        <a href="/account/update/${sessionScope.userLogin.id}"  class="btn btn-outline-dark col-4">
+                                        <fr:button type="submit" formaction="/user/profile/account/${sessionScope.userLogin.id}"  class="btn btn-outline-dark col-4">
                                             Đổi mật khẩu
-                                        </a>
+                                        </fr:button>
                                     </div>
                                 </div>
                             </fr:form>
@@ -193,24 +193,13 @@
                             <div class="col-4 pt-3">
                                 <div class="col-10" style="margin: 25px; width: 90%">
 							<div style="width: 100%; height: 200px; border: 1px dotted gray;">
-								<c:if test="${!empty name}">
-									<img alt="" src="${name}" id="img" width="100%" height="100%"
-									style="object-fit: contain;">
-								</c:if>
-								<c:if test="${empty name}">
-									<img alt="" src="/images/user-img/${sessionScope.userLogin.getImages()}" id="img" width="100%" height="100%"
-									style="object-fit: contain;">
-								</c:if>
+								
+									<img alt="" src="/images/user-img/${sessionScope.userLogin.getImages()}" width="100%" height="100%"
+									>
+								
 							</div>
 						</div>
-						<!-- /.card-body -->
-						<div style="margin: 25px; width: 90%; margin-top: 0px;" class="input-group date" id="reservationdate"data-target-input="nearest">
-
-							<input name="file" id="inputGroupFile01" type="file"
-								cssClass="form-control datetimepicker-input"
-								placeholder="choose file" />
-							
-						</div>
+						
                             </div>
                             <!-- form -->
                         </div>
@@ -892,12 +881,6 @@
     const sidebarList = document.querySelectorAll('.sidebar');
     const sidebarActive = document.querySelector('.sidebar#account');
 
-    let img = document.getElementById('img');
-    let input = document.getElementById('inputGroupFile01');
-    input.onchange = (e) => {
-        if (input.files[0])
-            img.src = URL.createObjectURL(input.files[0]);
-    } 
     
     
     sidebarList.forEach((sidebar) => {

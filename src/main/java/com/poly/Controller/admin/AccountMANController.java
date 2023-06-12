@@ -50,7 +50,7 @@ public class AccountMANController {
 	}
 	
 	
-	@GetMapping("/account/create")
+	@PostMapping("/account/create")
 	public String Create(Model model,
 			@Valid @ModelAttribute("users") Users entity, @RequestParam("file") MultipartFile file
 			) {
@@ -76,6 +76,7 @@ public class AccountMANController {
 		}
 		
 		this.userDao.saveAndFlush(entity);
+		
 		return "redirect:/admin/account";
 		
 	}
@@ -87,6 +88,8 @@ public class AccountMANController {
 		if (entity.getCreate_date() == null) 
 			entity.setCreate_date(new Date());
 		entity.setUpdate_date(new Date());
+		
+		entity.setIs_active(1);
 		
 		/* Xử lý hình ảnh */
 		String uploadRootPath = app.getRealPath("images/user-img/");
@@ -136,6 +139,8 @@ public class AccountMANController {
 		return "redirect:/admin/account";
 	}
 	
+	
+	
 	@GetMapping("/account/close/{id}")
 	public String Close(
 			@ModelAttribute("users") Users entity, @PathVariable("id") Integer id
@@ -151,9 +156,6 @@ public class AccountMANController {
 			
 			entity.setIs_active(1);
 		}
-		
-		
-		
 		userDao.saveAndFlush(entity);
 		return "redirect:/admin/account";
 	}

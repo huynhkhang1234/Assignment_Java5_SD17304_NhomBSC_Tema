@@ -1,5 +1,6 @@
 package com.poly.Controller.user;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,10 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import com.poly.DAO.UsersDAO;
 import com.poly.Entities.Users;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -19,27 +21,45 @@ public class ProfileController {
 	UsersDAO userDao;
 	@Autowired
 	HttpSession session;
+	@Autowired
+	HttpServletRequest req;
 	
 	
 	@GetMapping("/user/profile/account")
-	public String viewAccount( Model m
-			,@ModelAttribute("user") Users users
-			) {
+	public String viewAccount( Model m,@ModelAttribute("users") Users users ) {
+		
 		
 		Users u = (Users) session.getAttribute("userLogin");
 		
-		m.addAttribute("user", u);
+		m.addAttribute("users", u);
 		
 		return "user/profile";
 		
 	}
 	
-	@PostMapping("/account/update/{id}/")
-	public String viewAccountUpdate(Model m, @ModelAttribute("user") Users users, @PathVariable("id") Integer id) {
+	@PostMapping("/user/profile/account/{id}")
+	public String viewAccountUpdate(Model m, @ModelAttribute("users") Users users, @PathVariable("id") Integer id) {
 		
-		userDao.saveAndFlush(users);
+		String txtPassword = req.getParameter("txtPassword");
+		String txtConfirmPassword = req.getParameter("txtConfirmPassword");
 		
-		return "redirect:/user/profile/";
+		
+		Users u = (Users) session.getAttribute("userLogin");
+		
+		if(u.getPass_words().equals(txtPassword)) {
+			System.out.println("thất bại");
+			return "user/profile/account";
+		}
+		u.getPass_words().equals(txtPassword);
+		u.setPass_words(txtConfirmPassword);
+		 userDao.saveAndFlush(u);
+		System.out.println("thành công");
+		return "redirect:/user/profile/account";
+		
+		
+		
+		
+		
 		
 	}
 	

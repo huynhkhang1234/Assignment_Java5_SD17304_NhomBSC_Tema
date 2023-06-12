@@ -61,7 +61,7 @@
                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="profile-photo overflow-hidden">
                                     <c:if test="${not empty sessionScope.userLogin}">
-							<img src="/images/user-img/${sessionScope.userLogin.getImages()}" id="img" height="50px"
+							<img src="/images/user-img/${sessionScope.userLogin.getImages()}" id="img" 
 							style="width: auto !important;">
 						</c:if>
                                 </div>
