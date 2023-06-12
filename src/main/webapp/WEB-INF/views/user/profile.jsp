@@ -130,7 +130,7 @@
                                         <div class="col-7">
                                         <c:if test="${not empty sessionScope.userLogin}">
 												<input type="text" id="txtUsername" name="user_names" class="form-control" 
-                                                aria-labelledby="passwordHelpInline" value="${sessionScope.userLogin.getUser_names()}">
+                                                aria-labelledby="passwordHelpInline" value="${sessionScope.userLogin.getUser_names()}" readonly/>
 										</c:if>
                                             
                                         </div>
@@ -142,7 +142,7 @@
                                         <div class="col-7">
                                         <c:if test="${not empty sessionScope.userLogin}">
 												 <input type="email" id="txtEmail" name="email" class="form-control" 
-                                                aria-labelledby="passwordHelpInline"value="${sessionScope.userLogin.getEmail()}">
+                                                aria-labelledby="passwordHelpInline"value="${sessionScope.userLogin.getEmail()}"readonly>
 										</c:if>
                                            
                                         </div>
@@ -154,7 +154,7 @@
                                         <div class="col-7">
                                           <c:if test="${not empty sessionScope.userLogin}">
 												 <input type="text" id="txtNumberPhone" name="phones" class="form-control" 
-                                                aria-labelledby="passwordHelpInline" value="${sessionScope.userLogin.getPhones()}">
+                                                aria-labelledby="passwordHelpInline" value="${sessionScope.userLogin.getPhones()}"readonly>
 										</c:if>
                                             
                                         </div>
