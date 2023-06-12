@@ -121,7 +121,7 @@
                             
                              <!-- form  -->
                              
-                            <fr:form class="col-8 pt-3" method="POST" modelAttribute="users" enctype="multipart/form-data">
+                            <fr:form class="col-8 pt-3" action="/user/profile/account" method="POST" modelAttribute="users" enctype="multipart/form-data">
                                 <div class="p-3">
                                     <div class="row mb-3 align-items-center">
                                         <div class="col-4">
@@ -182,7 +182,7 @@
                                     <hr>
 
                                     <div class="row justify-content-center">
-                                        <a href="#" class="btn btn-outline-dark col-4">
+                                        <a href="/account/update/${sessionScope.userLogin.id}"  class="btn btn-outline-dark col-4">
                                             Đổi mật khẩu
                                         </a>
                                     </div>

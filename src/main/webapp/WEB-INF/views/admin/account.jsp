@@ -39,7 +39,7 @@
             <div class="px-4 p-3">
                 <div class="row">
                     <div class="col-5">
-                        <button class="btn btn-info text-white">Thêm mới</button>
+                        <a  href="/account/create" class="btn btn-info text-white">Thêm mới</a>
                     </div>
                 </div>
             </div>
@@ -147,7 +147,7 @@
                             <label class="col-form-label">Ngày tạo</label>
                         </div>
                         <div class="col-auto">
-                        <input value="${users.create_date}" class="form-control"/>
+                        <input value="${users.create_date}" class="form-control" readonly/>
                             
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                             <label class="col-form-label">Ngày cập nhật</label>
                         </div>
                         <div class="col-auto">
-                            <input value="${users.update_date}" class="form-control"/>
+                            <input value="${users.update_date}" class="form-control" readonly/>
                             
                         </div>
                     </div>
@@ -342,10 +342,15 @@
                 </table>
                 <div class="d-flex justify-content-center">
 
-                    <a class="page-link" href="#">1</a>
-                    <a class="page-link" href="#">2</a>
-                    <a class="page-link" href="#">3</a>
-                    <a class="page-link" href="#">4</a>
+                    <div class="btn-toolbar" role="toolbar"
+						aria-label="Toolbar with button groups">
+						<div class="btn-group me-2" role="group" aria-label="First group">
+							<button type="button" class="btn btn-primary">1</button>
+							<button type="button" class="btn btn-primary">2</button>
+							<button type="button" class="btn btn-primary">3</button>
+							<button type="button" class="btn btn-primary">4</button>
+						</div>
+					</div>
 
                 </div>
             </div>

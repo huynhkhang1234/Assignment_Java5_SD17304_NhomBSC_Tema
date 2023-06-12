@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.poly.Beans.Users_bean;
 import com.poly.DAO.RolesDAO;
 import com.poly.DAO.UsersDAO;
 import com.poly.Entities.Categories_news;
@@ -23,6 +25,7 @@ import com.poly.Entities.News;
 import com.poly.Entities.Users;
 
 import jakarta.servlet.ServletContext;
+import jakarta.validation.Valid;
 
 @Controller
 public class AccountMANController {
@@ -44,6 +47,37 @@ public class AccountMANController {
 		List<Users> list = userDao.findByEquals();
 		model.addAttribute("list",list);
 		return "admin/account";
+	}
+	
+	
+	@GetMapping("/account/create")
+	public String Create(Model model,
+			@Valid @ModelAttribute("users") Users entity, @RequestParam("file") MultipartFile file
+			) {
+		if (entity.getCreate_date() == null) 
+			entity.setCreate_date(new Date());
+		entity.setUpdate_date(new Date());
+		
+		/* Xử lý hình ảnh */
+		String uploadRootPath = app.getRealPath("images/user-img/");
+		File uploadRootDir = new File(uploadRootPath);
+		if(!uploadRootDir.exists()) {
+			uploadRootDir.mkdirs();
+		}
+		try {
+			String fileName = file.getOriginalFilename();
+			File serverFile = new File(uploadRootDir.getAbsoluteFile() + File.separator + fileName);
+			BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+			stream.write(file.getBytes());
+			stream.close();
+			entity.setImages(fileName);
+			}catch(Exception e) {
+			model.addAttribute("message", "Lỗi upload file!");
+		}
+		
+		this.userDao.saveAndFlush(entity);
+		return "redirect:/admin/account";
+		
 	}
 	
 	

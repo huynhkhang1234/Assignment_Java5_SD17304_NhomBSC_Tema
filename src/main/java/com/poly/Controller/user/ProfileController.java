@@ -6,9 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.poly.DAO.UsersDAO;
 import com.poly.Entities.Users;
 
@@ -24,21 +23,27 @@ public class ProfileController {
 	
 	@GetMapping("/user/profile/account")
 	public String viewAccount( Model m
-//			,@ModelAttribute("user") Users users, @RequestParam("file") MultipartFile file
+			,@ModelAttribute("user") Users users
 			) {
 		
-//		Users u = (Users) session.getAttribute("userLogin");
-//		
-//		m.addAttribute("user", u);
-//		
-//		userDao.saveAndFlush(users);
-//		
+		Users u = (Users) session.getAttribute("userLogin");
 		
+		m.addAttribute("user", u);
 		
-		m.addAttribute("url", "account");
 		return "user/profile";
 		
 	}
+	
+	@PostMapping("/account/update/{id}/")
+	public String viewAccountUpdate(Model m, @ModelAttribute("user") Users users, @PathVariable("id") Integer id) {
+		
+		userDao.saveAndFlush(users);
+		
+		return "redirect:/user/profile/";
+		
+	}
+	
+	
 	
 	@GetMapping("/user/profile/profile")
 	public String viewProfile( Model m) {
