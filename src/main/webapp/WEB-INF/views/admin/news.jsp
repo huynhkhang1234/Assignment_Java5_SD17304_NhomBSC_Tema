@@ -247,7 +247,7 @@
 			</div>
 			<!-- /.container-fluid -->
 
-			<fr:button class="btn btn-success">Đăng Bài</fr:button>
+			<fr:button class="btn btn-success" formaction="/admin/save">Đăng Bài</fr:button>
 			<fr:button class="btn btn-warning" formaction="/admin/update/${news.id}">Lưu</fr:button>
 				
 			<button class="btn btn-primary" >

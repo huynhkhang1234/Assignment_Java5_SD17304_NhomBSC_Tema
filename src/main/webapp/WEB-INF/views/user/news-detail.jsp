@@ -44,6 +44,7 @@
         </section>
 
         <section class="news-hot mt-5">
+        <c:forEach var="item" items="${list}">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -71,6 +72,7 @@
                     </div>
                 </div>
             </div>
+        </c:forEach>
         </section>
 
         <section class="container__news mt-5">
