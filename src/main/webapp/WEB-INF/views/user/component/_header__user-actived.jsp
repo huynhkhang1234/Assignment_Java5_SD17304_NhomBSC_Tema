@@ -4,9 +4,13 @@
 
 			 <!-- ======================= Cái này là để cho đăng nhập rồi nhé ======================= -->
                     <div class="header__user-left d-flex gap-4 me-3">
-                        <a href="/user/cart" class="d-flex header__action-btn">
+                        <a  href="/user/cart" class="d-flex header__action-btn">
                             <i class="bi bi-bag"></i>
-                            <span class="count">2</span>
+                            <span id="cartIcon" class="count">
+                            
+                            <c:if test="${empty sessionScope.userLogin}">0</c:if>
+                            <c:if test="${not empty sessionScope.userLogin}">${sessionScope.cartSize}</c:if>
+                            </span>
                         </a>
                         <div class="header__action-mini-cart">
                             <div class="cart-empty-title d-none">

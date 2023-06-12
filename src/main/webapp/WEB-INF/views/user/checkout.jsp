@@ -5,6 +5,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,23 +55,26 @@
                     <div class="card-body text-secondary row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName" class="form-label">Họ:</label>
-                            <input type="text" class="form-control" id="firstName" value="Huỳnh" required>
+                            <input placeholder="Vui lòng nhập họ" type="text" class="form-control" id="firstName" value="${sessionScope.userLogin.getFirst_names()}"  required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="lastName" class="form-label">Tên:</label>
-                            <input type="text" class="form-control" id="lastName" value="Bảo Khang" required>
+                            <input placeholder="Vui lòng nhập tên" type="text" class="form-control" id="lastName" value="${sessionScope.userLogin.getLast_names()}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">Email:</label>
-                            <input type="text" class="form-control" id="email" value="khanghbpc04012@fpt.edu.vn" required>
+                            <input placeholder="Vui lòng nhập email" type="text" class="form-control" id="email" value="${sessionScope.userLogin.getEmail()}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="numberPhone" class="form-label">Số điện thoại:</label>
-                            <input type="text" class="form-control" id="numberPhone" value="0387808694" required>
+                            <input placeholder="Vui lòng nhập số điện thoại" type="text" class="form-control" id="numberPhone" value="${sessionScope.userLogin.getPhones()}" required>
                         </div>
                         <div class="mb-3">
                             <label for="address" class="form-label">Địa chỉ:</label>
-                            <textarea class="form-control" id="address" style="height: 100px;" placeholder="Nhập địa chỉ đê bạn hiền" required ></textarea>
+                            <textarea  class="form-control" id="address" style="height: 100px; text-align: left;" placeholder="Vui lòng nhập thông tin địa chỉ" required >
+                            ${sessionScope.userLogin.getAddress()} 
+                          
+                            </textarea>
                           </div>
                     </div>
                   </div>
@@ -105,7 +109,16 @@
                         </div>
                         <div class="d-flex justify-content-between mt-3" style="color: #333;">
                             <h5 class="card-title" style="font-weight: 500;">Tổng cộng:</h5>
-                            <h5 class="fw-bold">123.000 VNĐ</h5>
+                            <h5 class="fw-bold">
+                            
+                            <c:if test="${empty sessionScope.total}">0 VNĐ</c:if>
+                             <c:if test="${not empty sessionScope.total}">
+                             <fmt:formatNumber  value="${sessionScope.total}" pattern="###,###,### VNĐ" />
+                             <span style="display: none">${sessionScope.total}</span>
+                             </c:if>
+                              
+                                                         	
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -125,7 +138,7 @@
                                   Chuyển khoản (Thẻ ngân hàng online)
                                 </label>
                               </div>
-                            <a href="#" class="btn btn-warning w-100 mt-4 fw-bolder">Tiến hành đặt hàng</a>
+                            <a onclick="checkOut(${sessionScope.total})" class="btn btn-warning w-100 mt-4 fw-bolder">Tiến hành đặt hàng</a>
                         </div>
                     </div>
                 </div>
@@ -141,7 +154,31 @@
 
     <!-- Link To Base JS -->
     <%@include file = "component/_linkJS.jsp" %>
-
+    <script src="https:code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		function checkOut(total) {
+			if(total > 0){
+				alert("đặt hàng thành công");
+				
+				$.ajax({
+					type:"post",
+					url: "/user/saveCart/checkout",				
+					success: function () {
+						alert("thành công")
+					},
+					error: function () {
+						alert("Thất bại")
+					}
+				});	
+			}else{
+				alert('Vui lòng chọn sản phẩm đặt hàng');
+			}
+			
+			
+		}
+	
+	
+	</script>
 	
 </body>
 

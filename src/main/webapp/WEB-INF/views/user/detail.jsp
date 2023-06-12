@@ -170,7 +170,8 @@
 							<form>
 								<div class="row pb-3">
 									<div class="col d-grid">
-										<button class="btn btn-success btn-lg" name="submit"
+										<button onclick="addAndRedirect()" class="btn btn-success btn-lg" name="submit"
+										
 											value="buy">Buy</button>
 									</div>
 									<div class="col d-grid">
@@ -350,6 +351,9 @@
 	
 		// sử lí code ajax
 		function addToCart() {
+			var cartNumber = document.getElementById("cartIcon");
+			cartNumber.innerHTML = parseInt(cartNumber.innerHTML)  + 1;
+			
 			event.preventDefault();			
 			var id = $("#productId").val();
 			var name = $("#productName").val();
@@ -357,7 +361,7 @@
 			var price = $("#price").val();
 			var images = $("#images").val();						
 			$.ajax({
-				url : "/user/addCart",
+				url : "/shop/user/addCart",
 				type : "POST",
 				data : JSON.stringify({
 					id : id,
@@ -369,6 +373,33 @@
 				contentType : "application/json",
 				success : function(data) {
 					alert("Thêm sản phẩm thành công");
+				},
+				error : function(data) {
+					alert("Lỗi thêm sản phẩm thất bại");
+				}
+			});
+		}	
+		
+		function addAndRedirect() {
+			event.preventDefault();			
+			var id = $("#productId").val();
+			var name = $("#productName").val();
+			var quantity = 1;
+			var price = $("#price").val();
+			var images = $("#images").val();						
+			$.ajax({
+				url : "/shop/user/addCart",
+				type : "POST",
+				data : JSON.stringify({
+					id : id,
+					name : name,
+					price : price,
+					quantity : quantity,
+					images: images
+				}),
+				contentType : "application/json",
+				success : function(data) {
+					 window.location.replace("cart");
 				},
 				error : function(data) {
 					alert("Lỗi thêm sản phẩm thất bại");

@@ -76,7 +76,12 @@
 									<!-- sdfsdffsdf -->
 									<td><fmt:formatNumber type="currency"
 											value="${item.value.price}" currencySymbol="đ"
-											pattern="###,###" /> VNĐ</td>
+											pattern="###,###" /> VNĐ
+									<%-- ///
+									<fmt:formatNumber value="${item.price - (item.price * (item.discounts.price_discounts / 100))}" pattern="###,###,### VNĐ" />
+									///	 --%>	
+											
+											</td>
 								</c:if>
 								<!-- -------------------------------------------------------- -->
 								<c:if test="${ empty item.value.price}">
@@ -115,8 +120,8 @@
 
 								<!---------------------- xóa dữ liệu ---------------------------------->
 								<td><a
-									onclick="orderdelete(${item.value.id},'${sessionScope.total}','${item.value.price}','${item.value.quantity}')"
-									href="#" class="btn btn-danger"> <i class="bi bi-trash3"
+									onclick="orderdelete(${item.value.id},'${sessionScope.total}','${item.value.price}','${item.value.quantity}','${sessionScope.cartSize}')"
+									href="#" class="btn btn-danger" > <i class="bi bi-trash3"
 										style="color: #fff;"></i>
 								</a></td>
 								<!-- -------------------------------------------------------------------------- -->
@@ -164,10 +169,10 @@
 								<c:if test="${ empty sessionScope.total}">
 									<span>0</span>
 								</c:if>
-
 							</div>
-							<a href="#" class="btn btn-warning w-100 mt-4 fw-bolder">Tiến
-								hành đặt hàng</a>
+							<a  href="/user/cart/checkout"
+								class="btn btn-warning w-100 mt-4 fw-bolder">Tiến hành đặt
+								hàng</a>
 						</div>
 					</div>
 				</div>
@@ -199,8 +204,8 @@ function onUp(id,price) {
 			var orderquantity =  quantityInput.value ;
 			var orderprice = price; 							
 				// Định nghĩa symbol mới cho đơn vị tiền tệ là "VNĐ"
-				var currencySymbol = "VNĐ";
-				var currencyFormatter = new Intl.NumberFormat({
+			var currencySymbol = "VNĐ";
+			var currencyFormatter = new Intl.NumberFormat({
 				  style: 'currency',
 				  currency: 'VND',
 				  currencyDisplay: 'symbol',
@@ -208,34 +213,36 @@ function onUp(id,price) {
 				  // Chú ý rằng dấu cách trước symbol sẽ không được thêm tự động
 				  currencySymbol: currencySymbol,
 				});				
-				var formattedCurrency = currencyFormatter.format(price *orderquantity);
+			var formattedCurrency = currencyFormatter.format(price *orderquantity);
 				priceID.textContent = formattedCurrency+"VNĐ";
+				//xóa đi enable == 1/
+			var button =  document.getElementById('bt'+id);
+				 button.removeAttribute("disabled");
 				// set đến tổng tiền của đơn hàng tăng 				
-				 if(quantity >= 1){
-					
-					 var setMoney = document.getElementById("setMoney");					
-						var result =  parseFloat(setMoney.textContent)+ parseFloat(orderprice);				
-							 setMoney.textContent = result;
-							 var button =  document.getElementById('bt'+id);
-							 button.removeAttribute("disabled");
-				} 
-				// sử lí code ajax
-												
-						$.ajax({
-							url : "/shop/user/addCart",
+				  if(quantity >=1){
+					// dựa them nút lick chuôt tăng lên
+			var setMoney = document.getElementById("setMoney");					
+			var result =  parseFloat(setMoney.textContent)+ parseFloat(orderprice);				
+						setMoney.textContent = result;
+			var button =  document.getElementById('bt'+id);
+						 button.removeAttribute("disabled");
+				}  
+				// sử lí code ajax								
+						 $.ajax({							 
+							url : "/user/addCart",
 							type : "POST",
 							data : JSON.stringify({
 								id : id	,
-								quantity: quantity
+								price:price								
 							}),
 						contentType : "application/json",
 							success : function(data) {
 								 /* alert("Thêm số lượng thành công"); */ 
-							},
+							 },
 							error : function(data) {
 								 alert("Lỗi thêm số lượng thất bại thất bại"); 
 							}
-						});
+						});  
 					
 				
 		}
@@ -257,7 +264,7 @@ function onDown(id,price){
  			  if (quantity > 1) {
  				    quantity--;
  				    quantityInput.value = quantity.toString();
- 				  }	
+ 				    
  				// sử lí giá tiền * sl
  					var orderquantity =  quantityInput.value ;
  					var orderprice = price; 								
@@ -278,17 +285,16 @@ function onDown(id,price){
  							 var setMoney = document.getElementById("setMoney");						
  								var result =  parseFloat(setMoney.textContent)- parseFloat(orderprice);				
  									 setMoney.textContent = result;								 
- 						} 
+ 						}  
  					} 
 					
-					// sử lí code ajax
-					
+					// sử lí code ajax		
 					$.ajax({
 						url : "/shop/user/disCart",
 						type : "POST",
 						data : JSON.stringify({
 							id : id	,
-							quantity: quantity
+							price: price
 						}),
 					contentType : "application/json",
 						success : function(data) {
@@ -297,8 +303,10 @@ function onDown(id,price){
 						error : function(data) {
 							 alert("Lỗi thêm số lượng thất bại thất bại"); 
 						}
-					});
+					}); 
 	
+ 				  }	
+ 				
 			 						  	
 }
 		//click vào input sửa vô lượng
@@ -314,8 +322,12 @@ function inputClick(id) {
 			});
 		}
 		///xoa du lieu san pham
-function orderdelete(id,total,price,quantity){
+function orderdelete(id,total,price,quantity,cartNumber){
+			//xóa số lượng cart có trong giỏ hàng
+		var cartNumber2 = document.getElementById("cartIcon");
+		cartNumber2.innerHTML = parseInt(cartNumber2.innerHTML) - 1;
 			
+		
 			//lấy danh cart để lọc			
 			var cartItems = document.querySelectorAll('#cart');
 			//alert(cartItems);
@@ -332,8 +344,7 @@ function orderdelete(id,total,price,quantity){
 			  }
 			}
 			 var setMoney = document.getElementById("setMoney");											
-				var orderMoney = setMoney.innerText-(price * quantity);
-				alert(orderMoney + "sau khi định dạng");					
+				var orderMoney = setMoney.innerText-(price * quantity);							
 				setMoney.innerHTML  = orderMoney; 
 														
 			// Cập nhật giao diện người dùng với giỏ hàng mới
@@ -341,8 +352,7 @@ function orderdelete(id,total,price,quantity){
 			cartList.innerHTML = '';
 			for (var i = 0; i < cartItems.length; i++) {
 			  cartList.appendChild(cartItems[i]);
-			} */
-			
+			} */			
 			$.ajax({			
 				url: '/delete/cart',
 				type: 'post',
@@ -356,15 +366,25 @@ function orderdelete(id,total,price,quantity){
 				error: function (data) {					
 					alert('Xóa thất bại');					
 				}							
-			});
-			
+			});			
 		}
-	
+		/* function reloadPage(){
+			alert("reload page");
+			  var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			      window.location.reload();
+			    }
+			  };
+			  xhttp.open("GET", "cart.jsp", true);
+			  xhttp.send();
+			}
+		 */	
 	</script>
-    <!-- Link To Base JS -->
-    <%@include file = "component/_linkJS.jsp" %>
+	<!-- Link To Base JS -->
+	<%@include file="component/_linkJS.jsp"%>
 
-	
+
 </body>
 
 </body>
