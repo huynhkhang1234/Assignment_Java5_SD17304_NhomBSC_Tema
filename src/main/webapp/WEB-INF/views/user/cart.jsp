@@ -68,7 +68,7 @@
 
 							<tr id="cart" data-product-id="${item.value.id}">
 								<td class="pro-thumbnail"><a href="#"> <img
-										src="/images/${item.value.images}" alt="" height="70px;">
+										src="/images/product-img/${item.value.images}" alt="" height="70px;">
 								</a></td>
 								<td>${item.value.name}</td>
 								<!----------------- giá có trong cart------------------------------------ -->
@@ -474,7 +474,7 @@ function orderdelete(id,total,price,quantity,cartNumber){
                       <tr>
                         <td class="pro-thumbnail">
                             <a href="#">
-                                <img src="/images/product-01.png" alt="" height="70px;">
+                                <img src="/images/product-img/product-01.png" alt="" height="70px;">
                             </a>
                         </td>
                         <td>Động cơ hơi nước quá trời nước</td>

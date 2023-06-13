@@ -58,11 +58,11 @@ public class ShopController {
 
 		
 		try {
-			pageable = PageRequest.of(p.orElse(0), 5);
+			pageable = PageRequest.of(p.orElse(0), 8);
 
 			// }
 		} catch (Exception e) {
-			pageable = PageRequest.of(0, 5);	
+			pageable = PageRequest.of(0, 8);	
 		}		
 		
 		@SuppressWarnings("unchecked")

@@ -397,8 +397,7 @@
 			var priceOne=  $('#OnePrice'+id).val();
 			var quantityOne=  1;
 			var imgOne=   $('#imgOne'+id).val();
-			var disOne=  $('#discount'+id).val();
-			alert(imgOne);
+			var disOne=  $('#discount'+id).val();		
 			var imgInfo= document.getElementById("imgInfo");
 			var SummoneyInfo= document.getElementById("SummoneyInfo");
 			var disMoneyInfo= document.getElementById("disMoneyInfo");
