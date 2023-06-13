@@ -10,9 +10,8 @@ import com.poly.Entities.Likes;
 
 public interface LikesDAO extends JpaRepository<Likes, Integer> {
 	
-	/*
-	 * @Query("SELECT l FROM LIKES WHERE l.users.id = ?1 AND l.products.id = ?2")
-	 * List<Likes> findByUserAndProduct(Integer user_id, Integer product_id);
-	 */
+	 @Query("SELECT l FROM Likes l WHERE l.users.id = ?1")
+	 List<Likes> findAllLikesByUserID(Integer user_id);
+	
 
 }
