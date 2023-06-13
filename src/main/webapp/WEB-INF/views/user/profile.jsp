@@ -83,8 +83,22 @@
         <section class="breadcrumb">
             <ul class="breadcrumb__list d-flex container">
                 <li><a href="../html/index.html" class="breadcrumb__link">Trang chủ</a></li>
-                <li><span class="breadcrumb__link">></span></li>
-                <li><span class="breadcrumb__link active">Tài khoản</span></li>
+                <c:if test="${url == 'account'}">
+                	<li><span class="breadcrumb__link">></span></li>
+                	<li><span class="breadcrumb__link active">Tài khoản</span></li>
+                </c:if>
+                <c:if test="${url == 'profile'}">
+                	<li><span class="breadcrumb__link">></span></li>
+                	<li><span class="breadcrumb__link active">Hồ sơ</span></li>
+                </c:if>
+                <c:if test="${url == 'favorite'}">
+                	<li><span class="breadcrumb__link">></span></li>
+                	<li><span class="breadcrumb__link active">Yêu thích</span></li>
+                </c:if>
+                <c:if test="${url == 'history'}">
+                	<li><span class="breadcrumb__link">></span></li>
+                	<li><span class="breadcrumb__link active">Lịch sử mua hàng</span></li>
+                </c:if>
             </ul>
         </section>
 
@@ -119,13 +133,13 @@
                                 <h4>Quản lý tài khoản để bảo mật</h4>
                             </div>
                             <div class="col-8 pt-3">
-                                <div class="p-3">
+                                <form class="p-3" modelAttribute="user">
                                     <div class="row mb-3 align-items-center">
                                         <div class="col-4">
                                             <label for="txtUsername" class="col-form-label">Tên đăng nhập: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="text" id="txtUsername" class="form-control" readonly
+                                            <input type="text" name="user_names" value="${user.user_names}" id="txtUsername" class="form-control" readonly
                                                 aria-labelledby="passwordHelpInline">
                                         </div>
                                     </div>
@@ -134,7 +148,7 @@
                                             <label for="txtEmail" class="col-form-label">Email: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="email" id="txtEmail" class="form-control" readonly
+                                            <input type="email" name="email" value="${user.email}" id="txtEmail" class="form-control" readonly
                                                 aria-labelledby="passwordHelpInline">
                                         </div>
                                     </div>
@@ -143,7 +157,7 @@
                                             <label for="txtNumberPhone" class="col-form-label">Số điện thoại: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="text" id="txtNumberPhone" class="form-control" readonly
+                                            <input type="text" name="phones" value="${user.phones}" id="txtNumberPhone" class="form-control" readonly
                                                 aria-labelledby="passwordHelpInline">
                                         </div>
                                     </div>
@@ -174,7 +188,7 @@
                                             Đổi mật khẩu
                                         </a>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                             <div class="col-4 pt-3">
                                 <div class="p-3 d-flex flex-column align-items-center justify-content-center">
@@ -278,7 +292,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="favorite-tab"
+                    <div class="tab-pane fade" id="favorite" role="tabpanel" aria-labelledby="favorite-tab"
                         tabindex="0">
                         <div class="container">
                             <div class="row products" id="product-list">
@@ -642,7 +656,7 @@
 
                         </div>
                     </div>
-                    <div class="tab-pane fade " id="histories" role="tabpanel" aria-labelledby="history-tab"
+                    <div class="tab-pane fade " id="history" role="tabpanel" aria-labelledby="history-tab"
                         tabindex="0">
                         <div class="col-12 p-3" style="border: 1px solid #ccc; border-radius: 10px;">
                             <div class="header__order d-flex justify-content-between">
@@ -858,7 +872,7 @@
         });
         
 		const url = ${url};
-        const triggerEl = document.querySelector('#v-pills-tab a[data-bs-target="#url"]');
+        const triggerEl = document.querySelector('#v-pills-tab a[data-bs-target="#${url}"]');
         console.log(triggerEl);
         bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
 

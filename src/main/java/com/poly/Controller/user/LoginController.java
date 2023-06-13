@@ -67,6 +67,9 @@ public class LoginController {
 					cookieService.delete("password");
 				}
 				session.setAttribute("userLogin", userLogin);
+				
+				Users u = (Users) session.getAttribute("userLogin");
+				
 				System.out.println("Đăng nhập thành công");
 				System.out.println(userLogin);
 				if (userLogin.getRoles().getRoles().equals("admin")) {

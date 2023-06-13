@@ -70,6 +70,17 @@
                                 </div>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end d-right">
+                            	<c:if test="${sessionScope.userLogin.roles.id != 2}">
+                            		<li>
+                                    <a class="dropdown-item" href="/admin/index">
+                                        <i class="bi bi-person-lines-fill"></i>
+                                        Quản lý
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            	</c:if>
                                 <li>
                                     <a class="dropdown-item" href="/user/profile/account">
                                         <i class="bi bi-person-fill"></i>
@@ -86,7 +97,7 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="/user/profile/favorites">
+                                    <a class="dropdown-item" href="/user/profile/favorite">
                                         <i class="bi bi-bag-heart"></i>
                                         Yêu thích
                                     </a>
