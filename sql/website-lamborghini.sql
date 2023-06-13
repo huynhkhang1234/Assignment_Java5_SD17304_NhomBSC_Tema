@@ -69,7 +69,7 @@ CREATE TABLE [orders] (
   [users_id] int NOT NULL,
   [create_date] datetime default getdate(),
   [update_date] datetime default getdate(),
-  [money_received] int
+  [money_received] float
 )
 GO
 

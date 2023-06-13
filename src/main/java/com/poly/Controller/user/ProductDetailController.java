@@ -60,53 +60,8 @@ public class ProductDetailController {
 		System.out.println("slide show :" + galleriesList);
 		return "user/detail";
 	}
-	/// ad dữ liệu vào
-	@SuppressWarnings("unchecked")
-	@PostMapping(value = "/user/addCart")
-	public String addToCart(@RequestBody CartItem test) {
-		System.out.println("dữ liệu truyền qua" + test.toString());
-		// bắt try lỗi khi click sản phẩm đầu tiên
-		try {
-			int id = test.getId();
-			String name = test.getName();
-			int quantity = test.getQuantity();
-			float price = (float) test.getPrice();
-			String images = test.getImages();
-			float orderMoney = (float) (test.getQuantity()*test.getPrice());
-			System.out.println(id);
-			System.out.println(name);
-			System.out.println(price);
-			System.out.println(quantity);
-			System.out.println(images);
-			System.out.println(orderMoney);
-			CartItem item = new CartItem(id, name, quantity, price,images,orderMoney);
-			Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart");
-			if (cart == null) {
-				cart = new HashMap<Integer, CartItem>();
-			}
 
-			if (cart.containsKey(id)) {
-				CartItem existingItem = cart.get(id);
-				existingItem.setQuantity(existingItem.getQuantity() + quantity);
-			} else {
-				cart.put(id, item);
-			}
+	
+	
 
-			session.setAttribute("cart", cart);
-			float total = 0;
-			for (Entry<Integer, CartItem> entry : cart.entrySet()) {
-				total += entry.getValue().getQuantity() * entry.getValue().getPrice();
-			}
-
-			session.setAttribute("total", total);
-			System.out.println("Tông tiền: " + total);
-
-		} catch (Exception e) {
-			System.out.println("Lỗi truy vấn sản phẩm");
-		}
-		// sử lí lại
-		return "/user/cart";
-	}
 }
-	
-	

@@ -1,5 +1,7 @@
 package com.poly.service;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -11,12 +13,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CartItem {
+public class CartItem implements Serializable {
 
 	private int id;
 	private String name;
 	private int quantity;
-	private double price;
+	private float price;
 	private String images;
 	private float orderMoney;
 
