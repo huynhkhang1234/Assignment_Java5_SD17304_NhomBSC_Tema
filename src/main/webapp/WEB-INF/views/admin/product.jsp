@@ -536,6 +536,11 @@
 															class="btn btn-primary"> 
 															<i class="bi bi-pencil-square"></i>
 														</a>
+														
+														<a href="/admin/delete/${discounts.id}"
+															class="btn btn-danger"> <i class="bi bi-trash"></i>
+														</a>
+														
 													</td>
 												</tr>
 											</c:forEach>
@@ -632,9 +637,10 @@
 															</button>
 													</a> 
 													
-												<%-- 		<a href="/admin/category/delete/${categories.id}"
-															class="btn btn-danger"> <i class="bi bi-trash"></i>delete
-														</a> --%>
+												 	<a href="/admin/category/delete/${categories.id}"
+														class="btn btn-danger"> <i class="bi bi-trash"></i>
+													</a> 
+													
 													</td>
 												</tr>
 											</c:forEach>
