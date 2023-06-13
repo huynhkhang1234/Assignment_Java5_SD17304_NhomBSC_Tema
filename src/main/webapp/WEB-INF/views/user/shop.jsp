@@ -371,8 +371,8 @@
 		// sử lí code ajax
 		function addToCart(id) {
 
-			/* var cartNumber = document.getElementById("cartIcon");
-			cartNumber.innerHTML = parseInt(cartNumber.innerHTML) + 1; */
+			var cartNumber = document.getElementById("cartIcon");
+			cartNumber.innerHTML = parseInt(cartNumber.innerHTML) + 1;
 			
 			var imageOneCart = document.getElementById;
 
