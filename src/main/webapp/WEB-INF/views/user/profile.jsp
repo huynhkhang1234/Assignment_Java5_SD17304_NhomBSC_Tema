@@ -82,9 +82,23 @@
         <!-- ========================== BREADCRUMB ========================== -->
         <section class="breadcrumb">
             <ul class="breadcrumb__list d-flex container">
-                <li><a href="../html/index.html" class="breadcrumb__link">Trang chủ</a></li>
-                <li><span class="breadcrumb__link">></span></li>
-                <li><span class="breadcrumb__link active">Tài khoản</span></li>
+                <li><a href="/user/index" class="breadcrumb__link">Trang chủ</a></li>
+                <c:if test="${url == 'account'}">
+                	<li><span class="breadcrumb__link">></span></li>
+                	<li><span class="breadcrumb__link active">Tài khoản</span></li>
+                </c:if>
+                <c:if test="${url == 'profile'}">
+                	<li><span class="breadcrumb__link">></span></li>
+                	<li><span class="breadcrumb__link active">Hồ sơ</span></li>
+                </c:if>
+                <c:if test="${url == 'favorite'}">
+                	<li><span class="breadcrumb__link">></span></li>
+                	<li><span class="breadcrumb__link active">Yêu thích</span></li>
+                </c:if>
+                <c:if test="${url == 'history'}">
+                	<li><span class="breadcrumb__link">></span></li>
+                	<li><span class="breadcrumb__link active">Lịch sử mua hàng</span></li>
+                </c:if>
             </ul>
         </section>
 
@@ -119,13 +133,13 @@
                                 <h4>Quản lý tài khoản để bảo mật</h4>
                             </div>
                             <div class="col-8 pt-3">
-                                <div class="p-3">
+                                <form class="p-3" modelAttribute="user">
                                     <div class="row mb-3 align-items-center">
                                         <div class="col-4">
                                             <label for="txtUsername" class="col-form-label">Tên đăng nhập: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="text" id="txtUsername" class="form-control" readonly
+                                            <input type="text" name="user_names" value="${user.user_names}" id="txtUsername" class="form-control" readonly
                                                 aria-labelledby="passwordHelpInline">
                                         </div>
                                     </div>
@@ -134,7 +148,7 @@
                                             <label for="txtEmail" class="col-form-label">Email: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="email" id="txtEmail" class="form-control" readonly
+                                            <input type="email" name="email" value="${user.email}" id="txtEmail" class="form-control" readonly
                                                 aria-labelledby="passwordHelpInline">
                                         </div>
                                     </div>
@@ -143,7 +157,7 @@
                                             <label for="txtNumberPhone" class="col-form-label">Số điện thoại: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="text" id="txtNumberPhone" class="form-control" readonly
+                                            <input type="text" name="phones" value="${user.phones}" id="txtNumberPhone" class="form-control" readonly
                                                 aria-labelledby="passwordHelpInline">
                                         </div>
                                     </div>
@@ -174,7 +188,7 @@
                                             Đổi mật khẩu
                                         </a>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                             <div class="col-4 pt-3">
                                 <div class="p-3 d-flex flex-column align-items-center justify-content-center">
@@ -278,17 +292,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="favorite-tab"
+                    <div class="tab-pane fade" id="favorite" role="tabpanel" aria-labelledby="favorite-tab"
                         tabindex="0">
                         <div class="container">
                             <div class="row products" id="product-list">
-                                <div class="col-md-3 col-sm-6">
+                                <c:forEach var="item" items="${listLike}">
+                                	<div class="col-md-3 col-sm-6">
                                     <div class="product-grid6">
                                         <div class="card rounded-0">
                                             <div class="product-image6">
                                                 <a href="#">
                                                     <img class="card-img rounded-0 img-fluid"
-                                                        src="../images/product-img/bomlop.png">
+                                                        src="/images/product-img/${item.products.images}">
                                                 </a>
                                             </div>
                                             <div class="product-content">
@@ -302,325 +317,37 @@
                                                         <i class="text-warning bi bi-star"></i>
                                                     </li>
                                                 </ul>
-                                                <h3 class="title"><a href="#">Bơm Lốp Ô Tô Tự Ngắt Steelmate P05</a>
+                                                <h3 class="title"><a href="#">${item.products.titles}</a>
                                                 </h3>
-                                                <div
-                                                    class="price d-flex gap-2 justify-content-center align-items-center">
-                                                    <span class="new__price">$39.00</span>
-                                                    <span class="old__price">$60.00</span>
+                                                <div class="price d-flex gap-2 justify-content-center align-items-center">
+                                                	<c:if test="${item.products.discounts.id != null}">
+	                                                    <span class="new__price">${item.products.price - (item.products.price * (item.products.discounts.price_discounts / 100))}</span>
+	                                                    <span class="old__price">${item.products.price}</span>
+                                                	</c:if>
+                                                	<c:if test="${item.products.discounts.id == null}">
+	                                                    <span class="new__price">${item.products.price}</span>
+                                                	</c:if>
                                                 </div>
                                             </div>
                                             <ul class="social">
                                                 <li><a href="#" data-tip="Xem lướt qua" data-bs-toggle="modal"
                                                         data-bs-target="#QuickViewModal"><i class="bi bi-eye"></i></a>
                                                 </li>
-                                                </li>
                                                 <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
                                                             class="bi bi-cart"></i></a></li>
                                             </ul>
                                         </div>
-                                        <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span>
+                                        <div class="product-item__sale">
+                                        <c:if test="${item.products.discounts.id != null}">
+                                        	<span class="percent-count sale-txt">-${item.products.discounts.price_discounts}%</span>
+                                        </c:if>
                                         </div>
                                     </div>
 
 
                                 </div>
-
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="product-grid6">
-                                        <div class="card rounded-0">
-                                            <div class="product-image6">
-                                                <a href="#">
-                                                    <img class="card-img rounded-0 img-fluid"
-                                                        src="../images/product-img/volang.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="product-content">
-                                                <a href="shop-single.html" class="h3 text-decoration-none"></a>
-
-                                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                                    <li>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                    </li>
-                                                </ul>
-                                                <h3 class="title"><a href="#">Bọc Vô Lăng Ô Tô Da Cao Cấp SPARCO
-                                                        Italia</a></h3>
-                                                <div
-                                                    class="price d-flex gap-2 justify-content-center align-items-center">
-                                                    <span class="new__price">$99.00</span>
-                                                    <span class="old__price">$111.00</span>
-                                                </div>
-                                            </div>
-                                            <ul class="social">
-                                                <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a>
-                                                </li>
-                                                </li>
-                                                <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
-                                                            class="bi bi-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="product-grid6">
-                                        <div class="card rounded-0">
-                                            <div class="product-image6">
-                                                <a href="#">
-                                                    <img class="card-img rounded-0 img-fluid"
-                                                        src="../images/product-img/phukien1.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="product-content">
-                                                <a href="shop-single.html" class="h3 text-decoration-none"></a>
-
-                                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                                    <li>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                    </li>
-                                                </ul>
-                                                <h3 class="title"><a href="#">Đèn Bi Aozoom X Led Pro Domax Light</a>
-                                                </h3>
-                                                <div
-                                                    class="price d-flex gap-2 justify-content-center align-items-center">
-                                                    <span class="new__price">$55.00</span>
-                                                    <span class="old__price">$75.00</span>
-                                                </div>
-                                            </div>
-                                            <ul class="social">
-                                                <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a>
-                                                </li>
-                                                </li>
-                                                <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
-                                                            class="bi bi-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="product-grid6">
-                                        <div class="card rounded-0">
-                                            <div class="product-image6">
-                                                <a href="#">
-                                                    <img class="card-img rounded-0 img-fluid"
-                                                        src="../images/product-img/manhinh1.png">
-                                                </a>
-                                            </div>
-                                            <div class="product-content">
-                                                <a href="shop-single.html" class="h3 text-decoration-none"></a>
-
-                                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                                    <li>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                    </li>
-                                                </ul>
-                                                <h3 class="title"><a href="#">Màn hình NaviPlay N360 – Màn hình cao cấp
-                                                        dành cho ô
-                                                        tô</a></h3>
-                                                <div
-                                                    class="price d-flex gap-2 justify-content-center align-items-center">
-                                                    <span class="new__price">$19.00</span>
-                                                    <span class="old__price">$21.00</span>
-                                                </div>
-                                            </div>
-                                            <ul class="social">
-                                                <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a>
-                                                </li>
-                                                </li>
-                                                <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
-                                                            class="bi bi-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="product-grid6">
-                                        <div class="card rounded-0">
-                                            <div class="product-image6">
-                                                <a href="#">
-                                                    <img class="card-img rounded-0 img-fluid"
-                                                        src="../images/product-img/thamlot1.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="product-content">
-                                                <a href="shop-single.html" class="h3 text-decoration-none"></a>
-
-                                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                                    <li>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                    </li>
-                                                </ul>
-                                                <h3 class="title"><a href="#">Thảm Lót Sàn Ô Tô 5D, 6D Xe Mazda CX5</a>
-                                                </h3>
-                                                <div
-                                                    class="price d-flex gap-2 justify-content-center align-items-center">
-                                                    <span class="new__price">$50.00</span>
-                                                    <!--  class="old__price"<span>$14.00</span> -->
-                                                </div>
-                                            </div>
-                                            <ul class="social">
-                                                <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a>
-                                                </li>
-                                                </li>
-                                                <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
-                                                            class="bi bi-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="product-grid6">
-                                        <div class="card rounded-0">
-                                            <div class="product-image6">
-                                                <a href="#">
-                                                    <img class="card-img rounded-0 img-fluid"
-                                                        src="../images/product-img/camera1.png">
-                                                </a>
-                                            </div>
-                                            <div class="product-content">
-                                                <a href="shop-single.html" class="h3 text-decoration-none"></a>
-
-                                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                                    <li>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                    </li>
-                                                </ul>
-                                                <h3 class="title"><a href="#">Camera hành trình trước sau Vietmap
-                                                        KC01</a></h3>
-                                                <div
-                                                    class="price d-flex gap-2 justify-content-center align-items-center">
-                                                    <span class="new__price">$79.00</span>
-                                                    <!--  class="old__price"<span>$14.00</span> -->
-                                                </div>
-                                            </div>
-                                            <ul class="social">
-                                                <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a>
-                                                </li>
-                                                </li>
-                                                <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
-                                                            class="bi bi-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="product-grid6">
-                                        <div class="card rounded-0">
-                                            <div class="product-image6">
-                                                <a href="#">
-                                                    <img class="card-img rounded-0 img-fluid"
-                                                        src="../images/product-img/pic-51.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="product-content">
-                                                <a href="shop-single.html" class="h3 text-decoration-none"></a>
-
-                                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                                    <li>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="bi bi-star"></i>
-                                                        <i class="bi bi-star"></i>
-                                                    </li>
-                                                </ul>
-                                                <h3 class="title"><a href="#">Sạc Không Dây Thông Minh Xe Ô Tô Smart
-                                                        Sensor R1 -
-                                                        Vàng</a></h3>
-                                                <div
-                                                    class="price d-flex gap-2 justify-content-center align-items-center">
-                                                    <span class="new__price">$50.00</span>
-                                                    <!--  class="old__price"<span>$14.00</span> -->
-                                                </div>
-                                            </div>
-                                            <ul class="social">
-                                                <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a>
-                                                </li>
-                                                </li>
-                                                <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
-                                                            class="bi bi-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="product-grid6">
-                                        <div class="card rounded-0">
-                                            <div class="product-image6">
-                                                <a href="#">
-                                                    <img class="card-img rounded-0 img-fluid"
-                                                        src="../images/product-img/cambien1.png">
-                                                </a>
-                                            </div>
-                                            <div class="product-content">
-                                                <a href="shop-single.html" class="h3 text-decoration-none"></a>
-
-                                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                                    <li>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="text-warning bi bi-star"></i>
-                                                        <i class="bi bi-star"></i>
-                                                    </li>
-                                                </ul>
-                                                <h3 class="title"><a href="#">Cảm Biến Áp Suất Lốp ELLISAFE ADI4</a>
-                                                </h3>
-                                                <div
-                                                    class="price d-flex gap-2 justify-content-center align-items-center">
-                                                    <span class="new__price">$35.00</span>
-                                                    <span class="old__price">$55.00</span>
-                                                </div>
-                                            </div>
-                                            <ul class="social">
-                                                <li><a href="" data-tip="Xem lướt qua"><i class="bi bi-eye"></i></a>
-                                                </li>
-                                                </li>
-                                                <li><a href="shop-single.html" data-tip="Thêm vào giỏ hàng"><i
-                                                            class="bi bi-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-item__sale"><span class="percent-count sale-txt">-15%</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                	
+                                </c:forEach>
                             </div>
 
                             <div div="row">
@@ -642,7 +369,7 @@
 
                         </div>
                     </div>
-                    <div class="tab-pane fade " id="histories" role="tabpanel" aria-labelledby="history-tab"
+                    <div class="tab-pane fade " id="history" role="tabpanel" aria-labelledby="history-tab"
                         tabindex="0">
                         <div class="col-12 p-3" style="border: 1px solid #ccc; border-radius: 10px;">
                             <div class="header__order d-flex justify-content-between">
@@ -858,7 +585,7 @@
         });
         
 		const url = ${url};
-        const triggerEl = document.querySelector('#v-pills-tab a[data-bs-target="#url"]');
+        const triggerEl = document.querySelector('#v-pills-tab a[data-bs-target="#${url}"]');
         console.log(triggerEl);
         bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
 
