@@ -71,7 +71,7 @@ public class ShopController {
 	@GetMapping("/shop/user/viewProduct")
 	public String viewModel(Model model, @RequestBody CartItem test) {
 		int id = test.getId();		
-		Products listproduts = this.productRepo.findById(id);
+		Products listproduts = this.productRepo.findByProductId(id);
 		System.out.println("sản phẩm hiên thị lên view" + listproduts);
 		model.addAttribute("viewProduct", listproduts);
 		return "user/shop";
@@ -95,7 +95,7 @@ public class ShopController {
 				
 				int id = test.getId();
 				
-				Products product = this.productRepo.findById(id);
+				Products product = this.productRepo.findByProductId(id);
 
 				String name = product.getTitles();
 

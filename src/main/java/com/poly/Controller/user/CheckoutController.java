@@ -56,7 +56,7 @@ public class CheckoutController {
 		for (Entry<Integer, CartItem> entry : cart.entrySet()) {
 			// lấy key
 			Integer key = entry.getKey();
-			Products ps = this.productRepo.findById(cart.get(key).getId());
+			Products ps = this.productRepo.findByProductId(cart.get(key).getId());
 			order.setNotes("ghi chú");
 			order.setStatus("Đang vẩn chuyển");
 			// lấy gái trị session và gán vào giá trị

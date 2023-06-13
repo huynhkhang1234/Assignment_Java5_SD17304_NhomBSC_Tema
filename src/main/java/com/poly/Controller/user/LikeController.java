@@ -29,7 +29,7 @@ public class LikeController {
 
 		Likes like = new Likes();
 		Users user = (Users) session.getAttribute("userLogin");
-		Products product = this.productRepo.findById(id.getId());
+		Products product = this.productRepo.findByProductId(id.getId());
 		System.out.println(id.getId());
 		System.out.println(user.getId());
 		try {
