@@ -896,6 +896,7 @@
 
 	<!-- Link To Base JS -->
 	<%@include file="component/_linkJS.jsp"%>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 	<script type="text/javascript">
     const sidebarList = document.querySelectorAll('.sidebar');
