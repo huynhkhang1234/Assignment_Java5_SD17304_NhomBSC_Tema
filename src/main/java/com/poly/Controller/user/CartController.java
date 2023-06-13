@@ -42,7 +42,6 @@ public class CartController {
 
 		return "user/cart";
 	}
-
 	@GetMapping("/user/order")
 	public String view2() {
 		// giỏ hàng

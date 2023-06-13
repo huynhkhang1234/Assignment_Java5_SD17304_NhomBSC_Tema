@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.poly.Entities.Likes;
 
+
 public interface LikesDAO extends JpaRepository<Likes, Integer> {
 	
 	 @Query("SELECT l FROM Likes l WHERE l.users.id = ?1")

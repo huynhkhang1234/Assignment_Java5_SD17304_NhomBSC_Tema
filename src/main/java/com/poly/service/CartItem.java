@@ -18,7 +18,7 @@ public class CartItem implements Serializable {
 	private int id;
 	private String name;
 	private int quantity;
-	private double price;
+	private float price;
 	private String images;
 	private float orderMoney;
 

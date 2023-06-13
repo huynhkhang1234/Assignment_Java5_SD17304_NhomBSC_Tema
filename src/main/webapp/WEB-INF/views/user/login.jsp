@@ -136,8 +136,10 @@
 
 
 
-													<a href="#recover" id="RecoverPassword"
+													<!-- <a href="#recover" id="RecoverPassword"
 														data-bs-toggle="modal" data-bs-target="#exampleModal">Quên
+														mật khẩu</a> -->
+														<a href="/mail/send" id="RecoverPassword">Quên
 														mật khẩu</a>
 
 												</div>
@@ -192,7 +194,7 @@
 	<!-- Footer End -->
 
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1"
+	<!-- <div class="modal fade" id="exampleModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -205,23 +207,28 @@
 				<div class="modal-body">
 
 					<div class="form-group">
-						<input type="email" name="customer[email]" id="CustomerEmail"
-							class="form-control rounded-0" placeholder="Email" required>
+						<input type="email" name="sendEmail" id="sendEmail"
+							class="form-control rounded-0" placeholder="Email" required />
 					</div>
-
+			<h5 id="message" style="color: red"></h5>
 				</div>
+
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Đóng</button>
-					<button type="button" class="btn btn-primary">Xác Nhận</button>
+					<button type="button" id="OK" class="btn btn-primary">Xác Nhận</button>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 
 	<!-- Link To Base JS -->
 	<%@include file="component/_linkJS.jsp"%>
+	
+	
+    
+    
 </body>
 
 </html>

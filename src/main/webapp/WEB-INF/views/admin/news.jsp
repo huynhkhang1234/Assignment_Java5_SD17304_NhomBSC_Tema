@@ -179,7 +179,7 @@
 											class="input-group date" id="reservationdate"
 											data-target-input="nearest">
 											
-													<fr:input path="images" id="inputGroupFile01" type="file" cssClass="form-control datetimepicker-input"
+											<fr:input path="images" id="inputGroupFile01" type="file" cssClass="form-control datetimepicker-input"
 											 placeholder="choose file" />
 											
 										
@@ -285,6 +285,7 @@
 										class="btn btn-primary"> <i class="bi bi-pencil-square"></i>
 									</a>
 									</td>
+									
 									<td class="text-center">
 										<button class="btn btn-danger" data-bs-toggle="modal"
 											data-bs-target="#modalDelte${item.id }">
