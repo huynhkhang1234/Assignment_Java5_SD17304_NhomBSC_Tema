@@ -95,7 +95,7 @@
 										<!-- Cộng -->
 										<button onclick="onUp(${item.value.id},'${item.value.price}')"
 											class="btn btn-outline-warning qty-plus">+</button>
-
+											<!-- sl -->
 										<input onclick="inputClick(${item.value.id})"
 											id="${item.value.id}" value="${item.value.quantity}"
 											type="text" class="form-control text-center qty-input"
@@ -147,7 +147,7 @@
 						<div class="card-body text-secondary">
 							<div class="d-flex justify-content-between" style="color: #333;">
 								<p class="card-text" style="font-weight: 500;">Tạm tính:</p>
-								<span>123.000 VNĐ</span>
+								<span id="moneyT">${sessionScope.total} </span>
 							</div>
 							<div class="d-flex justify-content-between"
 								style="color: #333; border-bottom: 1px solid #ccc;">
@@ -224,12 +224,16 @@ function onUp(id,price) {
 			var setMoney = document.getElementById("setMoney");					
 			var result =  parseFloat(setMoney.textContent)+ parseFloat(orderprice);				
 						setMoney.textContent = result;
+						//tiền tạm
+			var moneyT = document.getElementById("moneyT");
+						moneyT.innerHTML = result;
+				
 			var button =  document.getElementById('bt'+id);
 						 button.removeAttribute("disabled");
 				}  
 				// sử lí code ajax								
 						 $.ajax({							 
-							url : "/user/addCart",
+							url : "/shop/user/addCart",
 							type : "POST",
 							data : JSON.stringify({
 								id : id	,
@@ -284,7 +288,10 @@ function onDown(id,price){
  						if(quantity >= 1){						
  							 var setMoney = document.getElementById("setMoney");						
  								var result =  parseFloat(setMoney.textContent)- parseFloat(orderprice);				
- 									 setMoney.textContent = result;								 
+ 									 setMoney.textContent = result;		
+ 									//tiền tạm
+ 									var moneyT = document.getElementById("moneyT");
+ 									moneyT.innerHTML = result;
  						}  
  					} 
 					
@@ -323,6 +330,7 @@ function inputClick(id) {
 		}
 		///xoa du lieu san pham
 function orderdelete(id,total,price,quantity,cartNumber){
+	var quantityPresent = document.getElementById(id);
 			//xóa số lượng cart có trong giỏ hàng
 		var cartNumber2 = document.getElementById("cartIcon");
 		cartNumber2.innerHTML = parseInt(cartNumber2.innerHTML) - 1;
@@ -343,21 +351,23 @@ function orderdelete(id,total,price,quantity,cartNumber){
 			    break;
 			  }
 			}
-			 var setMoney = document.getElementById("setMoney");											
-				var orderMoney = setMoney.innerText-(price * quantity);							
-				setMoney.innerHTML  = orderMoney; 
-														
-			// Cập nhật giao diện người dùng với giỏ hàng mới
-			/* var cartList = document.getElementById('cart');
-			cartList.innerHTML = '';
-			for (var i = 0; i < cartItems.length; i++) {
-			  cartList.appendChild(cartItems[i]);
-			} */			
-			$.ajax({			
+			 											
+	/// lấy tổng số lượng hiện tại 		 	
+	var soLuong = parseInt(quantityPresent.value);
+	// tính cái giá tiền trên jsp
+	 var setMoney = document.getElementById("setMoney");											
+	var orderMoney = setMoney.innerText-(price * soLuong);							
+	setMoney.innerHTML  = orderMoney;
+	//tiền tạm
+	var moneyT = document.getElementById("moneyT");
+	moneyT.innerHTML = orderMoney;
+	////////////////////////////////					
+		 	$.ajax({			
 				url: '/delete/cart',
 				type: 'post',
 				data: JSON.stringify({
-					id: id
+					id: id,
+					quantity:soLuong
 				}),
 				contentType : "application/json",				
 				success: function (data) {					
@@ -367,7 +377,7 @@ function orderdelete(id,total,price,quantity,cartNumber){
 					alert('Xóa thất bại');					
 				}							
 			});			
-		}
+		} 
 		/* function reloadPage(){
 			alert("reload page");
 			  var xhttp = new XMLHttpRequest();

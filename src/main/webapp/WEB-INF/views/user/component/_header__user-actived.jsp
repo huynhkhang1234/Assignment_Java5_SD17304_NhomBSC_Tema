@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	
 
 			 <!-- ======================= Cái này là để cho đăng nhập rồi nhé ======================= -->
                     <div class="header__user-left d-flex gap-4 me-3">
@@ -8,8 +9,8 @@
                             <i class="bi bi-bag"></i>
                             <span id="cartIcon" class="count">
                             
-                            <c:if test="${empty sessionScope.userLogin}">0</c:if>
-                            <c:if test="${not empty sessionScope.userLogin}">${sessionScope.cartSize}</c:if>
+                            <c:if test="${empty sessionScope.cartSize}">0</c:if>
+                            <c:if test="${not empty sessionScope.cartSize}">${sessionScope.cartSize}</c:if>
                             </span>
                         </a>
                         <div class="header__action-mini-cart">
@@ -17,33 +18,39 @@
                                 <h3>Your cart is currently empty.</h3>
                             </div>
                             <div class="mini-cart-product">
-
                                 <div class="mini-product">
                                     <div class="mini-product__thumb">
-                                        <a href="/user/products/5-simple-product?variant=30694916718638"><img
-                                                src="//cdn.shopify.com/s/files/1/0136/5816/1198/products/product-8_fcd6e163-0227-4680-9dbc-0b5b792e2be5_small.png?v=1571300350"
-                                                alt=""></a>
+                                        <a href="/user/products/5-simple-product?variant=30694916718638">
+                                        <img id="imgInfo" alt="" style="background-image: url('../images/product-img/cambien1.png')">
+                                        </a>
                                     </div>
+                                 
                                     <div class="mini-product__info">
                                         <h2 class="title">
-                                            <a href="/products/5-simple-product?variant=30694916718638">
+                                            <a id="nameInfo" href="/products/5-simple-product?variant=30694916718638">
                                                 Tên sản phẩm
                                             </a>
                                         </h2>
 
                                         <div class="mini-calculation">
-                                            <p class="price">1 x <span class="money" data-currency-bdt="Tk 50.00">Tk
-                                                    50.00</span></p>
+                                            <p id="priceInfo" class="price"> 1x1 
+                                            <span id="disMoneyInfo" class="money" data-currency-bdt="Tk 50.00">
+                                            
+                                                    </span></p>
+                                                    
                                             <button class="remove-pro">
                                                 <i class="bi bi-trash3-fill"></i>
                                             </button>
                                         </div>
-                                    </div>
+                                    </div>  
+                               
+                                  
+                                    
                                 </div>
 
                             </div>
                             <div class="cart-subtotal">
-                                <h4>Tổng: <span class="shopping-cart__total"><span class="money"
+                                <h4>Tổng: <span id="SummoneyInfo" class="shopping-cart__total"><span class="money"
                                             data-currency-bdt="Tk 50.00">Tk 50.00</span></span></h4>
                             </div>
                             <div class="cart-checkout-btn d-flex justify-content-end gap-2">

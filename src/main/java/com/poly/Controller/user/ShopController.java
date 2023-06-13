@@ -4,18 +4,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.poly.DAO.DiscountsDAO;
 import com.poly.DAO.LikesDAO;
 import com.poly.DAO.ProductsDAO;
-import com.poly.DAO.UsersDAO;
 import com.poly.Entities.Likes;
 import com.poly.Entities.Products;
 import com.poly.Entities.Users;
@@ -39,12 +43,19 @@ public class ShopController {
 	LikesDAO likesDAO;
 
 	@GetMapping("/user/shop")
-	public String view(Model model) {
+	public String view(Model model,@RequestParam("p") Optional<Integer> p) {
 		/// lấy tổng sản phẩm hiện thi
-		List<Products> listproduts = this.productRepo.findAll();
-	//	System.out.println(listproduts);
+		Pageable pageable;
+		try {
+			pageable = PageRequest.of(p.orElse(0), 5);
+
+			// }
+		} catch (Exception e) {
+			pageable = PageRequest.of(0, 5);	
+		}		
+		Page<Products> listproduts = this.productRepo.findAll(pageable);	
 		model.addAttribute("listproduts", listproduts);
-		
+								
 		Users u = (Users) session.getAttribute("userLogin");
 		
 		List<Likes> listLike = likesDAO.findAllByUserId(u.getId());
@@ -70,7 +81,7 @@ public class ShopController {
 	// luu thong tin san phawm tren shop nha và sản phẩm chi tiết.		
 		@SuppressWarnings("unchecked")
 		@PostMapping(value = "/shop/user/addCart")
-		public String addToCartShop(@RequestBody CartItem test) {
+		public String addToCartShop(@RequestBody CartItem test,Model model) {
 			
 			System.out.println("Cái số lượng sau khi tăng lên: " + test.getQuantity());
 			// bắt try lỗi khi click sản phẩm đầu tiên
@@ -117,7 +128,7 @@ public class ShopController {
 					
 				} else {
 					
-					cart.put(id, item);
+					cart.put(id, item);					
 					cartSize++;
 				}
 				
@@ -128,10 +139,14 @@ public class ShopController {
 				
 				session.setAttribute("cartSize", cartSize);
 				session.setAttribute("cart", cart);
-				session.setAttribute("total", total);				
+				session.setAttribute("total", total);	
+				
+				
 			} catch (Exception e) {
 				System.out.println("Lỗi truy vấn sản phẩm");
-			}
+			}	
+			// hiện thị 1 sản phẩm trên giỏ hang mới
+									
 			return "/user/cart";
 		}
 					

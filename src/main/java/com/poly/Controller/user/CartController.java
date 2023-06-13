@@ -51,6 +51,7 @@ public class CartController {
 
 	@PostMapping("/delete/cart")
 	public String delete(Model model, @RequestBody CartItem test) {
+		System.out.println("Số lương input hiện tại"+test.getQuantity());
 		int id = test.getId();
 		System.out.println("Du lieu truyen qua: " + test.getId());
 
@@ -61,7 +62,7 @@ public class CartController {
 
 			float total = (float) session.getAttribute("total");
 			int cartNumber = (int) session.getAttribute("cartSize");
-			float price = (float) (total - (cart.get(id).getPrice() * cart.get(id).getQuantity()));
+			float price = (float) (total - (cart.get(id).getPrice() * test.getQuantity()));
 			cart.remove(id);
 			cartNumber--;
 			session.setAttribute("cartSize", cartNumber);
@@ -74,50 +75,6 @@ public class CartController {
 		return "user/cart";
 	}
 
-	// tăng sản phẩm lên
-	@SuppressWarnings("unchecked")
-
-	@PostMapping(value = "/user/addCart")
-	public String addToCart(@RequestBody CartItem test) {
-		// bắt try lỗi khi click sản phẩm đầu tiên
-		try {
-			int id = test.getId();
-			String name = test.getName();
-			int quantity = test.getQuantity();
-			float price = (float) test.getPrice();
-			
-			
-			String images = test.getImages();
-			float orderMoney = (float) (test.getQuantity() * test.getPrice());
-			
-			CartItem item = new CartItem(id, name, quantity, price, images, orderMoney);
-			Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart");
-			if (cart == null) {
-				cart = new HashMap<Integer, CartItem>();
-			}
-			// chắc chắn
-			if (cart.containsKey(id)) {
-				CartItem existingItem = cart.get(id);
-				existingItem.setQuantity(existingItem.getQuantity() + 1);
-				existingItem.setOrderMoney((float) (test.getPrice() *existingItem.getQuantity()));				
-			} else {
-				cart.put(id, item);
-			}
-	
-			float total = 0;
-			for (Entry<Integer, CartItem> entry : cart.entrySet()) {
-				total += entry.getValue().getQuantity() * entry.getValue().getPrice();
-			}
-			session.setAttribute("cart", cart);
-			session.setAttribute("total", total);
-			System.out.println("Tông tiền: " + total);
-
-		} catch (Exception e) {
-			System.out.println("Lỗi truy vấn sản phẩm");
-		}
-		return "/user/cart";
-	}
-
 	//
 
 	/// trừ đi số lượng có trong sản phẩm
@@ -127,45 +84,66 @@ public class CartController {
 	@PostMapping(value = "/shop/user/disCart")
 	public String disCartShop(@RequestBody CartItem test) {
 		
-			try {
-				int id = test.getId();
-				String name = test.getName();
-				int quantity = test.getQuantity();
-				float price = (float) test.getPrice();
-				
-				
-				String images = test.getImages();
-				float orderMoney = (float) (test.getQuantity() * test.getPrice());
-				
-				CartItem item = new CartItem(id, name, quantity, price, images, orderMoney);
-				Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart");
-				if (cart == null) {
-					cart = new HashMap<Integer, CartItem>();
-				}
-				// chắc chắn
-				if (cart.containsKey(id)) {
-					CartItem existingItem = cart.get(id);
-					existingItem.setQuantity(existingItem.getQuantity() - 1);
-					existingItem.setOrderMoney((float) (test.getPrice() *existingItem.getQuantity()));
-					System.out.println("số lượng của sản phẩm đang tồn tại: " + existingItem.getQuantity());
-					System.out.println("Giá của sản phẩm đang tồn tại: " + test.getPrice());
-				} else {
-					cart.put(id, item);
-				}
-		
-				float total = 0;
-				for (Entry<Integer, CartItem> entry : cart.entrySet()) {
-					total += entry.getValue().getQuantity() * entry.getValue().getPrice();
-				}
-				session.setAttribute("cart", cart);
-				session.setAttribute("total", total);
-				System.out.println("Tông tiền: " + total);
-
-			} catch (Exception e) {
-				System.out.println("Lỗi truy vấn sản phẩm");
+		System.out.println("Cái số lượng sau khi tăng lên: " + test.getQuantity());
+		// bắt try lỗi khi click sản phẩm đầu tiên
+		try {
+			
+			int cartSize = 0;
+			
+			if(session.getAttribute("cartSize") != null) {
+				 cartSize = (int) session.getAttribute("cartSize");
 			}
-		
+			
+			int id = test.getId();
+			
+			Products product = this.productRepo.findById(id);
 
+			String name = product.getTitles();
+
+			int quantity = 1;
+			
+			
+			float giamGia =0; 
+			try {
+				giamGia=product.getPrice()*product.getDiscounts().getPrice_discounts() / 100;	
+			} catch (Exception e) {
+				giamGia = 0;
+			}
+												
+			float price = product.getPrice() - giamGia;
+			String images = product.getImages();
+			float orderMoney = 0;
+			
+			  orderMoney =  price* 1;
+			  System.out.println("số tiền sản phẩm khi click vào shop: orderMoney->> " + orderMoney);				 
+			CartItem item = new CartItem(id, name, quantity, price, images, orderMoney);
+			Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart");
+			if (cart == null) {
+				cart = new HashMap<Integer, CartItem>();
+			}
+
+			if (cart.containsKey(id)) {
+				CartItem existingItem = cart.get(id);
+				existingItem.setQuantity(existingItem.getQuantity() - 1);
+				existingItem.setOrderMoney((product.getPrice()-giamGia) * existingItem.getQuantity());
+				
+			} else {
+				
+				cart.put(id, item);
+				cartSize++;
+			}
+			
+			float total = 0;
+			for (Entry<Integer, CartItem> entry : cart.entrySet()) {
+				total += entry.getValue().getQuantity() * entry.getValue().getPrice();
+			}
+			
+			session.setAttribute("cartSize", cartSize);
+			session.setAttribute("cart", cart);
+			session.setAttribute("total", total);				
+		} catch (Exception e) {
+			System.out.println("Lỗi truy vấn sản phẩm");
+		}
 		return "/user/cart";
 	}
 }

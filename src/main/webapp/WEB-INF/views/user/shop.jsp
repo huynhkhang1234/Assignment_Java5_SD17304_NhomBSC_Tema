@@ -18,11 +18,11 @@
 
 <link rel="stylesheet" href="../css/product.css">
 <style>
-
 .likeCss {
 	background: red;
 }
-.likeCss .iconCss{
+
+.likeCss .iconCss {
 	color: #fff;
 }
 </style>
@@ -50,7 +50,7 @@
 			<div class="">
 				<div class="container">
 					<div class="row products" id="product-list">
-						<c:forEach items="${listproduts}" var="item">
+						<c:forEach items="${listproduts.content}" var="item">
 
 							<div class="col-md-3 col-sm-6 ">
 								<input id="productId2" value="${item.id}" type="hidden">
@@ -77,88 +77,90 @@
 											</ul>
 											<!-- ----------------input hidden----------------------- -->
 
-											<input type="hidden" name="productId" value="${item.id}">
-											<%-- <input type="hidden" id="productName" value="${item.titles}"/>
-											<input  type="hidden" id="quantity"value="${productDetail.quantity}">
-											<input type="hidden" id="price" value="${item.price}"/>
-											<input type="hidden" id="price" value="${item.price}"/> --%>
-											<%-- <input type="text" id="discount2" value="${item.discounts.id}"/> --%>
+											<input type="hidden" id="imgOne${item.id}"
+												value="${item.images}"> <input type="hidden"
+												id="nameOne${item.id}" value="${item.titles}" /> <input
+												type="hidden" id="OnePrice${item.id}" value="${item.price}" />
+											<input type="text" id="discount${item.id}"
+												value="${item.discounts.price_discounts}" />
 											<!-- --------------------------------------------------------------- -->
 											<h3 class="title">
 												<a href="#">${item.titles}</a>
 											</h3>
 											<c:if test="${item.discounts != null}">
 												<div class="price">
-												<fmt:formatNumber value="${item.price - (item.price * (item.discounts.price_discounts / 100))}" pattern="###,###,### VNĐ" />
-												
-												<span>${item.price}</span>
-											</div>
+													<fmt:formatNumber
+														value="${item.price - (item.price * (item.discounts.price_discounts / 100))}"
+														pattern="###,###,### VNĐ" />
+
+													<del style="color: #ccc">
+														<fmt:formatNumber value="${item.price}"
+															pattern="###,###,### VNĐ" />
+													</del>
+												</div>
 											</c:if>
 											<c:if test="${item.discounts == null}">
 												<div class="price">
-												 <fmt:formatNumber value="${item.price - (item.price * (item.discounts.price_discounts / 100))}" pattern="###,###,### VNĐ" />
-												
-											</div>
+													<fmt:formatNumber
+														value="${item.price - (item.price * (item.discounts.price_discounts / 100))}"
+														pattern="###,###,### VNĐ" />
+
+												</div>
 											</c:if>
 										</div>
 
 										<ul class="social">
 											<li><a
-												onclick="viewProduct('${item.titles}','${item.price}','${item.images}','${item.description}')"
+												onclick="viewProduct('${item.titles}','${item.price}','${item.images}','${item.description}','${item.discounts.price_discounts}')"
 												data-tip="Xem lướt qua" data-bs-toggle="modal"
 												data-bs-target="#QuickViewModal"><i class="bi bi-eye"></i></a></li>
 
 											<!-- //foreach//c:if nếu id = id thì tim đổ ngược lại tim đen -->
-											
+
 											<c:if test="${!empty listLike}">
-											<c:set var="dem" value="0" />
-												<c:forEach var="like" items="${listLike}" >
-														<c:if test="${like.products.id == item.id}">
-															<li>
-																<c:set var="dem" value="${dem + 1}" />
-																<a  class="likeCss" onclick="like(${item.id})" id="likeButton${item.id}" 
-																data-tip="Thêm vào danh sách yêu thích">
-																 <i id="likeIcon${item.id}" class="bi bi-heart  iconCss"></i>
-																</a>
-															</li>
-														</c:if>
+												<c:set var="dem" value="0" />
+												<c:forEach var="like" items="${listLike}">
+													<c:if test="${like.products.id == item.id}">
+														<li><c:set var="dem" value="${dem + 1}" /> <a
+															class="likeCss" onclick="like(${item.id})"
+															id="likeButton${item.id}"
+															data-tip="Thêm vào danh sách yêu thích"> <i
+																id="likeIcon${item.id}" class="bi bi-heart  iconCss"></i>
+														</a></li>
+													</c:if>
 												</c:forEach>
 												<c:if test="${dem == 0}">
-															<li>
-																<a class="buttonCss" onclick="like(${item.id})" id="likeButton${item.id}" 
-																data-tip="Thêm vào danh sách yêu thích">
-																 <i id="likeIcon${item.id}" class="bi bi-heart"></i>
-																</a>
-															</li>
+													<li><a class="buttonCss" onclick="like(${item.id})"
+														id="likeButton${item.id}"
+														data-tip="Thêm vào danh sách yêu thích"> <i
+															id="likeIcon${item.id}" class="bi bi-heart"></i>
+													</a></li>
 												</c:if>
 											</c:if>
-											
+
 											<c:if test="${empty listLike}">
-												<li>
-													<a onclick="like(${item.id})" id="likeButton${item.id}" 
-													data-tip="Thêm vào danh sách yêu thích">
-													 <i 
-														id="likeIcon${item.id}"
-														class="bi bi-heart "></i>
-													</a>
-												</li>
+												<li><a onclick="like(${item.id})"
+													id="likeButton${item.id}"
+													data-tip="Thêm vào danh sách yêu thích"> <i
+														id="likeIcon${item.id}" class="bi bi-heart "></i>
+												</a></li>
 											</c:if>
 
 											<!-------------- Thêm vào giỏ hàng trên trang  shop ------------------------>
 											<li><a class="add-to-cart"
-												onclick="addToCart('${item.id}','${sessionScope.cartSize}')"
+												onclick="addToCart('${item.id}')"
 												data-tip="Thêm vào giỏ hàng"><i class="bi bi-cart"></i></a></li>
 										</ul>
 
 									</div>
 									<div class="product-item__sale">
-									<c:if test="${not empty item.discounts.price_discounts}">
-										<span class="percent-count sale-txt">-${item.discounts.price_discounts}%</span>
-									</c:if>
-									<c:if test="${ empty item.discounts.price_discounts}">
+										<c:if test="${not empty item.discounts.price_discounts}">
+											<span class="percent-count sale-txt">-${item.discounts.price_discounts}%</span>
+										</c:if>
+										<c:if test="${ empty item.discounts.price_discounts}">
 										0 %
 									</c:if>
-									
+
 									</div>
 								</div>
 
@@ -167,21 +169,28 @@
 						</c:forEach>
 
 					</div>
+				
+						<div div="row">
 
-					<div div="row">
+							<ul class="pagination pagination-lg justify-content-end">
+								<li class="page-item "><a
+									class="page-link  rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
+									href="/user/shop?p=0" >1</a></li>
+								<li class="page-item"><a
+									class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+									href="/user/shop?p=1">2</a></li>
+									<li class="page-item"><a
+									class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+									href="/user/shop?p=2">3</a></li>
+								<li class="page-item"><a
+									class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
+									href="/user/shop?p=${listproduts.totalPages-1}">4</a></li>
+							</ul>
 
-						<ul class="pagination pagination-lg justify-content-end">
-							<li class="page-item disabled"><a
-								class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
-								href="#" tabindex="-1">1</a></li>
-							<li class="page-item"><a
-								class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-								href="#">2</a></li>
-							<li class="page-item"><a
-								class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
-								href="#">3</a></li>
-						</ul>
-					</div>
+
+
+						</div>
+				
 
 				</div>
 			</div>
@@ -320,7 +329,9 @@
 							<h4 id="title">Tên sản phẩm</h4>
 							<div class="price d-flex align-items-center gap-2">
 								<span id="price" class="old__price">Giá </span> <span
-									class="new__price">123.000 VNĐ</span>
+									class="new__price">
+									<p id="disPrice" class="h3 py-2" style="color: red"></p>
+								</span>
 							</div>
 							<div class="my-4">
 								<ul class="list-unstyled pb-3 description">
@@ -347,6 +358,7 @@
 
 	</main>
 
+
 	<!-- Footer Start -->
 	<%@include file="component/_footer.jsp"%>
 	<!-- Footer End -->
@@ -357,10 +369,12 @@
 	<script src="https:code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		// sử lí code ajax
-		function addToCart(id, cart) {
+		function addToCart(id) {
 
 			var cartNumber = document.getElementById("cartIcon");
 			cartNumber.innerHTML = parseInt(cartNumber.innerHTML) + 1;
+			
+			var imageOneCart = document.getElementById;
 
 			$.ajax({
 				url : "/shop/user/addCart",
@@ -370,22 +384,60 @@
 				}),
 				contentType : "application/json",
 				success : function(data) {
-					alert("Thêm sản phẩm thành công");
+					alert("Thêm sản phẩm thành công");					
 				},
 				error : function(data) {
 					alert("Lỗi thêm sản phẩm thất bại");
 				}
 			});
+			// load sản 1 giỏ hàng
+			//gọi dữ liệu trên xuống.
+			var nameOne=  $('#nameOne'+id).val();
+			var priceOne=  $('#OnePrice'+id).val();
+			var quantityOne=  1;
+			var imgOne=   $('#imgOne'+id).val();
+			var disOne=  $('#discount'+id).val();
+			alert(imgOne);
+			var imgInfo= document.getElementById("imgInfo");
+			var SummoneyInfo= document.getElementById("SummoneyInfo");
+			var disMoneyInfo= document.getElementById("disMoneyInfo");
+			
+			 
+			var pathImages = "../images/product-img/" + imgOne;
+			 imgInfo.style.backgroundImage = "url('" + pathImages + "')";
+			if(disOne > 0){
+				SummoneyInfo.innerHTML=priceOne-(priceOne*(disOne/100));
+			}else{
+				SummoneyInfo.innerHTML=priceOne;	
+			}
+			
+			nameInfo.innerHTML=nameOne;
+			if(disOne >0){
+				disMoneyInfo.innerHTML = disOne+'%';	
+			}else{
+				disMoneyInfo.innerHTML = '';
+			}
+			
+			
 		}
 
-		function viewProduct(title, price, imgae, description) {
+		function viewProduct(title, price, imgae, description,disPrice) {
 
 			var pathImages = "../images/product-img/" + imgae;
 			var titleid = document.getElementById("title").innerHTML = title;
-			var priceid = document.getElementById("price").innerHTML = price;
+			var priceid = document.getElementById("price").innerHTML = price; 		
+			
 			var imgaeid = document.getElementById("description").innerHTML = description;
 			var descriptionid = document.getElementById("images");
 			descriptionid.style.backgroundImage = "url('" + pathImages + "')";
+			if(disPrice != ""){
+				 
+				var disPrice2 = document.getElementById("disPrice").innerHTML = price - (price*(disPrice/100));	
+			}else{
+				var disPrice2 = document.getElementById("disPrice").innerHTML = price;
+				var priceid = document.getElementById("price").innerHTML = ""; 
+			}
+			
 		}
 		function like(id) {				
 			   // Lấy phần tử HTML ứng với nút "like"

@@ -5,6 +5,7 @@ import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,30 +38,20 @@ public class CheckoutController {
 	@Autowired
 	private Order_detailsDAO orderDetailRepo;
 	@GetMapping("/user/cart/checkout")
-	public String view() {
-		// giỏ hàng
+	public String view(Model model) {
+		Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart"); 
+		model.addAttribute("checkList", cart);
 		return "user/checkout";
 	}
 	
 	// nhấn nút lưu tren kia mua sản phẩm
 	@RequestMapping(value = "/user/saveCart/checkout", method = RequestMethod.POST)
 	public String saveCart() {
+		@SuppressWarnings("unchecked")
 		Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart"); // Thực hiện lưu thông
-		// test thử dữ liệu khi thêm sản phẩm vào
-		try {
-			System.out.println("gio hang database : " + cart.get(1).getName());
-			System.out.println("gio hang database : " + cart.get(2).getName());
-		} catch (Exception e) {
-			System.out.println("lưu 1 giỏ hàng");
-		}
+	
 		// tạo đối tượng
-		Orders order = new Orders();
-		// int start = cart.get(0).getId();
-		// System.out.println(start+ "start");
-
-		// duyệt vong for lấy ra đối tượng
-		// for (int i = 1; i <= cart.size(); i++) {
-		System.out.println("kích thước của tất cả sản phẩm :" + cart.size());
+		Orders order = new Orders();					
 		// dùng vong lập duyệt qua giá trị của key và value có trong map
 		for (Entry<Integer, CartItem> entry : cart.entrySet()) {
 			// lấy key
@@ -95,6 +86,7 @@ public class CheckoutController {
 
 		session.removeAttribute("cart");
 		session.removeAttribute("total");
+		session.removeAttribute("cartSize");
 		return "user/shop";
 	}
 
