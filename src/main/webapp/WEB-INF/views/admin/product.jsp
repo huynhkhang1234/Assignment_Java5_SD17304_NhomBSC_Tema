@@ -60,8 +60,9 @@
 				<div class="modal-dialog">
 
 					<div class="modal-content">
+					
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Thêm Sản Phẩm</h5>
+							<h5 class="modal-title">Thêm Sản Phẩm</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal"
 								aria-label="Close"></button>
 						</div>
@@ -90,7 +91,8 @@
 
 								<div class="col-md-12">
 									<label for="inputCraetDate" class="form-label">Ngày
-										đăng:</label> <input readonly value="<fmt:formatDate value="${now}" pattern="dd-MM-yyyy hh:mm" />"
+										đăng:</label> <input readonly
+										value="<fmt:formatDate value="${now}" pattern="dd-MM-yyyy hh:mm" />"
 										class="form-control" />
 
 								</div>
@@ -178,8 +180,8 @@
 								<button type="button" class="btn btn-secondary"
 									data-bs-dismiss="modal">Đóng</button>
 
-								<button formaction="/admin/save/product"
-									type="submit" class="btn btn-primary">Lưu thay đổi</button>
+								<button formaction="/admin/save/product" type="submit"
+									class="btn btn-primary">Thêm sản phẩm</button>
 							</div>
 						</form:form>
 
@@ -217,56 +219,46 @@
 						role="tabpanel" aria-labelledby="pills-home-tab">
 
 						<!-- đèn -->
-						<div class="list-products">
-							<div class="title">
-								<h2>Đèn ô tô</h2>
-							</div>
-
-							<div class="container py-5">
+						<div class="container">
 								<div class="row">
 									<c:forEach var="item" items="${list}">
 
-									
-												<div class="col-md-4 col-sm-3">
-													<div class="product-grid6">
-														<div class="card rounded-0">
-														<div class="img-pro">
-															<img class="image"
-																src="/images/product-img/${item.images}" />
-														</div>															
-
-															<div class="product-content">
-																<div class="name">${item.titles}</div>
-																<li class="price">Price: ${item.price}</li>
-																<li>Ngày đăng: ${item.create_date}</li>
-																<li>Ngày cập nhật: ${item.update_date}</li>
-																<li>Loại: ${item.categories.id}</li>
-																<li>Trạng thái: ${item.is_active}</li>
-																<li>Nhà cung cấp: ${item.suppliers.id}</li>
-																<li>Giá gốc: ${item.original_price}</li>
-																<li>Giảm giá: ${item.discounts.id}</li>
-																<li>Mô tả: ${item.description}</li>
-															</div>
-															<div class="btn-pro">
-																<div
-																	class="d-grid gap-2 d-md-flex justify-content-md-end">
-
-																	<button class="btn btn-primary" data-bs-toggle="modal"
-																		data-bs-target="#exampleModal${item.id}"
-																		data-bs-whatever="@mdo">
-																		<i class="bi bi-pencil-square"></i>
-																	</button>
-																	</a>
-
-																	<a href="/admin/product/delete/${item.id}" class="btn btn-danger">
-																		<i class="bi bi-trash"></i>delete
-																	</a>
-																</div>
-															</div>
-														</div>
+										<div class="col-md-3 col-sm-2">
+											<div class="product-grid6">
+												<div class="card">
+													<div class="img-pro">
+														<img class="card-img" src="/images/product-img/${item.images}" />
 													</div>
+
+													<div class="product-content">
+														<li class="name">${item.titles}</li>
+														<li class="price">Price: ${item.price}</li>
+														<li>Ngày đăng: ${item.create_date}</li>
+														<li>Ngày cập nhật: ${item.update_date}</li>
+														<li>Loại: ${item.categories.id}</li>
+														<li>Trạng thái: ${item.is_active}</li>
+														<li>Nhà cung cấp: ${item.suppliers.id}</li>
+														<li>Giá gốc: ${item.original_price}</li>
+														<li>Giảm giá: ${item.discounts.id}</li>
+														<li>Mô tả: ${item.description}</li>
+													</div>
+													
+														<div class="btn-pro">
+															<button class="btn btn-primary" data-bs-toggle="modal"
+																data-bs-target="#exampleModal${item.id}"
+																data-bs-whatever="@mdo">
+																<i class="bi bi-pencil-square"></i>
+															</button>
+															
+															<a href="/admin/product/delete/${item.id}"
+																class="btn btn-danger"> <i class="bi bi-trash"></i>delete
+															</a>
+														</div>
+
 												</div>
-											
+											</div>
+										</div>
+
 
 
 										<div class="modal fade" id="exampleModal${item.id}"
@@ -415,17 +407,13 @@
 																đổi</button>
 														</div>
 													</form:form>
-
 												</div>
 											</div>
 										</div>
-
 									</c:forEach>
-
 								</div>
 							</div>
 						</div>
-					</div>
 
 
 					<div class="tab-pane fade" id="pills-profile" role="tabpanel"
@@ -433,8 +421,9 @@
 
 						<section class="middle">
 							<!--form-->
-							<form:form action="/admin/save/discount" modelAttribute="discounts"
-								method="post" enctype="multipart/form-data">
+							<form:form action="/admin/save/discount"
+								modelAttribute="discounts" method="post"
+								enctype="multipart/form-data">
 
 								<div class="row">
 									<!--row1-->
@@ -501,7 +490,8 @@
 								<div class="btn-add">
 									<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-										<button formaction="/admin/save/discount" type="submit" class="btn btn-primary">
+										<button formaction="/admin/save/discount" type="submit"
+											class="btn btn-primary">
 											<i class="bi bi-plus-lg"></i>
 										</button>
 
@@ -509,8 +499,6 @@
 											type="submit" class="btn btn-primary">
 											<i class="bi bi-pencil-square"> </i>
 										</button>
-
-
 									</div>
 								</div>
 
@@ -542,12 +530,12 @@
 													<td>${item.end_day}</td>
 													<td>${item.descriptions}</td>
 
-													<td><a href="/admin/discount/edit/${item.id}"
-														  class="btn btn-primary"> 
-														<i class="bi bi-pencil-square"></i>
-
-												
-
+													<td>
+														<a href="/admin/discount/edit/${item.id}"
+															class="btn btn-primary"> 
+															<i class="bi bi-pencil-square"></i>
+														</a>
+													</td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -575,7 +563,8 @@
 						aria-labelledby="pills-contact-tab">
 						<section class="middle">
 							<!--from-->
-							<form:form action="/admin/save/category" modelAttribute="categories">
+							<form:form action="/admin/save/category"
+								modelAttribute="categories">
 
 								<div class="row">
 									<!--row1-->
@@ -604,7 +593,8 @@
 								<div class="btn-add">
 									<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-										<button formaction="/admin/save/category" type="submit" class="btn btn-primary">
+										<button formaction="/admin/save/category" type="submit"
+											class="btn btn-primary">
 											<i class="bi bi-plus-lg"></i>
 										</button>
 
@@ -634,15 +624,17 @@
 												<tr>
 													<td>${item.id}</td>
 													<td>${item.names}</td>
-													<td><a href="/admin/category/edit/${item.id}">
+													<td>
+													<a href="/admin/category/edit/${item.id}">
 															<button class="btn btn-primary">
 																<i class="bi bi-pencil-square"></i>
 															</button>
-													</a> <a href="/admin/delete/${categories.id}">
-															<button class="btn btn-danger">
-																<i class="bi bi-trash"></i>delete
-															</button>
-													</a></td>
+													</a> 
+													
+												<%-- 		<a href="/admin/category/delete/${categories.id}"
+															class="btn btn-danger"> <i class="bi bi-trash"></i>delete
+														</a> --%>
+													</td>
 												</tr>
 											</c:forEach>
 

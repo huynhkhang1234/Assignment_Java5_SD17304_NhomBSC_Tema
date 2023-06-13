@@ -124,7 +124,7 @@ public class ProductMANController {
 	}
 	
 	@PostMapping("/admin/save/discount")
-	public String saveProduct(Model model, @ModelAttribute("discount") Discounts entityDis,
+	public String saveDiscount(Model model, @ModelAttribute("discount") Discounts entityDis,
 			@RequestParam("dis") Discounts dis) {
 		
 		Date now = new Date();
@@ -141,7 +141,7 @@ public class ProductMANController {
 	}
 	
 	@PostMapping("/admin/save/category")
-	public String saveProduct(Model model, @ModelAttribute("category") Categories entityCate) {
+	public String saveCategory(Model model, @ModelAttribute("category") Categories entityCate) {
 		
 		  // categories
 		  
@@ -234,15 +234,20 @@ public class ProductMANController {
 
 		return "redirect:/admin/product";
 	}
+	
+//	@GetMapping("/admin/category/delete/{id}")
+//	public String delete(@ModelAttribute("categories") Categories entityCate, @PathVariable("id") Integer id) {
+//
+//		entityCate = catedao.getOne(id);
+//		
+//		catedao.saveAndFlush(entityCate);
+//
+//		return "redirect:/admin/product";
+//	}
+	
 
 	@GetMapping("/admin/discount/edit/{id}")
 	public String edit(Model model, @PathVariable("id") Integer id, @ModelAttribute("discounts") Discounts d) {
-
-		// products
-		Products entity = new Products();
-		model.addAttribute("products", entity);
-		List<Products> list = dao.findAllActiveTrue();
-		model.addAttribute("list", list);
 
 		// discounts
 
@@ -256,12 +261,6 @@ public class ProductMANController {
 
 	@GetMapping("/admin/category/edit/{id}")
 	public String edit(Model model, @PathVariable("id") Integer id, @ModelAttribute("categories") Categories cate) {
-
-		// products
-		Products entity = new Products();
-		model.addAttribute("products", entity);
-		List<Products> list = dao.findAll();
-		model.addAttribute("list", list);
 
 		// categories
 
