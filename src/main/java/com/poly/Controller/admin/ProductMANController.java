@@ -56,7 +56,7 @@ public class ProductMANController {
 		// products
 		Products entity = new Products();
 		model.addAttribute("products", entity);
-		List<Products> list = dao.findAll();
+		List<Products> list = dao.findAllActiveTrue();
 		model.addAttribute("list", list);
 
 		List<Suppliers> listSupp = suppdao.findAll();
@@ -78,11 +78,6 @@ public class ProductMANController {
 		model.addAttribute("listCate", listCate);
 
 		return "admin/product";
-	}
-
-	@GetMapping("/admin/reset")
-	public String reset() {
-		return "redirect:/admin/product";
 	}
   
 
@@ -133,14 +128,24 @@ public class ProductMANController {
 			@RequestParam("dis") Discounts dis) {
 		
 		Date now = new Date();
+		System.out.println(entityDis);
 
 		if (entityDis.getStart_day() == null)
 			entityDis.setStart_day(now);
 			entityDis.setEnd_day(now);
 			
 		  // discounts
-		  
 			disdao.saveAndFlush(entityDis);
+
+		return "redirect:/admin/product";
+	}
+	
+	@PostMapping("/admin/save/category")
+	public String saveProduct(Model model, @ModelAttribute("category") Categories entityCate) {
+		
+		  // categories
+		  
+			catedao.saveAndFlush(entityCate);
 
 		return "redirect:/admin/product";
 	}
@@ -155,12 +160,13 @@ public class ProductMANController {
 		entity.setCategories(cate);
 		entity.setSuppliers(supp);
 		entity.setDiscounts(dis);
-
+		entity.setIs_active(1);
+		
 		if (entity.getCreate_date() == null)
 			entity.setCreate_date(now);
 		entity.setUpdate_date(now);
 
-		if (file == null) {
+		if (file.getOriginalFilename() == null || file.getOriginalFilename().length() == 0) {
 			Products p = dao.getById(entity.getId());
 
 			if (!(p.getImages() == null || p.getImages().length() == 0)) {
@@ -195,12 +201,11 @@ public class ProductMANController {
 	@PostMapping("/admin/discount/update/{id}")
 	public String update(Model model, @ModelAttribute("discounts") Discounts entityDis, @PathVariable("id") Integer id,
 			@RequestParam("dis") Discounts dis) {
-
+		
 		Date now = new Date();
-
 		if (entityDis.getStart_day() == null)
 			entityDis.setStart_day(now);
-		entityDis.setEnd_day(now);
+			entityDis.setEnd_day(now);
 
 		// discounts
 		disdao.saveAndFlush(entityDis);
@@ -218,16 +223,14 @@ public class ProductMANController {
 		return "redirect:/admin/product";
 	}
 
-	@GetMapping("/admin/delete/{id}")
-	public String delete(Model model, @PathVariable("id") Integer id) {
+	@GetMapping("/admin/product/delete/{id}")
+	public String delete(@ModelAttribute("products") Products entity, @PathVariable("id") Integer id) {
+
 		// products
-		dao.deleteById(id);
-
-		// discounts
-		disdao.deleteById(id);
-
-		// categories
-		catedao.deleteById(id);
+		entity = dao.getOne(id);
+		entity.setIs_active(0);
+		
+		dao.saveAndFlush(entity);
 
 		return "redirect:/admin/product";
 	}
@@ -238,7 +241,7 @@ public class ProductMANController {
 		// products
 		Products entity = new Products();
 		model.addAttribute("products", entity);
-		List<Products> list = dao.findAll();
+		List<Products> list = dao.findAllActiveTrue();
 		model.addAttribute("list", list);
 
 		// discounts

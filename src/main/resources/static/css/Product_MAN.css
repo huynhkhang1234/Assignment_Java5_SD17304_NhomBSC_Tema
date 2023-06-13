@@ -99,6 +99,7 @@
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   position: relative;
+  
 }
 .product-grid6 .title {
   font-size: 20px;
@@ -114,6 +115,16 @@
   font-size: 18px;
   font-weight: 600;
   color: #2e86de;
+}
+
+.img-pro{
+	max-height: 50%;
+	min-width: 50%;
+}
+
+.img-pro img{
+	min-width: 100%;
+	max-height: 100%;
 }
 
 
