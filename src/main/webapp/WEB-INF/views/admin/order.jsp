@@ -110,7 +110,7 @@
 									<td><fmt:formatNumber value="${item.sum_money}"
 											pattern="###,### VNĐ" /></td>
 									<td><fmt:formatDate value="${item.create_date}"
-											pattern="dd-MM-yyyy " /></td>
+											pattern="dd-MM-yyyy hh:mm" /></td>
 
 
 									<td>${item.notes}</td>
@@ -118,11 +118,11 @@
 									<td>
 										<!-- Button trigger modal -->
 										<button type="button" class="btn btn-warning"
-											data-bs-toggle="modal" data-bs-target="#modalviews">
+											data-bs-toggle="modal" data-bs-target="#modalviews${item.id}">
 											<i class="fa-solid fa-eye" style="color: #ffffff;"></i>
 										</button>
 
-										<div class="modal fade" id="modalviews"
+										<div class="modal fade" id="modalviews${item.id}"
 											data-bs-backdrop="static" data-bs-keyboard="false"
 											tabindex="-1" aria-labelledby="staticBackdropLabel"
 											aria-hidden="true">
@@ -136,68 +136,67 @@
 													</div>
 
 													<div class="modal-body">
-														<c:forEach var="itemD" items="${item.order_details}">
-															<c:forEach var="itemP" items="${itemD.products}">
-																<div class="row p-5">
-																<div class="col-10">
-																	<img style="width: 100px; height: 100px;">
-																	<p>${itemP.images}</p>
-																</div>
+														<c:forEach var="itemOD" items="${item.order_details}">
+																	<div class="row p-5">
+																		<div class="col-10">
+																			<img style="width: 100px; height: 100px;">
+																			<p>${itemOD.products.images}</p>
+																		</div>
 
 
-																<div class="col-3">
-																	<h5>Mã hóa đơn</h5>
-																	<p>${item.id}</p>
-																</div>
-																<div class="col-3">
-																	<h5>Mã sản phẩm</h5>
-																	<p>${itemP.id}</p>
-																</div>
-																<div class="col-3">
-																	<h5>Giá</h5>
-																	<p>${itemD.price}</p>
-																</div>
-																<div class="col-3">
-																	<h5>Số lượng</h5>
-																	<p>${itemD.quanlity}</p>
-																</div>
-																<div class="col-3">
-																	<h5>Tiền nhận</h5>
-																	<p>${item.money_received}</p>
-																</div>
-																<div class="col-3">
-																	<h5>Tổng tiền</h5>
-																	<p class="text-danger">${itemD.sum_money}</p>
-																</div>
+																		<div class="col-3">
+																			<h5>Mã hóa đơn</h5>
+																			<p>${item.id}</p>
+																		</div>
+																		<div class="col-3">
+																			<h5>Mã sản phẩm</h5>
+																			<p>${itemOD.products.id}</p>
+																		</div>
+																		<div class="col-3">
+																			<h5>Giá</h5>
+																			<p>${itemOD.price}</p>
+																		</div>
+																		<div class="col-3">
+																			<h5>Số lượng</h5>
+																			<p>${itemOD.quanlity}</p>
+																		</div>
+																		<div class="col-3">
+																			<h5>Tiền nhận</h5>
+																			<p>${item.money_received}</p>
+																		</div>
+																		<div class="col-3">
+																			<h5>Tổng tiền</h5>
+																			<p class="text-danger">${itemD.sum_money}</p>
+																		</div>
 
 
-																<div class="col-3">
-																	<h5>Người đặt</h5>
-																	<p>${item.users.first_names} ${item.users.last_names}</p>
-																</div>
+																		<div class="col-3">
+																			<h5>Người đặt</h5>
+																			<p>${item.users.first_names}
+																				${item.users.last_names}</p>
+																		</div>
 
 
-																<div class="col-3">
-																	<h5>Địa chỉ</h5>
-																	<p>${item.users.address}</p>
+																		<div class="col-3">
+																			<h5>Địa chỉ</h5>
+																			<p>${item.users.address}</p>
 
-																</div>
-																<div class="col-3">
-																	<h5>Ghi chú</h5>
-																	<p>${item.notes}</p>
+																		</div>
+																		<div class="col-3">
+																			<h5>Ghi chú</h5>
+																			<p>${item.notes}</p>
 
-																</div>
-																<div class="col-3">
-																	<h5>Ngày đặt</h5>
-																	<p>${item.create_date}</p>
-																</div>
-																<div class="col-3">
-																	<h5>Trạng thái đơn hàng</h5>
-																	<p class="bg-success text-white p-2">${item.status}</p>
+																		</div>
+																		<div class="col-3">
+																			<h5>Ngày đặt</h5>
+																			<p>${item.create_date}</p>
+																		</div>
+																		<div class="col-3">
+																			<h5>Trạng thái đơn hàng</h5>
+																			<p class="bg-success text-white p-2">${item.status}</p>
 
-																</div>
-															</div>
-															</c:forEach>
+																		</div>
+																	</div>
 														</c:forEach>
 													</div>
 
@@ -219,7 +218,7 @@
 
 											<i class="fa-solid fa-pen-to-square"></i>
 										</button>
-										
+
 										<div class="modal fade" id="modaledit"
 											data-bs-backdrop="static" data-bs-keyboard="false"
 											tabindex="-1" aria-labelledby="staticBackdropLabel"
