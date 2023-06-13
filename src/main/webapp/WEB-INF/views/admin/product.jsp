@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html>
@@ -66,44 +66,45 @@
 								aria-label="Close"></button>
 						</div>
 
-						<form:form action="/admin/save" modelAttribute="products">
+
+						<form:form action="/admin/save/product" method="post"
+							modelAttribute="products" enctype="multipart/form-data">
 							<div class="modal-body">
 
 								<div class="col-md-6">
 									<label for="inputId" class="form-label">Mã:</label> <input
-										name="id" value="${products.id}" class="form-control" />
+										name="id" value="${item.id}" class="form-control" />
 
 								</div>
 
 								<div class="col-md-6">
 									<label for="inputTitle" class="form-label">Tiêu đề:</label> <input
-										name="titles" value="${products.titles}" class="form-control" />
+										name="titles" value="${item.titles}" class="form-control" />
 								</div>
 
 								<div class="col-md-12">
 									<label for="inputPrice" class="form-label">Giá:</label> <input
-										name="price" value="${products.price}" class="form-control" />
+										name="price" value="${item.price}" class="form-control" />
 
 								</div>
 
 								<div class="col-md-12">
 									<label for="inputCraetDate" class="form-label">Ngày
-										đăng:</label> <input name="create_date"
-										value="${products.create_date}" class="form-control" />
-
-								</div>
-
-								<div class="col-md-12">
-									<label for="inputCraetDate" class="form-label">Ngày cập
-										nhật:</label> <input name="update_date"
-										value="${products.update_date}" class="form-control" />
-
-								</div>
-
-								<div class="col-md-12">
-									<label for="categoryId" class="form-label">Loại:</label> <input
-										name="categories_id" value="${products.categories.id}"
+										đăng:</label> <input readonly value="<fmt:formatDate value="${now}" pattern="dd-MM-yyyy hh:mm" />"
 										class="form-control" />
+										
+
+								</div>
+
+
+								<div class="col-md-12">
+									<label for="categoryId" class="form-label">Loại:</label> <select
+										name="cate" class="form-control">
+										<c:forEach var="cate" items="${listCate}">
+											<option ${item.categories.id == cate.id ? 'selected':''}
+												value="${cate.id}">${cate.names}</option>
+										</c:forEach>
+									</select>
 
 								</div>
 
@@ -112,11 +113,11 @@
 										thái:</legend>
 									<div class="col-sm-4">
 										<div class="form-check">
-
-											<input name="is_active" value="${products.is_active}"
-												class="form-check-input" type="radio" name="gridRadios"
-												id="gridRadios1" value="option1" checked /> <label
-												class="form-check-label" for="gridRadios1"> Còn hàng
+											<label class="form-check-label" for="gridRadios1"> <input
+												name="is_active" ${item.is_active == 1 ? 'checked':''}
+												value="1" class="form-check-input" type="radio"
+												name="gridRadios" id="gridRadios1" value="option1" checked />
+												Còn hàng
 											</label>
 										</div>
 									</div>
@@ -124,10 +125,11 @@
 									<div class="col-sm-4">
 
 										<div class="form-check">
-											<input name="is_active" value="${products.is_active}"
-												class="form-check-input" type="radio" name="gridRadios"
-												id="gridRadios2" value="option2" /> <label
-												class="form-check-label" for="gridRadios2"> Hết hàng
+											<label class="form-check-label" for="gridRadios2"> <input
+												name="is_active" ${item.is_active == 0 ? 'checked':''}
+												value="0" class="form-check-input" type="radio"
+												name="gridRadios" id="gridRadios2" value="option2" /> Hết
+												hàng
 											</label>
 										</div>
 									</div>
@@ -135,33 +137,42 @@
 
 								<div class="col-md-12">
 									<label for="inputSuppliers" class="form-label">Nhà cung
-										cấp:</label> <input name="suppliers_id"
-										value="${products.suppliers.id}" class="form-control" />
+										cấp:</label> <select name="supp" class="form-control">
+										<c:forEach var="supp" items="${listSupp}">
+											<option ${item.suppliers.id == supp.id ? 'selected':''}
+												value="${supp.id}">${supp.user_names}</option>
+										</c:forEach>
+									</select>
+
+
 								</div>
 
 								<div class="col-md-6">
 									<label for="inputSuppliers" class="form-label">Giá gốc:</label>
-									<input name="original_price" value="${products.original_price}"
+									<input name="original_price" value="${item.original_price}"
 										class="form-control" />
 
 								</div>
 
 								<div class="col-md-6">
 									<label for="inputSuppliers" class="form-label">Giảm
-										gía:</label> <input name="discounts_id"
-										value="${products.discounts.id}" class="form-control" />
-
+										gía:</label> <select name="dis" class="form-control">
+										<c:forEach var="dis" items="${listDis}">
+											<option ${item.discounts.id == dis.id ? 'selected':''}
+												value="${dis.id}">${dis.price_discounts}%</option>
+										</c:forEach>
+									</select>
 								</div>
 
 
 								<label class="form-label" for="customFile">Tải ảnh:</label> <input
-									value="${products.images}" type="file" class="form-control"
-									id="customFile" />
+									value="${item.images}" name="file" type="file"
+									class="form-control" id="customFile" />
 
 
 								<div class="col-12">
 									<label for="inputDescription" class="form-label">Mô tả</label>
-									<textarea name="description" value="${products.description}"
+									<textarea name="description" value="${item.description}"
 										class="form-control"></textarea>
 								</div>
 							</div>
@@ -170,7 +181,8 @@
 								<button type="button" class="btn btn-secondary"
 									data-bs-dismiss="modal">Đóng</button>
 
-								<button type="button" class="btn btn-primary">Thêm mới</button>
+								<button formaction="/admin/save/product"
+									type="submit" class="btn btn-primary">Lưu thay đổi</button>
 							</div>
 						</form:form>
 
@@ -280,8 +292,8 @@
 														<div class="modal-body">
 
 															<div class="col-md-6">
-																<label for="inputId" class="form-label">Mã:</label> 
-																<input name="id" value="${item.id}" class="form-control" />
+																<label for="inputId" class="form-label">Mã:</label> <input
+																	name="id" value="${item.id}" class="form-control" />
 
 															</div>
 
@@ -300,13 +312,14 @@
 
 															<div class="col-md-12">
 																<label for="inputCraetDate" class="form-label">Ngày
-																	đăng:</label> 
-																	<input readonly value="${item.create_date}" class="form-control" />
+																	đăng:</label> <input readonly value="${item.create_date}"
+																	class="form-control" />
 
 															</div>
 
 															<div class="col-md-12">
-																<label for="inputCraetDate" class="form-label">Ngày cập nhật:</label> <input readonly value="${item.update_date}"
+																<label for="inputCraetDate" class="form-label">Ngày
+																	cập nhật:</label> <input readonly value="${item.update_date}"
 																	class="form-control" />
 
 															</div>
@@ -328,24 +341,27 @@
 																	thái:</legend>
 																<div class="col-sm-4">
 																	<div class="form-check">
-
-																		<input name="is_active" value="${item.is_active}"
+																		<label class="form-check-label" for="gridRadios1">
+																			<input name="is_active"
+																			${item.is_active == 1 ? 'checked':''} value="1"
 																			class="form-check-input" type="radio"
 																			name="gridRadios" id="gridRadios1" value="option1"
-																			checked /> <label class="form-check-label"
-																			for="gridRadios1"> Còn hàng </label>
+																			checked /> Còn hàng
+																		</label>
 																	</div>
 																</div>
 
 																<div class="col-sm-4">
 
 																	<div class="form-check">
-																		<input name="is_active" value="${item.is_active}"
+																		<label class="form-check-label" for="gridRadios2">
+																			<input name="is_active"
+																			${item.is_active == 0 ? 'checked':''} value="0"
 																			class="form-check-input" type="radio"
 																			name="gridRadios" id="gridRadios2" value="option2" />
 
-																		<label class="form-check-label" for="gridRadios2">
-																			Hết hàng </label>
+																			Hết hàng
+																		</label>
 																	</div>
 																</div>
 															</fieldset>
@@ -371,8 +387,8 @@
 															</div>
 
 															<div class="col-md-6">
-																<label for="inputSuppliers" class="form-label">Giảm gía:</label> 
-																<select name="dis" class="form-control">
+																<label for="inputSuppliers" class="form-label">Giảm
+																	gía:</label> <select name="dis" class="form-control">
 																	<c:forEach var="dis" items="${listDis}">
 																		<option ${item.discounts.id == dis.id ? 'selected':''}
 																			value="${dis.id}">${dis.price_discounts}%</option>
@@ -421,7 +437,7 @@
 
 						<section class="middle">
 							<!--form-->
-							<form:form action="/admin/save" modelAttribute="discounts"
+							<form:form action="/admin/save/discount" modelAttribute="discounts"
 								method="post" enctype="multipart/form-data">
 
 								<div class="row">
@@ -447,70 +463,71 @@
 
 									<div class="col-12">
 
-										<label for="inputSuppliers" class="form-label">Giảm giá:</label> 
-											<select name="dis" class="form-control">
-											
-												<c:forEach var="dis" items="${listDis}">
-													<option ${item.discounts.id == dis.id ? 'selected':''}
-														value="${dis.id}">${dis.price_discounts}%</option>
-												</c:forEach>
-											</select>
+										<label for="inputSuppliers" class="form-label">Giảm
+											giá:</label> <select name="dis" class="form-control">
+
+											<c:forEach var="dis" items="${listDis}">
+												<option ${item.discounts.id == dis.id ? 'selected':''}
+													value="${dis.id}">${dis.price_discounts}%</option>
+											</c:forEach>
+										</select>
 									</div>
 
-										<div class="col-md-12">
-											<label for="inputCraetDate" class="form-label">Ngày bắt đầu:</label> 
-											<input readonly value="${discounts.start_day}" class="form-control" />
-											
-										</div>
+									<div class="col-md-12">
+										<label for="inputCraetDate" class="form-label">Ngày
+											bắt đầu:</label> <input value="${discounts.start_day}"
+											class="form-control" />
 
-										<div class="col-md-12">
-											<label for="inputCraetDate" class="form-label">Ngày kết thúc:</label> 
-											<input readonly value="${discounts.end_day}" class="form-control" />
+									</div>
 
-										</div>
+									<div class="col-md-12">
+										<label for="inputCraetDate" class="form-label">Ngày
+											kết thúc:</label> <input value="${discounts.end_day}"
+											class="form-control" />
+
+									</div>
 
 									<div class="col-12">
 										<div class="col-auto">
 											<label class="col-form-label">Mô tả</label>
 										</div>
 
-										<textarea name="description" value="${discounts.description}"
-											class="form-control"></textarea>
-
+										<textarea name="descriptions"
+											value="${discounts.descriptions}" class="form-control"></textarea>
 
 										<label for="floatingTextarea2"></label>
 									</div>
 								</div>
-								
-								
-							
-							<!--btn-->
 
-							<div class="btn-add">
-								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-									<a href="/admin/reset">
-										<button class="btn btn-primary">
-											<i class="bi bi-bootstrap-reboot"></i>reset
+
+								<!--btn-->
+
+								<div class="btn-add">
+									<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+										<a href="/admin/reset">
+											<button class="btn btn-primary">
+												<i class="bi bi-bootstrap-reboot"></i>reset
+											</button>
+										</a>
+
+										<button formaction="/admin/save/discount" type="submit" class="btn btn-primary">
+											<i class="bi bi-plus-lg"></i>create
 										</button>
-									</a>
-
-									<button class="btn btn-primary">
-										<i class="bi bi-plus-lg"></i>create
-									</button>
 
 
-									<button formaction="/admin/product/update/${item.id}"
-										type="submit" class="btn btn-primary">
-										<i class="bi bi-pencil-square">update
-									</button>
+										<button formaction="/admin/discount/update/${discounts.id}"
+											type="submit" class="btn btn-primary">
+											<i class="bi bi-pencil-square">update 
+										</button>
 
 
+									</div>
 								</div>
-							</div>
-							
-							
-						</form:form>
+
+
+							</form:form>
 
 							<div class="below">
 								<div class="table-responsive mt-5" style="overflow-x: auto">
@@ -537,15 +554,13 @@
 													<td>${item.end_day}</td>
 													<td>${item.descriptions}</td>
 
-													<td><a href="/admin/discount/edit/${item.id}" class="btn btn-primary">
-															
-																<i class="bi bi-pencil-square"></i>Edit
-														
-													</a> 
-													<a href="/admin/delete/${discounts.id}" class="btn btn-danger">
-																<i class="bi bi-trash"></i>delete
-													</a>
-													</td>
+													<td><a href="/admin/discount/edit/${item.id}"
+														class="btn btn-primary"> <i
+															class="bi bi-pencil-square"></i>Edit
+
+													</a> <a href="/admin/delete/${discounts.id}"
+														class="btn btn-danger"> <i class="bi bi-trash"></i>delete
+													</a></td>
 
 												</tr>
 											</c:forEach>
@@ -553,7 +568,7 @@
 
 									</table>
 
-									
+
 									<nav class="d-flex justify-content-center">
 										<ul class="pagination pagination-s">
 											<li class="page-item disabled"><a class="page-link"
@@ -612,8 +627,8 @@
 											<i class="bi bi-plus-lg"></i>create
 										</button>
 
-										<button formaction="/admin/update/${categories.id}"
-											class="btn btn-primary">
+										<button formaction="/admin/category/update/${categories.id}"
+											type="submit" class="btn btn-primary">
 											<i class="bi bi-pencil-square"></i>update
 										</button>
 
@@ -638,7 +653,7 @@
 												<tr>
 													<td>${item.id}</td>
 													<td>${item.names}</td>
-													<td><a href="/admin/edit/${item.id}">
+													<td><a href="/admin/category/edit/${item.id}">
 															<button class="btn btn-primary">
 																<i class="bi bi-pencil-square"></i>edit
 															</button>

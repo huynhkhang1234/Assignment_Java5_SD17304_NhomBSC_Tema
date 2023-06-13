@@ -43,7 +43,7 @@ public class ProductMANController {
 
 	@Autowired
 	CategoriesDAO catedao;
-	
+
 	@Autowired
 	SuppliersDAO suppdao;
 
@@ -58,10 +58,12 @@ public class ProductMANController {
 		model.addAttribute("products", entity);
 		List<Products> list = dao.findAll();
 		model.addAttribute("list", list);
-		
 
 		List<Suppliers> listSupp = suppdao.findAll();
 		model.addAttribute("listSupp", listSupp);
+		
+		Date now = new Date();
+		model.addAttribute("now", now);
 
 		// discounts
 		Discounts entityDis = new Discounts();
@@ -82,61 +84,89 @@ public class ProductMANController {
 	public String reset() {
 		return "redirect:/admin/product";
 	}
+  
 
-	@PostMapping("/admin/create")
-	public String save(Model model, @ModelAttribute("product") Products entity) {
-		/*
-		 * @ModelAttribute("discounts") Discounts
-		 * entityDis, @ModelAttribute("categories") Categories entityCate,
-		 * 
-		 * @RequestParam("file") MultipartFile file) {
-		 * System.out.println(entity.getPrice()
-		 */
-		/*
-		 * Xử lý hình ảnh String uploadRootPath =
-		 * app.getRealPath("images/product-img/"); File uploadRootDir = new
-		 * File(uploadRootPath); if(!uploadRootDir.exists()) { uploadRootDir.mkdirs(); }
-		 * try { String fileName = file.getOriginalFilename(); File serverFile = new
-		 * File(uploadRootDir.getAbsoluteFile() + File.separator + fileName);
-		 * BufferedOutputStream stream = new BufferedOutputStream(new
-		 * FileOutputStream(serverFile)); stream.write(file.getBytes()); stream.close();
-		 * entity.setImages(fileName); }catch(Exception e) {
-		 * model.addAttribute("message", "Lỗi upload file!"); }
-		 */
-		// products
-		/*
-		 * dao.saveAndFlush(entity);
-		 * 
-		 * // discounts disdao.saveAndFlush(entityDis);
-		 * 
-		 * // categories catedao.saveAndFlush(entityCate);
-		 */
-
-		return "/admin/product";
-	}
 	@PostMapping("/admin/save/product")
-	public String saveProduct(Model model, @ModelAttribute("product") Products entity) {
-		
-		return "/admin/product";
-		
-	}
-
-	@PostMapping("/admin/product/update/{id}")
-	public String update(Model model, @ModelAttribute("products") Products entity,
-			@PathVariable("id") Integer id, @RequestParam("cate") Categories cate,
-			@RequestParam("supp") Suppliers supp,
-			@RequestParam("dis") Discounts dis,
-			@RequestParam("file") MultipartFile file) {
+	public String saveProduct(Model model, @ModelAttribute("product") Products entity,
+			@RequestParam("cate") Categories cate, @RequestParam("supp") Suppliers supp,
+			@RequestParam("dis") Discounts dis, @RequestParam("file") MultipartFile file) {
 		
 		Date now = new Date();
 
 		entity.setCategories(cate);
 		entity.setSuppliers(supp);
 		entity.setDiscounts(dis);
-		
-		if(entity.getCreate_date() == null)
+
+		if (entity.getCreate_date() == null)
 			entity.setCreate_date(now);
 			entity.setUpdate_date(now);
+		
+		 // Xử lý hình ảnh String 
+		
+		String uploadRootPath = app.getRealPath("images/product-img/"); 
+		File uploadRootDir = new File(uploadRootPath); 
+		  
+		  if(!uploadRootDir.exists()) { 
+			  uploadRootDir.mkdirs(); 
+		  }
+		  try { 
+			  String fileName = file.getOriginalFilename(); 
+			  File serverFile = new File(uploadRootDir.getAbsoluteFile() + File.separator + fileName);
+			  BufferedOutputStream stream = new BufferedOutputStream(new
+			  FileOutputStream(serverFile)); 
+			  stream.write(file.getBytes()); 
+			  stream.close();
+			  entity.setImages(fileName); 
+		  }
+		  catch(Exception e) {
+		  model.addAttribute("message", "Lỗi upload file!"); }
+		  
+		  // products
+		  
+		  dao.saveAndFlush(entity);
+
+		return "/admin/product";
+	}
+	
+	@PostMapping("/admin/save/discount")
+	public String saveProduct(Model model, @ModelAttribute("discount") Discounts entityDis,
+			@RequestParam("dis") Discounts dis) {
+		
+		Date now = new Date();
+
+		if (entityDis.getStart_day() == null)
+			entityDis.setStart_day(now);
+			entityDis.setEnd_day(now);
+			
+		  // discounts
+		  
+			disdao.saveAndFlush(entityDis);
+
+		return "redirect:/admin/product";
+	}
+
+	@PostMapping("/admin/product/update/{id}")
+	public String update(Model model, @ModelAttribute("products") Products entity, @PathVariable("id") Integer id,
+			@RequestParam("cate") Categories cate, @RequestParam("supp") Suppliers supp,
+			@RequestParam("dis") Discounts dis, @RequestParam("file") MultipartFile file) {
+
+		Date now = new Date();
+
+		entity.setCategories(cate);
+		entity.setSuppliers(supp);
+		entity.setDiscounts(dis);
+
+		if (entity.getCreate_date() == null)
+			entity.setCreate_date(now);
+		entity.setUpdate_date(now);
+
+		if (file == null) {
+			Products p = dao.getById(entity.getId());
+
+			if (!(p.getImages() == null || p.getImages().length() == 0)) {
+				entity.setImages(p.getImages());
+			}
+		}
 
 		String uploadRootPath = app.getRealPath("images/product-img/");
 		File uploadRootDir = new File(uploadRootPath);
@@ -152,7 +182,7 @@ public class ProductMANController {
 			entity.setImages(fileName);
 
 		} catch (Exception e) {
-			model.addAttribute("message", "Loi upload file");
+			model.addAttribute("message", "Lỗi upload file");
 
 		}
 
@@ -161,25 +191,32 @@ public class ProductMANController {
 
 		return "redirect:/admin/product";
 	}
-	
-	
+
 	@PostMapping("/admin/discount/update/{id}")
-	public String update(Model model, @ModelAttribute("discounts") Discounts entityDis,
-			@PathVariable("id") Integer id,			
+	public String update(Model model, @ModelAttribute("discounts") Discounts entityDis, @PathVariable("id") Integer id,
 			@RequestParam("dis") Discounts dis) {
-		
+
 		Date now = new Date();
-		
-		if(entityDis.getStart_day() == null)
+
+		if (entityDis.getStart_day() == null)
 			entityDis.setStart_day(now);
-			entityDis.setEnd_day(now);
+		entityDis.setEnd_day(now);
 
 		// discounts
 		disdao.saveAndFlush(entityDis);
 
 		return "redirect:/admin/product";
 	}
-	
+
+	@PostMapping("/admin/category/update/{id}")
+	public String update(Model model, @ModelAttribute("categories") Categories entityCate,
+			@PathVariable("id") Integer id) {
+
+		// categories
+		catedao.saveAndFlush(entityCate);
+
+		return "redirect:/admin/product";
+	}
 
 	@GetMapping("/admin/delete/{id}")
 	public String delete(Model model, @PathVariable("id") Integer id) {
@@ -194,26 +231,43 @@ public class ProductMANController {
 
 		return "redirect:/admin/product";
 	}
-	
+
 	@GetMapping("/admin/discount/edit/{id}")
 	public String edit(Model model, @PathVariable("id") Integer id, @ModelAttribute("discounts") Discounts d) {
-		
+
 		// products
-				Products entity = new Products();
-				model.addAttribute("products", entity);
-				List<Products> list = dao.findAll();
-				model.addAttribute("list", list);
-		
+		Products entity = new Products();
+		model.addAttribute("products", entity);
+		List<Products> list = dao.findAll();
+		model.addAttribute("list", list);
+
 		// discounts
 
-				d = disdao.getById(id);
-				model.addAttribute("discounts", d);
-				List<Discounts> listDis = disdao.findAll();
-				model.addAttribute("listDis", listDis);
-	
-		
+		d = disdao.getById(id);
+		model.addAttribute("discounts", d);
+		List<Discounts> listDis = disdao.findAll();
+		model.addAttribute("listDis", listDis);
+
 		return "/admin/product";
 	}
 
+	@GetMapping("/admin/category/edit/{id}")
+	public String edit(Model model, @PathVariable("id") Integer id, @ModelAttribute("categories") Categories cate) {
+
+		// products
+		Products entity = new Products();
+		model.addAttribute("products", entity);
+		List<Products> list = dao.findAll();
+		model.addAttribute("list", list);
+
+		// categories
+
+		cate = catedao.getById(id);
+		model.addAttribute("categories", cate);
+		List<Categories> listCate = catedao.findAll();
+		model.addAttribute("listCate", listCate);
+
+		return "/admin/product";
+	}
 
 }
