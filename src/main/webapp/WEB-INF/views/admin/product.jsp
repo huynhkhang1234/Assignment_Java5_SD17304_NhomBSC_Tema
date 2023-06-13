@@ -634,14 +634,10 @@
 												<tr>
 													<td>${item.id}</td>
 													<td>${item.names}</td>
-													<td><a href="/admin/category/edit/${item.id}">
-															<button class="btn btn-primary">
+													<td><a href="/admin/category/edit/${item.id}" class="btn btn-primary">
 																<i class="bi bi-pencil-square"></i>
-															</button>
-													</a> <a href="/admin/delete/${categories.id}">
-															<button class="btn btn-danger">
+													</a> <a href="/admin/delete/${item.id}" class="btn btn-danger">
 																<i class="bi bi-trash"></i>delete
-															</button>
 													</a></td>
 												</tr>
 											</c:forEach>

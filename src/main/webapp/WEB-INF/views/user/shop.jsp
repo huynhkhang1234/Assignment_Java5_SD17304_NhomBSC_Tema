@@ -81,13 +81,22 @@
 												value="${item.images}"> <input type="hidden"
 												id="nameOne${item.id}" value="${item.titles}" /> <input
 												type="hidden" id="OnePrice${item.id}" value="${item.price}" />
-											<input type="text" id="discount${item.id}"
+											<input type="hidden" id="discount${item.id}"
 												value="${item.discounts.price_discounts}" />
 											<!-- --------------------------------------------------------------- -->
 											<h3 class="title">
 												<a href="#">${item.titles}</a>
 											</h3>
-											<c:if test="${item.discounts != null}">
+											
+											<c:if test="${item.discounts.price_discounts == 0 || item.discounts == null}">
+												<div class="price">
+													<fmt:formatNumber
+														value="${item.price - (item.price * (item.discounts.price_discounts / 100))}"
+														pattern="###,###,### VNĐ" />
+
+												</div>
+											</c:if>
+											<c:if test="${item.discounts.price_discounts != 0 && item.discounts != null}">
 												<div class="price">
 													<fmt:formatNumber
 														value="${item.price - (item.price * (item.discounts.price_discounts / 100))}"
@@ -97,14 +106,6 @@
 														<fmt:formatNumber value="${item.price}"
 															pattern="###,###,### VNĐ" />
 													</del>
-												</div>
-											</c:if>
-											<c:if test="${item.discounts == null}">
-												<div class="price">
-													<fmt:formatNumber
-														value="${item.price - (item.price * (item.discounts.price_discounts / 100))}"
-														pattern="###,###,### VNĐ" />
-
 												</div>
 											</c:if>
 										</div>

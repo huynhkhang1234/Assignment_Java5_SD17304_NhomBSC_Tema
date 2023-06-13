@@ -120,7 +120,7 @@ public class ProductMANController {
 		  
 		  dao.saveAndFlush(entity);
 
-		return "/admin/product";
+		  return "redirect:/admin/product";
 	}
 	
 	@PostMapping("/admin/save/discount")
