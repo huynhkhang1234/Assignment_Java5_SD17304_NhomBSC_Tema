@@ -42,16 +42,18 @@ public class LikeController {
 					likeId.setIs_likes(1);
 					likeRepo.save(likeId);
 				}
+			}else {
+				System.out.println("dữ liệu tìm kiếm không có");
+				like.setUsers(user);
+				like.setProducts(product);
+				like.setCreate_like(XDate.now());
+				like.setIs_likes(1);
+				likeRepo.save(like);
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("dữ liệu tìm kiếm không có");
-			like.setUsers(user);
-			like.setProducts(product);
-			like.setCreate_like(XDate.now());
-			like.setIs_likes(1);
-			likeRepo.save(like);
+			
 		}
 
 		return "/user/shop";
