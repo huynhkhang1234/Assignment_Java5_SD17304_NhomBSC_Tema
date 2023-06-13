@@ -14,9 +14,6 @@ public interface UsersDAO extends JpaRepository<Users, Integer> {
 	@Query("SELECT u FROM Users u WHERE u.email = :email")
 	Users findByEmail(@Param("email") String username);
 	
-
-	
-	
 //	@Query(value = "SELECT user_names, first_names, last_names, roles_id FROM Users")
 //	public List<Users> getDemo();
 	
@@ -31,4 +28,5 @@ public interface UsersDAO extends JpaRepository<Users, Integer> {
 	Users findByUsername(@Param("users") String users);
 	
 	
+
 }	
