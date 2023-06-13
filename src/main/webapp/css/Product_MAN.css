@@ -97,5 +97,7 @@
 .tab{
   margin-top: 3rem;
 }
-
+.col-6 .col-auto .form-control {
+	height: 34px;
+}
  
