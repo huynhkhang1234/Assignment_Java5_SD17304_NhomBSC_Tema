@@ -25,6 +25,7 @@ import com.poly.Entities.News;
 import com.poly.Entities.Users;
 
 import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -37,7 +38,9 @@ public class AccountMANController {
 	
 	@Autowired
 	ServletContext app;
-	
+	// ko thể khóa tài khoản hiện tại.
+	@Autowired
+	HttpSession session;
 	
 	@GetMapping("admin/account")
 	public String index(Model model) {
@@ -146,17 +149,22 @@ public class AccountMANController {
 			@ModelAttribute("users") Users entity, @PathVariable("id") Integer id
 			) {
 		entity = userDao.getOne(id);
+		Users us = (Users) session.getAttribute("userLogin");
+		if(!us.getEmail().equals(entity.getEmail())) {
+			if(entity.getIs_active()== 1) {
+				
+				entity.setIs_active(3);
+			}
+			else 
+				{
+				
+				entity.setIs_active(1);
+			}
+			userDao.saveAndFlush(entity);	
+		}else {
+			// bị trùng thông báo lên.
+		}
 		
-		if(entity.getIs_active()== 1) {
-			
-			entity.setIs_active(3);
-		}
-		else 
-			{
-			
-			entity.setIs_active(1);
-		}
-		userDao.saveAndFlush(entity);
 		return "redirect:/admin/account";
 	}
 	

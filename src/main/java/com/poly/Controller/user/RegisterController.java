@@ -1,6 +1,5 @@
 package com.poly.Controller.user;
 
-
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,49 +14,60 @@ import com.poly.DAO.UsersDAO;
 import com.poly.Entities.Roles;
 import com.poly.Entities.Users;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-
-
 
 @Controller
 public class RegisterController {
 	@Autowired
 	UsersDAO userDao;
-	
+
+	@Autowired
+	HttpSession session;
+
 	@GetMapping("/user/register")
 	public String view(@ModelAttribute("user") Users_bean model) {
 		return "user/register";
 	}
-	
+
 	@PostMapping("/user/register")
 	public String signup( @Valid @ModelAttribute("user") Users_bean model, BindingResult result) {
-//		if (result.hasErrors()) {
-//			System.out.println(result.hasErrors());
-//			return "/user/register";
-//		} else {
-			Users acc = new Users();
-			Roles roles = new Roles();
+		if (result.hasErrors()) {
+			System.out.println("Có lỗi khi đăng ký");
+						
+			 return "/user/register"; 
+		} else {
+			Users us = this.userDao.findByEmail(model.getEmail().trim());
+			if(us != null) {
+				session.setAttribute("registerError", "Email đã tồn vui lòng nhập lại thông tin !!");
+			}else{
+				Users acc = new Users();
+				Roles roles = new Roles();			
+				acc.setUser_names(model.getUser_names().trim());
+				acc.setFirst_names(model.getFirst_names().trim());
+				acc.setLast_names(model.getLast_names().trim());
+				acc.setEmail(model.getEmail().trim());
+				acc.setPass_words(model.getPass_words().trim());
+				acc.setAddress(model.getAddress());
+				acc.setPhones(model.getPhones());
+				acc.setImages(model.getImages());
+				acc.setCreate_date(new Date(System.currentTimeMillis()));
+				acc.setUpdate_date(null);			
+				roles.setId(2);
+				roles.setRoles("user");
+				roles.setActions("views");
+				acc.setRoles(roles);
+				acc.setIs_active(1);
+				this.userDao.save(acc);
+				session.removeAttribute("registerError");
+				return "redirect:/user/login";	
+			}
 			
-			acc.setUser_names(model.getUser_names().trim());
-			acc.setFirst_names(model.getFirst_names().trim());
-			acc.setLast_names(model.getLast_names().trim());
-			acc.setEmail(model.getEmail().trim());
-			acc.setPass_words(model.getPass_words().trim());
-			acc.setAddress(null);
-			acc.setPhones(null);
-			acc.setImages(null);
-			acc.setCreate_date(new Date(System.currentTimeMillis()));
-			acc.setUpdate_date(null);
-			roles.setId(2);
-			roles.setRoles("user");
-			roles.setActions("views");
-			acc.setRoles(roles);
 			
-			this.userDao.save(acc);
-			return "redirect:/user/login";
-//		}
-	}
-	
-	
-	
+			}
+			
+		return"/user/register";	
+		}
 }
+
+

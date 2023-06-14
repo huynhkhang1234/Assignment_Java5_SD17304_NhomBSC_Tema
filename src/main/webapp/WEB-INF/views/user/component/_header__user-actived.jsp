@@ -10,6 +10,9 @@
 				test="${not empty sessionScope.cartSize}">${sessionScope.cartSize}</c:if>
 	</span>
 	</a>
+	<!--  -->
+	<c:if test="${ not empty sessionScope.cartSize}">
+	
 	<div class="header__action-mini-cart">
 		<div class="cart-empty-title d-none">
 			<h3>Your cart is currently empty.</h3>
@@ -19,10 +22,11 @@
 			<div class="mini-product">
 				<div class="mini-product__thumb">
 					<a href="/user/products/5-simple-product?variant=30694916718638">
-						<img id="imgInfo" alt=""
-						style="background-image: url('../images/product-img/cambien1.png')">
+						<img id="imgInfo" alt="" 
+						>
 					</a>
 				</div>
+				
 				<div class="mini-product__info">
 					<h2 class="title">
 						<a id="nameInfo"
@@ -35,11 +39,12 @@
 							1x1 <span id="disMoneyInfo" class="money"
 								data-currency-bdt="Tk 50.00"> </span>
 						</p>
-						<button class="remove-pro">
-							<i class="bi bi-trash3-fill"></i>
+						<button  class="remove-pro">
+							<a href="/user/cart"><i class="bi bi-trash3-fill"></i></a>
 						</button>
 					</div>
 				</div>
+				
 			</div>
 
 		</div>
@@ -55,6 +60,11 @@
 				hàng</a>
 		</div>
 	</div>
+	</c:if>
+	<!--  -->
+	
+	
+	<!--  -->
 </div>
 <a href="#" class="btn btn-dark" id="search-icon"> <i
 	class="bi bi-search" style="color: white;"></i>
@@ -115,4 +125,6 @@
 		</ul>
 	</div>
 </div>
+
+
 
