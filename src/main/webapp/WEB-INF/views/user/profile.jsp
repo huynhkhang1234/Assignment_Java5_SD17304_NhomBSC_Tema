@@ -132,15 +132,21 @@
                                 <h2>Tài khoản của tôi</h2>
                                 <h4>Quản lý tài khoản để bảo mật</h4>
                             </div>
-                            <div class="col-8 pt-3">
-                                <form class="p-3" modelAttribute="user">
+                            
+                             <!-- form  -->
+                             
+                            <fr:form class="col-8 pt-3" action="/user/profile/account/" method="POST" modelAttribute="users" enctype="multipart/form-data">
+                                <div class="p-3">
                                     <div class="row mb-3 align-items-center">
                                         <div class="col-4">
                                             <label for="txtUsername" class="col-form-label">Tên đăng nhập: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="text" name="user_names" value="${user.user_names}" id="txtUsername" class="form-control" readonly
-                                                aria-labelledby="passwordHelpInline">
+                                        <c:if test="${not empty sessionScope.userLogin}">
+												<input type="text" id="txtUsername" name="user_names" class="form-control" 
+                                                aria-labelledby="passwordHelpInline" value="${sessionScope.userLogin.getUser_names()}" readonly/>
+										</c:if>
+                                            
                                         </div>
                                     </div>
                                     <div class="row mb-3 align-items-center">
@@ -148,8 +154,11 @@
                                             <label for="txtEmail" class="col-form-label">Email: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="email" name="email" value="${user.email}" id="txtEmail" class="form-control" readonly
-                                                aria-labelledby="passwordHelpInline">
+                                        <c:if test="${not empty sessionScope.userLogin}">
+												 <input type="email" id="txtEmail" name="email" class="form-control" 
+                                                aria-labelledby="passwordHelpInline"value="${sessionScope.userLogin.getEmail()}"readonly>
+										</c:if>
+                                           
                                         </div>
                                     </div>
                                     <div class="row mb-3 align-items-center">
@@ -157,26 +166,29 @@
                                             <label for="txtNumberPhone" class="col-form-label">Số điện thoại: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="text" name="phones" value="${user.phones}" id="txtNumberPhone" class="form-control" readonly
-                                                aria-labelledby="passwordHelpInline">
+                                          <c:if test="${not empty sessionScope.userLogin}">
+												 <input type="text" id="txtNumberPhone" name="phones" class="form-control" 
+                                                aria-labelledby="passwordHelpInline" value="${sessionScope.userLogin.getPhones()}"readonly>
+										</c:if>
+                                            
                                         </div>
                                     </div>
                                     <div class="row mb-3 align-items-center">
                                         <div class="col-4">
-                                            <label for="txtPassword" class="col-form-label">Mật khẩu: </label>
+                                            <label for="" class="col-form-label">Mật khẩu: </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="password" id="txtPassword" class="form-control" readonly
+                                            <input type="password" id="txtPassword" name="txtPassword" class="form-control" 
                                                 aria-labelledby="passwordHelpInline">
                                         </div>
                                     </div>
                                     <div class="row mb-3 align-items-center">
                                         <div class="col-4">
-                                            <label for="txtConfirmPassword" class="col-form-label">Xác nhận mật khẩu:
+                                            <label for="" class="col-form-label">Xác nhận mật khẩu:
                                             </label>
                                         </div>
                                         <div class="col-7">
-                                            <input type="password" id="txtConfirmPassword" class="form-control" readonly
+                                            <input type="password" id="txtConfirmPassword" name="txtConfirmPassword" class="form-control" 
                                                 aria-labelledby="passwordHelpInline">
                                         </div>
                                     </div>
@@ -184,31 +196,30 @@
                                     <hr>
 
                                     <div class="row justify-content-center">
-                                        <a href="#" class="btn btn-outline-dark col-4">
+                                        <fr:button type="submit" formaction="/user/profile/account/${sessionScope.userLogin.id}"  class="btn btn-outline-dark col-4">
                                             Đổi mật khẩu
-                                        </a>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-4 pt-3">
-                                <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                                    <div class="profile-top mb-5">
-                                        <div class="profile-box">
-                                            <a href="#" class="profile-link">
-                                                <img src="" alt="" style="background-image: url(../images/anh7.jpg);"
-                                                    class="profile-img">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="profile-bottom">
-                                        <div class="mb-3">
-                                            <input class="form-control" type="file" id="formFile">
-                                        </div>
+                                        </fr:button>
                                     </div>
                                 </div>
+                            </fr:form>
+                            
+                            <!-- form  -->
+                            <div class="col-4 pt-3">
+                                <div class="col-10" style="margin: 25px; width: 90%">
+							<div style="width: 100%; height: 200px; border: 1px dotted gray;">
+								
+									<img alt="" src="/images/user-img/${sessionScope.userLogin.getImages()}" width="100%" height="100%"
+									>
+								
+							</div>
+						</div>
+						
                             </div>
+                            <!-- form -->
                         </div>
                     </div>
+                    
+                    
                     <div class="tab-pane fade " id="profile" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                         <div class="container overflow-hidden text-center">
                             <div class="row">
@@ -592,6 +603,19 @@
         const triggerFirstTabEl = document.querySelector('#v-pills-tab li:first-child button')
         bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab
     </script>
+    
+    <script type="text/javascript">
+    const sidebarList = document.querySelectorAll('.sidebar');
+    const sidebarActive = document.querySelector('.sidebar#account');
+
+    
+    
+    sidebarList.forEach((sidebar) => {
+    	sidebar.firstElementChild.classList.remove('active');
+        });
+    sidebarActive.firstElementChild.classList.add('active');
+    </script>
+    
 </body>
 
 </html>

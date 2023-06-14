@@ -1,6 +1,8 @@
 package com.poly.Controller.user;
 
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -13,37 +15,47 @@ import com.poly.DAO.UsersDAO;
 import com.poly.Entities.Roles;
 import com.poly.Entities.Users;
 
+import jakarta.validation.Valid;
+
 
 
 @Controller
 public class RegisterController {
 	@Autowired
-	private UsersDAO userDao;
+	UsersDAO userDao;
 	
 	@GetMapping("/user/register")
-	public String view(Users_bean model) {
+	public String view(@ModelAttribute("user") Users_bean model) {
 		return "user/register";
 	}
 	
 	@PostMapping("/user/register")
-	public String signup(Users_bean model, BindingResult result) {
-		if (result.hasErrors()) {
-			return "/user/register";
-		} else {
+	public String signup( @Valid @ModelAttribute("user") Users_bean model, BindingResult result) {
+//		if (result.hasErrors()) {
+//			System.out.println(result.hasErrors());
+//			return "/user/register";
+//		} else {
 			Users acc = new Users();
 			Roles roles = new Roles();
+			
 			acc.setUser_names(model.getUser_names().trim());
 			acc.setFirst_names(model.getFirst_names().trim());
 			acc.setLast_names(model.getLast_names().trim());
 			acc.setEmail(model.getEmail().trim());
 			acc.setPass_words(model.getPass_words().trim());
+			acc.setAddress(null);
+			acc.setPhones(null);
+			acc.setImages(null);
+			acc.setCreate_date(new Date(System.currentTimeMillis()));
+			acc.setUpdate_date(null);
 			roles.setId(2);
 			roles.setRoles("user");
+			roles.setActions("views");
 			acc.setRoles(roles);
 			
 			this.userDao.save(acc);
-			return "/user/register";
-		}
+			return "redirect:/user/login";
+//		}
 	}
 	
 	

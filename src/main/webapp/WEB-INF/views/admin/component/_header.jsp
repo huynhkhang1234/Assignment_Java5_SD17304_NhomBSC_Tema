@@ -23,8 +23,10 @@
 				<button class="profile btn btn-outline-dark dropdown-toggle"
 					type="button" data-bs-toggle="dropdown" aria-expanded="false">
 					<div class="profile-photo">
-						<img src="/images/profile-1.jpg" height="50px"
+					<c:if test="${not empty sessionScope.userLogin}">
+							<img src="/images/user-img/${sessionScope.userLogin.getImages()}" 
 							style="width: auto !important;">
+						</c:if>
 					</div>
 					<div class="profile__content d-flex flex-column">
 						<c:if test="${empty sessionScope.userLogin}">
