@@ -35,6 +35,7 @@ public class Discounts  implements Serializable {
 	private int price_discounts;
 	private Date start_day;
 	private Date end_day;
+	private int is_active;
 	
 	// khóa chính
 		@JsonIgnore

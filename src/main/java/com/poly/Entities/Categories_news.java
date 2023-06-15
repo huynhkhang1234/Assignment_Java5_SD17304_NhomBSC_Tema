@@ -32,6 +32,7 @@ public class Categories_news implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String titles;
+	private int is_active;
 
 	// khóa chính
 	@JsonIgnore

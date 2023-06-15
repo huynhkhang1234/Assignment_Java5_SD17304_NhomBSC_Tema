@@ -26,17 +26,16 @@ import jakarta.servlet.http.HttpSession;
 public class ProfileController {
 	@Autowired
 	UsersDAO userDao;
+	
 	@Autowired
 	HttpSession session;
+	
 	@Autowired
 	HttpServletRequest req;
-	
 	
 	@Autowired
 	LikesDAO lDAO;
 	
-	@Autowired
-	HttpSession session;
 	
 	@GetMapping("/user/profile/account")
 	public String viewAccount( Model m,@ModelAttribute("users") Users users ) {

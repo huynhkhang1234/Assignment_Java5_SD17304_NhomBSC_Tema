@@ -68,11 +68,6 @@
 			class="profile d-flex flex-row-reverse align-items-center gap-2 btn btn-outline-dark dropdown-toggle"
 			type="button" data-bs-toggle="dropdown" aria-expanded="false">
 			<div class="profile-photo overflow-hidden">
-				<%-- <c:if test="${not empty sessionScope.userLogin.images}">
-							<img src="/images/user-img/${sessionScope.userLogin.getImages()}" id="img" 
-							style="width: auto !important;">
-						</c:if> --%>
-
 				<img src="/images/profile-1.jpg">
 			</div>
 			<div class="profile__content d-flex flex-column ">
@@ -116,69 +111,3 @@
 	</div>
 </div>
 
-                        <div class="btn-group">
-                            <button
-                                class="profile d-flex flex-row-reverse align-items-center gap-2 btn btn-outline-dark dropdown-toggle"
-                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <div class="profile-photo overflow-hidden">
-                                    <img src="/images/profile-1.jpg">
-                                </div>
-                                <div class="profile__content d-flex flex-column ">
-                                    <p style="margin: 0;">
-                                    <c:if test="${empty sessionScope.userLogin}">Chưa đăng nhập</c:if>
-                                    <c:if test="${not empty sessionScope.userLogin}">${sessionScope.userLogin.getUser_names()}</c:if>
-                                    </p>
-                                </div>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end d-right">
-                            	<c:if test="${sessionScope.userLogin.roles.id != 2}">
-                            		<li>
-                                    <a class="dropdown-item" href="/admin/index">
-                                        <i class="bi bi-person-lines-fill"></i>
-                                        Quản lý
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                            	</c:if>
-                                <li>
-                                    <a class="dropdown-item" href="/user/profile/account">
-                                        <i class="bi bi-person-fill"></i>
-                                        Tài khoản
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/user/profile/profile">
-                                        <i class="bi bi-person-lines-fill"></i>
-                                        Hồ sơ của tôi
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/user/profile/favorite">
-                                        <i class="bi bi-bag-heart"></i>
-                                        Yêu thích
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/user/profile/history">
-                                        <i class="bi bi-receipt"></i>
-                                        Lịch sử mua hàng
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/user/logout">
-                                        <i class="bi bi-arrow-left-circle"></i>
-                                        Đăng xuất
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                

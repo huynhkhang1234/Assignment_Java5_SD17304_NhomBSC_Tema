@@ -31,6 +31,7 @@ public class Categories implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String names;
+	private int is_active;
 
 	// khóa chính
 	@JsonIgnore

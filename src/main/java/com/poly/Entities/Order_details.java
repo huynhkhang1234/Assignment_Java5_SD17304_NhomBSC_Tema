@@ -33,6 +33,7 @@ public class Order_details  implements Serializable {
 	private float sum_money;
 	private Date create_date;
 	private Date update_date;
+	private int is_active;
 	
 	@ManyToOne
 	@JoinColumn(name="orders_id")

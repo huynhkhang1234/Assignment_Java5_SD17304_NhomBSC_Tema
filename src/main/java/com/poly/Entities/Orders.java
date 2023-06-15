@@ -39,6 +39,7 @@ public class Orders implements Serializable {
 	private Date create_date;
 	private Date update_date;
 	private float money_received;
+	private int is_active;
 
 	// khóa chính
 	@JsonIgnore
