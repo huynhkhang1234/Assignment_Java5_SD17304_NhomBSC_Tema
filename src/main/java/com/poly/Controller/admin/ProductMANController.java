@@ -96,7 +96,7 @@ public class ProductMANController {
 			entity.setCreate_date(now);
 			entity.setUpdate_date(now);
 		
-		 // Xử lý hình ảnh String 
+		// Xử lý hình ảnh String 
 		
 		String uploadRootPath = app.getRealPath("images/product-img/"); 
 		File uploadRootDir = new File(uploadRootPath); 
@@ -164,7 +164,7 @@ public class ProductMANController {
 		
 		if (entity.getCreate_date() == null)
 			entity.setCreate_date(now);
-		entity.setUpdate_date(now);
+			entity.setUpdate_date(now);
 
 		if (file.getOriginalFilename() == null || file.getOriginalFilename().length() == 0) {
 			Products p = dao.getById(entity.getId());
