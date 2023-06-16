@@ -78,4 +78,8 @@ public class Products implements Serializable {
 	@JoinColumn(name = "discounts_id")
 	Discounts discounts;
 
+	@Override
+	public String toString() {
+		return "Products{" + "titles" + titles+'}';
+	}
 }
