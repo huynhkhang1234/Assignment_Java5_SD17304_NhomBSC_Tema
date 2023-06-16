@@ -92,7 +92,7 @@ GO
 CREATE TABLE [news] (
   [id] int PRIMARY KEY IDENTITY(1, 1),
   [titles] nvarchar(100),
-  [contents] nvarchar(4000),
+  [contents] nvarchar(max),
   [video_href] nvarchar(255),
   [images] nvarchar(255),
   [create_date] datetime default getdate(),

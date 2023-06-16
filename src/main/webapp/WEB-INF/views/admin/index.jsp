@@ -16,6 +16,7 @@
     <!-- Link To Base CSS -->
     <%@include file="component/_linkCSS.jsp" %>
     
+    
 </head>
 
 <body>
@@ -190,8 +191,15 @@
             </div>
             <!--end of monthy report-->
             <!--biểu đồ-->
+            
             <div class="div-date ">
-                  <div class="col-12 d-flex align-items-center">
+            <c:if test="${not empty message}">
+    				<div class="alert alert-warning alert-dismissible col-10" role="alert" style="width: 357px;">
+    					<div>${message}</div>
+    					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    				</div>
+				</c:if>
+                  <form action="/admin/index/thongke" method="POST" class="col-12 d-flex align-items-center">
                     <div class="col-6">
                         <label for="">Từ:</label>
                         <input id="startDate" name="startDate" value="${startDate}" type="date" class="form-control">
@@ -201,9 +209,9 @@
                         <input id="endDate" name="endDate" value="${endDate}" type="date" class="form-control">
                     </div>
                     <div class="col-4">
-                        <a class="btn btn-primary" href="#">Thống kê</a>
+                        <button type="submit" class="btn btn-primary" >Thống kê</button>
                     </div>
-                  </div>
+                  </form>
             </div>
             
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -214,17 +222,17 @@
     <button class="nav-link" id="chart-tab" data-bs-toggle="pill" data-bs-target="#pills-chart" type="button" role="tab" aria-controls="pills-chart" aria-selected="false">Sơ đồ</button>
   </li>
 </ul>
-<div class="tab-content" id="pills-tabContent">
+        <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-table" role="tabpanel" aria-labelledby="list-tab" tabindex="0">
   	<div class="table-responsive mt-5" style="overflow-x: auto">
 					<table class="table table-bordered">
 						<thead>
 							<tr>
 								<th>Mã hóa đơn</th>
-								<th>Người đặt</th>
+								<th>Người đặt</th>+
 								<th>Số điện thoại</th>
 								<th>Ngày đặt</th>
-								<th>Số lượng sản phẩm</th>
+								<th class="text-center">Số lượng sản phẩm</th>
 								<th>Tổng tiền</th>
 								<th>Tiền nhận</th>
 								<th>Địa chỉ</th>
@@ -241,10 +249,10 @@
 									<c:set var="count" value="0" />
 									<c:forEach var="itemOD" items="${item.order_details}">
 										<c:if test="${itemOD.orders.id == item.id}">
-											<c:set var="count" value="${count + 1}" />
+											<c:set var="count" value="${count + 1 * itemOD.quanlity}" />
 										</c:if>
 									</c:forEach>
-									<td>${count}</td>
+									<td class="text-center">${count}</td>
 									<td><fmt:formatNumber value="${item.sum_money}"
 											pattern="###,### VNĐ" /></td>
 									<td><fmt:formatNumber value="${item.money_received}"
@@ -264,7 +272,7 @@
   	 <canvas id="chart"></canvas>
   </div>
 </div>
-           
+   
         
 
         </section>
@@ -283,6 +291,7 @@
         
 	<!-- Link To Base JS -->
     <%@include file="component/_linkJS.jsp" %>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
 </body>
 </html>

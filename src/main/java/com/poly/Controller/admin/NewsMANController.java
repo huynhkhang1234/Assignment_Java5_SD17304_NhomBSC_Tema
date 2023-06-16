@@ -118,7 +118,7 @@ public class NewsMANController {
 		Date now = new Date();
 		if (entity.getCreate_date() == null)
 			entity.setCreate_date(now);
-
+		System.out.println(entity.getContents().length());
 		entity.setUpdate_date(now);
 		entity.setIs_active(1);
 

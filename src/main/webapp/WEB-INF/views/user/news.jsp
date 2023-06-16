@@ -110,7 +110,7 @@
 									</div>
 								</div>
 								<div class="content__news-btn">
-									<a href="/user/news/detail" class="btn btn-outline-dark text-uppercase">Xem
+									<a href="/user/news/detail/${item.id}" class="btn btn-outline-dark text-uppercase">Xem
 										thêm</a>
 								</div>
 							</div>
