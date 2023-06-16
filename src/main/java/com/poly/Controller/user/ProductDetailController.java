@@ -1,24 +1,16 @@
 package com.poly.Controller.user;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.poly.DAO.GalleriesDAO;
 import com.poly.DAO.ProductsDAO;
 import com.poly.Entities.Galleries;
 import com.poly.Entities.Products;
-import com.poly.service.CartItem;
 import com.poly.service.NumberFormatMoney;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -42,7 +34,7 @@ public class ProductDetailController {
 	public String view(Model model) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		// tìm kiếm 1 sản phẩm
-		Products ps = this.productRepo.findById(id);
+		Products ps = this.productRepo.findByProductId(id);
 		model.addAttribute("productDetail", ps);
 
 		// tìm kiếm all sản phẩm thích bên dưới

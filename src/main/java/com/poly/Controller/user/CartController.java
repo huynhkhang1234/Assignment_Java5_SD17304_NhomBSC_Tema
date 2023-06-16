@@ -95,7 +95,7 @@ public class CartController {
 			
 			int id = test.getId();
 			
-			Products product = this.productRepo.findById(id);
+			Products product = this.productRepo.findByProductId(id);
 
 			String name = product.getTitles();
 

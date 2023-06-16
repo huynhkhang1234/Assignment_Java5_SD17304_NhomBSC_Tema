@@ -1,4 +1,3 @@
-﻿
 use master
 go
 

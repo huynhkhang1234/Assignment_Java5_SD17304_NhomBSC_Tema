@@ -195,8 +195,8 @@ GO
 INSERT INTO [dbo].[categories_news]
            ([titles])
      VALUES
-           ('Tin tức đèn xe'),
-		   ('Tin tức dây sạc thông minh')
+           (N'Tin tức đèn xe'),
+		   (N'Tin tức dây sạc thông minh')
 GO
 ------------------------------------------------------------------
 INSERT INTO [dbo].[news]

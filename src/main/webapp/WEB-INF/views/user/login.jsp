@@ -93,7 +93,9 @@
 						chủ</a></li>
 				<li><span class="breadcrumb__link">></span></li>
 				<li><span class="breadcrumb__link active">Đăng nhập</span></li>
+
 			</ul>
+
 		</section>
 
 		<div class="customer-page theme-default-margin">
@@ -110,37 +112,46 @@
 									<div class="login-form-container">
 										<div class="login-text" style="text-align: center;">
 											<h2>Đăng Nhập</h2>
+											<c:if test="${not empty sessionScope.errorMessage}">
+												
+												<span>${sessionScope.errorMessage}</span>													
+												
+											</c:if>
+												
+											
 										</div>
 										<div class="login-form">
 											<label for="Email" class="hidden-label">Email</label>
-											<fr:input path="email" class="input-full"
+											<fr:input id="email" path="email" type="email" class="input-full"
 												placeholder="Vui lòng nhập Email" value="${email}" />
 											<fr:errors path="email" />
 											<br> <label for="Pass" class="hidden-label">Mật
 												khẩu</label>
-											<fr:input path="pass_words" type="password" name="pass_words"
-												value="${pass}" placeholder="Vui lòng nhập mật khẩu" />
+											<fr:input id="passWord" path="pass_words" type="password"
+												name="pass_words" value="${pass}"
+												placeholder="Vui lòng nhập mật khẩu" />
 											<fr:errors path="pass_words" class="input-full" />
 											<div style="display: flex;">
-											<input style="width: 17px" type="checkbox" name="remember" value="true">
-											<span style="padding-top: 10px;margin-left: 5px">Lưu thông tin</span>
+												<input style="width: 17px" type="checkbox" name="remember"
+													value="true"> <span
+													style="padding-top: 10px; margin-left: 5px">Lưu
+													thông tin</span>
 											</div>
-											
-											
+
+
 
 											<div class="login-toggle-btn">
 												<div class="form-action-button">
 
-													<button type="submit" class="theme-default-button">
-														Xác Nhận</button>
+													<button onclick="login()" type="submit"
+														class="theme-default-button">Xác Nhận</button>
 
 
 
 													<!-- <a href="#recover" id="RecoverPassword"
 														data-bs-toggle="modal" data-bs-target="#exampleModal">Quên
 														mật khẩu</a> -->
-														<a href="/mail/send" id="RecoverPassword">Quên
-														mật khẩu</a>
+													<a href="/mail/send" id="RecoverPassword">Quên mật khẩu</a>
 
 												</div>
 												<div class="account-optional-action">
@@ -191,44 +202,12 @@
 
 	<!-- Footer Start -->
 	<%@include file="component/_footer.jsp"%>
-	<!-- Footer End -->
-
-	<!-- Modal -->
-	<!-- <div class="modal fade" id="exampleModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">Quên Mật
-						Khẩu</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-
-					<div class="form-group">
-						<input type="email" name="sendEmail" id="sendEmail"
-							class="form-control rounded-0" placeholder="Email" required />
-					</div>
-			<h5 id="message" style="color: red"></h5>
-				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">Đóng</button>
-					<button type="button" id="OK" class="btn btn-primary">Xác Nhận</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
 
 	<!-- Link To Base JS -->
 	<%@include file="component/_linkJS.jsp"%>
-	
-	
-    
-    
+
+
+
 </body>
 
 </html>

@@ -17,7 +17,7 @@ import lombok.Setter;
 
 public class LoginBean {
 	@NotBlank(message = "Vui lòng nhập thông tin email")
-	@Email
+	@Email(message = "Vui lòng nhập đúng thông tin email")
 	private String email;
 	@NotBlank(message = "Vui lòng nhập thông tin mật khẩu")
 	private String pass_words;

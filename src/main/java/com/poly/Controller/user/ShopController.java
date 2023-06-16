@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -46,14 +47,27 @@ public class ShopController {
 	public String view(Model model,@RequestParam("p") Optional<Integer> p) {
 		/// lấy tổng sản phẩm hiện thi
 		Pageable pageable;
+		
+		/*
+		 * int pageNum = 1; int pageSize = 5; Pageable pageable =
+		 * PageRequest.of(pageNum, pageSize);
+		 * 
+		 * long totalProducts = productRepo.countProducts(); List<Products> products =
+		 * productRepo.findAllProducts(pageable);
+		 */
+
+		
 		try {
-			pageable = PageRequest.of(p.orElse(0), 5);
+			pageable = PageRequest.of(p.orElse(0), 8);
 
 			// }
 		} catch (Exception e) {
-			pageable = PageRequest.of(0, 5);	
+			pageable = PageRequest.of(0, 8);	
 		}		
-		Page<Products> listproduts = this.productRepo.findAll(pageable);	
+		
+		@SuppressWarnings("unchecked")
+		//Page<Products> pageResult = new PageImpl(products, pageable, totalProducts);
+		Page<Products> listproduts =  this.productRepo.findAll(pageable);
 		model.addAttribute("listproduts", listproduts);
 								
 		Users u = (Users) session.getAttribute("userLogin");
@@ -71,7 +85,7 @@ public class ShopController {
 	@GetMapping("/shop/user/viewProduct")
 	public String viewModel(Model model, @RequestBody CartItem test) {
 		int id = test.getId();		
-		Products listproduts = this.productRepo.findById(id);
+		Products listproduts = this.productRepo.findByProductId(id);
 		System.out.println("sản phẩm hiên thị lên view" + listproduts);
 		model.addAttribute("viewProduct", listproduts);
 		return "user/shop";
@@ -95,7 +109,7 @@ public class ShopController {
 				
 				int id = test.getId();
 				
-				Products product = this.productRepo.findById(id);
+				Products product = this.productRepo.findByProductId(id);
 
 				String name = product.getTitles();
 

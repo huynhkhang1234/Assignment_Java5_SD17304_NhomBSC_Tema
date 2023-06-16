@@ -68,7 +68,7 @@
 
 							<tr id="cart" data-product-id="${item.value.id}">
 								<td class="pro-thumbnail"><a href="#"> <img
-										src="/images/${item.value.images}" alt="" height="70px;">
+										src="/images/product-img/${item.value.images}" alt="" height="70px;">
 								</a></td>
 								<td>${item.value.name}</td>
 								<!----------------- giá có trong cart------------------------------------ -->
@@ -147,7 +147,12 @@
 						<div class="card-body text-secondary">
 							<div class="d-flex justify-content-between" style="color: #333;">
 								<p class="card-text" style="font-weight: 500;">Tạm tính:</p>
-								<span id="moneyT">${sessionScope.total} </span>
+								<span id="moneyT">
+								<fmt:formatNumber  type="currency"
+											value="${sessionScope.total}" currencySymbol="đ"
+											pattern="###,### VNĐ" /> 
+								
+								 </span>
 							</div>
 							<div class="d-flex justify-content-between"
 								style="color: #333; border-bottom: 1px solid #ccc;">
@@ -160,14 +165,16 @@
 								<!-- Tính  tổng tiền -->
 								<c:if test="${not empty sessionScope.total}">
 
-									<span id="setMoney"> ${sessionScope.total} <%-- <fmt:formatNumber  type="currency"
+									<span id="showSumMoney"> 
+									  <fmt:formatNumber  type="currency"
 											value="${sessionScope.total}" currencySymbol="đ"
-											pattern="###,###"  /> --%>
+											pattern="###,### VNĐ"  /> 
 									</span>
+									<span style="display: none;" id="setMoney">${sessionScope.total} </span>
 
 								</c:if>
 								<c:if test="${ empty sessionScope.total}">
-									<span>0</span>
+									<span>0 VNĐ</span>
 								</c:if>
 							</div>
 							<a  href="/user/cart/checkout"
@@ -221,13 +228,19 @@ function onUp(id,price) {
 				// set đến tổng tiền của đơn hàng tăng 				
 				  if(quantity >=1){
 					// dựa them nút lick chuôt tăng lên
-			var setMoney = document.getElementById("setMoney");					
+			var setMoney = document.getElementById("setMoney");
+			var showSumMoney = document.getElementById("showSumMoney");
+					
 			var result =  parseFloat(setMoney.textContent)+ parseFloat(orderprice);				
 						setMoney.textContent = result;
-						//tiền tạm
+						///chuyển đổi tiền tệ
+							var resulFormatMoney = formatMoney(result);
+						
+						////tiền tạm 
 			var moneyT = document.getElementById("moneyT");
-						moneyT.innerHTML = result;
-				
+						moneyT.innerHTML = resulFormatMoney;
+						/// chuyển về tiền tổng
+						showSumMoney.textContent = resulFormatMoney;
 			var button =  document.getElementById('bt'+id);
 						 button.removeAttribute("disabled");
 				}  
@@ -286,12 +299,16 @@ function onDown(id,price){
  						priceID.textContent = formattedCurrency+"VNĐ";
  						// set đến tổng tiền của đơn hàng giảm 
  						if(quantity >= 1){						
- 							 var setMoney = document.getElementById("setMoney");						
+ 							 var setMoney = document.getElementById("setMoney");
+ 							var showSumMoney = document.getElementById("showSumMoney");
  								var result =  parseFloat(setMoney.textContent)- parseFloat(orderprice);				
- 									 setMoney.textContent = result;		
+ 									 setMoney.textContent = result;
+ 									///chuyển đổi tiền tệ
+ 									var resulFormatMoney = formatMoney(result);
  									//tiền tạm
  									var moneyT = document.getElementById("moneyT");
- 									moneyT.innerHTML = result;
+ 									moneyT.innerHTML = resulFormatMoney;
+ 									showSumMoney.textContent = resulFormatMoney;
  						}  
  					} 
 					
@@ -355,12 +372,16 @@ function orderdelete(id,total,price,quantity,cartNumber){
 	/// lấy tổng số lượng hiện tại 		 	
 	var soLuong = parseInt(quantityPresent.value);
 	// tính cái giá tiền trên jsp
-	 var setMoney = document.getElementById("setMoney");											
+	 var setMoney = document.getElementById("setMoney");
+	 var showSumMoney = document.getElementById("showSumMoney");
 	var orderMoney = setMoney.innerText-(price * soLuong);							
 	setMoney.innerHTML  = orderMoney;
-	//tiền tạm
+	///chuyển đổi tiền tệ
+		var resulFormatMoney = formatMoney(orderMoney);
+	//tiền tạm	
 	var moneyT = document.getElementById("moneyT");
-	moneyT.innerHTML = orderMoney;
+	moneyT.innerHTML = resulFormatMoney;
+	showSumMoney.innerHTML  = resulFormatMoney;
 	////////////////////////////////					
 		 	$.ajax({			
 				url: '/delete/cart',
@@ -378,23 +399,18 @@ function orderdelete(id,total,price,quantity,cartNumber){
 				}							
 			});			
 		} 
-		/* function reloadPage(){
-			alert("reload page");
-			  var xhttp = new XMLHttpRequest();
-			  xhttp.onreadystatechange = function() {
-			    if (this.readyState == 4 && this.status == 200) {
-			      window.location.reload();
-			    }
-			  };
-			  xhttp.open("GET", "cart.jsp", true);
-			  xhttp.send();
+		
+		 function formatMoney(money){
+			 var number = money; 									
+			var formattedNumber = number.toLocaleString('en-US').replace(",", ".");
+			 
+			return formattedNumber = formattedNumber.replace(/\./g, ',').replace(".", ".") + " VNĐ";							
 			}
-		 */	
+		 
 	</script>
-	<!-- Link To Base JS -->
-	<%@include file="component/_linkJS.jsp"%>
+	
 
-
+	
 </body>
 
-</body>
+	

@@ -81,13 +81,22 @@
 												value="${item.images}"> <input type="hidden"
 												id="nameOne${item.id}" value="${item.titles}" /> <input
 												type="hidden" id="OnePrice${item.id}" value="${item.price}" />
-											<input type="text" id="discount${item.id}"
+											<input type="hidden" id="discount${item.id}"
 												value="${item.discounts.price_discounts}" />
 											<!-- --------------------------------------------------------------- -->
 											<h3 class="title">
 												<a href="#">${item.titles}</a>
 											</h3>
-											<c:if test="${item.discounts != null}">
+											
+											<c:if test="${item.discounts.price_discounts == 0 || item.discounts == null}">
+												<div class="price">
+													<fmt:formatNumber
+														value="${item.price - (item.price * (item.discounts.price_discounts / 100))}"
+														pattern="###,###,### VNĐ" />
+
+												</div>
+											</c:if>
+											<c:if test="${item.discounts.price_discounts != 0 && item.discounts != null}">
 												<div class="price">
 													<fmt:formatNumber
 														value="${item.price - (item.price * (item.discounts.price_discounts / 100))}"
@@ -97,14 +106,6 @@
 														<fmt:formatNumber value="${item.price}"
 															pattern="###,###,### VNĐ" />
 													</del>
-												</div>
-											</c:if>
-											<c:if test="${item.discounts == null}">
-												<div class="price">
-													<fmt:formatNumber
-														value="${item.price - (item.price * (item.discounts.price_discounts / 100))}"
-														pattern="###,###,### VNĐ" />
-
 												</div>
 											</c:if>
 										</div>
@@ -396,19 +397,21 @@
 			var priceOne=  $('#OnePrice'+id).val();
 			var quantityOne=  1;
 			var imgOne=   $('#imgOne'+id).val();
-			var disOne=  $('#discount'+id).val();
-			alert(imgOne);
+			var disOne=  $('#discount'+id).val();	
+			//format tiền
+			///chuyển đổi tiền tệ
+			var resulFormatMoney = formatMoney(priceOne);
+			
 			var imgInfo= document.getElementById("imgInfo");
 			var SummoneyInfo= document.getElementById("SummoneyInfo");
 			var disMoneyInfo= document.getElementById("disMoneyInfo");
-			
-			 
-			var pathImages = "../images/product-img/" + imgOne;
-			 imgInfo.style.backgroundImage = "url('" + pathImages + "')";
-			if(disOne > 0){
-				SummoneyInfo.innerHTML=priceOne-(priceOne*(disOne/100));
+			//thêm ảnh vào.			 
+			 imgInfo.src = "/images/product-img/"+ imgOne;
+			if(disOne > 0){			
+				var disFormatMoney = formatMoney(priceOne-(priceOne*(disOne/100)));
+				SummoneyInfo.innerHTML=disFormatMoney;
 			}else{
-				SummoneyInfo.innerHTML=priceOne;	
+				SummoneyInfo.innerHTML= resulFormatMoney;	
 			}
 			
 			nameInfo.innerHTML=nameOne;
@@ -431,10 +434,38 @@
 			var descriptionid = document.getElementById("images");
 			descriptionid.style.backgroundImage = "url('" + pathImages + "')";
 			if(disPrice != ""){
-				 
-				var disPrice2 = document.getElementById("disPrice").innerHTML = price - (price*(disPrice/100));	
+				//
+				
+				//
+				const number = price - (price*(disPrice/100));
+				const formatter = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'});
+				formatter.formatToParts = function(value) {
+				  let formatted = this.format(value);
+				  return [{type: "currency", value: "VNĐ"}, {type: "literal", value: " "}, {type: "decimal", value: formatted.substring(formatted.length - 3)}];
+				}				
+				const formattedNumber = formatter.format(number);		
+				var a = formattedNumber.replace(/\./g,',');
+				var b = a.replace('₫','VNĐ');
+				console.log(b+"VNĐ"); // "1.234,56 VNĐ"
+				 //giảm giá > 0
+				var disPrice2 = document.getElementById("disPrice").innerHTML =b;
+					
 			}else{
-				var disPrice2 = document.getElementById("disPrice").innerHTML = price;
+				
+				// giảm giá set = 0///				
+				const number = price;
+				const formatter = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'});
+				formatter.formatToParts = function(value) {
+				  let formatted = this.format(value);
+				  return [{type: "currency", value: "VNĐ"}, {type: "literal", value: " "}, {type: "decimal", value: formatted.substring(formatted.length - 3)}];
+				}				
+				const formattedNumber = formatter.format(number);		
+				var a = formattedNumber.replace(/\./g,',');
+				var b = a.replace('₫','VNĐ');
+				console.log(b+"VNĐ"); // "1.234,56 VNĐ"
+				// có giảm giá <0
+				var disPrice2 = document.getElementById("disPrice").innerHTML = b;				
+				/////////////////
 				var priceid = document.getElementById("price").innerHTML = ""; 
 			}
 			
@@ -474,6 +505,13 @@
 				}
 			   }); 
 			   
+			}
+		// hàm chuyển đổi tiền tệ
+			 function formatMoney(money){
+			 var number = money; 									
+			var formattedNumber = number.toLocaleString('en-US').replace(",", ".");
+			 
+			return formattedNumber = formattedNumber.replace(/\./g, ',').replace(".", ".") + " VNĐ";							
 			}
 	</script>
 </body>

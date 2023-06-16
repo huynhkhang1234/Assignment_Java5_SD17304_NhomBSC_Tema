@@ -1,1641 +1,675 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="fr" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>B.S.C.Team - CarService</title>
-    
-    <!-- Link To Base CSS -->
-    <%@include file="component/_linkCSS.jsp" %>
+<title>B.S.C.Team - CarService</title>
 
-    <!-- Link To Own CSS -->
-    <link rel="stylesheet" href="../css/Product_MAN.css">
-    
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
-        crossorigin="anonymous" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
-        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
-        crossorigin="anonymous" />
+<!-- Link To Base CSS -->
+<%@include file="component/_linkCSS.jsp"%>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-        crossorigin="anonymous"></script>
+<!-- Link To Own CSS -->
+<link rel="stylesheet" href="../css/Product_MAN.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+	integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+	crossorigin="anonymous" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+	integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+	crossorigin="anonymous" />
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+	integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+	crossorigin="anonymous"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 </head>
 
 <body>
-    <!-- Start Header -->
-    <%@include file="component/_header.jsp" %>
-    <!-- End Header -->
+	<!-- Start Header -->
+	<%@include file="component/_header.jsp"%>
+	<!-- End Header -->
 
-    <main>
-    
-        <!-- Start Menu Aside -->
-    	<%@include file="component/_menu.jsp" %>
-    	<!-- End Menu Aside -->
+	<main>
 
-        <section class="middle">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                data-bs-whatever="@mdo" id="add-product">Add New</button>
+		<!-- Start Menu Aside -->
+		<%@include file="component/_menu.jsp"%>
+		<!-- End Menu Aside -->
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Thêm Sản Phẩm</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="inputTitle" class="form-label">Tiêu đề:</label>
-                                    <input type="text" class="form-control" id="title">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputPrice" class="form-label">Giá:</label>
-                                    <input type="number" class="form-control" id="price">
-                                </div>
+		<section class="middle">
 
-                                <div class="col-md-12">
-                                    <label for="inputCraetDate" class="form-label">Ngày đăng:</label>
-                                    <input type="date" class="form-control" id="start" name="trip-start"
-                                        min="2023-01-01" max="2025-12-31">
-                                </div>
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+				data-bs-target="#exampleModal" data-bs-whatever="@mdo">Thêm</button>
 
-                                <div class="col-md-12">
-                                    <label for="categoryId" class="form-label">Loại:</label>
-                                    <select id="categoryId" class="form-select">
-                                        <option selected>Màn hình</option>
-                                        <option>Thảm lót</option>
-                                        <option>Âm thanh</option>
-                                        <option>Camera</option>
-                                        <option>Cảm biến</option>
-                                        <option>Đèn</option>
-                                    </select>
-                                </div>
+			<div class="modal fade" id="exampleModal" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
 
-                                <fieldset class="row mb-3" style="margin-top: 1rem;" id="active">
-                                    <legend class="col-form-label col-sm-2 pt-0">Trạng thái:</legend>
-                                    <div class="col-sm-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios"
-                                                id="gridRadios1" value="option1" checked>
-                                            <label class="form-check-label" for="gridRadios1">
-                                                Còn hàng
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios"
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
-                                                Hết hàng
-                                            </label>
-                                        </div>
-                                    </div>
-                                </fieldset>
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Thêm Sản Phẩm</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
 
-                                <div class="col-md-12">
-                                    <label for="inputSuppliers" class="form-label">Nhà cung cấp:</label>
-                                    <input type="text" class="form-control" id="suppliers">
-                                </div>
-                            
-                                <label class="form-label" for="customFile">Tải ảnh:</label>
-                                <input type="file" class="form-control" id="customFile"/>
-                                    
 
-                                <div class="col-12">
-                                    <label for="inputDescription" class="form-label">Mô tả</label>
-                                    <textarea class="form-control" id="description"
-                                        placeholder="Viết bình luận của bạn"></textarea>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                            <button type="button" class="btn btn-primary" id="send">Gửi</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+						<form:form action="/admin/save/product" method="post"
+							modelAttribute="products" enctype="multipart/form-data">
+							<div class="modal-body">
 
-            <div class="tab">
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                            aria-selected="true">Sản phẩm</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                            aria-selected="false">Mã giảm giá</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                            aria-selected="false">Loại sản phẩm</button>
-                    </li>
-                </ul>
+								<div class="col-md-6">
+									<label for="inputId" class="form-label">Mã:</label> <input
+										name="id" value="${item.id}" class="form-control" />
 
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-    
-                        <!-- đèn -->
-                        <div class="list-products">
-                            <div class="title">
-                                <h2>Đèn ô tô</h2>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="owl-carousel owl-theme">
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Đèn Bi Led X-Light V20 New 2022</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 7.500.000 ₫</li>
-                                                        <li>Loại: Đèn Led</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Kích thước nhỏ gọn, chất lượng hình ảnh độ phân giải
-                                                            cao 2K
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/den1.jpg" />
-                                            </div>
+								</div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Đèn Bi Aozoom X Led Pro Domax Light</div>
-    
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 10.000.000 ₫</li>
-                                                        <li>Loại: Đèn Led</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Giao diện thân thiện, dễ sử dụng. Quan sát được thông
-                                                            số liên tục, cảnh báo kịp thời</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/den3.jpg" />
-                                            </div>
+								<div class="col-md-6">
+									<label for="inputTitle" class="form-label">Tiêu đề:</label> <input
+										name="titles" value="${item.titles}" class="form-control" />
+								</div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Đèn Bi LED TiTan Platinum Plus 9+3</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 9.500.000 ₫</li>
-                                                        <li>Loại: Hết Led</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Cấu hình mạnh. Thiết kế nhỏ gọn, có thể đặt gọn gàng
-                                                            trong
-                                                            xe</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/den4.jpg" />
-                                            </div>
+								<div class="col-md-12">
+									<label for="inputPrice" class="form-label">Giá:</label> <input
+										name="price" value="${item.price}" class="form-control" />
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Đèn Bi Led GTR Premium 2.0</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 4,650,000 ₫</li>
-                                                        <li>Loại: Đèn Led</li>
-                                                        <li>Trạng thái: Hết hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Hệ thống loa cánh cho âm thanh lớn, chất lượng rõ âm rõ
-                                                            ràng, sắc nét.</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/den5.jpg" />
-                                            </div>
+								</div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Đèn Bi Led X-Light V20 Ultra</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 8,500,000 ₫</li>
-                                                        <li>Loại: Đèn Led</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Tích hợp các dòng camera thông minh,
-                                                            ra lệnh giọng nói bằng trợ lý ảo Gotech Assistant với ngôn
-                                                            ngữ linh hoạt.</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/den6.jpg" />
-                                            </div>
+								<div class="col-md-12">
+									<label for="inputCraetDate" class="form-label">Ngày
+										đăng:</label> <input readonly value="<fmt:formatDate value="${now}" pattern="dd-MM-yyyy hh:mm" />"
+										class="form-control" />
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Module Bi LED Mini X-Light F+ Pro</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 6.000.000 ₫</li>
-                                                        <li>Loại: Đèn Led</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Thiết kế mỏng, ôm sát vô lăng mang tính thể thao.
-                                                            Chống bám mồ hôi gây trượt tay lái</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/den7.jpg" />
-                                            </div>
+								</div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Đèn Bi Led Tirtim S450</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 8.000.000 ₫</li>
-                                                        <li>Loại: Đèn Led</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Sử dụng được cho các máy có tính năng sạc không dây
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/den8.png" />
-                                            </div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Đèn Bi Aozoom X Led Pro Domax Light</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 10.000.000 ₫</li>
-                                                        <li>Loại: Đèn Led</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Sở hữu hệ thống vận hành mạnh mẽ có công nghệ tiên tiến
-                                                            đến
-                                                            từ Đức.</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/den9.jpg" />
-                                            </div>
+								<div class="col-md-12">
+									<label for="categoryId" class="form-label">Loại:</label> <select
+										name="cate" class="form-control">
+										<c:forEach var="cate" items="${listCate}">
+											<option ${item.categories.id == cate.id ? 'selected':''}
+												value="${cate.id}">${cate.names}</option>
+										</c:forEach>
+									</select>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Đèn Bi Led Henvvei Matrix Led</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 25.000.000 ₫</li>
-                                                        <li>Loại: Đèn Led</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Cài đặt trước áp suất cần bơm.
-                                                            Có đồng hồ điện tử đo được áp suất lốp xe ngay tức thì, chính
-                                                            xác
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/den10.jpg" />
-                                            </div>
+								</div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!-- loa -->
-                        <div class="list-products">
-                            <div class="title">
-                                <h2>Âm thanh ô tô</h2>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="owl-carousel owl-theme">
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Hệ Thống Âm Thanh Ô Tô DB DRIVE ES7 6C</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 4,650,000 ₫</li>
-                                                        <li>Loại: Âm thanh</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Kích thước nhỏ gọn, chất lượng hình ảnh độ phân giải
-                                                            cao 2K
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/loa1.jpg" />
-                                            </div>
+								<fieldset class="row mb-3" style="margin-top: 1rem;">
+									<legend class="col-form-label col-sm-2 pt-0">Trạng
+										thái:</legend>
+									<div class="col-sm-4">
+										<div class="form-check">
+											<label class="form-check-label" for="gridRadios1"> <input
+												name="is_active" ${item.is_active == 1 ? 'checked':''}
+												value="1" class="form-check-input" type="radio"
+												name="gridRadios" id="gridRadios1" value="option1" checked />
+												Còn hàng
+											</label>
+										</div>
+									</div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Loa Cánh DB DRIVE ES1 60</div>
-    
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 1,200,000 ₫</li>
-                                                        <li>Loại: Âm thanh</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Giao diện thân thiện, dễ sử dụng. Quan sát được thông
-                                                            số liên tục, cảnh báo kịp thời</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/loa2.jpg" />
-                                            </div>
+									<div class="col-sm-4">
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Loa Cánh Đồng Trục Focal RCX 165</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 3,500,000 ₫</li>
-                                                        <li>Loại: Âm thanh</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Cấu hình mạnh. Thiết kế nhỏ gọn, có thể đặt gọn gàng
-                                                            trong
-                                                            xe</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/loa3.png" />
-                                            </div>
+										<div class="form-check">
+											<label class="form-check-label" for="gridRadios2"> <input
+												name="is_active" ${item.is_active == 0 ? 'checked':''}
+												value="0" class="form-check-input" type="radio"
+												name="gridRadios" id="gridRadios2" value="option2" /> Hết
+												hàng
+											</label>
+										</div>
+									</div>
+								</fieldset>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Loa Cánh Hertz DSK 170.3</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 4,650,000 ₫</li>
-                                                        <li>Loại: Âm thanh</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Hệ thống loa cánh cho âm thanh lớn, chất lượng rõ âm rõ
-                                                            ràng, sắc nét.</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/loa4.jpg" />
-                                            </div>
+								<div class="col-md-12">
+									<label for="inputSuppliers" class="form-label">Nhà cung
+										cấp:</label> <select name="supp" class="form-control">
+										<c:forEach var="supp" items="${listSupp}">
+											<option ${item.suppliers.id == supp.id ? 'selected':''}
+												value="${supp.id}">${supp.user_names}</option>
+										</c:forEach>
+									</select>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Loa Cánh 2 Way GERMAN MAESTRO SV 6509</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 19,000,000 ₫</li>
-                                                        <li>Loại: Âm thanh</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Tích hợp các dòng camera thông minh,
-                                                            ra lệnh giọng nói bằng trợ lý ảo Gotech Assistant với ngôn
-                                                            ngữ linh hoạt.</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/loa5.png" />
-                                            </div>
+								</div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Hệ Thống Âm Thanh Xe Hơi Hert CPK 165</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 7,900,000 ₫</li>
-                                                        <li>Loại: Âm thanh</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Thiết kế mỏng, ôm sát vô lăng mang tính thể thao.
-                                                            Chống bám mồ hôi gây trượt tay lái</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/loa6.png" />
-                                            </div>
+								<div class="col-md-6">
+									<label for="inputSuppliers" class="form-label">Giá gốc:</label>
+									<input name="original_price" value="${item.original_price}"
+										class="form-control" />
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Loa Cánh GERMAN MAESTRO EV 6508</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 12,500,000 ₫</li>
-                                                        <li>Loại: Âm thanh</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Sử dụng được cho các máy có tính năng sạc không dây
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/loa7.png" />
-                                            </div>
+								</div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Loa Sub Hơi Ô Tô MTS VX10</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 6,500,000 ₫</li>
-                                                        <li>Loại: Âm thanh</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Sở hữu hệ thống vận hành mạnh mẽ có công nghệ tiên tiến
-                                                            đến
-                                                            từ Đức.</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/loa8.jpg" />
-                                            </div>
+								<div class="col-md-6">
+									<label for="inputSuppliers" class="form-label">Giảm
+										gía:</label> <select name="dis" class="form-control">
+										<c:forEach var="dis" items="${listDis}">
+											<option ${item.discounts.id == dis.id ? 'selected':''}
+												value="${dis.id}">${dis.price_discounts}%</option>
+										</c:forEach>
+									</select>
+								</div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Loa Siêu Trầm Helix K 10E</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 8,000,000 ₫</li>
-                                                        <li>Loại: Âm thanh</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Cài đặt trước áp suất cần bơm.
-                                                            Có đồng hồ điện tử đo được áp suất lốp xe ngay tức thì, chính
-                                                            xác
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/loa9.jpg" />
-                                            </div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-    
-    
-                        <!-- camera -->
-                        <div class="list-products">
-                            <div class="title">
-                                <h2>Camera ô tô</h2>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="owl-carousel owl-theme">
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Camera hành trình trước sau Vietmap KC01</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 4,190,000 ₫</li>
-                                                        <li>Loại: Camera</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Kích thước nhỏ gọn, chất lượng hình ảnh độ phân giải
-                                                            cao 2K
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/camera1.png" />
-                                            </div>
+								<label class="form-label" for="customFile">Tải ảnh:</label> <input
+									value="${item.images}" name="file" type="file"
+									class="form-control" id="customFile" />
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Camera hành trình Vietmap C65</div>
-    
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 3,990,000 ₫ </li>
-                                                        <li>Loại: Camera</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Giao diện thân thiện, dễ sử dụng. Quan sát được thông
-                                                            số liên tục, cảnh báo kịp thời</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/camera2.png" />
-                                            </div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Camera Hành Trình Vietmap C61 Pro</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 3,290,000 ₫</li>
-                                                        <li>Loại: Camera</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Cấu hình mạnh. Thiết kế nhỏ gọn, có thể đặt gọn gàng
-                                                            trong
-                                                            xe</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/camera3.jpg" />
-                                            </div>
+								<div class="col-12">
+									<label for="inputDescription" class="form-label">Mô tả</label>
+									<textarea name="description" class="form-control">${item.description}</textarea>
+								</div>
+							</div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Camera Hành Trình Vietmap D20</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 4,790,000 ₫ </li>
-                                                        <li>Loại: Camera</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Hệ thống loa cánh cho âm thanh lớn, chất lượng rõ âm rõ
-                                                            ràng, sắc nét.</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/camera4.jpg" />
-                                            </div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">Đóng</button>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">MCamera Hành Trình Vietmap K9Pro</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 2,790,000 ₫</li>
-                                                        <li>Loại: Camera</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Tích hợp các dòng camera thông minh,
-                                                            ra lệnh giọng nói bằng trợ lý ảo Gotech Assistant với ngôn
-                                                            ngữ linh hoạt.</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/camera5.jpg" />
-                                            </div>
+								<button formaction="/admin/save/product"
+									type="submit" class="btn btn-primary">Lưu thay đổi</button>
+							</div>
+						</form:form>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Camera Hành Trình Vietmap Papago GoSafe S70G</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 4,590,000 ₫</li>
-                                                        <li>Loại: Camera</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Thiết kế mỏng, ôm sát vô lăng mang tính thể thao.
-                                                            Chống bám mồ hôi gây trượt tay lái</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/camera6.jpg" />
-                                            </div>
+					</div>
+				</div>
+			</div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Camera Hành Trình Vietmap Papago Waygo 810</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 3,890,000 ₫</li>
-                                                        <li>Loại: Camera</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Sử dụng được cho các máy có tính năng sạc không dây
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/camera7.jpg" />
-                                            </div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Camera Hành Trình Webvision A69</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 5,990,000 ₫</li>
-                                                        <li>Loại: Camera</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Sở hữu hệ thống vận hành mạnh mẽ có công nghệ tiên tiến
-                                                            đến
-                                                            từ Đức.</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/camera8.jpg" />
-                                            </div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Camera Hành Trình Webvision M39X</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 7,490,000 ₫</li>
-                                                        <li>Loại: Camera</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Cài đặt trước áp suất cần bơm.
-                                                            Có đồng hồ điện tử đo được áp suất lốp xe ngay tức thì, chính
-                                                            xác
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/camera9.jpg" />
-                                            </div>
+			<div class="tab">
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <!--màn hình -->
-                        <div class="list-products">
-                            <div class="title">
-                                <h2>Màn hình Android ô tô</h2>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="owl-carousel owl-theme">
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Màn hình thông minh GOTECH GT6 NEW</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 9,800,000 ₫</li>
-                                                        <li>Loại: Camera</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Kích thước nhỏ gọn, chất lượng hình ảnh độ phân giải
-                                                            cao 2K
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/manhinh1.png" />
-                                            </div>
+				<ul class="nav nav-pills mb-3 avtive" id="pills-tab" role="tablist">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link active" id="pills-home-tab"
+							data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
+							role="tab" aria-controls="pills-home" aria-selected="true">Sản
+							phẩm</button>
+					</li>
+					<li class="nav-item " role="presentation">
+						<button class="nav-link " id="pills-profile-tab"
+							data-bs-toggle="pill" data-bs-target="#pills-profile"
+							type="button" role="tab" aria-controls="pills-profile"
+							aria-selected="false">Mã giảm giá</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="pills-contact-tab"
+							data-bs-toggle="pill" data-bs-target="#pills-contact"
+							type="button" role="tab" aria-controls="pills-contact"
+							aria-selected="false">Loại sản phẩm</button>
+					</li>
+				</ul>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">CMàn hình android OledPro A5</div>
-    
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 5,900,000 ₫ </li>
-                                                        <li>Loại: Cảm biến</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Giao diện thân thiện, dễ sử dụng. Quan sát được thông
-                                                            số liên tục, cảnh báo kịp thời</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/manhinh2.jpg" />
-                                            </div>
+				<div class="tab-content" id="pills-tabContent">
+					<div class="tab-pane fade show active" id="pills-home"
+						role="tabpanel" aria-labelledby="pills-home-tab">
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Màn Hình Liền Camera 360 OledPro X4S</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 13.800.000 ₫</li>
-                                                        <li>Loại: Android Box</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Cấu hình mạnh. Thiết kế nhỏ gọn, có thể đặt gọn gàng
-                                                            trong
-                                                            xe</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/manhinh3.jpg" />
-                                            </div>
+						<!-- đèn -->
+						<div class="list-products">
+							<div class="title">
+								<h2>Đèn ô tô</h2>
+							</div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Màn Hình Android Zestech Z800 New Slim 2022</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 13.900.000 ₫</li>
-                                                        <li>Loại: Loa</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Hệ thống loa cánh cho âm thanh lớn, chất lượng rõ âm rõ
-                                                            ràng, sắc nét.</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/manhinh4.jpg" />
-                                            </div>
+							<div class="container py-5">
+								<div class="row">
+									<c:forEach var="item" items="${list}">
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Màn hình thông minh GOTECH GT6 NEW</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 8,500,000 ₫</li>
-                                                        <li>Loại: Màn hình</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Tích hợp các dòng camera thông minh,
-                                                            ra lệnh giọng nói bằng trợ lý ảo Gotech Assistant với ngôn
-                                                            ngữ linh hoạt.</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/manhinh1.jpg" />
-                                            </div>
+									
+												<div class="col-md-4 col-sm-3">
+													<div class="product-grid6">
+														<div class="card rounded-0">
+														<div class="img-pro">
+															<img class="image"
+																src="/images/product-img/${item.images}" />
+														</div>															
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Bọc Vô Lăng Ô Tô Da Cao Cấp SPARCO Italia</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 349,000 ₫</li>
-                                                        <li>Loại: Bọc vô lăng</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Thiết kế mỏng, ôm sát vô lăng mang tính thể thao.
-                                                            Chống bám mồ hôi gây trượt tay lái</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/manhinh2.jpg" />
-                                            </div>
+															<div class="product-content">
+																<div class="name">${item.titles}</div>
+																<li class="price">Price: ${item.price}</li>
+																<li>Ngày đăng: ${item.create_date}</li>
+																<li>Ngày cập nhật: ${item.update_date}</li>
+																<li>Loại: ${item.categories.id}</li>
+																<li>Trạng thái: ${item.is_active}</li>
+																<li>Nhà cung cấp: ${item.suppliers.id}</li>
+																<li>Giá gốc: ${item.original_price}</li>
+																<li>Giảm giá: ${item.discounts.id}</li>
+																<li>Mô tả: ${item.description}</li>
+															</div>
+															<div class="btn-pro">
+																<div
+																	class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Sạc không dây thông minh Smart Sensor R1 – Bạc</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 330.000</li>
-                                                        <li>Loại: Sạc</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Sử dụng được cho các máy có tính năng sạc không dây
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/manhinh3.jpg" />
-                                            </div>
+																	<button class="btn btn-primary" data-bs-toggle="modal"
+																		data-bs-target="#exampleModal${item.id}"
+																		data-bs-whatever="@mdo">
+																		<i class="bi bi-pencil-square"></i>
+																	</button>
+																	</a>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Đèn Bi Aozoom X Led Pro Domax Light</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 10.000.000 ₫</li>
-                                                        <li>Loại: Đèn Led</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Sở hữu hệ thống vận hành mạnh mẽ có công nghệ tiên tiến
-                                                            đến
-                                                            từ Đức.</li>
-                                                    </ul>
-                                                </div>
-    
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/manhinh4.jpg" />
-                                            </div>
+																	<a href="/admin/product/delete/${item.id}" class="btn btn-danger">
+																		<i class="bi bi-trash"></i>delete
+																	</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-    
-                                        <div class="item">
-                                            <div class="column1">
-                                                <div class="name">Bơm Lốp Ô Tô Tự Ngắt Steelmate P05</div>
-                                                <div class="caption">
-                                                    <ul>
-                                                        <li class="price">Price: 700,000 ₫</li>
-                                                        <li>Loại: Bơm lốp</li>
-                                                        <li>Trạng thái: Còn hàng</li>
-                                                        <li>Ngày đăng: 12/04/2023</li>
-                                                        <li>Miêu tả: Cài đặt trước áp suất cần bơm.
-                                                            Có đồng hồ điện tử đo được áp suất lốp xe ngay tức thì, chính
-                                                            xác
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="column2">
-                                                <img class="image" src="/images/manhinh1.png" />
-                                            </div>
 
-                                            <div class="btn-product">
-                                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-                
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-    
-                        <section class="middle">
-                            <!--from-->
-                            <div class="above">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <img src="" alt="">
-                                    </div>
-                                    <!--row1-->
-                                    <div class="col-6">
-                                        <div class="col-auto">
-                                            <label class="col-form-label">Mã:</label>
-                                        </div>
-                                        <div class="col-auto">
-                                            <input class="form-control" id="ma">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="col-auto">
-                                            <label class="col-form-label">Tiêu đề:</label>
-                                        </div>
-                                        <div class="col-auto">
-                                            <input class="form-control" id="tieuDe">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="col-auto">
-                                            <label class="col-form-label">Giảm giá:</label>
-                                        </div>
-                                        <div class="col-auto">
-                                            <input type="number" class="form-control" id="giamGia">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="col-auto">
-                                            <label class="col-form-label">Ngày bắt đầu</label>
-                                        </div>
-                                        <div class="col-auto">
-                                            <input type="date" class="form-control" id="start" name="trip-start"
-                                                min="2023-01-01" max="2025-12-31" id="ngayBD">
-                                        </div>
-                                    </div>
-                                    <!--row2-->
-                                    <div class="col-6">
-                                        <div class="col-auto">
-                                            <label class="col-form-label">Ngày kết thúc</label>
-                                        </div>
-                                        <div class="col-auto">
-                                            <input type="date" class="form-control" id="start" name="trip-start"
-                                                min="2023-01-01" max="2025-12-31" id="ngayKT">
-                                        </div>
-                                    </div>
-    
-    
-                                    <div class="col-6">
-                                        <div class="col-auto">
-                                            <label class="col-form-label">Mô tả</label>
-                                        </div>
-                                        <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Leave a comment here"
-                                                id="moTa" style="height: 100px"></textarea>
-                                            <label for="floatingTextarea2"></label>
-                                        </div>
-                                    </div>
-    
-                                </div>
-                                <!--btn-->
-    
-                                <div class="btn-add">
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <button class="btn btn-primary">
-                                            <i class="bi bi-plus-lg"></i>
-                                        </button>
+										<div class="modal fade" id="exampleModal${item.id}"
+											tabindex="-1" aria-labelledby="exampleModalLabel"
+											aria-hidden="true">
 
-                                        <button class="btn btn-primary">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </button>
+											<div class="modal-dialog">
 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="below">
-                                <div class="table-responsive mt-5" style="overflow-x: auto">
-                                    <table class="table" id="render">
-                                        <thead>
-                                            <tr>
-                                                <th>Mã</th>
-                                                <th>Tiêu đề</th>
-                                                <th>Giảm giá</th>
-                                                <th>Ngày bắt đầu</th>
-                                                <th>Ngày kết thúc</th>
-                                                <th>Mô tả</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-    
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td> 
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">Sửa
+															Sản Phẩm</h5>
+														<button type="button" class="btn-close"
+															data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
 
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i> 
-                                                    </button>
-                                                </td>
-                                            </tr>
-    
-                                        </tbody>
-                                    </table>
-    
-                                    <nav class="d-flex justify-content-center">
-                                        <ul class="pagination pagination-s">
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" tabindex="-1">1</a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        </ul>
-                                    </nav>
-    
-                                </div>
-                            </div>
-    
-                        </section>
-                    </div>
-    
-                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                        <section class="middle">
-                            <!--from-->
-                            <div class="above">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <img src="" alt="">
-                                    </div>
-                                    <!--row1-->
-                                    <div class="col-12">
-                                        <div class="col-auto">
-                                            <label class="col-form-label">Mã:</label>
-                                        </div>
-                                        <div class="col-auto">
-                                            <input class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="col-auto">
-                                            <label class="col-form-label">Tên:</label>
-                                        </div>
-                                        <div class="col-auto">
-                                            <input class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--btn-->
-    
-                                <div class="btn-add">
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <button class="btn btn-primary">
-                                            <i class="bi bi-plus-lg"></i>
-                                        </button>
 
-                                        <button class="btn btn-primary">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="below">
-                                <div class="table-responsive mt-5" style="overflow-x: auto">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Mã:</th>
-                                                <th>Tên:</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    <button class="btn btn-primary">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </button>
-            
-                                                    <button class="btn btn-danger">
-                                                        <i class="bi bi-trash"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-    
-                                        </tbody>
-                                    </table>
-    
-                                    <nav class="d-flex justify-content-center">
-                                        <ul class="pagination pagination-s">
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" tabindex="-1">1</a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        </ul>
-                                    </nav>   
-                                </div>
-                            </div> 
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--end of middle-->
+													<form:form action="/admin/save" method="post"
+														modelAttribute="products" enctype="multipart/form-data">
+														<div class="modal-body">
 
-    </main>
+															<div class="col-md-6">
+																<label for="inputId" class="form-label">Mã:</label> <input
+																	name="id" value="${item.id}" class="form-control" />
+
+															</div>
+
+															<div class="col-md-6">
+																<label for="inputTitle" class="form-label">Tiêu
+																	đề:</label> <input name="titles" value="${item.titles}"
+																	class="form-control" />
+															</div>
+
+															<div class="col-md-12">
+																<label for="inputPrice" class="form-label">Giá:</label>
+																<input name="price" value="${item.price}"
+																	class="form-control" />
+
+															</div>
+
+															<div class="col-md-12">
+																<label for="inputCraetDate" class="form-label">Ngày
+																	đăng:</label> <input readonly value="${item.create_date}"
+																	class="form-control" />
+
+															</div>
+
+															<div class="col-md-12">
+																<label for="inputCraetDate" class="form-label">Ngày
+																	cập nhật:</label> <input readonly value="${item.update_date}"
+																	class="form-control" />
+
+															</div>
+
+															<div class="col-md-12">
+																<label for="categoryId" class="form-label">Loại:</label>
+																<select name="cate" class="form-control">
+																	<c:forEach var="cate" items="${listCate}">
+																		<option
+																			${item.categories.id == cate.id ? 'selected':''}
+																			value="${cate.id}">${cate.names}</option>
+																	</c:forEach>
+																</select>
+
+															</div>
+
+															<%-- <fieldset class="row mb-3" style="margin-top: 1rem;">
+																<legend class="col-form-label col-sm-2 pt-0">Trạng
+																	thái:</legend>
+																<div class="col-sm-4">
+																	<div class="form-check">
+																		<label class="form-check-label" for="gridRadios1">
+																			<input name="is_active"
+																			${item.is_active == 1 ? 'checked':''} value="1"
+																			class="form-check-input" type="radio"
+																			name="gridRadios" id="gridRadios1" value="option1"
+																			checked /> Còn hàng
+																		</label>
+																	</div>
+																</div>
+
+																<div class="col-sm-4">
+
+																	<div class="form-check">
+																		<label class="form-check-label" for="gridRadios2">
+																			<input name="is_active"
+																			${item.is_active == 0 ? 'checked':''} value="0"
+																			class="form-check-input" type="radio"
+																			name="gridRadios" id="gridRadios2" value="option2" />
+																			Hết hàng
+																		</label>
+																	</div>
+																</div>
+															</fieldset>
+ --%>
+															<div class="col-md-12">
+																<label for="inputSuppliers" class="form-label">Nhà
+																	cung cấp:</label> <select name="supp" class="form-control">
+																	<c:forEach var="supp" items="${listSupp}">
+																		<option
+																			${item.suppliers.id == supp.id ? 'selected':''}
+																			value="${supp.id}">${supp.user_names}</option>
+																	</c:forEach>
+																</select>
+
+
+															</div>
+
+															<div class="col-md-6">
+																<label for="inputSuppliers" class="form-label">Giá
+																	gốc:</label> <input name="original_price"
+																	value="${item.original_price}" class="form-control" />
+
+															</div>
+
+															<div class="col-md-6">
+																<label for="inputSuppliers" class="form-label">Giảm
+																	gía:</label> <select name="dis" class="form-control">
+																	<c:forEach var="dis" items="${listDis}">
+																		<option ${item.discounts.id == dis.id ? 'selected':''}
+																			value="${dis.id}">${dis.price_discounts}%</option>
+																	</c:forEach>
+																</select>
+															</div>
+
+
+															<label class="form-label" for="customFile">Tải
+																ảnh:</label> <input value="${item.images}" name="file"
+																type="file" class="form-control" id="customFile" />
+
+
+															<div class="col-12">
+																<label for="inputDescription" class="form-label">Mô
+																	tả</label>
+																<textarea name="description" value="${item.description}"
+																	class="form-control"></textarea>
+															</div>
+														</div>
+
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary"
+																data-bs-dismiss="modal">Đóng</button>
+
+															<button formaction="/admin/product/update/${item.id}"
+																type="submit" class="btn btn-primary">Lưu thay
+																đổi</button>
+														</div>
+													</form:form>
+
+												</div>
+											</div>
+										</div>
+
+									</c:forEach>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="tab-pane fade" id="pills-profile" role="tabpanel"
+						aria-labelledby="pills-profile-tab">
+
+						<section class="middle">
+							<!--form-->
+							<form:form action="/admin/save/discount" modelAttribute="discounts"
+								method="post" enctype="multipart/form-data">
+
+								<div class="row">
+									<!--row1-->
+
+									<div class="col-6">
+										<div class="col-auto">
+											<label class="col-form-label">Mã:</label>
+										</div>
+
+										<input name="id" value="${discounts.id}" class="form-control" />
+
+									</div>
+
+									<div class="col-6">
+										<div class="col-auto">
+											<label class="col-form-label">Tiêu đề:</label>
+										</div>
+
+										<input name="titles" value="${discounts.titles}"
+											class="form-control" />
+									</div>
+
+									<div class="col-12">
+
+										<label for="inputSuppliers" class="form-label">Giảm
+											giá:</label> <select name="dis" class="form-control">
+
+											<c:forEach var="dis" items="${listDis}">
+												<option ${discounts.id == dis.id ? 'selected':''}
+													value="${dis.id}">${dis.price_discounts}%</option>
+											</c:forEach>
+										</select>
+									</div>
+
+									<div class="col-md-12">
+										<label for="inputCraetDate" class="form-label">Ngày
+											bắt đầu:</label> <input value="${discounts.start_day}"
+											class="form-control" />
+
+									</div>
+
+									<div class="col-md-12">
+										<label for="inputCraetDate" class="form-label">Ngày
+											kết thúc:</label> <input value="${discounts.end_day}"
+											class="form-control" />
+
+									</div>
+
+									<div class="col-12">
+										<div class="col-auto">
+											<label class="col-form-label">Mô tả</label>
+										</div>
+
+										<textarea name="descriptions" class="form-control">${discounts.descriptions}</textarea>
+
+										<label for="floatingTextarea2"></label>
+									</div>
+								</div>
+
+
+
+								<!--btn-->
+
+								<div class="btn-add">
+									<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+										<button formaction="/admin/save/discount" type="submit" class="btn btn-primary">
+											<i class="bi bi-plus-lg"></i>
+										</button>
+
+										<button formaction="/admin/discount/update/${discounts.id}"
+											type="submit" class="btn btn-primary">
+											<i class="bi bi-pencil-square"> </i>
+										</button>
+
+
+									</div>
+								</div>
+
+
+							</form:form>
+
+							<div class="below">
+								<div class="table-responsive mt-5" style="overflow-x: auto">
+									<table class="table table-bordered col-12">
+										<thead>
+											<tr>
+												<th>Mã</th>
+												<th>Tiêu đề</th>
+												<th>Giảm giá</th>
+												<th>Ngày bắt đầu</th>
+												<th>Ngày kết thúc</th>
+												<th>Mô tả</th>
+												<th></th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<c:forEach var="item" items="${listDis}">
+												<tr>
+													<td>${item.id}</td>
+													<td>${item.titles}</td>
+													<td>${item.price_discounts}%</td>
+													<td>${item.start_day}</td>
+													<td>${item.end_day}</td>
+													<td>${item.descriptions}</td>
+
+													<td><a href="/admin/discount/edit/${item.id}"
+														  class="btn btn-primary"> 
+														<i class="bi bi-pencil-square"></i>
+
+												
+
+												</tr>
+											</c:forEach>
+										</tbody>
+
+									</table>
+
+
+									<nav class="d-flex justify-content-center">
+										<ul class="pagination pagination-s">
+											<li class="page-item disabled"><a class="page-link"
+												href="#" tabindex="-1">1</a></li>
+											<li class="page-item"><a class="page-link" href="#">2</a></li>
+											<li class="page-item"><a class="page-link" href="#">3</a></li>
+										</ul>
+									</nav>
+
+								</div>
+							</div>
+
+						</section>
+
+					</div>
+
+					<div class="tab-pane fade" id="pills-contact" role="tabpanel"
+						aria-labelledby="pills-contact-tab">
+						<section class="middle">
+							<!--from-->
+							<form:form action="/admin/save/category" modelAttribute="categories">
+
+								<div class="row">
+									<!--row1-->
+									<div class="col-12">
+										<div class="col-auto">
+											<label class="col-form-label">Mã:</label>
+										</div>
+										<div class="col-auto">
+											<input name="id" value="${categories.id}"
+												class="form-control" />
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="col-auto">
+											<label class="col-form-label">Tên:</label>
+										</div>
+										<div class="col-auto">
+											<input name="names" value="${categories.names}"
+												class="form-control" />
+										</div>
+									</div>
+								</div>
+
+								<!--btn-->
+
+								<div class="btn-add">
+									<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+										<button formaction="/admin/save/category" type="submit" class="btn btn-primary">
+											<i class="bi bi-plus-lg"></i>
+										</button>
+
+										<button formaction="/admin/category/update/${categories.id}"
+											type="submit" class="btn btn-primary">
+											<i class="bi bi-pencil-square"></i>
+										</button>
+
+
+									</div>
+								</div>
+							</form:form>
+
+
+							<div class="below">
+								<div class="table-responsive mt-5" style="overflow-x: auto">
+									<table class="table table-bordered col-12">
+										<thead>
+											<tr>
+												<th>Mã:</th>
+												<th>Tên:</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="item" items="${listCate}">
+												<tr>
+													<td>${item.id}</td>
+													<td>${item.names}</td>
+													<td><a href="/admin/category/edit/${item.id}" class="btn btn-primary">
+																<i class="bi bi-pencil-square"></i>
+													</a> <a href="/admin/delete/${item.id}" class="btn btn-danger">
+																<i class="bi bi-trash"></i>delete
+													</a></td>
+												</tr>
+											</c:forEach>
+
+										</tbody>
+									</table>
+
+									<nav class="d-flex justify-content-center">
+										<ul class="pagination pagination-s">
+											<li class="page-item disabled"><a class="page-link"
+												href="#" tabindex="-1">1</a></li>
+											<li class="page-item"><a class="page-link" href="#">2</a></li>
+											<li class="page-item"><a class="page-link" href="#">3</a></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<!--end of middle-->
+
+
+	</main>
 
 	<!-- Link To Base JS -->
-    <%@include file="component/_linkJS.jsp" %>
-    
-    <script type="text/javascript">
+	<%@include file="component/_linkJS.jsp"%>
+
+	<script type="text/javascript">
     const sidebarList = document.querySelectorAll('.sidebar');
     const sidebarActive = document.querySelector('.sidebar#product');
 
@@ -1643,29 +677,31 @@
     	sidebar.firstElementChild.classList.remove('active');
         });
     sidebarActive.firstElementChild.classList.add('active');
-    
-    /* ================== Slide Show ================== */
-    $(document).ready(function () {
-        $(".owl-carousel").owlCarousel();
-    });
-
-    $('.owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 3
-            }
-        }
-    })
     </script>
+
+	<script type="text/javascript">
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel();
+        });
+
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
+    </script>
+
 </body>
 
 

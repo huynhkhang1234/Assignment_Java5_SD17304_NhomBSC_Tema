@@ -56,7 +56,7 @@ public class CheckoutController {
 		for (Entry<Integer, CartItem> entry : cart.entrySet()) {
 			// lấy key
 			Integer key = entry.getKey();
-			Products ps = this.productRepo.findById(cart.get(key).getId());
+			Products ps = this.productRepo.findByProductId(cart.get(key).getId());
 			order.setNotes("ghi chú");
 			order.setStatus("Đang vẩn chuyển");
 			// lấy gái trị session và gán vào giá trị
@@ -83,10 +83,13 @@ public class CheckoutController {
 			orderd.setCreate_date(XDate.now());
 			this.orderDetailRepo.save(orderd);
 		}
-
+		//set dữ liệu lưu để in hóa đơn ra
+		session.setAttribute("dataBill", cart);
+		session.setAttribute("totalDataBill", session.getAttribute("total"));
 		session.removeAttribute("cart");
 		session.removeAttribute("total");
 		session.removeAttribute("cartSize");
+		
 		return "user/shop";
 	}
 

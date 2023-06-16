@@ -29,7 +29,7 @@ public class LikeController {
 
 		Likes like = new Likes();
 		Users user = (Users) session.getAttribute("userLogin");
-		Products product = this.productRepo.findById(id.getId());
+		Products product = this.productRepo.findByProductId(id.getId());
 		System.out.println(id.getId());
 		System.out.println(user.getId());
 		try {
@@ -42,16 +42,18 @@ public class LikeController {
 					likeId.setIs_likes(1);
 					likeRepo.save(likeId);
 				}
+			}else {
+				System.out.println("dữ liệu tìm kiếm không có");
+				like.setUsers(user);
+				like.setProducts(product);
+				like.setCreate_like(XDate.now());
+				like.setIs_likes(1);
+				likeRepo.save(like);
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("dữ liệu tìm kiếm không có");
-			like.setUsers(user);
-			like.setProducts(product);
-			like.setCreate_like(XDate.now());
-			like.setIs_likes(1);
-			likeRepo.save(like);
+			
 		}
 
 		return "/user/shop";
