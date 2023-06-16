@@ -97,19 +97,17 @@
 						tiết</div>
 					<div class="card-body text-secondary">
 						<div style="color: #333;">
-						
+
 							<p class="card-text" style="font-weight: 500;">Sản phẩm:</p>
-							
-							<ul class="mb-3">							
-							<c:forEach var="item" items="${checkList}">
-							
-								<li class="d-flex justify-content-between mb-2">
-									${item.value.name}
-									(x${item.value.quantity})
-									 <span> <fmt:formatNumber value="${item.value.orderMoney}"
-									pattern="###,###,### VNĐ" /></span>
-								</li>
-							</c:forEach>
+
+							<ul class="mb-3">
+								<c:forEach var="item" items="${checkList}">
+
+									<li class="d-flex justify-content-between mb-2">
+										${item.value.name} (x${item.value.quantity}) <span> <fmt:formatNumber
+												value="${item.value.orderMoney}" pattern="###,###,### VNĐ" /></span>
+									</li>
+								</c:forEach>
 							</ul>
 						</div>
 
@@ -193,7 +191,36 @@
 					url: "/user/saveCart/checkout",				
 					success: function () {
 						alert("Đặt hàng thành công");
-						 window.location.replace("/user/shop");
+						// window.location.replace("/user/shop");
+						 var modalHtml = '<div class="modal fade" id="modal-Close'+ '"ko bt gì"' + '" data-bs-backdrop="static"';
+						  modalHtml += 'data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">';
+						  modalHtml += '<div class="modal-dialog">';
+						  modalHtml += '<div class="modal-content">';
+						  modalHtml += '<div class="modal-header">';
+						  modalHtml += '<h5 class="modal-title" id="staticBackdropLabel">';
+						  modalHtml += 'Mở Khóa tài khoản </h5>';
+						  modalHtml += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+						  modalHtml += '</div>';
+						  modalHtml += '<div class="modal-body">';
+						  modalHtml += '<p style="font-size: 19px;">Bạn có muốn in hóa không '+'${sessionScope.userLogin.getUser_names()} ?' + '</p>';
+						  modalHtml += '</div>';
+						  modalHtml += '<div class="modal-footer">';
+						  modalHtml += '<button type="button"  onclick="NotBill()" class="btn btn-secondary" data-bs-dismiss="modal">không cần thiết</button>';
+						  modalHtml += '<a onclick="YesBill()" class="btn btn-primary">có</a>';
+						  modalHtml += '</div>';
+						  modalHtml += '</div>';
+						  modalHtml += '</div>';
+						  modalHtml += '</div>';
+
+  //Thêm HTML cho Modal vào trong phần tử body của trang
+  $('body').append(modalHtml);
+
+  //Hiển thị Modal bằng jQuery
+  $('#myModal').modal('show'); 
+                                    
+  $('#modal-Close').modal('show');
+						 
+						 ///
 					},
 					error: function () {
 						alert("Đặt hàng thất bại")
@@ -202,11 +229,40 @@
 			}else{
 				alert('Vui lòng chọn sản phẩm đặt hàng');				
 			}
+			///
+			
+			
+			
+			//
 			
 			
 		}
 	
+	 function  NotBill() {
+		$.ajax({
+			  url: '/user/bill',
+			  type: 'post',
+			  success: function() {
+				  window.location.replace("/user/shop");	   
+			  },
+			  error: function() {
+			    // Xử lý lỗi
+			  }
+			});				
+	} 
 	
+	function YesBill() {
+		$.ajax({
+			  url: '/user/bill/success',
+			  type: 'post',
+			  success: function() {
+				  window.location.replace("/user/bill");	   
+			  },
+			  error: function() {
+			    // Xử lý lỗi
+			  }
+			});		
+	}
 	</script>
 
 </body>

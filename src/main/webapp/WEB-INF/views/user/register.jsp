@@ -170,6 +170,14 @@
 													class="input-full" placeholder=""/>
 												<fr:errors path="pass_words" element="small"
 													cssClass="form-text text-danger"></fr:errors>
+													<!--  -->
+													<br> <label class="hidden-label">Nhập lại mật Khẩu</label> 
+												<fr:input path="pass_words2"
+													type="password" name="pass_words" id="pass_words2"
+													class="input-full" placeholder=""/>
+												<fr:errors path="pass_words2" element="small"
+													cssClass="form-text text-danger"></fr:errors>
+												<span style="color: red">${errorPass}</span>
 
 												<div class="form-action-button">
 													<button type="submit" class="theme-default-button">Tạo</button>

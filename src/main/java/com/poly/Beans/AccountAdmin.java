@@ -1,8 +1,16 @@
 package com.poly.Beans;
 
 import java.util.Date;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.poly.Entities.Histories;
+import com.poly.Entities.Likes;
+import com.poly.Entities.News;
+import com.poly.Entities.Orders;
+import com.poly.Entities.Products_reviews;
 import com.poly.Entities.Roles;
+import com.poly.Entities.Users;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -18,9 +26,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-
-public class Users_bean {
-
+public class AccountAdmin {
 	private int id;
 	@NotBlank(message = "Vui lòng nhập thông tin tiêu đề")
 	private String user_names;
@@ -33,16 +39,12 @@ public class Users_bean {
 	private String email;
 	@NotBlank(message = "Vui lòng nhập thông tin mật khẩu")
 	private String pass_words;	
-	@NotBlank(message = "Vui lòng nhập lại thông tin mật khẩu")
-	private String pass_words2;
-	private String images;	
-	private String phones;	
+	private String images;
+	@NotBlank(message = "Vui lòng nhập thông tin số điện thoại")
+	private String phones;
+	@NotBlank(message = "Vui lòng nhập thông tin địa chỉ")
 	private String address;	
 	private Date create_date;
-	private Date update_date;
-	private int is_active;
-
-		
-	
-	
-}	
+	private Date update_date;	
+	private Roles roles;  
+}

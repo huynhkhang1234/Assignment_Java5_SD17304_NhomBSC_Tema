@@ -1,6 +1,7 @@
 package com.poly.utils;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.expression.ParseException;
@@ -50,6 +51,15 @@ public class XDate {
 	        now.setTime(now.getTime() + days * 24 * 60 * 60 * 1000);
 	        return now;
 	    }
-
+	    
+	    public static Date getDateAfter(int days) {
+	        Calendar calendar = Calendar.getInstance();
+	        calendar.set(Calendar.HOUR_OF_DAY, 0);
+	        calendar.set(Calendar.MINUTE, 0);
+	        calendar.set(Calendar.SECOND, 0);
+	        calendar.set(Calendar.MILLISECOND, 0);
+	        calendar.add(Calendar.DATE, +days);
+	        return calendar.getTime();
+	      }
 	
 }

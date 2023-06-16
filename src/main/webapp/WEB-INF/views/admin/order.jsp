@@ -139,8 +139,7 @@
 														<c:forEach var="itemOD" items="${item.order_details}">
 																	<div class="row p-5">
 																		<div class="col-10">
-																			<img style="width: 100px; height: 100px;">
-																			<p>${itemOD.products.images}</p>
+																			<img src="/images/product-img/${itemOD.products.images}" style="width: 100px; height: 100px;">
 																		</div>
 
 
