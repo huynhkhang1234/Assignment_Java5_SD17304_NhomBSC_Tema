@@ -48,7 +48,7 @@
 					</div>
 
 					<div class="middle">
-						<h1>$456,89</h1>
+						<h1> <fmt:formatNumber value="${tienLoi}" pattern="###,###,### VNĐ" /> </h1>
 						<div class="chip">
 
 							<img src="../images/icons8-chart-50.png" alt=""
@@ -71,7 +71,7 @@
 					</div>
 
 					<div class="middle">
-						<h1>$456,89</h1>
+						<h1><fmt:formatNumber value="${soLuongDonHang}" pattern="###,###,###" /></h1>
 						<div class="chip">
 							<img src="../images/icons8-money-50.png" alt=""
 								style="width: 50px;"> </span>
@@ -93,7 +93,7 @@
 					</div>
 
 					<div class="middle">
-						<h1>$456,89</h1>
+						<h1><fmt:formatNumber value="0" pattern="###,###,### VNĐ" /></h1>
 						<div class="chip">
 							<img src="../images/icons8-expense-64.png" alt=""
 								style="width: 50px;">
@@ -115,7 +115,7 @@
 					</div>
 
 					<div class="middle">
-						<h1>$456,89</h1>
+						<h1><fmt:formatNumber value="0" pattern="###,###,### VNĐ" /></h1>
 						<div class="chip">
 							<img src="../images/icons8-transaction-list-64.png" alt=""
 								style="width: 40px;">

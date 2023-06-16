@@ -92,6 +92,4 @@ public class CheckoutController {
 		
 		return "user/shop";
 	}
-
-	
 }

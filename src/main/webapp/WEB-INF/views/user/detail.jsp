@@ -251,31 +251,71 @@ i.bi-star {
                             </ul>
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <div class="m-5 pb-4" style="border-bottom: 1px solid #ccc;">
+                        	<c:forEach var="item" items="${listPR}">
+                        		<div class="m-5 pb-4" style="border-bottom: 1px solid #ccc;">
                                 <div class="content__preview-header d-flex gap-2 align-items-center">
                                     <div class="content__preview-image">
-                                        <img alt="" style="background-image: url(../images/anh7.jpg);">
+                                        <img alt="" style="background-image: url(/images/user-img/${item.users.images});">
                                     </div>
                                     <div class="content__preview-title">
-                                        <span class="fw-bold">Tên người dùng</span>
+                                        <span class="fw-bold">${item.users.last_names} ${item.users.first_names}</span>
                                         <div class="d-flex gap-1">
-                                            <i class="bi bi-star"></i>
-                                            <i class="bi bi-star"></i>
-                                            <i class="bi bi-star"></i>
-                                            <i class="bi bi-star"></i>
-                                            <i class="bi bi-star"></i>
+                                        	<c:if test="${item.stars_number == 0}">
+                                        		<i class="bi bi-star"></i>
+                                        		<i class="bi bi-star"></i>
+                                        		<i class="bi bi-star"></i>
+                                        		<i class="bi bi-star"></i>
+                                        		<i class="bi bi-star"></i>
+                                        	</c:if>
+                                        	<c:if test="${item.stars_number == 1}">
+	                                        	<i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star"></i>
+	                                            <i class="bi bi-star"></i>
+	                                            <i class="bi bi-star"></i>
+	                                            <i class="bi bi-star"></i>
+                                        	</c:if>
+                                        	<c:if test="${item.stars_number == 2}">
+	                                        	<i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star"></i>
+	                                            <i class="bi bi-star"></i>
+	                                            <i class="bi bi-star"></i>
+                                        	</c:if>
+                                        	<c:if test="${item.stars_number == 3}">
+	                                        	<i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star"></i>
+	                                            <i class="bi bi-star"></i>
+                                        	</c:if>
+                                        	<c:if test="${item.stars_number == 4}">
+	                                        	<i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star"></i>
+                                        	</c:if>
+                                        	<c:if test="${item.stars_number == 5}">
+	                                        	<i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star-fill"></i>
+	                                            <i class="bi bi-star-fill"></i>
+                                        	</c:if>
                                         </div>
                                         <div class="date-rate">
-                                            dd-MM-yyyy hh:mm
+                                            <fmt:formatDate value="${item.create_date}" pattern="hh:mm dd-MM-yyyy" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="content__preview-body mt-2">
                                     <div>
-                                        Nội dung đánh giá
+                                        ${item.content}
                                     </div>
                                 </div>
                             </div>
+                        	</c:forEach>
+                            
                             
                         </div>
                     </div>

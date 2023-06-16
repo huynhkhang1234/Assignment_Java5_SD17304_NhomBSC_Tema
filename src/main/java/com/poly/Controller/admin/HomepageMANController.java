@@ -42,20 +42,26 @@ public class HomepageMANController {
 		
 		List<Orders> listO = (List<Orders>) m.asMap().get("listO");
 		
-		float tongTienNhan = 0;
-		float tongTienSP = 0;
-		float tienLoi = 0;
-
 	    if (listO == null) {
 	        listO = oDAO.findAll();
 	    }
 	    
+
+		float tongTienNhan = 0;
+		float tongTienSP = 0;
+		float tienLoi = 0;
+		int soLuongDonHang = 0;
+	    
 	    for (Orders o : listO) {
-	    	tongTienNhan += o.getMoney_received() - o.getSum_money();
+	    	tongTienNhan += o.getMoney_received();
 	    	for (Order_details od : o.getOrder_details()) {
 				tongTienSP += od.getProducts().getOriginal_price() * od.getQuanlity();
 			}
 		}
+	    
+	    tienLoi = tongTienNhan - tongTienSP;
+	    soLuongDonHang = listO.size() + 1;
+	    
 
 	    String startDate = XDate.toString(new Date(), "yyyy-MM-dd");
 	    String endDate = XDate.toString(XDate.getDateAfter(10), "yyyy-MM-dd");
@@ -67,6 +73,11 @@ public class HomepageMANController {
 	    m.addAttribute("listO", listO);
 	    m.addAttribute("startDate", startDate);
 	    m.addAttribute("endDate", endDate);
+	    
+	    m.addAttribute("soLuongDonHang", soLuongDonHang);
+	    m.addAttribute("tienLoi", tienLoi);
+	    m.addAttribute("tongTienSP", soLuongDonHang);
+	    m.addAttribute("soLuongDonHang", tongTienNhan);
 
 	    return "/admin/index";
 	}

@@ -89,7 +89,8 @@ INSERT INTO [dbo].[discounts]
      VALUES
            (N'Giảm giá 10%',N'Đèn xe tốt',10,'2023-05-27','2023-05-28'),
 		   (N'Giảm giá 20%',N'Sạc chính hãng',20,'2023-05-27','2023-05-28'),
-		   (N'Giảm giá 30%',N'Màn hình chính hãng',30,'2023-05-27','2023-05-28')
+		   (N'Giảm giá 30%',N'Màn hình chính hãng',30,'2023-05-27','2023-05-28'),
+		   (N'Giảm giá 0%',N'Đèn xe tốt',0,'2023-05-27','2023-05-28')
 GO
 -----------------------------------------------------------------------------------
 INSERT INTO [dbo].[products]
@@ -198,8 +199,8 @@ INSERT INTO [dbo].[products_reviews]
 		   ,[products_id])
      VALUES
            (4,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha. Tuy nhiên, mình lỡ mua size k vừa, hơi nhỏ quá.',1,1, 1),
-		   (4,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',1,2,1),
-		   (5,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',2,2,2),
+		   (4,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',1,2,2),
+		   (5,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',2,2,1),
 		   (5,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',2,1,2)
 GO
 -------------------------------------------------------------
