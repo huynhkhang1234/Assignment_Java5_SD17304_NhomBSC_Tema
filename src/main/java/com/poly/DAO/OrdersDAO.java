@@ -1,14 +1,10 @@
 package com.poly.DAO;
 
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.poly.Entities.Orders;
-import com.poly.Entities.Users;
 
 public interface OrdersDAO extends JpaRepository<Orders, Integer> {
 	@Query("SELECT o FROM Orders o WHERE o.id = :id")

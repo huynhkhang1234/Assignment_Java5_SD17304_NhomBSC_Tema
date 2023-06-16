@@ -9,6 +9,8 @@ import java.util.Optional;
 
 import org.eclipse.tags.shaded.org.apache.xalan.xsltc.compiler.sym;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
@@ -55,7 +57,7 @@ public class ProductMANController {
 		// products
 		Products entity = new Products();
 		model.addAttribute("products", entity);
-		List<Products> list = dao.findAllActiveTrue(Sort.by(Direction.DESC, "is_status"));
+		Page<Products> list = dao.findAllActiveTrue((Pageable) Sort.by(Direction.DESC, "is_status"));
 		model.addAttribute("list", list);
 
 		List<Suppliers> listSupp = suppdao.findAll();
@@ -240,7 +242,7 @@ public class ProductMANController {
 		// products
 		Products entity = new Products();
 		model.addAttribute("products", entity);
-		List<Products> list = dao.findAllActiveTrue(Sort.by(Direction.DESC, "is_status"));
+		Page<Products> list = dao.findAllActiveTrue((Pageable) Sort.by(Direction.DESC, "is_status"));
 		model.addAttribute("list", list);
 
 		// discounts
