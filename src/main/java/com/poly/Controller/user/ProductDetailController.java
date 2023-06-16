@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.poly.DAO.GalleriesDAO;
 import com.poly.DAO.ProductsDAO;
+import com.poly.DAO.Products_reviewsDAO;
 import com.poly.Entities.Galleries;
 import com.poly.Entities.Products;
+import com.poly.Entities.Products_reviews;
 import com.poly.service.NumberFormatMoney;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,6 +23,10 @@ public class ProductDetailController {
 
 	@Autowired
 	ProductsDAO productRepo;
+	
+	@Autowired
+	Products_reviewsDAO prRepo;
+	
 	@Autowired
 	HttpServletRequest request;
 
@@ -36,6 +42,10 @@ public class ProductDetailController {
 		// tìm kiếm 1 sản phẩm
 		Products ps = this.productRepo.findByProductId(id);
 		model.addAttribute("productDetail", ps);
+		
+		// Lấy những comment từ người khác đánh giá cho sản phẩm
+		List<Products_reviews> listPR = prRepo.findByProductID(id);
+		model.addAttribute("listPR", listPR);
 
 		// tìm kiếm all sản phẩm thích bên dưới
 		List<Products> listProductLike = this.productRepo.findAll();

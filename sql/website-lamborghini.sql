@@ -59,14 +59,14 @@ CREATE TABLE [products] (
   [categories_id] int NOT NULL,
   [suppliers_id] int NOT NULL,
   [original_price] int,
-  [discounts_id] int
+  [discounts_id] int default 1
 )
 GO
 
 CREATE TABLE [orders] (
   [id] int PRIMARY KEY IDENTITY(1, 1),
   [notes] nvarchar(50),
-  [status] nvarchar(50) default N'Chưa thanh toán',
+  [status] nvarchar(50) default N'Đã thanh toán',
   [sum_money] float,
   [users_id] int NOT NULL,
   [create_date] datetime default getdate(),
@@ -161,6 +161,7 @@ CREATE TABLE [products_reviews] (
   [create_date] datetime default getdate(),
   [users_id] int NOT NULL,
   [orders_id] int NOT NULL,
+  [products_id] int NOT NULL,
   [is_active] int default 1
 )
 GO
@@ -211,4 +212,7 @@ ALTER TABLE [products_reviews] ADD FOREIGN KEY ([users_id]) REFERENCES [users] (
 GO
 
 ALTER TABLE [products_reviews] ADD FOREIGN KEY ([orders_id]) REFERENCES [orders] ([id])
+GO
+
+ALTER TABLE [products_reviews] ADD FOREIGN KEY ([products_id]) REFERENCES [products] ([id])
 GO

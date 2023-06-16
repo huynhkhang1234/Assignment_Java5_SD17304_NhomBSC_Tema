@@ -6,8 +6,12 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.poly.DAO.Order_detailsDAO;
 import com.poly.DAO.OrdersDAO;
+import com.poly.Entities.Order_details;
 import com.poly.Entities.Orders;
 import com.poly.utils.XDate;
 
@@ -33,17 +38,32 @@ public class HomepageMANController {
 	Order_detailsDAO odDAO;
 	
 	@GetMapping("/index")
-	public String view(Model m) {
+	public String view(Model m, @RequestParam("p") Optional<Integer> p) {
 		
 		List<Orders> listO = (List<Orders>) m.asMap().get("listO");
+		
+		float tongTienNhan = 0;
+		float tongTienSP = 0;
+		float tienLoi = 0;
 
 	    if (listO == null) {
 	        listO = oDAO.findAll();
 	    }
+	    
+	    for (Orders o : listO) {
+	    	tongTienNhan += o.getMoney_received() - o.getSum_money();
+	    	for (Order_details od : o.getOrder_details()) {
+				tongTienSP += od.getProducts().getOriginal_price() * od.getQuanlity();
+			}
+		}
 
 	    String startDate = XDate.toString(new Date(), "yyyy-MM-dd");
 	    String endDate = XDate.toString(XDate.getDateAfter(10), "yyyy-MM-dd");
-
+	    
+	    Pageable pageable = PageRequest.of(p.orElse(0), 5);
+		Page<Orders> page = oDAO.findAll(pageable);
+		
+		m.addAttribute("page", page);
 	    m.addAttribute("listO", listO);
 	    m.addAttribute("startDate", startDate);
 	    m.addAttribute("endDate", endDate);
@@ -51,10 +71,11 @@ public class HomepageMANController {
 	    return "/admin/index";
 	}
 	
-	@PostMapping("/index/thongke")
+	@PostMapping("/index")
 	public String submit(
 			@RequestParam("startDate") String startDateTemp,
 			@RequestParam("endDate") String endDateTemp,
+			@RequestParam("p") Optional<Integer> p,
 			Model m) {
 		
 		
@@ -82,12 +103,15 @@ public class HomepageMANController {
 			} else {
 				List<Orders> listO = oDAO.findByCreateDateBetween(sqlStartDate, sqlEndDate);
 	            m.addAttribute("listO", listO);
-				
+	            
+	            Pageable pageable = PageRequest.of(p.orElse(0), 5);
+	    		Page<Orders> page = oDAO.findByCreateDateBetween(sqlStartDate, sqlEndDate, pageable);
+	    		m.addAttribute("page", page);
 			}
 			
 			 String startDate1 = XDate.toString(startDate, "yyyy-MM-dd");
 		     String endDate1 = XDate.toString(endDate, "yyyy-MM-dd");
-
+		     
 		     m.addAttribute("startDate", startDate1);
 		     m.addAttribute("endDate", endDate1);
 

@@ -87,9 +87,9 @@ INSERT INTO [dbo].[discounts]
            ,[start_day]
            ,[end_day])
      VALUES
-           (N'Đèn xe ô tô',N'Đèn xe tốt',20,'2023-05-27','2023-05-28'),
-		   (N'Sạc không dây thông minh xe ô tô Smart Sensor R1 – Bạc',N'Sạc chính hãng',40,'2023-05-27','2023-05-28'),
-		   (N'Màn Hình Ô Tô Android Zestech S100J – Phiên Bản Tiết Kiệm',N'Màn hình chính hãng',0,'2023-05-27','2023-05-28')
+           (N'Giảm giá 10%',N'Đèn xe tốt',10,'2023-05-27','2023-05-28'),
+		   (N'Giảm giá 20%',N'Sạc chính hãng',20,'2023-05-27','2023-05-28'),
+		   (N'Giảm giá 30%',N'Màn hình chính hãng',30,'2023-05-27','2023-05-28')
 GO
 -----------------------------------------------------------------------------------
 INSERT INTO [dbo].[products]
@@ -194,12 +194,13 @@ INSERT INTO [dbo].[products_reviews]
            ([stars_number]
            ,[content]
            ,[users_id]
-           ,[orders_id])
+           ,[orders_id]
+		   ,[products_id])
      VALUES
-           (4,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha. Tuy nhiên, mình lỡ mua size k vừa, hơi nhỏ quá.',1,1),
-		   (4,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',1,2),
-		   (5,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',2,2),
-		   (5,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',2,1)
+           (4,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha. Tuy nhiên, mình lỡ mua size k vừa, hơi nhỏ quá.',1,1, 1),
+		   (4,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',1,2,1),
+		   (5,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',2,2,2),
+		   (5,N'Sản phẩm hợp giá tiền, dễ sử dụng cực kì luôn á nha',2,1,2)
 GO
 -------------------------------------------------------------
 INSERT INTO [dbo].[categories_news]

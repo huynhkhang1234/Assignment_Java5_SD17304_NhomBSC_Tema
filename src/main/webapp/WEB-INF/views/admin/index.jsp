@@ -188,7 +188,7 @@
 							aria-label="Close"></button>
 					</div>
 				</c:if>
-				<form action="/admin/index/thongke" method="POST"
+				<form action="/admin/index" method="POST"
 					class="col-12 d-flex align-items-center">
 					<div class="col-6">
 						<label for="">Từ:</label> <input id="startDate" name="startDate"
@@ -243,7 +243,7 @@
 											liệu liên quan</td>
 									</tr>
 								</c:if>
-								<c:forEach var="item" items="${listO}">
+								<c:forEach var="item" items="${page.content}">
 
 									<tr>
 										<td>${item.id}</td>
@@ -269,6 +269,18 @@
 							</tbody>
 						</table>
 					</div>
+					<c:if test="${!empty listO}">
+						<div class="d-flex justify-content-center">
+							<div class="gap-2 d-flex">
+								<a href="/admin/index?p=0" class="btn btn-primary">First</a> <a
+									href="/admin/index?p=${page.number-1}" class="btn btn-primary">Prev</a>
+								<a href="/admin/index?p=${page.number+1}"
+									class="btn btn-primary">Next</a> <a
+									href="/admin/index?p=${page.totalPages-1}"
+									class="btn btn-primary">Last</a>
+							</div>
+						</div>
+					</c:if>
 
 				</div>
 

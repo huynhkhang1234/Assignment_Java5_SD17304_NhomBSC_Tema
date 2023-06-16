@@ -96,6 +96,14 @@ public class ProductMANController {
 			entity.setUpdate_date(now);
 		
 		 // Xử lý hình ảnh String 
+			
+			if (file.getOriginalFilename() == null || file.getOriginalFilename().length() == 0) {
+				Products p = dao.getById(entity.getId());
+
+				if (!(p.getImages() == null || p.getImages().length() == 0)) {
+					entity.setImages(p.getImages());
+				}
+			}
 		
 		String uploadRootPath = app.getRealPath("images/product-img/"); 
 		File uploadRootDir = new File(uploadRootPath); 
