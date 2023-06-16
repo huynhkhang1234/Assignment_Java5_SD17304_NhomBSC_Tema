@@ -66,8 +66,11 @@
 	
 	<!--  -->
 </div>
-<a href="#" class="btn btn-dark" id="search-icon"> <i
-	class="bi bi-search" style="color: white;"></i>
+<a   href="#" class="btn btn-dark" id="search-icon"> 
+<i
+	class="bi bi-search" style="color: white;">
+	</i>
+	
 </a>
 
 <span><i class="bi bi-dash-lg"></i></span>

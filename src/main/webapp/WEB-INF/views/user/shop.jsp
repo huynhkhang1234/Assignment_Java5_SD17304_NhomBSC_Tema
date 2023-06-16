@@ -30,6 +30,7 @@
 
 <body>
 
+
 	<!-- Header Start -->
 	<%@include file="component/_header.jsp"%>
 	<!-- Header End -->
@@ -47,9 +48,13 @@
 		</section>
 
 		<div class=" py-5">
+		
+
+		
 			<div class="">
 				<div class="container">
 					<div class="row products" id="product-list">
+
 						<c:forEach items="${listproduts.content}" var="item">
 
 							<div class="col-md-3 col-sm-6 ">
@@ -167,6 +172,7 @@
 
 
 							</div>
+						
 						</c:forEach>
 
 					</div>
@@ -513,7 +519,12 @@
 			 
 			return formattedNumber = formattedNumber.replace(/\./g, ',').replace(".", ".") + " VNĐ";							
 			}
+		///test xem tìm kiếm dc ko cái đã
+		
 	</script>
+	
+	
+	
 </body>
 
 </html>
