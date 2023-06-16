@@ -5,9 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
-import org.eclipse.tags.shaded.org.apache.xalan.xsltc.compiler.sym;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -242,7 +240,7 @@ public class ProductMANController {
 		// products
 		Products entity = new Products();
 		model.addAttribute("products", entity);
-		Page<Products> list = dao.findAllActiveTrue((Pageable) Sort.by(Direction.DESC, "is_status"));
+		List<Products> list = dao.findAllActiveTrue(Sort.by(Direction.DESC, "is_status"));
 		model.addAttribute("list", list);
 
 		// discounts
