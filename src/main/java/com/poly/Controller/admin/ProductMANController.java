@@ -9,6 +9,8 @@ import java.util.Optional;
 
 import org.eclipse.tags.shaded.org.apache.xalan.xsltc.compiler.sym;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,9 +30,6 @@ import com.poly.Entities.Products;
 import com.poly.Entities.Suppliers;
 
 import jakarta.servlet.ServletContext;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ProductMANController {
@@ -56,7 +55,7 @@ public class ProductMANController {
 		// products
 		Products entity = new Products();
 		model.addAttribute("products", entity);
-		List<Products> list = dao.findAllActiveTrue();
+		List<Products> list = dao.findAllActiveTrue(Sort.by(Direction.DESC, "is_status"));
 		model.addAttribute("list", list);
 
 		List<Suppliers> listSupp = suppdao.findAll();
@@ -241,7 +240,7 @@ public class ProductMANController {
 		// products
 		Products entity = new Products();
 		model.addAttribute("products", entity);
-		List<Products> list = dao.findAllActiveTrue();
+		List<Products> list = dao.findAllActiveTrue(Sort.by(Direction.DESC, "is_status"));
 		model.addAttribute("list", list);
 
 		// discounts
