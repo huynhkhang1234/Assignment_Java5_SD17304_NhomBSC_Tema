@@ -60,13 +60,13 @@
 
 				<ul class="nav nav-pills mb-1 avtive" id="pills-tab" role="tablist">
 					<li class="nav-item" role="presentation">
-						<button class="nav-link " id="pills-home-tab"
+						<button class="nav-link active " id="pills-home-tab"
 							data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
 							role="tab" aria-controls="pills-home" aria-selected="true">Sản
 							phẩm</button>
 					</li>
 					<li class="nav-item " role="presentation">
-						<button class="nav-link active" id="pills-profile-tab"
+						<button class="nav-link " id="pills-profile-tab"
 							data-bs-toggle="pill" data-bs-target="#pills-profile"
 							type="button" role="tab" aria-controls="pills-profile"
 							aria-selected="false">Mã giảm giá</button>
@@ -81,7 +81,7 @@
 
 				<div class="tab-content" id="pills-tabContent">
 
-					<div class="tab-pane fade " id="pills-home"
+					<div class="tab-pane fade show active" id="pills-home"
 						role="tabpanel" aria-labelledby="pills-home-tab">
 
 						<div class="list-products">
@@ -322,7 +322,7 @@
 					</div>
 
 
-					<div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
+					<div class="tab-pane fade " id="pills-profile" role="tabpanel"
 						aria-labelledby="pills-profile-tab">
 
 						<section class="middle">

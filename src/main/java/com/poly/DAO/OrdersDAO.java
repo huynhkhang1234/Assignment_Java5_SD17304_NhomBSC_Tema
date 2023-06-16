@@ -26,9 +26,7 @@ public interface OrdersDAO extends JpaRepository<Orders, Integer> {
 	List<Orders> findByCreateDateBetween(java.sql.Date startDate, java.sql.Date endDate);
 	
 	@Query("SELECT o FROM Orders o WHERE o.create_date BETWEEN ?1 AND ?2")
-	Page<Orders> findByCreateDateBetween(java.sql.Date startDate, java.sql.Date endDate, Pageable pageable);
-	Orders findByUserID(@Param("id") int id);
-	
+	Page<Orders> findByCreateDateBetween(java.sql.Date startDate, java.sql.Date endDate, Pageable pageable); 	
 	
 	 @Query(value="select  top 1 o.id,u.id,o.create_date from users u join orders o\r\n"
 	 		+ "	on u.id = o.users_id\r\n"
