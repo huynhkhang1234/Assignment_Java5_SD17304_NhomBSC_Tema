@@ -5,7 +5,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,24 +14,13 @@
 
 <title>B.S.C.Team - CarService</title>
 
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-<!-- Link To Favicon -->
-<link rel="shortcut icon" href="../images/favicon.svg"
-	type="image/svg+xml">
-
-<!-- Link To Style CSS -->
-<link rel="stylesheet" href="../css/style_MAN.css">
+<!-- Link To Base CSS -->
+<%@include file="component/_linkCSS.jsp"%>
 
 <!-- Link To Own CSS -->
 <link rel="stylesheet" href="../css/Product_MAN.css">
 
-
 <link rel="stylesheet" href="../css/sanpham.css">
-
-<!-- Link To Bootstrap CSS -->
-<link rel="stylesheet" href="../css/bootstrap.min.css">
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
@@ -50,12 +40,11 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 </head>
-<body>
 
+<body>
 	<!-- Start Header -->
 	<%@include file="component/_header.jsp"%>
 	<!-- End Header -->
-
 
 	<main>
 
@@ -63,11 +52,10 @@
 		<%@include file="component/_menu.jsp"%>
 		<!-- End Menu Aside -->
 
-
 		<section class="middle">
+
 			<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-				data-bs-target="#exampleModal" data-bs-whatever="@mdo"
-				id="add-product">Them</button>
+				data-bs-target="#exampleModal" data-bs-whatever="@mdo">Thêm</button>
 
 			<div class="modal fade" id="exampleModal" tabindex="-1"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -204,15 +192,16 @@
 			</div>
 
 			<div class="tab">
-				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+				<ul class="nav nav-pills mb-3 avtive" id="pills-tab" role="tablist">
 					<li class="nav-item" role="presentation">
 						<button class="nav-link active" id="pills-home-tab"
 							data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
 							role="tab" aria-controls="pills-home" aria-selected="true">Sản
 							phẩm</button>
 					</li>
-					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="pills-profile-tab"
+					<li class="nav-item " role="presentation">
+						<button class="nav-link " id="pills-profile-tab"
 							data-bs-toggle="pill" data-bs-target="#pills-profile"
 							type="button" role="tab" aria-controls="pills-profile"
 							aria-selected="false">Mã giảm giá</button>
@@ -226,15 +215,16 @@
 				</ul>
 
 				<div class="tab-content" id="pills-tabContent">
+
 					<div class="tab-pane fade show active" id="pills-home"
 						role="tabpanel" aria-labelledby="pills-home-tab">
 
-						<!-- đèn -->
 						<div class="list-products">
 
 							<div class="container">
 								<div class="row">
 									<c:forEach var="item" items="${list}">
+
 										<div class="owl-carousel owl-theme">
 
 											<div class="item">
@@ -423,157 +413,27 @@
 											</div>
 										</div>
 									</c:forEach>
+									
+									<div div="row" style="margin-top: 15px;">
+										<ul class="pagination pagination-lg justify-content-end">
+											<li class="page-item disabled"><a
+												class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
+												href="#" tabindex="-1">1</a></li>
+											<li class="page-item"><a
+												class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+												href="#">2</a></li>
+											<li class="page-item"><a
+												class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
+												href="#">3</a></li>
+										</ul>
+									</div>
+									
 								</div>
 							</div>
 
-							<div div="row" style="margin-top: 15px;">
-								<ul class="pagination pagination-lg justify-content-end">
-									<li class="page-item disabled"><a
-										class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
-										href="#" tabindex="-1">1</a></li>
-									<li class="page-item"><a
-										class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-										href="#">2</a></li>
-									<li class="page-item"><a
-										class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
-										href="#">3</a></li>
-								</ul>
-							</div>
 						</div>
 					</div>
 
-					<div class="tab-pane fade" id="pills-profile" role="tabpanel"
-						aria-labelledby="pills-profile-tab">
-
-						<section class="middle">
-							<!--form-->
-							<form:form action="/admin/save/discount"
-								modelAttribute="discounts" method="post"
-								enctype="multipart/form-data">
-
-								<div class="row">
-									<!--row1-->
-
-									<div class="col-6">
-										<div class="col-auto">
-											<label class="col-form-label">Mã:</label>
-										</div>
-
-										<input name="id" value="${discounts.id}" class="form-control" />
-
-									</div>
-
-									<div class="col-6">
-										<div class="col-auto">
-											<label class="col-form-label">Tiêu đề:</label>
-										</div>
-
-										<input name="titles" value="${discounts.titles}"
-											class="form-control" />
-									</div>
-
-									<div class="col-12">
-
-										<label for="inputSuppliers" class="form-label">Giảm
-											giá:</label> <select name="dis" class="form-control">
-
-											<c:forEach var="dis" items="${listDis}">
-												<option ${discounts.id == dis.id ? 'selected':''}
-													value="${dis.id}">${dis.price_discounts}%</option>
-											</c:forEach>
-										</select>
-									</div>
-
-									<div class="col-md-12">
-										<label for="inputCraetDate" class="form-label">Ngày
-											bắt đầu:</label> <input value="${discounts.start_day}"
-											class="form-control" />
-
-									</div>
-
-									<div class="col-md-12">
-										<label for="inputCraetDate" class="form-label">Ngày
-											kết thúc:</label> <input value="${discounts.end_day}"
-											class="form-control" />
-
-									</div>
-
-									<div class="col-12">
-										<div class="col-auto">
-											<label class="col-form-label">Mô tả</label>
-										</div>
-
-										<textarea name="descriptions" class="form-control">${discounts.descriptions}</textarea>
-
-										<label for="floatingTextarea2"></label>
-									</div>
-								</div>
-
-
-
-								<!--btn-->
-
-								<div class="btn-add">
-									<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-
-										<button formaction="/admin/save/discount" type="submit"
-											class="btn btn-primary">
-											<i class="bi bi-plus-lg"></i>
-										</button>
-
-										<button formaction="/admin/discount/update/${discounts.id}"
-											type="submit" class="btn btn-primary">
-											<i class="bi bi-pencil-square"> </i>
-										</button>
-									</div>
-								</div>
-
-
-							</form:form>
-
-							<div class="below">
-								<div class="table-responsive mt-5" style="overflow-x: auto">
-									<table class="table table-bordered col-12">
-										<thead>
-											<tr>
-												<th>Mã</th>
-												<th>Tiêu đề</th>
-												<th>Giảm giá</th>
-												<th>Ngày bắt đầu</th>
-												<th>Ngày kết thúc</th>
-												<th>Mô tả</th>
-												<th></th>
-											</tr>
-										</thead>
-
-										<tbody>
-											<c:forEach var="item" items="${listDis}">
-												<tr>
-													<td>${item.id}</td>
-													<td>${item.titles}</td>
-													<td>${item.price_discounts}%</td>
-													<td>${item.start_day}</td>
-													<td>${item.end_day}</td>
-													<td>${item.descriptions}</td>
-
-													<td><a href="/admin/discount/edit/${item.id}"
-														class="btn btn-primary"> <i
-															class="bi bi-pencil-square"></i>
-													</a> <a href="/admin/delete/${discounts.id}"
-														class="btn btn-danger"> <i class="bi bi-trash"></i>
-													</a></td>
-												</tr>
-											</c:forEach>
-										</tbody>
-
-									</table>
-
-								</div>
-							</div>
-
-						</section>
-
-					</div>
 
 					<div class="tab-pane fade" id="pills-profile" role="tabpanel"
 						aria-labelledby="pills-profile-tab">
@@ -700,6 +560,16 @@
 										</tbody>
 
 									</table>
+
+
+									<nav class="d-flex justify-content-center">
+										<ul class="pagination pagination-s">
+											<li class="page-item disabled"><a class="page-link"
+												href="#" tabindex="-1">1</a></li>
+											<li class="page-item"><a class="page-link" href="#">2</a></li>
+											<li class="page-item"><a class="page-link" href="#">3</a></li>
+										</ul>
+									</nav>
 
 								</div>
 							</div>
@@ -798,41 +668,57 @@
 							</div>
 						</section>
 					</div>
+
 				</div>
+
 			</div>
 
+
 		</section>
+
+
 		<!--end of middle-->
+
 
 	</main>
 
-	<script src="../js/bootstrap.bundle.min.js"></script>
-	<script src="../js/main_MAN.js"></script>
-
-	<script src="../js/Product_MAN.js"></script>
+	<!-- Link To Base JS -->
+	<%@include file="component/_linkJS.jsp"%>
 
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$(".owl-carousel").owlCarousel();
-		});
+    const sidebarList = document.querySelectorAll('.sidebar');
+    const sidebarActive = document.querySelector('.sidebar#product');
 
-		$('.owl-carousel').owlCarousel({
-			loop : true,
-			margin : 10,
-			nav : true,
-			responsive : {
-				0 : {
-					items : 1
-				},
-				600 : {
-					items : 2
-				},
-				1000 : {
-					items : 3
-				}
-			}
-		})
-	</script>
+    sidebarList.forEach((sidebar) => {
+    	sidebar.firstElementChild.classList.remove('active');
+        });
+    sidebarActive.firstElementChild.classList.add('active');
+    </script>
+
+	<script type="text/javascript">
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel();
+        });
+
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
+    </script>
 
 </body>
+
+
 </html>
