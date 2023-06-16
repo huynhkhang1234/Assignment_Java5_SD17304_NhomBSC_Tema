@@ -202,4 +202,13 @@ public class ProfileController {
 		return "user/profile";
 	}
 	
+	private void loadData(Model m) {
+				// Lấy tài khoản của thằng đang đăng nhập
+				Users userC = (Users) session.getAttribute("userLogin");
+				
+				List<Likes> list = lDAO.findAllLikesByUserID(userC.getId());
+				
+				m.addAttribute("listLike", list);
+	}
+	
 }

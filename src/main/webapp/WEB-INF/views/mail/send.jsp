@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>GỬI MAIL</title>
-<%@include file="../user/component/_linkCSS.jsp" %>
+<%@include file="../user/component/_linkCSS.jsp"%>
 <style>
 .login-form-container {
 	background: #f3f3f3 none repeat scroll 0 0;
@@ -14,12 +14,15 @@
 	text-align: left;
 	overflow: hidden;
 }
+
 .register-form .col-md-5 {
-float: left;
+	float: left;
 }
-.message{
-color: red
+
+.message {
+	color: red
 }
+
 .login-form-container input {
 	background: #ffffff none repeat scroll 0 0;
 	border: medium none rgba(0, 0, 0, 0);
@@ -68,7 +71,6 @@ color: red
 	color: #303030;
 }
 
-
 .account-optional-action {
 	margin-top: 20px;
 }
@@ -76,98 +78,70 @@ color: red
 </head>
 <body>
 
-<%@include file = "../user/component/_header.jsp" %>
+	<%@include file="../user/component/_header.jsp"%>
 
 
 	<main>
 
-        <!-- ========================== BREADCRUMB ========================== -->
-        <section class="breadcrumb">
-            <ul class="breadcrumb__list d-flex container">
-                <li><a href="/user/index" class="breadcrumb__link">Trang chủ</a></li>
-                <li><span class="breadcrumb__link">></span></li>
-                <li><span class="breadcrumb__link active">Đăng ký</span></li>
-            </ul>
-        </section>
+		<!-- ========================== BREADCRUMB ========================== -->
+		<section class="breadcrumb">
+			<ul class="breadcrumb__list d-flex container">
+				<li><a href="/user/index" class="breadcrumb__link">Trang
+						chủ</a></li>
+				<li><span class="breadcrumb__link">></span></li>
+				<li><span class="breadcrumb__link active">Đăng ký</span></li>
+			</ul>
+		</section>
 
-        <div class="customer-page theme-default-margin">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-                    
-                        <div class="login">
-                            <div id="CustomerLoginForm">
-                                <fr:form action="" method="POST" modelAttribute="mailModel" 
-                                accept-charset="UTF-8"
-                                    data-login-with-shop-sign-in="true" >
-                                    
-                                
-                                    <div class="login-form-container">
-                                        <div class="login-text" style="text-align: center;">
-                                            <h2>GỬI MAIL</h2>
-                                        </div>
-                                        
-                                                <label  class="hidden-label">Email</label>
-                                                <fr:input type="email" path="to" class="input-full"
-                                                    placeholder="" autocorrect="off" autocapitalize="off" />
-													
-													
-											
-													
-                                                <div class="form-action-button">
-                                                    <fr:button name="btnGui" type="submit" class="theme-default-button">Gửi</fr:button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </fr:form>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<div class="customer-page theme-default-margin">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+
+						<div class="login">
+							<div id="CustomerLoginForm">
+								<fr:form action="" method="POST" modelAttribute="mailModel"
+									accept-charset="UTF-8" data-login-with-shop-sign-in="true">
 
 
+									<div class="login-form-container">
+										<div class="login-text" style="text-align: center;">
+											<h2>GỬI MAIL</h2>
+											<span style="color: black; padding-top: 4px;">${message}
+											</span>
+										</div>
 
-    </main>
-	
-	
-	<%@include file = "../user/component/_footer.jsp" %>
-	<%@include file = "../user/component/_linkJS.jsp" %>
-	
-</body>
-</html>
+										<label class="hidden-label">Email</label>
+										<fr:input type="email" path="to" class="input-full"
+											placeholder="" autocorrect="off" autocapitalize="off" />
 
 
 
 
-
-
-
-
-
-<%-- <div class="form_wrapper">
-		<div class="form_container">
-			<div class="title_container">
-				<h2>GỬI MAIL</h2>
-			</div>
-			<div class="row clearfix">
-				<div class="">
-					<fr:form method="POST" enctype="multipart/form-data"
-						modelAttribute="mailModel" action="">
-						<div class="input_field">
-							<span> <i aria-hidden="true" class="fa fa-users"></i>
-							</span>
-							<fr:input path="to" placeholder="Người nhận" />
+										<div class="form-action-button">
+											<fr:button name="btnGui" type="submit"
+												class="theme-default-button">Gửi</fr:button>
+										</div>
+									</div>
+							</div>
 						</div>
-						
-						
-						<fr:button name="btnGui">Gửi</fr:button>
-					</fr:form>
-					<h3>${message }</h3>
+						</fr:form>
+					</div>
+
 				</div>
 			</div>
 		</div>
-	</div> --%>
+		</div>
+		</div>
+
+
+
+	</main>
+
+
+	<%@include file="../user/component/_footer.jsp"%>
+	<%@include file="../user/component/_linkJS.jsp"%>
+
+</body>
+</html>
+

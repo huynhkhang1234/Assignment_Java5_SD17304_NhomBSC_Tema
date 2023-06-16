@@ -61,6 +61,5 @@ public class XDate {
 	        calendar.add(Calendar.DATE, +days);
 	        return calendar.getTime();
 	      }
-
 	
 }

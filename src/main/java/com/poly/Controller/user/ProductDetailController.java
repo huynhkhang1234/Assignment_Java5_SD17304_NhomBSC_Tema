@@ -12,7 +12,6 @@ import com.poly.DAO.ProductsDAO;
 import com.poly.DAO.Products_reviewsDAO;
 import com.poly.Entities.Galleries;
 import com.poly.Entities.Products;
-import com.poly.Entities.Products_reviews;
 import com.poly.service.NumberFormatMoney;
 
 import jakarta.servlet.http.HttpServletRequest;

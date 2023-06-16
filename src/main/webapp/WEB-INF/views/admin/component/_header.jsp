@@ -36,8 +36,9 @@
 						
 						<c:if test="${not empty sessionScope.userLogin}">
 							${sessionScope.userLogin.getUser_names()}
-						</c:if>
+							</c:if>
 					</div>
+					
 				</button>
 				<ul class="dropdown-menu dropdown-menu-lg-right d-right">
 					<li><a class="dropdown-item" href="/admin/logout">Đăng

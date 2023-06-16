@@ -53,19 +53,16 @@ public class SendMail {
 	}
 
 	@PostMapping("/mail/send")
-	public String send(Model m, @ModelAttribute("mailModel") MailModel mail
-//			,@RequestParam("attachment") MultipartFile[] attach
-			) throws IOException {
+	public String send(Model m, @ModelAttribute("mailModel") MailModel mail) throws IOException {
 		
 		MimeMessage message = sender.createMimeMessage();
 		
 		Users u = uDAO.findByEmail(mail.getTo());
 		
-		if(u != null) {
-		
-		
-		mail.setFrom("PhinvhPC04124@fpt.edu.vn");
-		mail.setBody("Username của bạn là: " + u.getUser_names() + "   Password của bạn là: " + u.getPass_words());
+		if(u != null ) {
+			
+		mail.setFrom("hotrovienBSCTeam@gmail.com");
+		mail.setBody("Thông tin tài khoản hiện tại của bạn:"+"  ==> Tên đăng nhập : " + u.getUser_names() + " ==> Mật khẩu của bạn là: " + u.getPass_words());
 		try {
 
 			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
@@ -86,17 +83,25 @@ public class SendMail {
 			}
 		} catch (MessagingException | IllegalStateException ex) {
 			ex.printStackTrace();
-			m.addAttribute("message", "Gửi mail thất bại");
+			/* m.addAttribute("message", "Gửi mail thất bại"); */
 		}
-		sender.send(message);
 		
-		System.out.println("Thành công");
 		} else {
-			System.out.println("Lỗi mail");
-			m.addAttribute("message", "Gửi mail thất bại thành công");	
+			System.out.println("Gmail hiện tại không hợp lệ hoặc không tồn tại trong hệ thống !!");
+			m.addAttribute("message", "Gmail hiện tại không hợp lệ hoặc không tồn tại trong hệ thống !!");
+			return "/mail/send";
 		}
-		m.addAttribute("message", "Gửi mail thành công");	
-		return "redirect:/mail/send";
+		if(mail.getTo().equals("") == false  ) {
+			sender.send(message);		
+			System.out.println("Gửi Gmail thành công");
+			m.addAttribute("message", "Gmail đã được gửi thành công vui lòng check gmail !!");	
+			mail.setTo("");	
+			
+		}else {
+			m.addAttribute("message", "Vui lòng nhập chính xác thông tin email !!");
+		}
+		
+		return "/mail/send";
 	}
 
 

@@ -48,5 +48,4 @@ public class Products_reviews implements Serializable  {
 	@JoinColumn(name="products_id")
 	Products products;
 	
-	
 }

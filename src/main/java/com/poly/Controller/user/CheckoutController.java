@@ -83,10 +83,13 @@ public class CheckoutController {
 			orderd.setCreate_date(XDate.now());
 			this.orderDetailRepo.save(orderd);
 		}
-
+		//set dữ liệu lưu để in hóa đơn ra
+		session.setAttribute("dataBill", cart);
+		session.setAttribute("totalDataBill", session.getAttribute("total"));
 		session.removeAttribute("cart");
 		session.removeAttribute("total");
 		session.removeAttribute("cartSize");
+		
 		return "user/shop";
 	}
 

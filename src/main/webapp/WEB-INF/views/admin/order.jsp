@@ -90,7 +90,6 @@
 					</div>
 
 				</div>
-				
 				<div class="table-responsive mt-5" style="overflow-x: auto">
 					<table class="table table-bordered">
 						<thead>
@@ -327,7 +326,6 @@
 											tabindex="-1">
 											<i class="fa-solid fa-trash-can"></i>
 										</button> <!-- Modal delete -->
-										
 										<div class="modal fade" id="modaldelete"
 											data-bs-backdrop="static" data-bs-keyboard="false"
 											tabindex="-1" aria-labelledby="staticBackdropLabel"
@@ -356,11 +354,17 @@
 											</div>
 										</div>
 									</td>
-							</c:forEach>
+
+
+								</tr>
+								
+                            </c:forEach>
 						</tbody>
 					</table>
 				</div>
-			
+
+
+
 			</div>
 			</div>
 			<div class="d-flex justify-content-center">

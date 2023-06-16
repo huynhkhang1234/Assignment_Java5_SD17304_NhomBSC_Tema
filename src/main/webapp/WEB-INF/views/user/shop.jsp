@@ -30,6 +30,7 @@
 
 <body>
 
+
 	<!-- Header Start -->
 	<%@include file="component/_header.jsp"%>
 	<!-- Header End -->
@@ -47,9 +48,13 @@
 		</section>
 
 		<div class=" py-5">
+		
+
+		
 			<div class="">
 				<div class="container">
 					<div class="row products" id="product-list">
+
 						<c:forEach items="${listproduts.content}" var="item">
 
 							<div class="col-md-3 col-sm-6 ">
@@ -167,6 +172,7 @@
 
 
 							</div>
+						
 						</c:forEach>
 
 					</div>
@@ -397,18 +403,21 @@
 			var priceOne=  $('#OnePrice'+id).val();
 			var quantityOne=  1;
 			var imgOne=   $('#imgOne'+id).val();
-			var disOne=  $('#discount'+id).val();		
+			var disOne=  $('#discount'+id).val();	
+			//format tiền
+			///chuyển đổi tiền tệ
+			var resulFormatMoney = formatMoney(priceOne);
+			
 			var imgInfo= document.getElementById("imgInfo");
 			var SummoneyInfo= document.getElementById("SummoneyInfo");
 			var disMoneyInfo= document.getElementById("disMoneyInfo");
-			
-			 
-			var pathImages = "../images/product-img/" + imgOne;
-			 imgInfo.style.backgroundImage = "url('" + pathImages + "')";
-			if(disOne > 0){
-				SummoneyInfo.innerHTML=priceOne-(priceOne*(disOne/100));
+			//thêm ảnh vào.			 
+			 imgInfo.src = "/images/product-img/"+ imgOne;
+			if(disOne > 0){			
+				var disFormatMoney = formatMoney(priceOne-(priceOne*(disOne/100)));
+				SummoneyInfo.innerHTML=disFormatMoney;
 			}else{
-				SummoneyInfo.innerHTML=priceOne;	
+				SummoneyInfo.innerHTML= resulFormatMoney;	
 			}
 			
 			nameInfo.innerHTML=nameOne;
@@ -431,10 +440,38 @@
 			var descriptionid = document.getElementById("images");
 			descriptionid.style.backgroundImage = "url('" + pathImages + "')";
 			if(disPrice != ""){
-				 
-				var disPrice2 = document.getElementById("disPrice").innerHTML = price - (price*(disPrice/100));	
+				//
+				
+				//
+				const number = price - (price*(disPrice/100));
+				const formatter = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'});
+				formatter.formatToParts = function(value) {
+				  let formatted = this.format(value);
+				  return [{type: "currency", value: "VNĐ"}, {type: "literal", value: " "}, {type: "decimal", value: formatted.substring(formatted.length - 3)}];
+				}				
+				const formattedNumber = formatter.format(number);		
+				var a = formattedNumber.replace(/\./g,',');
+				var b = a.replace('₫','VNĐ');
+				console.log(b+"VNĐ"); // "1.234,56 VNĐ"
+				 //giảm giá > 0
+				var disPrice2 = document.getElementById("disPrice").innerHTML =b;
+					
 			}else{
-				var disPrice2 = document.getElementById("disPrice").innerHTML = price;
+				
+				// giảm giá set = 0///				
+				const number = price;
+				const formatter = new Intl.NumberFormat('vi-VN', {style: 'currency', currency: 'VND'});
+				formatter.formatToParts = function(value) {
+				  let formatted = this.format(value);
+				  return [{type: "currency", value: "VNĐ"}, {type: "literal", value: " "}, {type: "decimal", value: formatted.substring(formatted.length - 3)}];
+				}				
+				const formattedNumber = formatter.format(number);		
+				var a = formattedNumber.replace(/\./g,',');
+				var b = a.replace('₫','VNĐ');
+				console.log(b+"VNĐ"); // "1.234,56 VNĐ"
+				// có giảm giá <0
+				var disPrice2 = document.getElementById("disPrice").innerHTML = b;				
+				/////////////////
 				var priceid = document.getElementById("price").innerHTML = ""; 
 			}
 			
@@ -475,7 +512,19 @@
 			   }); 
 			   
 			}
+		// hàm chuyển đổi tiền tệ
+			 function formatMoney(money){
+			 var number = money; 									
+			var formattedNumber = number.toLocaleString('en-US').replace(",", ".");
+			 
+			return formattedNumber = formattedNumber.replace(/\./g, ',').replace(".", ".") + " VNĐ";							
+			}
+		///test xem tìm kiếm dc ko cái đã
+		
 	</script>
+	
+	
+	
 </body>
 
 </html>

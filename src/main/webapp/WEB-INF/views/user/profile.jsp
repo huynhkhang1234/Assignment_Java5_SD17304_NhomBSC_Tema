@@ -680,7 +680,6 @@
     sidebarActive.firstElementChild.classList.add('active');
     
     </script>
-
 </body>
 
 </html>

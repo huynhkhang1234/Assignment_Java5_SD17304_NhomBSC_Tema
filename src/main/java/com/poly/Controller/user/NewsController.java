@@ -13,6 +13,10 @@ import com.poly.DAO.NewsDAO;
 import com.poly.Entities.Categories_news;
 import com.poly.Entities.News;
 
+import com.poly.DAO.NewsDAO;
+import com.poly.Entities.Categories_news;
+import com.poly.Entities.News;
+
 @Controller
 public class NewsController {
 	@Autowired
