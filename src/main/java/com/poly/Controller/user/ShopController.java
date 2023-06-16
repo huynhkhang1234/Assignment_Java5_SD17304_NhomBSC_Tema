@@ -49,26 +49,16 @@ public class ShopController {
 		Pageable pageable;			
 		try {
 			pageable = PageRequest.of(p.orElse(0), 8);
-
-			// }
 		} catch (Exception e) {
 			pageable = PageRequest.of(0, 8);	
-		}
-		
-	
-							
+		}								
 		Page<Products> listproduts =  this.productRepo.getIsActive(pageable);
-		///
 		model.addAttribute("listproduts", listproduts);
 		
 		Users u = (Users) session.getAttribute("userLogin");
 		
-		List<Likes> listLike = likesDAO.findAllByUserId(u.getId());
-		
-		
-		model.addAttribute("listLike", listLike);
-		/// lấy cái giảm giá hiện thị trên trang.
-		// Discounts discuont = this.discountRepo.getById(null);
+		List<Likes> listLike = likesDAO.findAllByUserId(u.getId());				
+		model.addAttribute("listLike", listLike);		
 		return "user/shop";
 	}
 

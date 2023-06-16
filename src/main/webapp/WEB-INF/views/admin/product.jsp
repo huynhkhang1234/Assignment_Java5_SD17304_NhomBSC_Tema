@@ -54,19 +54,19 @@
 
 		<section class="middle">
 
-			
-			
+
+
 			<div class="">
 
 				<ul class="nav nav-pills mb-1 avtive" id="pills-tab" role="tablist">
 					<li class="nav-item" role="presentation">
-						<button class="nav-link active" id="pills-home-tab"
+						<button class="nav-link " id="pills-home-tab"
 							data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
 							role="tab" aria-controls="pills-home" aria-selected="true">Sản
 							phẩm</button>
 					</li>
 					<li class="nav-item " role="presentation">
-						<button class="nav-link " id="pills-profile-tab"
+						<button class="nav-link active" id="pills-profile-tab"
 							data-bs-toggle="pill" data-bs-target="#pills-profile"
 							type="button" role="tab" aria-controls="pills-profile"
 							aria-selected="false">Mã giảm giá</button>
@@ -81,61 +81,72 @@
 
 				<div class="tab-content" id="pills-tabContent">
 
-					<div class="tab-pane fade show active" id="pills-home"
+					<div class="tab-pane fade " id="pills-home"
 						role="tabpanel" aria-labelledby="pills-home-tab">
 
 						<div class="list-products">
 
 							<div class="container">
 								<div class="d-flex justify-content-between">
-									<button type="button" class="btn btn-primary" style="width: 100px;" data-bs-toggle="modal"
+									<button type="button" class="btn btn-primary"
+										style="width: 100px;" data-bs-toggle="modal"
 										data-bs-target="#exampleModal" data-bs-whatever="@mdo">Thêm</button>
 									<div class="d-flex column-gap-3 me-6">
 										<div class="col-auto">
-    										<input type="text" placeholder="Tìm kiếm..." class="form-control" aria-labelledby="passwordHelpInline">
-  										</div>
-  										<a href="#" class="btn btn-outline-dark">
-  											Tìm kiếm
-  										</a>
+											<form action="/admin/product" method="POST">
+												<input
+													style="border-radius: 9px; background: lightgray; height: 32px; width: 298px"
+													name="keyword" value="${param.keyword}"
+													placeholder="Tìm kiếm ở đây...">
+
+											</form>
+										</div>
+
 									</div>
 								</div>
 								<div class="row">
-									<c:forEach var="item" items="${list}">
+									<c:forEach var="item" items="${list.content}">
 
-											<div class="item">
-												<div class="content">
-													<div class="left">
-														<div class="name">${item.titles}</div>
-														<li class="price">Price: <fmt:formatNumber value="${item.price}" pattern="###,###,### VNĐ" /> </li>
-														<li>Ngày tạo: <fmt:formatDate value="${item.create_date}" pattern="hh:mm dd-MM-yyyy"/> </li>
-														<li>Loại: ${item.categories.names}</li>
-														<li>Trạng thái: ${item.is_status == 1 ? "Còn hàng":"Hết hàng"}</li>
-														<li>Nhà cung cấp: ${item.suppliers.user_names}</li>
-														<li>Giá gốc: <fmt:formatNumber value="${item.original_price}" pattern="###,###,### VNĐ" /> </li>
-														<li>Giảm giá: ${item.discounts.price_discounts} %</li>
-														<li>Mô tả: ${item.description}</li>
-													</div>
+										<div class="item">
+											<div class="content">
+												<div class="left">
+													<div class="name">${item.titles}</div>
+													<li class="price">Price: <fmt:formatNumber
+															value="${item.price}" pattern="###,###,### VNĐ" />
+													</li>
+													<li>Ngày tạo: <fmt:formatDate
+															value="${item.create_date}" pattern="hh:mm dd-MM-yyyy" />
+													</li>
+													<li>Loại: ${item.categories.names}</li>
+													<li>Trạng thái: ${item.is_status == 1 ? "Còn hàng":"Hết hàng"}</li>
+													<li>Nhà cung cấp: ${item.suppliers.user_names}</li>
+													<li>Giá gốc: <fmt:formatNumber
+															value="${item.original_price}" pattern="###,###,### VNĐ" />
+													</li>
+													<li>Giảm giá: ${item.discounts.price_discounts} %</li>
+													<li>Mô tả: ${item.description}</li>
+												</div>
 
-													<div class="right">
-														<img src="/images/product-img/${item.images}" />
-													</div>
+												<div class="right">
+													<img src="/images/product-img/${item.images}" />
+												</div>
 
-													<div class="bottom">
-														<div class="btn-pro">
-															<button class="btn btn-primary" data-bs-toggle="modal"
-																data-bs-target="#exampleModal${item.id}"
-																data-bs-whatever="@mdo">
-																<i class="bi bi-pencil-square"></i>
-															</button>
+												<div class="bottom">
+													<div class="btn-pro">
+														<button class="btn btn-primary" data-bs-toggle="modal"
+															data-bs-target="#exampleModal${item.id}"
+															data-bs-whatever="@mdo">
+															<i class="bi bi-pencil-square"></i>
+														</button>
 
-															<a href="/admin/product/delete/${item.id}"
-																class="btn btn-danger"> <i class="bi bi-trash"></i>
-															</a>
-														</div>
+														<a href="/admin/product/delete/${item.id}"
+															class="btn btn-danger"> <i class="bi bi-trash"></i>
+														</a>
 													</div>
 												</div>
 											</div>
-								
+										</div>
+
 
 										<div class="modal fade" id="exampleModal${item.id}"
 											tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -192,7 +203,7 @@
 															<div class="col-md-12">
 																<label for="categoryId" class="form-label">Loại:</label>
 																<select name="cate" class="form-control">
-																	<c:forEach var="cate" items="${listCate}">
+																	<c:forEach var="cate" items="${listCate.content}">
 																		<option
 																			${item.categories.id == cate.id ? 'selected':''}
 																			value="${cate.id}">${cate.names}</option>
@@ -286,21 +297,24 @@
 											</div>
 										</div>
 									</c:forEach>
-									
+
 									<div div="row" style="margin-top: 15px;">
 										<ul class="pagination pagination-lg justify-content-end">
-											<li class="page-item disabled"><a
-												class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
-												href="#" tabindex="-1">1</a></li>
+											<li class="page-item "><a
+												class="page-link  rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
+												href="/admin/product?p=0">1</a></li>
 											<li class="page-item"><a
 												class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-												href="#">2</a></li>
+												href="/admin/product?p=1">2</a></li>
+											<li class="page-item"><a
+												class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+												href="/admin/product?p=2">3</a></li>
 											<li class="page-item"><a
 												class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
-												href="#">3</a></li>
+												href="/admin/product?p=${listproduts.totalPages-1}">4</a></li>
 										</ul>
 									</div>
-									
+
 								</div>
 							</div>
 
@@ -308,7 +322,7 @@
 					</div>
 
 
-					<div class="tab-pane fade" id="pills-profile" role="tabpanel"
+					<div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
 						aria-labelledby="pills-profile-tab">
 
 						<section class="middle">
@@ -507,12 +521,12 @@
 										<thead>
 											<tr>
 												<th>Mã:</th>
-												<th>Tên:</th>
+												<th>Tên: </th>
 												<th></th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="item" items="${listCate}">
+											<c:forEach var="item" items="${listCate.content}">
 												<tr>
 													<td>${item.id}</td>
 													<td>${item.names}</td>
@@ -530,11 +544,19 @@
 									</table>
 
 									<nav class="d-flex justify-content-center">
-										<ul class="pagination pagination-s">
-											<li class="page-item disabled"><a class="page-link"
-												href="#" tabindex="-1">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
+										<ul class="pagination pagination-lg justify-content-end">
+											<li class="page-item "><a
+												class="page-link  rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
+												href="/admin/product?p=0">1</a></li>
+											<li class="page-item"><a
+												class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+												href="/admin/product?p=1">2</a></li>
+											<li class="page-item"><a
+												class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+												href="/admin/product?p=2">3</a></li>
+											<li class="page-item"><a
+												class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark"
+												href="/admin/product?p=${listproduts.totalPages-1}">4</a></li>
 										</ul>
 									</nav>
 								</div>
@@ -548,142 +570,142 @@
 
 
 		</section>
-		
-	<!-- Modal Add Product -->
-	<div class="modal fade" id="exampleModal" tabindex="-1"
-				aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
 
-					<div class="modal-content">
+		<!-- Modal Add Product -->
+		<div class="modal fade" id="exampleModal" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
 
-						<div class="modal-header">
-							<h5 class="modal-title">Thêm Sản Phẩm</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal"
-								aria-label="Close"></button>
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h5 class="modal-title">Thêm Sản Phẩm</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+
+
+					<form:form action="/admin/save/product" method="post"
+						modelAttribute="products" enctype="multipart/form-data">
+						<div class="modal-body">
+
+							<div class="col-md-6">
+								<label for="inputId" class="form-label">Mã:</label> <input
+									name="id" value="${item.id}" class="form-control" />
+
+							</div>
+
+							<div class="col-md-6">
+								<label for="inputTitle" class="form-label">Tiêu đề:</label> <input
+									name="titles" value="${item.titles}" class="form-control" />
+							</div>
+
+							<div class="col-md-12">
+								<label for="inputPrice" class="form-label">Giá:</label> <input
+									name="price" value="${item.price}" class="form-control" />
+
+							</div>
+
+							<div class="col-md-12">
+								<label for="inputCraetDate" class="form-label">Ngày
+									đăng:</label> <input readonly
+									value="<fmt:formatDate value="${now}" pattern="dd-MM-yyyy hh:mm" />"
+									class="form-control" />
+
+							</div>
+
+
+							<div class="col-md-12">
+								<label for="categoryId" class="form-label">Loại:</label> <select
+									name="cate" class="form-control">
+									<c:forEach var="cate" items="${listCate.content}">
+										<option ${item.categories.id == cate.id ? 'selected':''}
+											value="${cate.id}">${cate.names}</option>
+									</c:forEach>
+								</select>
+
+							</div>
+
+							<fieldset class="row mb-3" style="margin-top: 1rem;">
+								<legend class="col-form-label col-sm-2 pt-0">Trạng
+									thái:</legend>
+								<div class="col-sm-4">
+									<div class="form-check">
+										<label class="form-check-label" for="gridRadios1"> <input
+											name="is_active" ${item.is_active == 1 ? 'checked':''}
+											value="1" class="form-check-input" type="radio"
+											name="gridRadios" id="gridRadios1" value="option1" checked />
+											Còn hàng
+										</label>
+									</div>
+								</div>
+
+								<div class="col-sm-4">
+
+									<div class="form-check">
+										<label class="form-check-label" for="gridRadios2"> <input
+											name="is_active" ${item.is_active == 0 ? 'checked':''}
+											value="0" class="form-check-input" type="radio"
+											name="gridRadios" id="gridRadios2" value="option2" /> Hết
+											hàng
+										</label>
+									</div>
+								</div>
+							</fieldset>
+
+							<div class="col-md-12">
+								<label for="inputSuppliers" class="form-label">Nhà cung
+									cấp:</label> <select name="supp" class="form-control">
+									<c:forEach var="supp" items="${listSupp}">
+										<option ${item.suppliers.id == supp.id ? 'selected':''}
+											value="${supp.id}">${supp.user_names}</option>
+									</c:forEach>
+								</select>
+
+							</div>
+
+							<div class="col-md-6">
+								<label for="inputSuppliers" class="form-label">Giá gốc:</label>
+								<input name="original_price" value="${item.original_price}"
+									class="form-control" />
+
+							</div>
+
+							<div class="col-md-6">
+								<label for="inputSuppliers" class="form-label">Giảm gía:</label>
+								<select name="dis" class="form-control">
+									<c:forEach var="dis" items="${listDis}">
+										<option ${item.discounts.id == dis.id ? 'selected':''}
+											value="${dis.id}">${dis.price_discounts}%</option>
+									</c:forEach>
+								</select>
+							</div>
+
+
+							<label class="form-label" for="customFile">Tải ảnh:</label> <input
+								value="${item.images}" name="file" type="file"
+								class="form-control" id="customFile" />
+
+
+							<div class="col-12">
+								<label for="inputDescription" class="form-label">Mô tả</label>
+								<textarea name="description" class="form-control">${item.description}</textarea>
+							</div>
 						</div>
 
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal">Đóng</button>
 
-						<form:form action="/admin/save/product" method="post"
-							modelAttribute="products" enctype="multipart/form-data">
-							<div class="modal-body">
+							<button formaction="/admin/save/product" type="submit"
+								class="btn btn-primary">Thêm sản phẩm</button>
+						</div>
+					</form:form>
 
-								<div class="col-md-6">
-									<label for="inputId" class="form-label">Mã:</label> <input
-										name="id" value="${item.id}" class="form-control" />
-
-								</div>
-
-								<div class="col-md-6">
-									<label for="inputTitle" class="form-label">Tiêu đề:</label> <input
-										name="titles" value="${item.titles}" class="form-control" />
-								</div>
-
-								<div class="col-md-12">
-									<label for="inputPrice" class="form-label">Giá:</label> <input
-										name="price" value="${item.price}" class="form-control" />
-
-								</div>
-
-								<div class="col-md-12">
-									<label for="inputCraetDate" class="form-label">Ngày
-										đăng:</label> <input readonly
-										value="<fmt:formatDate value="${now}" pattern="dd-MM-yyyy hh:mm" />"
-										class="form-control" />
-
-								</div>
-
-
-								<div class="col-md-12">
-									<label for="categoryId" class="form-label">Loại:</label> <select
-										name="cate" class="form-control">
-										<c:forEach var="cate" items="${listCate}">
-											<option ${item.categories.id == cate.id ? 'selected':''}
-												value="${cate.id}">${cate.names}</option>
-										</c:forEach>
-									</select>
-
-								</div>
-
-								<fieldset class="row mb-3" style="margin-top: 1rem;">
-									<legend class="col-form-label col-sm-2 pt-0">Trạng
-										thái:</legend>
-									<div class="col-sm-4">
-										<div class="form-check">
-											<label class="form-check-label" for="gridRadios1"> <input
-												name="is_active" ${item.is_active == 1 ? 'checked':''}
-												value="1" class="form-check-input" type="radio"
-												name="gridRadios" id="gridRadios1" value="option1" checked />
-												Còn hàng
-											</label>
-										</div>
-									</div>
-
-									<div class="col-sm-4">
-
-										<div class="form-check">
-											<label class="form-check-label" for="gridRadios2"> <input
-												name="is_active" ${item.is_active == 0 ? 'checked':''}
-												value="0" class="form-check-input" type="radio"
-												name="gridRadios" id="gridRadios2" value="option2" /> Hết
-												hàng
-											</label>
-										</div>
-									</div>
-								</fieldset>
-
-								<div class="col-md-12">
-									<label for="inputSuppliers" class="form-label">Nhà cung
-										cấp:</label> <select name="supp" class="form-control">
-										<c:forEach var="supp" items="${listSupp}">
-											<option ${item.suppliers.id == supp.id ? 'selected':''}
-												value="${supp.id}">${supp.user_names}</option>
-										</c:forEach>
-									</select>
-
-								</div>
-
-								<div class="col-md-6">
-									<label for="inputSuppliers" class="form-label">Giá gốc:</label>
-									<input name="original_price" value="${item.original_price}"
-										class="form-control" />
-
-								</div>
-
-								<div class="col-md-6">
-									<label for="inputSuppliers" class="form-label">Giảm
-										gía:</label> <select name="dis" class="form-control">
-										<c:forEach var="dis" items="${listDis}">
-											<option ${item.discounts.id == dis.id ? 'selected':''}
-												value="${dis.id}">${dis.price_discounts}%</option>
-										</c:forEach>
-									</select>
-								</div>
-
-
-								<label class="form-label" for="customFile">Tải ảnh:</label> <input
-									value="${item.images}" name="file" type="file"
-									class="form-control" id="customFile" />
-
-
-								<div class="col-12">
-									<label for="inputDescription" class="form-label">Mô tả</label>
-									<textarea name="description" class="form-control">${item.description}</textarea>
-								</div>
-							</div>
-
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-bs-dismiss="modal">Đóng</button>
-
-								<button formaction="/admin/save/product" type="submit"
-									class="btn btn-primary">Thêm sản phẩm</button>
-							</div>
-						</form:form>
-
-					</div>
 				</div>
 			</div>
-	
+		</div>
+
 
 		<!--end of middle-->
 

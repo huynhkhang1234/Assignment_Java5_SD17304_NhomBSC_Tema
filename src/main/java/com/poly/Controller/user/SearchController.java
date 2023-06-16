@@ -41,4 +41,24 @@ public class SearchController {
 		model.addAttribute("listproduts", page);
 		return "user/shop";
 	}
+	
+	@PostMapping("/admin/product")
+	public String pageAdmin(Model model, @RequestParam("keyword") Optional<String> name,
+			@RequestParam("p") Optional<Integer> p) {
+		
+		System.out.println("Chạy vô code của trang sản phẩm admin");
+		System.out.println(name+ "từ khóa");
+		String findName;
+		if (session.get("keyword") == null) {
+			findName = name.orElse("");
+		} else {
+			findName = name.orElse(session.get("keyword"));
+		}
+		session.set("keyword", findName);
+		Pageable pageable = (Pageable) PageRequest.of(p.orElse(0), 5);
+		Page<Products> page = dao.findByNamePage("%" + findName + "%", pageable);
+		System.out.println("tìm kiếm " + page.getSize());
+		model.addAttribute("list", page);
+		return "/admin/product";
+	}
 }

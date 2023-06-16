@@ -1,13 +1,14 @@
 package com.poly.DAO;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.poly.Entities.Categories;
 
 public interface CategoriesDAO extends JpaRepository<Categories, Integer> {
-//	@Query("SELECT n FROM Categories n WHERE n.id = 1")
-//	List<Categories> findAllActiveTrue();
+	//phân trang cate
+		@Query(value = "SELECT n FROM Categories n where n.is_active = 1")
+		Page<Categories> getIsActive(Pageable pageable);
 }
