@@ -225,8 +225,6 @@
 								<div class="row">
 									<c:forEach var="item" items="${list}">
 
-										<div class="owl-carousel owl-theme">
-
 											<div class="item">
 												<div class="content">
 													<div class="left">
@@ -261,7 +259,7 @@
 													</div>
 												</div>
 											</div>
-										</div>
+								
 
 										<div class="modal fade" id="exampleModal${item.id}"
 											tabindex="-1" aria-labelledby="exampleModalLabel"
