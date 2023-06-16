@@ -33,14 +33,16 @@ GO
 
 CREATE TABLE [categories] (
   [id] int PRIMARY KEY NOT NULL IDENTITY(1, 1),
-  [names] nvarchar(255)
+  [names] nvarchar(255),
+  is_active int default 1
 )
 GO
 
 CREATE TABLE [galleries] (
   [id] int PRIMARY KEY IDENTITY(1, 1),
   [products_id] int NOT NULL,
-  [images] nvarchar(255)
+  [images] nvarchar(255),
+  is_active int default 1
 )
 GO
 
@@ -53,6 +55,7 @@ CREATE TABLE [products] (
   [create_date] datetime default getdate(),
   [update_date] datetime default getdate(),
   [is_active] int default 1,
+  [is_status] int default 1,
   [categories_id] int NOT NULL,
   [suppliers_id] int NOT NULL,
   [original_price] int,
@@ -68,7 +71,8 @@ CREATE TABLE [orders] (
   [users_id] int NOT NULL,
   [create_date] datetime default getdate(),
   [update_date] datetime default getdate(),
-  [money_received] float
+  [money_received] float,
+  is_active int default 1
 )
 GO
 
@@ -80,14 +84,15 @@ CREATE TABLE [order_details] (
   [quanlity] int NOT NULL,
   [sum_money] float,
   [create_date] datetime default getdate(),
-  [update_date] datetime default getdate()
+  [update_date] datetime default getdate(),
+  [is_active] int default 1,
 )
 GO
 
 CREATE TABLE [news] (
   [id] int PRIMARY KEY IDENTITY(1, 1),
   [titles] nvarchar(100),
-  [contents] nvarchar(4000),
+  [contents] nvarchar(max),
   [video_href] nvarchar(255),
   [images] nvarchar(255),
   [create_date] datetime default getdate(),
@@ -137,13 +142,15 @@ CREATE TABLE [discounts] (
   [descriptions] nvarchar(255),
   [price_discounts] int,
   [start_day] datetime NOT NULL,
-  [end_day] datetime NOT NULL
+  [end_day] datetime NOT NULL,
+  [is_active] int default 1
 )
 GO
 
 CREATE TABLE [categories_news] (
   [id] int PRIMARY KEY NOT NULL IDENTITY(1, 1),
-  [titles] nvarchar(200)
+  [titles] nvarchar(200),
+  is_active int default 1
 )
 GO
 
@@ -153,7 +160,8 @@ CREATE TABLE [products_reviews] (
   [content] nvarchar(255),
   [create_date] datetime default getdate(),
   [users_id] int NOT NULL,
-  [orders_id] int NOT NULL
+  [orders_id] int NOT NULL,
+  [is_active] int default 1
 )
 GO
 

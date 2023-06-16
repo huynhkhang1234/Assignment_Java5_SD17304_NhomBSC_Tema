@@ -29,6 +29,7 @@ public class Galleries implements Serializable  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;	
 	private String images;
+	private int is_active;
 	
 	@ManyToOne
 	@JoinColumn(name="products_id")

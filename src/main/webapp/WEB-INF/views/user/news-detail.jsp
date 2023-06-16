@@ -52,8 +52,7 @@
 				<li><span class="breadcrumb__link">></span></li>
 				<li><a href="/user/news" class="breadcrumb__link">Tin tức</a></li>
 				<li><span class="breadcrumb__link">></span></li>
-				<li><span class="breadcrumb__link active">Tiêu đề bài
-						viết</span></li>
+				<li><span class="breadcrumb__link active">${news.titles}</span></li>
 			</ul>
 		</section>
 
@@ -64,15 +63,24 @@
 					<div class="row">
 						<div class="col-md-12">
 							<h3 class="fw-bold text-uppercase my-4">Tin tức</h3>
-							<h1 class="fw-bold text-uppercase my-4" style="font-size: 60px;">Tiêu
-								đề bài viết</h1>
+							<h1 class="fw-bold text-uppercase my-4" style="font-size: 60px;">${news.titles}</h1>
 						</div>
-						<div class="col-md-12">
-							<a href="#"> <img
-								src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/news/2023/05_23_emilia_donation/emilia_donation_cover.jpg"
-								alt="">
-							</a>
-						</div>
+						<c:if test="${empty news.images}">
+							<div class="col-md-12">
+								<a href="#" class="d-flex align-items-center justify-content-center"> <img
+									src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/news/2023/05_23_emilia_donation/emilia_donation_cover.jpg"
+									alt="">
+								</a>
+							</div>
+						</c:if>
+						<c:if test="${not empty news.images}">
+							<div class="col-md-12">
+								<a href="#" class="d-flex align-items-center justify-content-center"> <img
+									src="/images/news-img/${news.images}"
+									alt="">
+								</a>
+							</div>
+						</c:if>
 						<div class="col-md-12 mt-5">
 							<div>
 								<span style="font-size: 18px;">${news.create_date}</span>
@@ -81,8 +89,13 @@
 						<div class="col-md-12 mt-4">
 							<div class="content__news-author px-2 py-1">
 								<a href="#">
-									<p>Người đăng</p>
+									<p>${news.users.user_names}</p>
 								</a>
+							</div>
+						</div>
+						<div class="col-md-12 mt-4">
+							<div class="content__news-content px-2 py-1 d-flex flex-column align-items-center">
+								${news.contents}
 							</div>
 						</div>
 					</div>
@@ -106,7 +119,7 @@
 							<h1 class="fw-bold text-uppercase my-4" style="font-size: 60px;">${item.titles}</h1>
 						</div>
 						<div class="col-md-12">
-							<a href="#"> <img
+							<a href="#" class="d-flex align-items-center justify-content-center"> <img
 								src="/images/news-img/${item.images}"
 								alt="">
 							</a>
@@ -135,7 +148,7 @@
 
 		<section class="container__hot my-4">
 
-			<div class="container">
+			<div class="container py-3" style="border-top: 1px solid #ccc;">
 				<div class="container__hot-title">
 					<h2 class="text-uppercase fw-bold">Bài viết mới nhất</h2>
 				</div>

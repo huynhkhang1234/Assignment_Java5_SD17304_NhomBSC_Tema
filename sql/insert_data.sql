@@ -22,7 +22,7 @@ INSERT INTO dbo.users
 ,is_active)
      VALUES
 	 (N'huynhkhang',N'Khang',N'Huỳnh','Khanghbpc04012@fpt.edu.vn','123',N'hình ảnh','0123456789','Cà Mau',1,'2023-5-27','2023-5-28',1)
-	 ,(N'nguyenphi',N'Phi',N'Nguyễn','Phinvhpc04124@fpt.edu.vn','123',N'hình ảnh','0123456789',N'Trà Vinh',2,'2023-5-27','2023-5-28',1)           
+	 ,(N'nguyenphi',N'Phi',N'Nguyễn','Phinvhpc04124@fpt.edu.vn','123',N'hình ảnh','0123456789',N'Trà Vinh',1,'2023-5-27','2023-5-28',1)           
 	 ,(N'trantham',N'Thắm',N'Trần','Thamtthpc03916@fpt.edu.vn','123',N'hình ảnh','0123456789',N'Hậu Giang',2,'2023-5-27','2023-5-28',1)           
 	 ,(N'phamvan',N'Vương',N'Phạm','Vuongpvpc04124@fpt.edu.vn','123',N'hình ảnh','0123456789',N'Phú Quốc',2,'2023-5-27','2023-5-28',1)           
 	 ,(N'nguyenhong',N'Ngoan',N'Nguyễn','Ngoannpc04172@fpt.edu.vn','123',N'hình ảnh','0123456789',N'Cần Thơ',2,'2023-5-27','2023-5-28',1)           
@@ -33,20 +33,18 @@ INSERT INTO [dbo].[orders]
            ,[status]
            ,[sum_money]
            ,[users_id]
-           ,[create_date]
-           ,[update_date]
            ,[money_received])
      VALUES
-          (N'sản phẩm tốt',N'Đang vẩn chuyển',14000000,1,'2023-05-27','2023-05-28',38000000)
-		  ,(N'sản phẩm tốt',N'Đã hoàn thành',500000,2,'2023-05-27','2023-05-28',500000)
-		  ,(N'sản phẩm tốt',N'Đang chờ sử lý',600000,3,'2023-05-27','2023-05-28',600000)		
-		  ,(N'sản phẩm tốt',N'Đã hoàn thành',4000000,5,'2023-05-27','2023-05-28',500000)
-		  ,(N'sản phẩm tốt',N'Đã hoàn thành',6000000,4,'2023-05-27','2023-05-28',10000000)
-		  ,(N'sản phẩm tốt',N'Đang vẩn chuyển',14000000,1,'2023-05-27','2023-05-28',38000000)
-		  ,(N'sản phẩm tốt',N'Đã hoàn thành',500000,4,'2023-05-27','2023-05-28',500000)
-		  ,(N'sản phẩm tốt',N'Đang chờ sử lý',600000,3,'2023-05-27','2023-05-28',600000)		
-		  ,(N'sản phẩm tốt',N'Đã hoàn thành',4000000,5,'2023-05-27','2023-05-28',500000)
-		  ,(N'sản phẩm tốt',N'Đã hoàn thành',6000000,2,'2023-05-27','2023-05-28',10000000)	
+          (N'sản phẩm tốt',N'Đang vẩn chuyển',39600000,1,39600000)
+		  ,(N'sản phẩm tốt',N'Đã hoàn thành',34300000,2,34300000)
+		  ,(N'sản phẩm tốt',N'Đang chờ sử lý',22500000,3,22500000)		
+		  ,(N'sản phẩm tốt',N'Đã hoàn thành',44800000,5,44800000)
+		  ,(N'sản phẩm tốt',N'Đã hoàn thành',34300000,4,34300000)
+		  ,(N'sản phẩm tốt',N'Đang vẩn chuyển',29400000,1,29400000)
+		  ,(N'sản phẩm tốt',N'Đã hoàn thành',41400000,4,41400000)
+		  ,(N'sản phẩm tốt',N'Đang chờ sử lý',34300000,3,34300000)		
+		  ,(N'sản phẩm tốt',N'Đã hoàn thành',13800000,5,13800000)
+		  ,(N'sản phẩm tốt',N'Đã hoàn thành',15600000,2,15600000)	
 		  go
 ------------------
 
@@ -99,26 +97,34 @@ INSERT INTO [dbo].[products]
            ,[price]
            ,[images]
            ,[description]
-           ,[create_date]
-           ,[update_date]
-           ,[is_active]
            ,[categories_id]
            ,[suppliers_id]
            ,[original_price])
 VALUES
-       (N'Màn hình Android ô tô thông minh GOTECH GT8 MAX - Best Seller 2022','12900000',N'Hình Ảnh',N'CPU: 8 nhân – 1.8GHz','2023-05-27','2023-05-28',1,1,1,6000000)
-	   ,(N'Màn hình NaviPlay N600 chính hãng – Thiết bị giải trí giá rẻ cho ô tô','6900000',N'Hình Ảnh',N'CPU: 8 nhân – 1.8GHz','2023-05-27','2023-05-28',1,1,2,6000000)
-	   ,(N'Màn hình android OledPro A5','7800000',N'Hình Ảnh',N'CPU: 8 nhân – 1.8GHz','2023-05-27','2023-05-28',1,1,2,6000000)
-	   ,(N'Android Box Safeview SA-6125','6900000',N'Hình Ảnh',N'CPU: 8 nhân – 1.8GHz','2023-05-27','2023-05-28',1,2,1,6000000)
-	   ,(N'Android Box Zestech DX300','9500000',N'Hình Ảnh',N'CPU: 8 nhân – 1.8GHz','2023-05-27','2023-05-28',1,2,2,6000000)
-	   ,(N'Carplay Box GB8 - Android Box Ô Tô Gotech','8900000',N'Hình Ảnh',N'CPU: 8 nhân – 1.8GHz','2023-05-27','2023-05-28',1,2,1,6000000)
-	   ,(N'Đèn Bi Led X-Light V20 New 2022','7500000',N'Hình Ảnh',N'Công suất: Cos 55W/Pha 70W','2023-05-27','2023-05-28',1,3,2,6000000)
-	   ,(N'Bi Gầm Led Aozoom Eagle Light','5050000',N'Hình Ảnh',N'Công suất: Cos 32W/Pha 38W','2023-05-27','2023-05-28',1,3,1,6000000)
-	   ,(N'Đèn Bi Laser TiTan Platinum Plus 9+3','16900000',N'Hình Ảnh',N'Công suất: Cos 80W/Pha 90W','2023-05-27','2023-05-28',1,3,2,6000000)
-	   ,(N'Camera 360 ô tô GOTECH GP6 Mới nhất – Panda Auto','12500000',N'Hình Ảnh',N'Mắt Camera: Sony A225','2023-05-27','2023-05-28',1,5,1,6000000)
-	   ,(N'Camera 360 OledPro AHD','10500000',N'Hình Ảnh',N'Mắt Camera: Sony A225','2023-05-27','2023-05-28',1,5,2,6000000)
-	   ,(N'Camera 360 Safeview LD980H','18900000',N'Hình Ảnh',N'Mắt Camera: Sony','2023-05-27','2023-05-28',1,5,1,6000000)
-
+        (N'Màn hình Android ô tô thông minh GOTECH GT8 MAX - Best Seller 2022', 12900000, N'manhinh1.jpg', N'CPU: 8 nhân – 1.8GHz', 1, 1, 6000000)
+	   ,(N'Màn hình NaviPlay N600 chính hãng – Thiết bị giải trí giá rẻ cho ô tô', 6900000, N'manhinh2.jpg', N'CPU: 8 nhân – 1.8GHz', 1, 2, 6000000)
+	   ,(N'Màn hình android OledPro A5', 7800000, N'manhinh3.jpg', N'CPU: 8 nhân – 1.8GHz', 1, 2, 6000000)
+	   ,(N'Android Box Safeview SA-6125', 6900000, N'manhinh4.jpg', N'CPU: 8 nhân – 1.8GHz', 2, 1, 6000000)
+	   ,(N'Android Box Zestech DX300', 9500000, N'manhinh5.jpg', N'CPU: 8 nhân – 1.8GHz', 2, 2, 6000000)
+	   ,(N'Carplay Box GB8 - Android Box Ô Tô Gotech', 8900000, N'manhinh6.jpg', N'CPU: 8 nhân – 1.8GHz', 2, 1, 6000000)
+	   ,(N'Đèn Bi Led X-Light V20 New 2022', 7500000, N'manhinh7.jpg', N'Công suất: Cos 55W/Pha 70W', 3, 2, 6000000)
+	   ,(N'Bi Gầm Led Aozoom Eagle Light', 5050000, N'manhinh8.png', N'Công suất: Cos 32W/Pha 38W', 3, 1, 6000000)
+	   ,(N'Đèn Bi Laser TiTan Platinum Plus 9+3', 16900000, N'manhinh9.jpg', N'Công suất: Cos 80W/Pha 90W', 3, 2, 6000000)
+	   ,(N'Camera 360 ô tô GOTECH GP6 Mới nhất – Panda Auto', 12500000, N'manhinh10.jpg', N'Mắt Camera: Sony A225', 5, 1, 6000000)
+	   ,(N'Camera 360 OledPro AHD', 10500000, N'manhinh11.png', N'Mắt Camera: Sony A225', 5, 2, 6000000)
+	   ,(N'Camera 360 Safeview LD980H', 18900000, N'manhinh12.jpg', N'Mắt Camera: Sony', 5, 1, 6000000)
+	   ,(N'Hệ thống âm thanh ô tô DB DRIVE ES7 6C', 4650000, N'mh13.jpg', N'Công Suất Max: 225W', 6, 1, 6000000)
+	   ,(N'Loa cánh ô tô HELIX F 62C', 18000000, N'mh14.png', N'Công suất tối đa: 120W', 6, 2, 6000000)
+	   ,(N'Loa cánh DB DRIVE ES1 60', 1200000, N'mh15.jpg', N'Công suất đầu vào tối đa: 110W.', 6, 3, 6000000)
+	   ,(N'Cảm biến áp suất lốp GOTECH GL509 – Màn hình hiển thị rời', 2700000, N'mh16.png', N'Hiển thị đồng thời áp suất và nhiệt độ 4 lốp trên 1 màn hình', 8, 1, 6000000)
+	   ,(N'Cảm biến áp suất lốp GOTECH GL603 – Van trong an toàn', 2900000, N'mh17.png', N'Hiển thị đồng thời áp suất và nhiệt độ 4 lốp trên 1 màn hình', 8, 2, 6000000)
+	   ,(N'Cảm biến áp suất lốp ô tô GOTECH GL509N – Màn hình rời cao cấp', 2700000, N'mh18.jpg', N'Hiển thị đồng thời áp suất và nhiệt độ 4 lốp trên 1 màn hình', 8, 3, 6000000)
+	   ,(N'Bọc Vô Lăng Ô Tô Da Cao Cấp SPARCO Italia', 349000, N'volang.jpg', N'Phù hợp với hầu hết các loại xe 4 – 7 chỗ', 9, 1, 6000000)
+	   ,(N'Bơm Lốp Ô Tô Tự Ngắt Steelmate P05', 700000, N'mh19.jpg', N'Điện áp vào: 12V', 9, 2, 6000000)
+	   ,(N'Sáp Thơm Ô Tô AREON – Khử Mùi Xe Hơi Cao Cấp', 240000, N'mh20.jpg', N' Đảm bảo tiêu chuẩn an toàn của EU', 9, 3, 6000000)
+	   ,(N'Thảm lót sàn ô tô 5D, 6D xe Vinfast Fadil', 1200000, N'thamlot1.png', N'Thảm được thiết kế vừa khít sàn xe, chống bụi bẩn, chống xô lệch', 7, 1, 6000000)
+	   ,(N'Thảm lót sàn ô tô 5D, 6D xe Lexus NX200T, NX300', 1200000, N'thamlot1.jpg', N'hảm được thiết kế vừa khít sàn xe, chống bụi bẩn.', 7, 2, 6000000)
+	   ,(N'Loa SUB siêu trầm Blaupunkt XLF 180A – Panda Auto', 2400000, N'mh21.jpg', N'Công suất: (RMS): 180W', 6, 3, 6000000)
 GO
 --------------------------------------------------------
 INSERT INTO [dbo].[galleries]
@@ -140,22 +146,26 @@ INSERT INTO [dbo].[order_details]
            ,[products_id]
            ,[price]
            ,[quanlity]
-           ,[sum_money]
-           ,[create_date]
-           ,[update_date])
+           ,[sum_money])
      VALUES
-          (1,1,7000000,2,14000000,'2023-05-27','2023-05-28'),
-		   (1,2,5000000,2,10000000,'2023-05-27','2023-05-28'),
-		    (2,3,6000000,2,12000000,'2023-05-27','2023-05-28'),
-			(2,2,5000000,3,12000000,'2023-05-27','2023-05-28'),
-			(3,2,2000000,2,4000000,'2023-05-27','2023-05-28'),
-		   (3,3,3000000,2,6000000,'2023-05-27','2023-05-28'),
-		   (4,1,7000000,2,14000000,'2023-05-27','2023-05-28'),
-		   (4,1,5000000,2,10000000,'2023-05-27','2023-05-28'),
-		    (5,3,6000000,2,12000000,'2023-05-27','2023-05-28'),
-			(5,2,5000000,3,12000000,'2023-05-27','2023-05-28'),
-			(2,2,2000000,2,4000000,'2023-05-27','2023-05-28'),
-		   (1,3,3000000,2,6000000,'2023-05-27','2023-05-28')
+          (1,1,12900000,2,25800000),
+		   (1,2,6900000,2,13800000),
+		    (2,3,7800000,2,15600000),
+			(2,2,6900000,3,18700000),
+			(3,2,6900000,1,6900000),
+		   (3,3,7800000,2,15600000),
+		   (4,1,12900000,2,25800000),
+		   (4,5,9500000,2,19000000),
+		    (5,3,7800000,2,15600000),
+			(5,2,6900000,3,18700000),
+			(6,2,6900000,2,13800000),
+		   (6,3,7800000,2,15600000),
+		   (7,1,12900000,2,25800000),
+		   (7,3,7800000,2,15600000),
+		    (8,3,7800000,2,15600000),
+			(8,2,6900000,3,18700000),
+			(9,2,6900000,2,13800000),
+		   (10,3,7800000,2,15600000)
 GO
 ---------------------------------------
 INSERT INTO [dbo].[likes]
@@ -215,6 +225,27 @@ INSERT INTO [dbo].[news]
 		   ,N'Video ',N'Hình ảnh','2023-05-27','2023-05-28',1,1,1),
 		   (N'Đèn xe thông minh Bạc',
 		   N'Tiếp nối sự thành công rực rỡ của sản phẩm Bi led oto X-light V20, thương hiệu X-light đã tiếp tục cho ra mắt bản cập nhật 2022 với hoàn thiện cao hơn. Một trong những ưu điểm nổi bật nhất của sản phẩm '
+		   ,N'Video ',N'Hình ảnh','2023-05-27','2023-05-28',1,2,2),
+		   (N'Thi tốt nghiệp THPT 2023: Lên phương án cho những tình huống đặc biệt',
+		   N'<h2 class="detail-sapo" style="-webkit-font-smoothing: antialiased; text-rendering: geometricprecision; box-sizing: border-box; margin: 0px; border-top: 1px solid #ebebeb; font-size: 17px; line-height: 26px; color: #292929; padding: 24px 0px; font-family: Merriweather; background-color: #ffffff;" data-role="sapo">Bộ GD-ĐT đ&atilde; tổ chức nhiều đo&agrave;n c&ocirc;ng t&aacute;c đến c&aacute;c địa phương tr&ecirc;n cả nước kiểm tra c&ocirc;ng t&aacute;c chuẩn bị cho kỳ thi tốt nghiệp THPT năm 2023 sắp tới.</h2>
+<div id="zone-k911czvz" style="-webkit-font-smoothing: antialiased; text-rendering: geometricprecision; box-sizing: border-box; color: #333333; font-family: Merriweather; font-size: 14px; background-color: #ffffff;">
+<div id="share-k911czwh" style="-webkit-font-smoothing: antialiased; text-rendering: geometricprecision; box-sizing: border-box;">
+<div id="placement-kalznos4" style="-webkit-font-smoothing: antialiased; text-rendering: geometricprecision; box-sizing: border-box;">
+<div id="banner-k911czvz-kalznosg" style="-webkit-font-smoothing: antialiased; text-rendering: geometricprecision; box-sizing: border-box; min-height: 0px; min-width: 0px;">
+<div id="slot-1-k911czvz-kalznosg" style="-webkit-font-smoothing: antialiased; text-rendering: geometricprecision; box-sizing: border-box;">
+<div id="ssppagebid_6314" style="-webkit-font-smoothing: antialiased; text-rendering: geometricprecision; box-sizing: border-box;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="detail-cmain" style="-webkit-font-smoothing: antialiased; text-rendering: geometricprecision; box-sizing: border-box; margin-bottom: 24px; color: #333333; font-family: Merriweather; font-size: 14px; background-color: #ffffff;">
+<div class="detail-content afcbc-body" style="-webkit-font-smoothing: antialiased; text-rendering: geometricprecision; box-sizing: border-box; font-family: Inter; font-size: 17px; color: #292929; max-width: 100%; line-height: 26px !important;" data-role="content" data-io-article-url="https://thanhnien.vn/thi-tot-nghiep-thpt-2023-len-phuong-an-cho-nhung-tinh-huong-dac-biet-18523061400293869.htm">
+<div style="-webkit-font-smoothing: antialiased; text-rendering: geometricprecision; box-sizing: border-box; height: 0px;" data-check-position="body_start">&nbsp;</div>
+<p style="-webkit-font-smoothing: antialiased; text-rendering: geometricprecision; box-sizing: border-box; margin: 0.5em 0px 24px;">Ng&agrave;y 13.6, Bộ trưởng Bộ GD-ĐT Nguyễn Kim Sơn đ&atilde; dẫn đầu đo&agrave;n c&ocirc;ng t&aacute;c của Bộ đi kiểm tra, thị s&aacute;t c&ocirc;ng t&aacute;c chuẩn bị tổ chức cho kỳ thi tốt nghiệp THPT tại TP.HCM</p>
+</div>
+</div>
+<div class="ddict_btn" style="top: 168px; left: 1182.4px;"><img src="chrome-extension://bpggmmljdiliancllaapiggllnkbjocb/logo/48.png" /></div> '
 		   ,N'Video ',N'Hình ảnh','2023-05-27','2023-05-28',1,2,2)
 GO
 -----------------------------------------------------

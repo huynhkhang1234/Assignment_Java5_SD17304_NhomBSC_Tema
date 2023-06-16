@@ -35,7 +35,6 @@ import jakarta.validation.Valid;
 
 @Controller
 public class AccountMANController {
-
 	@Autowired
 	UsersDAO userDao;
 	@Autowired

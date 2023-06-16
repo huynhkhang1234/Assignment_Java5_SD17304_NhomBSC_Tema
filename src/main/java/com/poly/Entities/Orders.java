@@ -14,6 +14,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -36,9 +38,12 @@ public class Orders implements Serializable {
 	private String notes;
 	private String status;
 	private Float sum_money;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date create_date;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date update_date;
 	private float money_received;
+	private int is_active;
 
 	// khóa chính
 	@JsonIgnore

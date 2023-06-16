@@ -16,14 +16,25 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import com.poly.DAO.LikesDAO;
+import com.poly.Entities.Likes;
+import com.poly.Entities.Users;
+
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class ProfileController {
 	@Autowired
 	UsersDAO userDao;
+	
 	@Autowired
 	HttpSession session;
+	
 	@Autowired
 	HttpServletRequest req;
+	
+	@Autowired
+	LikesDAO lDAO;
 	
 	
 	@GetMapping("/user/profile/account")
@@ -78,6 +89,8 @@ public class ProfileController {
 	public String viewFavorite( 
 			Model m
 			) {
+		loadData(m);
+		
 		m.addAttribute("url", "favorite");
 		return "user/profile";
 	}
@@ -88,6 +101,15 @@ public class ProfileController {
 			) {
 		m.addAttribute("url", "history");
 		return "user/profile";
+	}
+	
+	private void loadData(Model m) {
+				// Lấy tài khoản của thằng đang đăng nhập
+				Users userC = (Users) session.getAttribute("userLogin");
+				
+				List<Likes> list = lDAO.findAllLikesByUserID(userC.getId());
+				
+				m.addAttribute("listLike", list);
 	}
 	
 }

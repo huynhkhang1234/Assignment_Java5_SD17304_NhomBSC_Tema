@@ -47,6 +47,7 @@ public class Products implements Serializable {
 	@Column(name = "update_date")
 	private Date update_date;
 	private int is_active;
+	private int is_status;
 	private int original_price;
 
 	// khóa chính

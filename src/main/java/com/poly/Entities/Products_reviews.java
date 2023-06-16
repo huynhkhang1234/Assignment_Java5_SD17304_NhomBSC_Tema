@@ -34,6 +34,7 @@ public class Products_reviews implements Serializable  {
 	private String content;
 	
 	private Date create_date;
+	private int is_active;
 	
 	@ManyToOne
 	@JoinColumn(name="users_id")
