@@ -20,11 +20,15 @@ public interface ProductsDAO extends JpaRepository<Products, Integer> {
 	@Query("SELECT p FROM Products p WHERE id = :id")
 	Products findByProductId(@Param("id") Integer id);
 	
+	@Query(value = "SELECT n FROM Products n where n.is_active = 1")
+	Page<Products> getIsActive(Pageable pageable);
+	// tìm kiếm sản phẩm
 	/*
-	 * @Query(value = "SELECT COUNT(p) FROM Products p WHERE p.is_active = 1",
-	 * nativeQuery = false) long countProducts();
-	 * 
-	 * @Query(value = "SELECT p FROM Products p WHERE p.is_active = 1", nativeQuery
-	 * = false) List<Products> findAllProducts(Pageable pageable);
-	 */	
+	 * @Query(value =
+	 * "select * from products p where p.titles  like '%Màn%' and p.is_active = 1"
+	 * ,nativeQuery = true) List<Products> findByNamePage();
+	 */
+	
+	@Query("SELECT p FROM Products p WHERE p.titles LIKE ?1 and p.is_active = 1")
+	Page<Products> findByNamePage(String name, Pageable pageable);
 }
