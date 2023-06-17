@@ -107,7 +107,6 @@ public class ProductMANController {
 	public String saveProduct(Model model, @ModelAttribute("product") Products entity,
 			@RequestParam("cate") Categories cate, @RequestParam("supp") Suppliers supp,
 			@RequestParam("dis") Discounts dis, @RequestParam("file") MultipartFile file) {
-
 		Date now = new Date();
 
 		entity.setCategories(cate);
@@ -172,7 +171,6 @@ public class ProductMANController {
 		entity.setSuppliers(supp);
 		entity.setDiscounts(dis);
 		entity.setIs_active(1);
-
 		if (entity.getCreate_date() == null)
 			entity.setCreate_date(now);
 		entity.setUpdate_date(now);
